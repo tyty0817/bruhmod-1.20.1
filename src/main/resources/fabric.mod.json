@@ -19,13 +19,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.github.donotdoughnut.ExampleMod"
+      "com.github.donotdoughnut.examplemod.ExampleMod"
     ]
   },
-  "mixins": [
-    "modid.mixins.json"
-  ],
-
+ 
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
