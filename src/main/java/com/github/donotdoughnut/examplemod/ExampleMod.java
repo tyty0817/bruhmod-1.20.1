@@ -1,5 +1,10 @@
 package com.github.donotdoughnut.examplemod;
 
+import com.github.donotdoughnut.examplemod.config.ModConfig;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
@@ -9,10 +14,14 @@ import net.minecraft.util.registry.Registry;
 
 public class ExampleMod implements ModInitializer {
 
-	public static final String MOD_ID = "examplemod";
+	public static final String MOD_ID = "examplemod", FANCY_ID = "Example Mod";
+
+	public static final Logger LOGGER = LogManager.getLogger(FANCY_ID);
 
 	@Override
 	public void onInitialize() {
+
+		ModConfig.register();
 
 		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "test_item"), new Item(new FabricItemSettings().group(ItemGroup.MISC)));
 
@@ -20,7 +29,7 @@ public class ExampleMod implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
-		System.out.println("Hello Fabric world!");
+		LOGGER.info("Hello World!");
 	}
 
 }
