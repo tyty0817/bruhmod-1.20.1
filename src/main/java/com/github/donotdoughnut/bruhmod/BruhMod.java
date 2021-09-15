@@ -1,6 +1,6 @@
-package com.github.donotdoughnut.examplemod;
+package com.github.donotdoughnut.bruhmod;
 
-import com.github.donotdoughnut.examplemod.config.ModConfig;
+import com.github.donotdoughnut.bruhmod.config.ModConfig;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,9 +12,9 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class ExampleMod implements ModInitializer {
+public class BruhMod implements ModInitializer {
 
-	public static final String MOD_ID = "examplemod", FANCY_ID = "Example Mod";
+	public static final String MOD_ID = "bruhmod", FANCY_ID = "Bruh Mod";
 
 	public static final Logger LOGGER = LogManager.getLogger(FANCY_ID);
 

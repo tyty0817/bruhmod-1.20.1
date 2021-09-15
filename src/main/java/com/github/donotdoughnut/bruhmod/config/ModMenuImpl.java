@@ -1,4 +1,4 @@
-package com.github.donotdoughnut.examplemod.config;
+package com.github.donotdoughnut.bruhmod.config;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;

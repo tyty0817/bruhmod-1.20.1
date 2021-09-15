@@ -1,6 +1,6 @@
-package com.github.donotdoughnut.examplemod.config;
+package com.github.donotdoughnut.bruhmod.config;
 
-import com.github.donotdoughnut.examplemod.ExampleMod;
+import com.github.donotdoughnut.bruhmod.BruhMod;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigData;
@@ -8,14 +8,14 @@ import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import me.shedaniel.autoconfig.annotation.ConfigEntry.Gui.Excluded;
 
-@Config(name = ExampleMod.MOD_ID)
+@Config(name = BruhMod.MOD_ID)
 public class ModConfig implements ConfigData {
 
-    @Excluded
+	@Excluded
 	public static ModConfig config;
 	
 	public static void register() {
-		ExampleMod.LOGGER.info("Registering config...");
+		BruhMod.LOGGER.info("Registering config...");
 		AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
 		config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();		
 	}
