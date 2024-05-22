@@ -1,31 +1,31 @@
 {
-  "schemaVersion": 1,
-  "id": "bruhmod",
-  "version": "0.1",
-
-  "name": "Bruh Mod",
-  "description": "bruh moment",
-  "authors": [
-    "Rhys", "Justin", "Tyler", "Owen"
-  ],
-
-  "license": "CC0-1.0",
-  "icon": "assets/bruhmod/icon.png",
-
-  "environment": "*",
-  "entrypoints": {
-    "main": [
-      "com.github.donotdoughnut.bruhmod.BruhMod"
-    ],
-    "modmenu": [
-      "com.github.donotdoughnut.bruhmod.config.ModMenuImpl"
-    ]
-  },
- 
-  "depends": {
-    "fabricloader": ">=0.11.3",
-    "fabric": "*",
-    "minecraft": "1.17.x",
-    "java": ">=16"
-  }
+	"schemaVersion": 1,
+	"id": "bruhmod",
+	"version": "${version}",
+	"name": "Bruh Mod",
+	"description": "bruh moment",
+	"authors": [
+		"Rhys", "Justin", "Tyler"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/RhysHolloway/le-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/bruhmod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.github.donotdoughnut.bruhmod.BruhMod"
+		],
+		"modmenu": [
+			"com.github.donotdoughnut.bruhmod.config.ModMenuImpl"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.15.10",
+		"minecraft": "~1.20.6",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
 }
