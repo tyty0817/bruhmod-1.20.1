@@ -1,13 +1,6 @@
 package com.github.donotdoughnut.bruhmod.blocks;
 
-import static com.github.donotdoughnut.bruhmod.BruhMod.LOGGER;
-import static com.github.donotdoughnut.bruhmod.BruhMod.MOD_ID;
-
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.WallStandingBlockItem;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import static com.github.donotdoughnut.bruhmod.Mod.LOGGER;
 
 public class BlockList {
 	
@@ -18,13 +11,13 @@ public class BlockList {
 		
 		LOGGER.info("Registering blocks...");
 		
-		Identifier sconce = new Identifier(MOD_ID, "sconce");
+//		Identifier sconce = new Identifier(MOD_ID, "sconce");
 		
-		Registry.register(Registry.BLOCK, sconce, SCONCE);
-		Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "wall_sconce"), WALL_SCONCE);
-		
-		Registry.register(Registry.ITEM, sconce, new WallStandingBlockItem(SCONCE, WALL_SCONCE, new FabricItemSettings().group(ItemGroup.DECORATIONS)));
-		
+//		Registry.register(Registries.BLOCK, sconce, SCONCE);
+//		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "wall_sconce"), WALL_SCONCE);
+//
+//		Registry.register(Registries.ITEM, sconce, new VerticallyAttachableBlockItem(SCONCE, WALL_SCONCE, new Item.Settings(), Direction.DOWN));
+
 	}
 
 }
