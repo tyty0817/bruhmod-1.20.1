@@ -1,7 +1,7 @@
 {
   "structures": [
     {
-      "structure": "bruhmod:witch_hut",
+      "structure": "bruhmod:mess_hall",
       "weight": 1
     }
   ],
@@ -9,6 +9,6 @@
     "type": "minecraft:random_spread",
     "spacing": 5,
     "separation": 2,
-    "salt": 4565346
+    "salt": 3954786
   }
 }
