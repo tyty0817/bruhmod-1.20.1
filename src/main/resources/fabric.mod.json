@@ -18,6 +18,9 @@
 		"main": [
 			"com.github.donotdoughnut.bruhmod.Mod"
 		],
+		"client": [
+			"com.github.donotdoughnut.bruhmod.ModClient"
+		],
 		"modmenu": [
 			"com.github.donotdoughnut.bruhmod.config.ModConfig"
 		]
