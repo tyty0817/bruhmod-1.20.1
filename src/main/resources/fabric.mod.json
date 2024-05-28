@@ -12,7 +12,7 @@
 		"sources": "https://github.com/RhysHolloway/le-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/${mod_id}/icon.png",
+	"icon": "assets/${mod_id}/textures/item/mythril.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
@@ -27,7 +27,6 @@
 		"minecraft": ">=1.20",
 		"java": ">=21",
 		"fabric-api": "*",
-		"patchouli": "*",
-		"yet_another_config_lib_v3": ">=3.4"
+		"patchouli": "*"
 	}
 }
