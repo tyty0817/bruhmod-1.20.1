@@ -1,6 +1,8 @@
 package com.github.donotdoughnut.bruhmod;
 
 import com.github.donotdoughnut.bruhmod.entities.TestEntity;
+import com.github.donotdoughnut.bruhmod.items.ModItemGroups;
+import com.github.donotdoughnut.bruhmod.items.ModItems;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,10 +18,13 @@ public class Mod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModItemGroups.registerItemGroups();
 		
 		ModBlocks.register();
 
 		TestEntity.register();
+
+		ModItems.registerModItems();
 	}
 
 }
