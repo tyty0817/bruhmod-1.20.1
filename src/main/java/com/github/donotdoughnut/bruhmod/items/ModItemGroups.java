@@ -3,7 +3,6 @@ package com.github.donotdoughnut.bruhmod.items;
 import com.github.donotdoughnut.bruhmod.Mod;
 import com.github.donotdoughnut.bruhmod.blocks.MythrilOre;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -19,6 +18,12 @@ public class ModItemGroups {
                         entries.add(ModItems.MYTHRIL);
                         entries.add(MythrilOre.ORE_MYTHRIL_STONE_ITEM);
                         entries.add(MythrilOre.ORE_MYTHRIL_DEEPSLATE_ITEM);
+
+                        entries.add(ModItems.MYTHRIL_HELMET);
+                        entries.add(ModItems.MYTHRIL_CHESTPLATE);
+                        entries.add(ModItems.MYTHRIL_LEGGINGS);
+                        entries.add(ModItems.MYTHRIL_BOOTS);
+
 
 
                     }).build());

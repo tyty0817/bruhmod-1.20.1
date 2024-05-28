@@ -3,6 +3,12 @@
   "block.bruhmod.mythril_ore": "Mythril Ore",
   "item.bruhmod.mythril": "Mythril",
 
+  "item.bruhmod.mythril_helmet": "Mythril Helmet",
+  "item.bruhmod.mythril_chestplate": "Mythril Chestplate",
+  "item.bruhmod.mythril_leggings": "Mythril Leggings",
+  "item.bruhmod.mythril_boots": "Mythril Boots",
+
+
   "itemgroup.bruhmod": "bruhmod"
 }
 
