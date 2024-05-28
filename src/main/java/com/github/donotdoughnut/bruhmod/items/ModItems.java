@@ -18,14 +18,21 @@ import static com.github.donotdoughnut.bruhmod.Mod.MOD_ID;
 
 public class ModItems {
 
+    /*
+     * Items
+     */
     public static final Item MYTHRIL = registerItem("mythril");
 
+    /*
+     * Blocks
+     */
     public static final BlockItem
             MYTHRIL_ORE = registerBlock(ModBlocks.MYTHRIL_ORE),
             DEEPSLATE_MYTHRIL_ORE = registerBlock(ModBlocks.DEEPSLATE_MYTHRIL_ORE);
 
-
-
+    /*
+     * Armor
+     */
     public static final Item MYTHRIL_HELMET = registerItem("mythril_helmet",
             new ArmorItem(ModArmorMaterials.MYTHRIL, ArmorItem.Type.HELMET, new FabricItemSettings()));
     public static final Item MYTHRIL_CHESTPLATE = registerItem("mythril_chestplate",
@@ -44,14 +51,29 @@ public class ModItems {
         });
     }
 
+    /**
+     * Register an item with default parameters
+     * @param name The ID of the item.
+     * @return The item, registered
+     */
     private static Item registerItem(String name) {
         return registerItem(name, new Item(new Item.Settings()));
     }
 
+    /**
+     * Register an item with custom parameters, for example if you were making armor or special items
+     * @param name The ID of the item.
+     * @return The item, registered
+     */
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(MOD_ID, name), item);
     }
 
+    /**
+     * Register a block as an item.
+     * @param block The block to be registered
+     * @return The Block item, registered
+     */
     private static BlockItem registerBlock(Block block) {
         return Registry.register(Registries.ITEM, Registries.BLOCK.getId(block), new BlockItem(block, new Item.Settings()));
     }

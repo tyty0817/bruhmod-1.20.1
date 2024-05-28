@@ -7,13 +7,12 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.Identifier;
 
 import static com.github.donotdoughnut.bruhmod.Mod.MOD_ID;
 
 @Environment(EnvType.CLIENT)
-public class TestEntityRenderer extends MobEntityRenderer {
+public class TestEntityRenderer extends MobEntityRenderer<TestEntity, TestEntityModel> {
 
     public static final EntityModelLayer MODEL = new EntityModelLayer(new Identifier(MOD_ID, "test_entity"), "main");
 
@@ -28,7 +27,7 @@ public class TestEntityRenderer extends MobEntityRenderer {
     }
 
     @Override
-    public Identifier getTexture(Entity entity) {
+    public Identifier getTexture(TestEntity entity) {
         return new Identifier(MOD_ID, "textures/entity/fabric_cube.png");
     }
 }

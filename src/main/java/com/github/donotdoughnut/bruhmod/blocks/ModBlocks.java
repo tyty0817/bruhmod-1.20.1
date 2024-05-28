@@ -20,8 +20,8 @@ public class ModBlocks {
 
 
 	public static final Block
-			MYTHRIL_ORE = register("mythril_ore", AbstractBlock.Settings.create().strength(4.0f, 4.0f).luminance((hi) -> 2).requiresTool()),
-			DEEPSLATE_MYTHRIL_ORE = register("deepslate_mythril_ore", AbstractBlock.Settings.create().strength(5.5f, 4.0f).luminance((hi) -> 2).requiresTool());
+			MYTHRIL_ORE = registerBlock("mythril_ore", AbstractBlock.Settings.create().strength(4.0f, 4.0f).luminance((hi) -> 2).requiresTool()),
+			DEEPSLATE_MYTHRIL_ORE = registerBlock("deepslate_mythril_ore", AbstractBlock.Settings.create().strength(5.5f, 4.0f).luminance((hi) -> 2).requiresTool());
 
 	private static final RegistryKey<PlacedFeature> ORE_MYTHRIL_PLACED_KEY = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(MOD_ID,"ore_mythril"));
 
@@ -33,7 +33,13 @@ public class ModBlocks {
 
 	}
 
-	private static Block register(String name, AbstractBlock.Settings settings) {
+	/**
+	 * Register a block
+	 * @param name The id of the block
+	 * @param settings The block's settings
+	 * @return The block, registered
+	 */
+	private static Block registerBlock(String name, AbstractBlock.Settings settings) {
 		return Registry.register(Registries.BLOCK, new Identifier(MOD_ID, name), new Block(settings));
 	}
 

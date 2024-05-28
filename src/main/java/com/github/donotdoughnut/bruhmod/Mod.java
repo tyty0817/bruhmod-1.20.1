@@ -18,9 +18,9 @@ public class Mod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModItemGroups.registerItemGroups();
 		ModBlocks.register();
 		ModItems.register();
-
 		TestEntity.register();
 	}
 
