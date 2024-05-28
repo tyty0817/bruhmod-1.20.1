@@ -24,7 +24,7 @@ public class MythrilOre {
     private static final Block
             ORE_MYTHRIL_STONE = new Block(AbstractBlock.Settings.create().strength(4.0f, 4.0f).luminance((hi) -> 2).requiresTool()),
             ORE_MYTHRIL_DEEPSLATE = new Block(AbstractBlock.Settings.create().strength(5.5f, 4.0f).luminance((hi) -> 2).requiresTool());
-    private static final BlockItem
+    public static final BlockItem
             ORE_MYTHRIL_STONE_ITEM = new BlockItem(ORE_MYTHRIL_STONE, new BlockItem.Settings()),
             ORE_MYTHRIL_DEEPSLATE_ITEM = new BlockItem(ORE_MYTHRIL_DEEPSLATE, new BlockItem.Settings());
     private static final RegistryKey<PlacedFeature> ORE_MYTHRIL_PLACED_KEY = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(MOD_ID,"ore_mythril"));
