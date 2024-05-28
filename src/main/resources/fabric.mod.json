@@ -1,9 +1,9 @@
 {
 	"schemaVersion": 1,
-	"id": "bruhmod",
+	"id": "${mod_id}",
 	"version": "${version}",
-	"name": "Bruh Mod",
-	"description": "bruh moment",
+	"name": "${mod_name}",
+	"description": "wizard 101 mod",
 	"authors": [
 		"Rhys", "Justin", "Tyler"
 	],
@@ -12,23 +12,25 @@
 		"sources": "https://github.com/RhysHolloway/le-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/bruhmod/icon.png",
+	"icon": "assets/${mod_id}/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.github.donotdoughnut.bruhmod.Mod"
+			"com.github.donotdoughnut.${mod_id}.Mod"
 		],
 		"client": [
-			"com.github.donotdoughnut.bruhmod.ModClient"
+			"com.github.donotdoughnut.${mod_id}.ModClient"
 		],
 		"modmenu": [
-			"com.github.donotdoughnut.bruhmod.config.ModConfig"
+			"com.github.donotdoughnut.${mod_id}.ModMenuImpl"
 		]
 	},
 	"depends": {
 		"fabricloader": ">=0.15.10",
 		"minecraft": ">=1.20",
 		"java": ">=21",
-		"fabric-api": "*"
+		"fabric-api": "*",
+		"patchouli": "*",
+		"yet_another_config_lib_v3": ">=3.4"
 	}
 }
