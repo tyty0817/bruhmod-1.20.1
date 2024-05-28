@@ -20,9 +20,6 @@
 		],
 		"client": [
 			"com.github.donotdoughnut.${mod_id}.ModClient"
-		],
-		"modmenu": [
-			"com.github.donotdoughnut.${mod_id}.ModMenuImpl"
 		]
 	},
 	"depends": {
