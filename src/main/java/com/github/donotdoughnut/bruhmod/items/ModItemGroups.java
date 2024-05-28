@@ -25,7 +25,7 @@ public class ModItemGroups {
                         entries.add(ModItems.MYTHRIL_CHESTPLATE);
                         entries.add(ModItems.MYTHRIL_LEGGINGS);
                         entries.add(ModItems.MYTHRIL_BOOTS);
-
+                    }).build());
 
 
 
