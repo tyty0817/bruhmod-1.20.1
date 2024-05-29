@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "bruhmod:mythril"
+  },
+  "base": {
+    "item": "minecraft:diamond_helmet"
+  },
+  "result": {
+    "item": "bruhmod:mythril_studded_helmet"
+  },
+  "template": {
+    "item": "bruhmod:mythril_upgrade_smithing_template"
+  }
+}

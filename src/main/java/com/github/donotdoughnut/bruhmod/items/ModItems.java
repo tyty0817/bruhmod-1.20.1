@@ -2,14 +2,11 @@ package com.github.donotdoughnut.bruhmod.items;
 
 import com.github.donotdoughnut.bruhmod.Mod;
 import com.github.donotdoughnut.bruhmod.blocks.ModBlocks;
+import com.github.donotdoughnut.bruhmod.sounds.ModSounds;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.item.ArmorItem;
+import net.minecraft.item.*;
 import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -23,6 +20,12 @@ public class ModItems {
      */
     public static final Item MYTHRIL = registerItem("mythril");
     public static final Item MYTHRIL_DUST = registerItem("mythril_dust");
+    public static final Item MYTHRIL_FRAGMENT = registerItem("mythril_fragment");
+    public static final Item MYTHRIL_UPGRADE = registerItem("mythril_upgrade_smithing_template");
+
+    public static final Item OLD_KING_TAVERN_MUSIC_DISC = registerItem("old_king_tavern_music_disc",
+            new MusicDiscItem(7, ModSounds.OLD_KING_TAVERN, new FabricItemSettings().maxCount(1), 209));
+
 
 
     public static final Item BARRACKS_MAP = registerItem("barracks_map", new BarracksMapItem());

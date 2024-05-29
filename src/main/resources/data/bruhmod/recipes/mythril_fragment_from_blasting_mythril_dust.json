@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 5.0,
+  "group": "mythril_fragment",
+  "ingredient": {
+    "item": "bruhmod:mythril_dust"
+  },
+  "result": "bruhmod:mythril_fragment"
+}

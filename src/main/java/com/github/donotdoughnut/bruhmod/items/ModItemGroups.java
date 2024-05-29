@@ -25,6 +25,10 @@ public class ModItemGroups {
                          */
                         entries.add(ModItems.MYTHRIL);
                         entries.add(ModItems.MYTHRIL_DUST);
+                        entries.add(ModItems.MYTHRIL_FRAGMENT);
+                        entries.add(ModItems.MYTHRIL_UPGRADE);
+
+                        entries.add(ModItems.OLD_KING_TAVERN_MUSIC_DISC);
                         /*
                         BLOCKS
                          */
