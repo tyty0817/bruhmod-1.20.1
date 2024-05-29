@@ -1,6 +1,6 @@
 package com.github.donotdoughnut.bruhmod;
 
-import com.github.donotdoughnut.bruhmod.entities.TestEntity;
+import com.github.donotdoughnut.bruhmod.entities.BossEntity;
 import com.github.donotdoughnut.bruhmod.items.ModItemGroups;
 import com.github.donotdoughnut.bruhmod.items.ModItems;
 import org.apache.logging.log4j.LogManager;
@@ -21,7 +21,7 @@ public class Mod implements ModInitializer {
 		ModItemGroups.registerItemGroups();
 		ModBlocks.register();
 		ModItems.register();
-		TestEntity.register();
+		BossEntity.register();
 	}
 
 }
