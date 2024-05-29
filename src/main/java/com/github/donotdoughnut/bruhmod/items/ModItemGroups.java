@@ -20,13 +20,28 @@ public class ModItemGroups {
                     .displayName(Text.translatable("itemgroup.bruhmod.group"))
                     .icon(() -> new ItemStack(ModItems.MYTHRIL))
                     .entries((displayContext, entries) -> {
+                        /*
+                        ITEMS
+                         */
                         entries.add(ModItems.MYTHRIL);
+                        /*
+                        BLOCKS
+                         */
                         entries.add(ModItems.MYTHRIL_ORE);
                         entries.add(ModItems.DEEPSLATE_MYTHRIL_ORE);
-                        entries.add(ModItems.MYTHRIL_HELMET);
-                        entries.add(ModItems.MYTHRIL_CHESTPLATE);
-                        entries.add(ModItems.MYTHRIL_LEGGINGS);
-                        entries.add(ModItems.MYTHRIL_BOOTS);
+                        /*
+                        ARMOR
+                         */
+                        entries.add(ModItems.MYTHRIL_STUDDED_HELMET);
+                        entries.add(ModItems.MYTHRIL_STUDDED_CHESTPLATE);
+                        entries.add(ModItems.MYTHRIL_STUDDED_LEGGINGS);
+                        entries.add(ModItems.MYTHRIL_STUDDED_BOOTS);
+
+                        entries.add(ModItems.MYTHRIL_INFUSED_HELMET);
+                        entries.add(ModItems.MYTHRIL_INFUSED_CHESTPLATE);
+                        entries.add(ModItems.MYTHRIL_INFUSED_LEGGINGS);
+                        entries.add(ModItems.MYTHRIL_INFUSED_BOOTS);
+
                     })
                     .build()
     );

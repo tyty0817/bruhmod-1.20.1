@@ -1,12 +1,17 @@
 {
   "block.bruhmod.deepslate_mythril_ore": "Deepslate Mythril Ore",
   "block.bruhmod.mythril_ore": "Mythril Ore",
+
   "item.bruhmod.mythril": "Mythril",
 
-  "item.bruhmod.mythril_helmet": "Mythril Helmet",
-  "item.bruhmod.mythril_chestplate": "Mythril Chestplate",
-  "item.bruhmod.mythril_leggings": "Mythril Leggings",
-  "item.bruhmod.mythril_boots": "Mythril Boots",
+  "item.bruhmod.mythril_studded_helmet": "Mythril Studded Helmet",
+  "item.bruhmod.mythril_studded_chestplate": "Mythril Studded Chestplate",
+  "item.bruhmod.mythril_studded_leggings": "Mythril Studded Leggings",
+  "item.bruhmod.mythril_studded_boots": "Mythril Studded Boots",
+  "item.bruhmod.mythril_infused_helmet": "Mythril Infused Helmet",
+  "item.bruhmod.mythril_infused_chestplate": "Mythril Infused Chestplate",
+  "item.bruhmod.mythril_infused_leggings": "Mythril Infused Leggings",
+  "item.bruhmod.mythril_infused_boots": "Mythril Infused Boots",
 
 
   "itemgroup.bruhmod.group": "Items de L'mod"
