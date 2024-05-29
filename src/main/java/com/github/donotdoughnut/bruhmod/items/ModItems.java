@@ -23,6 +23,8 @@ public class ModItems {
      */
     public static final Item MYTHRIL = registerItem("mythril");
 
+    public static final Item BARRACKS_MAP = registerItem("barracks_map", new BarracksMapItem());
+
     /*
      * Blocks
      */
@@ -55,9 +57,9 @@ public class ModItems {
 
     public static void register() {
         Mod.LOGGER.info("Registering Mod Items for " + MOD_ID);
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
-            entries.addAfter(Items.NETHERITE_INGOT, MYTHRIL);
-        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries ->
+            entries.addAfter(Items.NETHERITE_INGOT, MYTHRIL)
+        );
     }
 
     /**
