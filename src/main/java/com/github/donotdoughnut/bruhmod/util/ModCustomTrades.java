@@ -1,25 +1,20 @@
 package com.github.donotdoughnut.bruhmod.util;
 
+import com.github.donotdoughnut.bruhmod.items.ModItems;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
-import net.minecraft.item.map.MapIcon;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
-import net.minecraft.village.TradeOffers;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.village.TradeOffer;
 import net.minecraft.village.VillagerProfession;
-
-import static com.github.donotdoughnut.bruhmod.Mod.MOD_ID;
 
 public class ModCustomTrades {
     public static void registerCustomTrades(){
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.CARTOGRAPHER, 1,
-                factories -> {
-                    factories.add((entity, random) -> new TradeOffers.SellMapFactory(1,
-                            TagKey.of(RegistryKeys.STRUCTURE, new Identifier(MOD_ID, "barracks")),
-                            "bruhmod.filled_map.barracks", MapIcon.Type.BANNER_BLACK,
-                            12, 25).create(entity, random));
+                factories ->
+                    factories.add((entity, random) -> new TradeOffer(new ItemStack(Items.EMERALD, 12), new ItemStack(Items.COMPASS), new ItemStack(ModItems.BARRACKS_MAP), 12, 25, 0.2f))
 
-        });
+
+        );
 
     }
 }
