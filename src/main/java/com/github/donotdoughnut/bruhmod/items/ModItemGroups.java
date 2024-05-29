@@ -24,6 +24,7 @@ public class ModItemGroups {
                         ITEMS
                          */
                         entries.add(ModItems.MYTHRIL);
+                        entries.add(ModItems.MYTHRIL_DUST);
                         /*
                         BLOCKS
                          */

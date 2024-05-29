@@ -22,6 +22,8 @@ public class ModItems {
      * Items
      */
     public static final Item MYTHRIL = registerItem("mythril");
+    public static final Item MYTHRIL_DUST = registerItem("mythril_dust");
+
 
     /*
      * Blocks
