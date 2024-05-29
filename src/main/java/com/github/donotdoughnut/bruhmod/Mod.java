@@ -3,6 +3,7 @@ package com.github.donotdoughnut.bruhmod;
 import com.github.donotdoughnut.bruhmod.entities.TestEntity;
 import com.github.donotdoughnut.bruhmod.items.ModItemGroups;
 import com.github.donotdoughnut.bruhmod.items.ModItems;
+import com.github.donotdoughnut.bruhmod.util.ModCustomTrades;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,6 +23,7 @@ public class Mod implements ModInitializer {
 		ModBlocks.register();
 		ModItems.register();
 		TestEntity.register();
+		ModCustomTrades.registerCustomTrades();
 	}
 
 }
