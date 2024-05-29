@@ -33,14 +33,23 @@ public class ModItems {
     /*
      * Armor
      */
-    public static final Item MYTHRIL_HELMET = registerItem("mythril_helmet",
-            new ArmorItem(ModArmorMaterials.MYTHRIL, ArmorItem.Type.HELMET, new FabricItemSettings()));
-    public static final Item MYTHRIL_CHESTPLATE = registerItem("mythril_chestplate",
-            new ArmorItem(ModArmorMaterials.MYTHRIL, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
-    public static final Item MYTHRIL_LEGGINGS = registerItem("mythril_leggings",
-            new ArmorItem(ModArmorMaterials.MYTHRIL, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
-    public static final Item MYTHRIL_BOOTS = registerItem("mythril_boots",
-            new ArmorItem(ModArmorMaterials.MYTHRIL, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+    public static final Item MYTHRIL_STUDDED_HELMET = registerItem("mythril_studded_helmet",
+            new ArmorItem(ModArmorMaterials.MYTHRIL_DIAMOND, ArmorItem.Type.HELMET, new FabricItemSettings()));
+    public static final Item MYTHRIL_STUDDED_CHESTPLATE = registerItem("mythril_studded_chestplate",
+            new ArmorItem(ModArmorMaterials.MYTHRIL_DIAMOND, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+    public static final Item MYTHRIL_STUDDED_LEGGINGS = registerItem("mythril_studded_leggings",
+            new ArmorItem(ModArmorMaterials.MYTHRIL_DIAMOND, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
+    public static final Item MYTHRIL_STUDDED_BOOTS = registerItem("mythril_studded_boots",
+            new ArmorItem(ModArmorMaterials.MYTHRIL_DIAMOND, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+
+    public static final Item MYTHRIL_INFUSED_HELMET = registerItem("mythril_infused_helmet",
+            new ArmorItem(ModArmorMaterials.MYTHRIL_NETHERITE, ArmorItem.Type.HELMET, new FabricItemSettings()));
+    public static final Item MYTHRIL_INFUSED_CHESTPLATE = registerItem("mythril_infused_chestplate",
+            new ArmorItem(ModArmorMaterials.MYTHRIL_NETHERITE, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+    public static final Item MYTHRIL_INFUSED_LEGGINGS = registerItem("mythril_infused_leggings",
+            new ArmorItem(ModArmorMaterials.MYTHRIL_NETHERITE, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
+    public static final Item MYTHRIL_INFUSED_BOOTS = registerItem("mythril_infused_boots",
+            new ArmorItem(ModArmorMaterials.MYTHRIL_NETHERITE, ArmorItem.Type.BOOTS, new FabricItemSettings()));
 
 
 

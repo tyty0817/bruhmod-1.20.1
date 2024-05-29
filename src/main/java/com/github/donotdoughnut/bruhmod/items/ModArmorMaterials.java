@@ -10,8 +10,13 @@ import net.minecraft.sound.SoundEvents;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    MYTHRIL("mythril", 25, new int[]{ 3, 8, 6, 3 }, 19,
-            SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 2f, 1f, () -> Ingredient.ofItems(ModItems.MYTHRIL));
+    MYTHRIL_DIAMOND("mythril_studded", 40, new int[]{ 4, 9, 7, 4 }, 20,
+            SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 2.0f, 0.5f, () -> Ingredient.ofItems(ModItems.MYTHRIL)),
+    MYTHRIL_NETHERITE("mythril_infused", 45, new int[]{ 5, 10, 8, 5 }, 25,
+            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0f, 1.5f, () -> Ingredient.ofItems(ModItems.MYTHRIL));
+
+
+
 
     private final String name;
     private final int durabilityMultiplier;
