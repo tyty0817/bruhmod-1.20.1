@@ -2,8 +2,9 @@ package com.github.donotdoughnut.bruhmod.blocks;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.minecraft.block.AbstractBlock;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.ExperienceDroppingBlock;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -20,10 +21,9 @@ import static com.github.donotdoughnut.bruhmod.Mod.MOD_ID;
 
 public class ModBlocks {
 
-
 	public static final Block
-			MYTHRIL_ORE = registerBlock("mythril_ore", ExperienceDroppingBlock.Settings.create().strength(4.0f, 4.0f).luminance((hi) -> 2).requiresTool()),
-			DEEPSLATE_MYTHRIL_ORE = registerBlock("deepslate_mythril_ore", ExperienceDroppingBlock.Settings.create().strength(5.5f, 4.0f).luminance((hi) -> 2).requiresTool());
+			MYTHRIL_ORE = registerBlock("mythril_ore", new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.STONE).strength(4.0f, 4.0f).luminance((hi) -> 2).requiresTool(), UniformIntProvider.create(2, 5))),
+			DEEPSLATE_MYTHRIL_ORE = registerBlock("deepslate_mythril_ore", new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.STONE).strength(4.0f, 4.0f).luminance((hi) -> 2).requiresTool(), UniformIntProvider.create(2, 5)));
 
 	private static final RegistryKey<PlacedFeature> ORE_MYTHRIL_PLACED_KEY = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(MOD_ID,"ore_mythril"));
 
@@ -35,14 +35,8 @@ public class ModBlocks {
 
 	}
 
-	/**
-	 * Register a block
-	 * @param name The id of the block
-	 * @param settings The block's settings
-	 * @return The block, registered
-	 */
-	private static Block registerBlock(String name, AbstractBlock.Settings settings) {
-		return Registry.register(Registries.BLOCK, new Identifier(MOD_ID, name), new Block(settings));
+	private static Block registerBlock(String name, ExperienceDroppingBlock block) {
+		return Registry.register(Registries.BLOCK, new Identifier(MOD_ID, name), block);
 	}
 
 }
