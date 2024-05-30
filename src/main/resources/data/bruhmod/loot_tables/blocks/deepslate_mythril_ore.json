@@ -24,7 +24,7 @@
                   }
                 }
               ],
-              "name": "bruhmod:mythril_ore"
+              "name": "bruhmod:deepslate_mythril_ore"
             },
             {
               "type": "minecraft:item",
@@ -46,5 +46,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "bruhmod:blocks/mythril_ore"
+  "random_sequence": "bruhmod:blocks/deepslate_mythril_ore"
 }

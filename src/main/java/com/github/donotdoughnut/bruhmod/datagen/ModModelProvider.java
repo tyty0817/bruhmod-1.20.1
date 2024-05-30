@@ -18,7 +18,6 @@ public class ModModelProvider {
         itemModelGenerator.register(ModItems.MYTHRIL_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.MYTHRIL_FRAGMENT, Models.GENERATED);
 
-        itemModelGenerator.register(ModItems.OLD_KING_TAVERN_MUSIC_DISC, Models.GENERATED);
 
         /*
         ARMOR

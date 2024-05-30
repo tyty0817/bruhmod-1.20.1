@@ -19,9 +19,5 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.MYTHRIL_STUDDED_HELMET, ModItems.MYTHRIL_STUDDED_CHESTPLATE, ModItems.MYTHRIL_STUDDED_LEGGINGS, ModItems.MYTHRIL_STUDDED_BOOTS,
                         ModItems.MYTHRIL_INFUSED_HELMET, ModItems.MYTHRIL_INFUSED_CHESTPLATE, ModItems.MYTHRIL_INFUSED_LEGGINGS, ModItems.MYTHRIL_INFUSED_BOOTS);
 
-        getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
-                .add(ModItems.OLD_KING_TAVERN_MUSIC_DISC);
-        getOrCreateTagBuilder(ItemTags.CREEPER_DROP_MUSIC_DISCS)
-                .add(ModItems.OLD_KING_TAVERN_MUSIC_DISC);
     }
 }

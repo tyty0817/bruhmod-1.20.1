@@ -2,7 +2,6 @@ package com.github.donotdoughnut.bruhmod.items;
 
 import com.github.donotdoughnut.bruhmod.Mod;
 import com.github.donotdoughnut.bruhmod.blocks.ModBlocks;
-import com.github.donotdoughnut.bruhmod.sounds.ModSounds;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
@@ -23,8 +22,6 @@ public class ModItems {
     public static final Item MYTHRIL_FRAGMENT = registerItem("mythril_fragment");
     public static final Item MYTHRIL_UPGRADE = registerItem("mythril_upgrade_smithing_template");
 
-    public static final Item OLD_KING_TAVERN_MUSIC_DISC = registerItem("old_king_tavern_music_disc",
-            new MusicDiscItem(7, ModSounds.OLD_KING_TAVERN, new FabricItemSettings().maxCount(1), 209));
 
 
 

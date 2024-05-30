@@ -11,7 +11,7 @@ public class ModCustomTrades {
     public static void registerCustomTrades(){
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.CARTOGRAPHER, 1,
                 factories ->
-                    factories.add((entity, random) -> new TradeOffer(new ItemStack(Items.EMERALD, 12), new ItemStack(Items.COMPASS), new ItemStack(ModItems.BARRACKS_MAP), 12, 25, 0.2f))
+                    factories.add((entity, random) -> new TradeOffer(new ItemStack(ModItems.MYTHRIL, 1), new ItemStack(ModItems.BARRACKS_MAP), 12, 25, 0.2f))
 
 
         );

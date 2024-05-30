@@ -4,12 +4,14 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.ExperienceDroppingBlock;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
@@ -20,8 +22,8 @@ public class ModBlocks {
 
 
 	public static final Block
-			MYTHRIL_ORE = registerBlock("mythril_ore", AbstractBlock.Settings.create().strength(4.0f, 4.0f).luminance((hi) -> 2).requiresTool()),
-			DEEPSLATE_MYTHRIL_ORE = registerBlock("deepslate_mythril_ore", AbstractBlock.Settings.create().strength(5.5f, 4.0f).luminance((hi) -> 2).requiresTool());
+			MYTHRIL_ORE = registerBlock("mythril_ore", ExperienceDroppingBlock.Settings.create().strength(4.0f, 4.0f).luminance((hi) -> 2).requiresTool()),
+			DEEPSLATE_MYTHRIL_ORE = registerBlock("deepslate_mythril_ore", ExperienceDroppingBlock.Settings.create().strength(5.5f, 4.0f).luminance((hi) -> 2).requiresTool());
 
 	private static final RegistryKey<PlacedFeature> ORE_MYTHRIL_PLACED_KEY = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(MOD_ID,"ore_mythril"));
 
