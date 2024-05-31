@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "bruhmod:mythril_ore"
+    "bruhmod:mythril_ore",
+    "bruhmod:mythril_block"
   ]
 }

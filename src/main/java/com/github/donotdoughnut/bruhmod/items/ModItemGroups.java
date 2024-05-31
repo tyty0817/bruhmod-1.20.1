@@ -27,12 +27,12 @@ public class ModItemGroups {
                         entries.add(ModItems.MYTHRIL_DUST);
                         entries.add(ModItems.MYTHRIL_FRAGMENT);
                         entries.add(ModItems.MYTHRIL_UPGRADE);
-
                         /*
                         BLOCKS
                          */
                         entries.add(ModItems.MYTHRIL_ORE);
                         entries.add(ModItems.DEEPSLATE_MYTHRIL_ORE);
+                        entries.add(ModItems.MYTHRIL_BLOCK);
                         /*
                         ARMOR
                          */
@@ -45,7 +45,6 @@ public class ModItemGroups {
                         entries.add(ModItems.MYTHRIL_INFUSED_CHESTPLATE);
                         entries.add(ModItems.MYTHRIL_INFUSED_LEGGINGS);
                         entries.add(ModItems.MYTHRIL_INFUSED_BOOTS);
-
                     })
                     .build()
     );
