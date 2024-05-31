@@ -1,5 +1,6 @@
 package com.github.donotdoughnut.bruhmod;
 
+import com.github.donotdoughnut.bruhmod.effect.ModEffects;
 import com.github.donotdoughnut.bruhmod.entities.BossEntity;
 import com.github.donotdoughnut.bruhmod.items.ModItemGroups;
 import com.github.donotdoughnut.bruhmod.items.ModItems;
@@ -24,6 +25,7 @@ public class Mod implements ModInitializer {
 		ModItems.register();
 		ModCustomTrades.registerCustomTrades();
 		BossEntity.register();
+		ModEffects.registerEffects();
 	}
 
 }
