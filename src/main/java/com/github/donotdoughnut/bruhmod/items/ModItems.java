@@ -26,14 +26,13 @@ public class ModItems {
 
 
     public static final Item BARRACKS_MAP = registerItem("barracks_map", new BarracksMapItem());
-
     /*
      * Blocks
      */
     public static final BlockItem
             MYTHRIL_ORE = registerBlock(ModBlocks.MYTHRIL_ORE),
-            DEEPSLATE_MYTHRIL_ORE = registerBlock(ModBlocks.DEEPSLATE_MYTHRIL_ORE);
-
+            DEEPSLATE_MYTHRIL_ORE = registerBlock(ModBlocks.DEEPSLATE_MYTHRIL_ORE),
+            MYTHRIL_BLOCK = registerBlock(ModBlocks.MYTHRIL_BLOCK);
     /*
      * Armor
      */
