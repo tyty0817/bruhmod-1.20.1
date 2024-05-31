@@ -1,7 +1,7 @@
 {
   "type": "minecraft:jigsaw",
   "biomes": "#minecraft:is_mountain",
-  "step": "surface_structures",
+  "step": "vegetal_decoration",
   "spawn_overrides": {},
   "terrain_adaptation": "beard_thin",
   "start_pool": "bruhmod:tower_mcjustin",
