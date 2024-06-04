@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "bruhmod",
+	"version": "${version}",
+	"name": "bruhmod",
+	"description": "Boo Wizard 101",
+	"authors": [
+		"Tyler", "Justin", "Rhys"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/bruhmod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"name.modid.BruhMod"
+		],
+		"client": [
+			"name.modid.BruhModClient"
+		],
+		"fabric-datagen": [
+			"name.modid.BruhModDataGenerator"
+		]
+	},
+	"mixins": [
+		"bruhmod.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
