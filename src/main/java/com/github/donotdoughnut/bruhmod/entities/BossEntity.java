@@ -26,7 +26,7 @@ public class BossEntity extends HostileEntity implements GeoEntity {
 
     public static final String ID = "boss";
 
-    private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
+    private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
 
     public static final EntityType<BossEntity> TYPE = Registry.register(
             Registries.ENTITY_TYPE,

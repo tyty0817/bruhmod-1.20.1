@@ -20,9 +20,9 @@ public class Mod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		ModItemGroups.registerItemGroups();
 		ModBlocks.register();
 		ModItems.register();
+		ModItemGroups.register();
 		ModCustomTrades.registerCustomTrades();
 		BossEntity.register();
 		ModEffects.registerEffects();

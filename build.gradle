@@ -57,7 +57,9 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}+${minecraft_version}"
 
 	// Mod Menu
-	modRuntimeOnly("com.terraformersmc:modmenu:${modmenu_version}")
+	modClientRuntimeOnly("com.terraformersmc:modmenu:${modmenu_version}")
+	// JEI
+	modClientRuntimeOnly("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
 	// Patchouli
 	modImplementation "vazkii.patchouli:Patchouli:${minecraft_version}-${patchouli_version}-FABRIC"
 	// Trinkets

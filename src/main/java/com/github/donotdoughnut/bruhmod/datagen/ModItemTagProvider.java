@@ -16,8 +16,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg){
         getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
-                .add(ModItems.MYTHRIL_STUDDED_HELMET, ModItems.MYTHRIL_STUDDED_CHESTPLATE, ModItems.MYTHRIL_STUDDED_LEGGINGS, ModItems.MYTHRIL_STUDDED_BOOTS,
-                        ModItems.MYTHRIL_INFUSED_HELMET, ModItems.MYTHRIL_INFUSED_CHESTPLATE, ModItems.MYTHRIL_INFUSED_LEGGINGS, ModItems.MYTHRIL_INFUSED_BOOTS);
+                .add(ModItems.MYTHRIL_STUDDED_ARMOR.helmet(), ModItems.MYTHRIL_STUDDED_ARMOR.chestplate(), ModItems.MYTHRIL_STUDDED_ARMOR.leggings(), ModItems.MYTHRIL_STUDDED_ARMOR.boots(),
+                        ModItems.MYTHRIL_INFUSED_ARMOR.helmet(), ModItems.MYTHRIL_INFUSED_ARMOR.chestplate(), ModItems.MYTHRIL_INFUSED_ARMOR.leggings(), ModItems.MYTHRIL_INFUSED_ARMOR.boots());
 
     }
 }
