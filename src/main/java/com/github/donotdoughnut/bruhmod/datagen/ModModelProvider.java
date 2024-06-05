@@ -1,10 +1,8 @@
 package com.github.donotdoughnut.bruhmod.datagen;
 
-import com.github.donotdoughnut.bruhmod.Mod;
 import com.github.donotdoughnut.bruhmod.items.ModItems;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
-import net.minecraft.item.ArmorItem;
 
 public class ModModelProvider {
     public void generateItemModels(ItemModelGenerator itemModelGenerator){
