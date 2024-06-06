@@ -1,0 +1,12 @@
+{
+  "geriatric_tavern": {
+    "sounds": [
+      {
+        "name": "bruhmod:geriatric_tavern",
+        "stream": true
+      }
+    ]
+  }
+}
+
+

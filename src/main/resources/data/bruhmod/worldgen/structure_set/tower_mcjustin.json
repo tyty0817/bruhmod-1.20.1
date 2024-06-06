@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "bruhmod:tower_mcjustin",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 35,
+    "separation": 15,
+    "salt": 1646207470
+  }
+}

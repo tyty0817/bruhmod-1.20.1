@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "bruhmod:mess_hall",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 36,
+    "separation": 15,
+    "salt": 3954786
+  }
+}

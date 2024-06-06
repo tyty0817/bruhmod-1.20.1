@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "bruhmod:witch_hut",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 25,
+    "separation": 14,
+    "salt": 4565346
+  }
+}
