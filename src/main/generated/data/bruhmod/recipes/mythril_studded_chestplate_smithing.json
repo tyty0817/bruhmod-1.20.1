@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "bruhmod:mythril"
+  },
+  "base": {
+    "item": "minecraft:diamond_chestplate"
+  },
+  "result": {
+    "item": "bruhmod:mythril_studded_chestplate"
+  },
+  "template": {
+    "item": "bruhmod:mythril_upgrade_smithing_template"
+  }
+}

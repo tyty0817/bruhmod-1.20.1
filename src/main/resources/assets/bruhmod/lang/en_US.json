@@ -1,0 +1,31 @@
+{
+  "block.bruhmod.deepslate_mythril_ore": "Deepslate Mythril Ore",
+  "block.bruhmod.mythril_ore": "Mythril Ore",
+  "block.bruhmod.mythril_block": "Mythril Block",
+
+  "item.bruhmod.mythril": "Mythril",
+  "item.bruhmod.mythril_dust": "Mythril Dust",
+  "item.bruhmod.mythril_fragment": "Mythril Fragment",
+  "item.bruhmod.barracks_map": "Barracks Map",
+  "item.bruhmod.mythril_upgrade_smithing_template": "Mythril Smithing Template",
+
+  "sounds.bruhmod.geriatric_tavern": "geriatric tavern",
+  "item.bruhmod.geriatric_tavern_music_disc": "geriatric tavern Music Disc",
+  "item.bruhmod.geriatric_tavern_music_disc.desc": "Ean Grimm - Old King Tavern",
+
+  "item.bruhmod.british_man_spawn_egg": "british man spawn egg",
+
+  "item.bruhmod.mythril_studded_helmet": "Mythril Studded Helmet",
+  "item.bruhmod.mythril_studded_chestplate": "Mythril Studded Chestplate",
+  "item.bruhmod.mythril_studded_leggings": "Mythril Studded Leggings",
+  "item.bruhmod.mythril_studded_boots": "Mythril Studded Boots",
+  "item.bruhmod.mythril_infused_helmet": "Mythril Infused Helmet",
+  "item.bruhmod.mythril_infused_chestplate": "Mythril Infused Chestplate",
+  "item.bruhmod.mythril_infused_leggings": "Mythril Infused Leggings",
+  "item.bruhmod.mythril_infused_boots": "Mythril Infused Boots",
+
+
+  "itemgroup.bruhmod.group": "Items de L'mod",
+  "effect.bruhmod.confuse": "Confuse"
+}
+

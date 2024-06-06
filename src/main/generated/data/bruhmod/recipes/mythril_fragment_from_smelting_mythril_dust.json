@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "MYTHRIL",
+  "ingredient": {
+    "item": "bruhmod:mythril_dust"
+  },
+  "result": "bruhmod:mythril_fragment"
+}
