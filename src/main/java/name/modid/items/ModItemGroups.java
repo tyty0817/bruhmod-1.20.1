@@ -29,6 +29,7 @@ public class ModItemGroups {
                         entries.add(ModItems.MYTHRIL_FRAGMENT);
                         entries.add(ModItems.MYTHRIL_UPGRADE);
                         entries.add(ModItems.GERIATRIC_TAVERN_MUSIC_DISC);
+                        entries.add(ModItems.BRITISH_MAN_SPAWN_EGG);
                         /*
                         BLOCKS
                          */
