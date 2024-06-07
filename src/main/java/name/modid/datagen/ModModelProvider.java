@@ -35,7 +35,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.MYTHRIL_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.MYTHRIL_FRAGMENT, Models.GENERATED);
         itemModelGenerator.register(ModItems.MYTHRIL_UPGRADE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.LIGHTNING_STICK, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BOTTLE_OF_LIGHTNING, Models.GENERATED);
         itemModelGenerator.register(ModItems.GERIATRIC_TAVERN_MUSIC_DISC, Models.GENERATED);
+
 
         itemModelGenerator.register(ModItems.BRITISH_MAN_SPAWN_EGG,
                 new Model(Optional.of(new Identifier("item/template_spawn_egg")), Optional.empty()));

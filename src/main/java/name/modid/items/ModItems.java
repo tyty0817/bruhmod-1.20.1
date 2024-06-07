@@ -27,6 +27,8 @@ public class ModItems {
     public static final Item MYTHRIL_DUST = registerItem("mythril_dust");
     public static final Item MYTHRIL_FRAGMENT = registerItem("mythril_fragment");
     public static final Item MYTHRIL_UPGRADE = registerItem("mythril_upgrade_smithing_template");
+    public static final Item LIGHTNING_STICK = registerItem("lightning_stick", new LightningStick(new FabricItemSettings()));
+    public static final Item BOTTLE_OF_LIGHTNING = registerItem("bottle_of_lightning", new Item(new FabricItemSettings().fireproof().maxCount(1)));
 
 
 
