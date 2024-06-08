@@ -32,6 +32,7 @@ public class ModItemGroups {
                         entries.add(ModItems.GERIATRIC_TAVERN_MUSIC_DISC);
                         entries.add(ModItems.LIGHTNING_STICK);
                         entries.add(ModItems.BOTTLE_OF_LIGHTNING);
+                        entries.add(ModItems.BARRACKS_MAP);
                         /*
                         BLOCKS
                          */

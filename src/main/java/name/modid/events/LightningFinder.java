@@ -14,7 +14,7 @@ import net.minecraft.util.math.Vec3d;
 import java.util.List;
 
 public class LightningFinder implements ServerEntityEvents.Load {
-    private static boolean struck;
+    private static Entity lightning;
 
     @Override
     public void onLoad(Entity entity, ServerWorld world) {
@@ -27,16 +27,13 @@ public class LightningFinder implements ServerEntityEvents.Load {
                 if(element.getType() == EntityType.ITEM) {
                     ItemEntity item = (ItemEntity) element;
                     if(item.getName().getString().equals("Glass Bottle")){
-                        struck = true;
+                        lightning = entity;
                     }
                 }
             }
         }
     }
-    public static boolean isStructk(){
-        return struck;
-    }
-    public static void resetStructk(){
-        struck = false;
+    public static Entity getBolt(){
+        return lightning;
     }
 }

@@ -35,6 +35,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.MYTHRIL_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.MYTHRIL_FRAGMENT, Models.GENERATED);
         itemModelGenerator.register(ModItems.MYTHRIL_UPGRADE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BARRACKS_MAP, Models.GENERATED);
         itemModelGenerator.register(ModItems.LIGHTNING_STICK, Models.GENERATED);
         itemModelGenerator.register(ModItems.BOTTLE_OF_LIGHTNING, Models.GENERATED);
         itemModelGenerator.register(ModItems.GERIATRIC_TAVERN_MUSIC_DISC, Models.GENERATED);
