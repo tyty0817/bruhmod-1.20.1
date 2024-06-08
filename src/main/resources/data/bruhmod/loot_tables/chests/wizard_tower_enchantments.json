@@ -74,5 +74,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "bruhmod:loot_tables/chests/tower_enchantments"
+  "random_sequence": "bruhmod:loot_tables/chests/wizard_tower_enchantments"
 }

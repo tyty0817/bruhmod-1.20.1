@@ -71,6 +71,15 @@
           "type": "minecraft:item",
           "functions": [
             {
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.8
+              },
+              "function": "minecraft:set_damage"
+            },
+            {
               "function": "minecraft:enchant_randomly"
             }
           ],
@@ -80,6 +89,15 @@
         {
           "type": "minecraft:item",
           "functions": [
+            {
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.8
+              },
+              "function": "minecraft:set_damage"
+            },
             {
               "function": "minecraft:enchant_randomly"
             }
@@ -91,6 +109,15 @@
           "type": "minecraft:item",
           "functions": [
             {
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.8
+              },
+              "function": "minecraft:set_damage"
+            },
+            {
               "function": "minecraft:enchant_randomly"
             }
           ],
@@ -100,6 +127,15 @@
         {
           "type": "minecraft:item",
           "functions": [
+            {
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.8
+              },
+              "function": "minecraft:set_damage"
+            },
             {
               "function": "minecraft:enchant_randomly"
             }
@@ -111,6 +147,15 @@
           "type": "minecraft:item",
           "functions": [
             {
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.8
+              },
+              "function": "minecraft:set_damage"
+            },
+            {
               "function": "minecraft:enchant_randomly"
             }
           ],
@@ -120,6 +165,15 @@
         {
           "type": "minecraft:item",
           "functions": [
+            {
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.8
+              },
+              "function": "minecraft:set_damage"
+            },
             {
               "function": "minecraft:enchant_randomly"
             }
@@ -131,6 +185,15 @@
           "type": "minecraft:item",
           "functions": [
             {
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.8
+              },
+              "function": "minecraft:set_damage"
+            },
+            {
               "function": "minecraft:enchant_randomly"
             }
           ],
@@ -140,6 +203,15 @@
         {
           "type": "minecraft:item",
           "functions": [
+            {
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.8
+              },
+              "function": "minecraft:set_damage"
+            },
             {
               "function": "minecraft:enchant_randomly"
             }
@@ -155,7 +227,7 @@
         {
           "type": "minecraft:item",
           "name": "bruhmod:mythril_upgrade_smithing_template",
-          "weight": 7
+          "weight": 4
         },
         {
           "type": "minecraft:item",

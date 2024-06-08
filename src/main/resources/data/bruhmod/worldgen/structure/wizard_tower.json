@@ -4,7 +4,7 @@
   "step": "vegetal_decoration",
   "spawn_overrides": {},
   "terrain_adaptation": "beard_thin",
-  "start_pool": "bruhmod:tower_mcjustin",
+  "start_pool": "bruhmod:wizard_tower",
   "size": 1,
   "start_height": {
     "absolute": 1

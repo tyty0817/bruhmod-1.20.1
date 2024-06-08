@@ -100,5 +100,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "bruhmod:loot_tables/chests/tower_potion"
+  "random_sequence": "bruhmod:loot_tables/chests/wizard_tower_potion"
 }
