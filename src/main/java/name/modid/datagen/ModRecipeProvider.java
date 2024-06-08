@@ -3,10 +3,7 @@ package name.modid.datagen;
 import name.modid.items.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.data.server.recipe.RecipeJsonProvider;
-import net.minecraft.data.server.recipe.RecipeProvider;
-import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
-import net.minecraft.data.server.recipe.SmithingTransformRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
@@ -28,12 +25,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
-        /*ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MYTHRIL)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MYTHRIL)
                 .input(ModItems.MYTHRIL_FRAGMENT, 4)
                 .input(Items.DIAMOND, 4)
                 .criterion(hasItem(Items.DIAMOND), conditionsFromItem(Items.DIAMOND))
                 .criterion(hasItem(ModItems.MYTHRIL_FRAGMENT), conditionsFromItem(ModItems.MYTHRIL_FRAGMENT))
-                .offerTo(exporter);*/
+                .offerTo(exporter, new Identifier("mythril2"));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BRANCH_OF_CORRUPTION, 1)
                 .pattern("  G")
