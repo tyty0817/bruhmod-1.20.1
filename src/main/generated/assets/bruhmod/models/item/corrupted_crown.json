@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "bruhmod:item/staff_crown"
+    "layer0": "bruhmod:item/corrupted_crown"
   }
 }

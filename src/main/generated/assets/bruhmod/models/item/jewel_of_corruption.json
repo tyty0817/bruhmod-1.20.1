@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "bruhmod:item/staff_neck"
+    "layer0": "bruhmod:item/jewel_of_corruption"
   }
 }

@@ -5,19 +5,15 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.RecipeProvider;
-import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.SmithingTransformRecipeJsonBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import name.modid.blocks.ModBlocks;
-import net.minecraft.item.Item;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -38,6 +34,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.DIAMOND), conditionsFromItem(Items.DIAMOND))
                 .criterion(hasItem(ModItems.MYTHRIL_FRAGMENT), conditionsFromItem(ModItems.MYTHRIL_FRAGMENT))
                 .offerTo(exporter);*/
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BRANCH_OF_CORRUPTION, 1)
+                .pattern("  G")
+                .pattern(" C ")
+                .pattern("B  ")
+                .input('G', ModItems.JEWEL_OF_CORRUPTION)
+                .input('C', ModItems.CORRUPTED_CROWN)
+                .input('B', ModItems.MYSTERIOUS_CLUB)
+                .criterion(hasItem(ModItems.JEWEL_OF_CORRUPTION), conditionsFromItem(ModItems.JEWEL_OF_CORRUPTION))
+                .criterion(hasItem(ModItems.CORRUPTED_CROWN), conditionsFromItem(ModItems.CORRUPTED_CROWN))
+                .criterion(hasItem(ModItems.MYSTERIOUS_CLUB), conditionsFromItem(ModItems.MYSTERIOUS_CLUB))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.BRANCH_OF_CORRUPTION)));
 
         offerSmelting(exporter, MYTHRIL_SMELTABLES, RecipeCategory.MISC, ModItems.MYTHRIL_FRAGMENT,
                 0.7f, 200, "MYTHRIL_FRAGMENT");

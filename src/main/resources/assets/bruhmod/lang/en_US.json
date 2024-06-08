@@ -1,8 +1,4 @@
 {
-  "block.bruhmod.deepslate_mythril_ore": "Deepslate Mythril Ore",
-  "block.bruhmod.mythril_ore": "Mythril Ore",
-  "block.bruhmod.mythril_block": "Mythril Block",
-
   "item.bruhmod.mythril": "Mythril",
   "item.bruhmod.mythril_dust": "Mythril Dust",
   "item.bruhmod.mythril_fragment": "Mythril Fragment",
@@ -11,17 +7,26 @@
   "item.bruhmod.lightning_stick": "lightning stick",
   "item.bruhmod.bottle_of_lightning": "bottle of lightning",
 
-  "item.bruhmod.staff_base": "staff base",
-  "item.bruhmod.staff_neck": "staff neck",
-  "item.bruhmod.staff_crown": "staff crown",
-  "item.bruhmod.staff_gem": "staff gem",
-
+  "item.bruhmod.mysterious_club": "Mysterious Club",
+  "item.bruhmod.corrupted_crown": "Corrupted Crown",
+  "item.bruhmod.jewel_of_corruption": "Jewel of Corruption",
+  "item.bruhmod.branch_of_corruption": "Branch of Corruption",
 
   "sounds.bruhmod.geriatric_tavern": "geriatric tavern",
   "item.bruhmod.geriatric_tavern_music_disc": "geriatric tavern Music Disc",
   "item.bruhmod.geriatric_tavern_music_disc.desc": "Ean Grimm - Old King Tavern",
 
   "item.bruhmod.british_man_spawn_egg": "british man spawn egg",
+
+
+
+
+  "block.bruhmod.deepslate_mythril_ore": "Deepslate Mythril Ore",
+  "block.bruhmod.mythril_ore": "Mythril Ore",
+  "block.bruhmod.mythril_block": "Mythril Block",
+
+
+
 
   "item.bruhmod.mythril_studded_helmet": "Mythril Studded Helmet",
   "item.bruhmod.mythril_studded_chestplate": "Mythril Studded Chestplate",
@@ -36,4 +41,3 @@
   "itemgroup.bruhmod.group": "Items de L'mod",
   "effect.bruhmod.confuse": "Confuse"
 }
-
