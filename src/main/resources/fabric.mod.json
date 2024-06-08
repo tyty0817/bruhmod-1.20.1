@@ -23,6 +23,9 @@
 		],
 		"fabric-datagen": [
 			"name.modid.ModDataGenerator"
+		],
+		"rei-client": [
+			"name.modid.compat.REIModPlugin"
 		]
 	},
 	"mixins": [
