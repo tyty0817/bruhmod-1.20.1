@@ -39,6 +39,7 @@ public class ModItemGroups {
                         entries.add(ModItems.LIGHTNING_STICK);
                         entries.add(ModItems.BOTTLE_OF_LIGHTNING);
                         entries.add(ModItems.FIRE_STAFF);
+                        entries.add(ModItems.WIND_STAFF);
                         entries.add(ModItems.BARRACKS_MAP);
                         /*
                         BLOCKS

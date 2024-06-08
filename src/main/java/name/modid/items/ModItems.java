@@ -33,6 +33,7 @@ public class ModItems {
     public static final Item FIRE_STAFF = registerItem("fire_staff", new FireStaff((new FabricItemSettings().maxDamage(256))));
     public static final Item LIGHTNING_STICK = registerItem("lightning_stick", new LightningStick(new FabricItemSettings().maxDamage(128)));
     public static final Item BOTTLE_OF_LIGHTNING = registerItem("bottle_of_lightning", new BottleOfLightning(new FabricItemSettings().fireproof().maxCount(1)));
+    public static final Item WIND_STAFF = registerItem("wind_staff", new WindStaff(new FabricItemSettings().maxCount(1)));
 
 
 
