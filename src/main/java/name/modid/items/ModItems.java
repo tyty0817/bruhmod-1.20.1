@@ -2,13 +2,10 @@ package name.modid.items;
 
 import name.modid.Mod;
 import name.modid.blocks.ModBlocks;
-import name.modid.entities.ModEntities;
 import name.modid.sound.ModSounds;
 import name.modid.entities.BossEntity;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.*;
 import net.minecraft.block.Block;
 import net.minecraft.registry.Registries;
@@ -23,7 +20,7 @@ public class ModItems {
     /*
      * Items
      */
-    public static final Item MYTHRIL = registerItem("mythril");
+    public static final Item MYTHRIL = registerItem("mythril", new Item(new FabricItemSettings().rarity(Rarity.UNCOMMON)));
     public static final Item MYTHRIL_DUST = registerItem("mythril_dust");
     public static final Item MYTHRIL_FRAGMENT = registerItem("mythril_fragment");
     public static final Item MYTHRIL_UPGRADE = registerItem("mythril_upgrade_smithing_template");
@@ -34,10 +31,9 @@ public class ModItems {
     public static final Item STAFF_GEM = registerItem("staff_gem");
 
 
-    public static final Item LIGHTNING_STICK = registerItem("lightning_stick", new LightningStick(new FabricItemSettings().maxDamage(128)));
+    public static final Item LIGHTNING_STICK = registerItem("lightning_stick", new LightningStick(new FabricItemSettings()));
     public static final Item BOTTLE_OF_LIGHTNING = registerItem("bottle_of_lightning", new Item(new FabricItemSettings().fireproof().maxCount(1)));
 
-    public static final Item FIRE_STAFF = registerItem("fire_staff", new FireStaff(new FabricItemSettings().maxDamage(256)));
 
 
 
@@ -52,29 +48,19 @@ public class ModItems {
     /*
      * Armor
      */
-    public static final Item MYTHRIL_STUDDED_HELMET = registerItem("mythril_studded_helmet",
-            new ArmorItem(ModArmorMaterials.MYTHRIL_DIAMOND, ArmorItem.Type.HELMET, new FabricItemSettings()));
-    public static final Item MYTHRIL_STUDDED_CHESTPLATE = registerItem("mythril_studded_chestplate",
-            new ArmorItem(ModArmorMaterials.MYTHRIL_DIAMOND, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
-    public static final Item MYTHRIL_STUDDED_LEGGINGS = registerItem("mythril_studded_leggings",
-            new ArmorItem(ModArmorMaterials.MYTHRIL_DIAMOND, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
-    public static final Item MYTHRIL_STUDDED_BOOTS = registerItem("mythril_studded_boots",
-            new ArmorItem(ModArmorMaterials.MYTHRIL_DIAMOND, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+    public static final Item MYTHRIL_STUDDED_HELMET = registerItem("mythril_studded_helmet", new ArmorItem(ModArmorMaterials.MYTHRIL_DIAMOND, ArmorItem.Type.HELMET, new FabricItemSettings()));
+    public static final Item MYTHRIL_STUDDED_CHESTPLATE = registerItem("mythril_studded_chestplate", new ArmorItem(ModArmorMaterials.MYTHRIL_DIAMOND, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+    public static final Item MYTHRIL_STUDDED_LEGGINGS = registerItem("mythril_studded_leggings", new ArmorItem(ModArmorMaterials.MYTHRIL_DIAMOND, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
+    public static final Item MYTHRIL_STUDDED_BOOTS = registerItem("mythril_studded_boots", new ArmorItem(ModArmorMaterials.MYTHRIL_DIAMOND, ArmorItem.Type.BOOTS, new FabricItemSettings()));
 
-    public static final Item MYTHRIL_INFUSED_HELMET = registerItem("mythril_infused_helmet",
-            new ArmorItem(ModArmorMaterials.MYTHRIL_NETHERITE, ArmorItem.Type.HELMET, new FabricItemSettings()));
-    public static final Item MYTHRIL_INFUSED_CHESTPLATE = registerItem("mythril_infused_chestplate",
-            new ArmorItem(ModArmorMaterials.MYTHRIL_NETHERITE, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
-    public static final Item MYTHRIL_INFUSED_LEGGINGS = registerItem("mythril_infused_leggings",
-            new ArmorItem(ModArmorMaterials.MYTHRIL_NETHERITE, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
-    public static final Item MYTHRIL_INFUSED_BOOTS = registerItem("mythril_infused_boots",
-            new ArmorItem(ModArmorMaterials.MYTHRIL_NETHERITE, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+    public static final Item MYTHRIL_INFUSED_HELMET = registerItem("mythril_infused_helmet", new ArmorItem(ModArmorMaterials.MYTHRIL_NETHERITE, ArmorItem.Type.HELMET, new FabricItemSettings()));
+    public static final Item MYTHRIL_INFUSED_CHESTPLATE = registerItem("mythril_infused_chestplate", new ArmorItem(ModArmorMaterials.MYTHRIL_NETHERITE, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+    public static final Item MYTHRIL_INFUSED_LEGGINGS = registerItem("mythril_infused_leggings", new ArmorItem(ModArmorMaterials.MYTHRIL_NETHERITE, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
+    public static final Item MYTHRIL_INFUSED_BOOTS = registerItem("mythril_infused_boots", new ArmorItem(ModArmorMaterials.MYTHRIL_NETHERITE, ArmorItem.Type.BOOTS, new FabricItemSettings()));
 
-    public static final Item GERIATRIC_TAVERN_MUSIC_DISC = registerItem("geriatric_tavern_music_disc",
-            new MusicDiscItem(7, ModSounds.GERIATRIC_TAVERN, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 24));
+    public static final Item GERIATRIC_TAVERN_MUSIC_DISC = registerItem("geriatric_tavern_music_disc", new MusicDiscItem(7, ModSounds.GERIATRIC_TAVERN, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 24));
 
-    public static final Item BRITISH_MAN_SPAWN_EGG = registerItem("british_man_spawn_egg",
-            new SpawnEggItem(BossEntity.TYPE, 0xd59890, 0xd7b4ae, new FabricItemSettings()));
+    public static final Item BRITISH_MAN_SPAWN_EGG = registerItem("british_man_spawn_egg", new SpawnEggItem(BossEntity.TYPE, 0xd59890, 0xd7b4ae, new FabricItemSettings()));
 
 
     public static void register() {

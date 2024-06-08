@@ -1,7 +1,6 @@
 package name.modid.items;
 
 import name.modid.Mod;
-import name.modid.sound.ModSounds;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -29,10 +28,10 @@ public class ModItemGroups {
                         entries.add(ModItems.MYTHRIL_FRAGMENT);
                         entries.add(ModItems.MYTHRIL_UPGRADE);
 
-                        entries.add(ModItems.STAFF_BASE);
-                        entries.add(ModItems.STAFF_NECK);
-                        entries.add(ModItems.STAFF_CROWN);
-                        entries.add(ModItems.STAFF_GEM);
+                        entries.add(ModItems.MYSTERIOUS_CLUB);
+                        entries.add(ModItems.CORRUPTED_CROWN);
+                        entries.add(ModItems.JEWEL_OF_CORRUPTION);
+                        entries.add(ModItems.BRANCH_OF_CORRUPTION);
 
 
                         entries.add(ModItems.BRITISH_MAN_SPAWN_EGG);
