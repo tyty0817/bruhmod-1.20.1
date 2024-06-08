@@ -28,6 +28,13 @@ public class ModItemGroups {
                         entries.add(ModItems.MYTHRIL_DUST);
                         entries.add(ModItems.MYTHRIL_FRAGMENT);
                         entries.add(ModItems.MYTHRIL_UPGRADE);
+
+                        entries.add(ModItems.STAFF_BASE);
+                        entries.add(ModItems.STAFF_NECK);
+                        entries.add(ModItems.STAFF_CROWN);
+                        entries.add(ModItems.STAFF_GEM);
+
+
                         entries.add(ModItems.BRITISH_MAN_SPAWN_EGG);
                         entries.add(ModItems.GERIATRIC_TAVERN_MUSIC_DISC);
                         entries.add(ModItems.LIGHTNING_STICK);
