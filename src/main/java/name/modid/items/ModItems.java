@@ -25,13 +25,13 @@ public class ModItems {
     public static final Item MYTHRIL_FRAGMENT = registerItem("mythril_fragment");
     public static final Item MYTHRIL_UPGRADE = registerItem("mythril_upgrade_smithing_template");
 
-    public static final Item STAFF_BASE = registerItem("staff_base");
-    public static final Item STAFF_NECK = registerItem("staff_neck");
-    public static final Item STAFF_CROWN = registerItem("staff_crown");
-    public static final Item STAFF_GEM = registerItem("staff_gem");
+    public static final Item MYSTERIOUS_CLUB = registerItem("staff_base");
+    public static final Item CORRUPTED_CROWN = registerItem("staff_neck");
+    public static final Item JEWEL_OF_CORRUPTION = registerItem("staff_crown");
+    public static final Item BRANCH_OF_CORRUPTION = registerItem("staff_gem");
 
-
-    public static final Item LIGHTNING_STICK = registerItem("lightning_stick", new LightningStick(new FabricItemSettings()));
+    public static final Item FIRE_STAFF = registerItem("fire_staff", new FireStaff((new FabricItemSettings().maxDamage(256))));
+    public static final Item LIGHTNING_STICK = registerItem("lightning_stick", new LightningStick(new FabricItemSettings().maxDamage(128)));
     public static final Item BOTTLE_OF_LIGHTNING = registerItem("bottle_of_lightning", new Item(new FabricItemSettings().fireproof().maxCount(1)));
 
 
