@@ -9,6 +9,7 @@ import name.modid.items.ModItems;
 import name.modid.entities.*;
 import name.modid.sound.ModSounds;
 import name.modid.util.ModCustomTrades;
+import name.modid.world.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
@@ -31,5 +32,7 @@ public class Mod implements ModInitializer {
 
 		ServerEntityEvents.ENTITY_LOAD.register(new LightningFinder());
 		ServerEntityEvents.ENTITY_UNLOAD.register(new LightningTracker());
+
+		ModWorldGeneration.generateModWorldGen();
 	}
 }

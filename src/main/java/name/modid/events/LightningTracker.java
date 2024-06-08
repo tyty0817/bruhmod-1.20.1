@@ -17,10 +17,9 @@ public class LightningTracker implements ServerEntityEvents.Unload {
 
     @Override
     public void onUnload(Entity entity, ServerWorld world) {
-        if(entity instanceof LightningEntity && LightningFinder.isStructk()){
+        if(entity instanceof LightningEntity && LightningFinder.getBolt().getId() == entity.getId()){
             Vec3d pos = entity.getPos();
             world.spawnEntity(new ItemEntity(world, pos.x, pos.y, pos.z, new ItemStack(ModItems.BOTTLE_OF_LIGHTNING)));
-            LightningFinder.resetStructk();
         }
     }
 }

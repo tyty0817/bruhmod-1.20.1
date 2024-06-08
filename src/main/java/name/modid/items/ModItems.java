@@ -45,9 +45,9 @@ public class ModItems {
      * Blocks
      */
     public static final BlockItem
-            MYTHRIL_ORE = registerBlock(ModBlocks.MYTHRIL_ORE),
-            DEEPSLATE_MYTHRIL_ORE = registerBlock(ModBlocks.DEEPSLATE_MYTHRIL_ORE),
-            MYTHRIL_BLOCK = registerBlock(ModBlocks.MYTHRIL_BLOCK);
+            MYTHRIL_ORE = registerBlock("mythril_ore", ModBlocks.MYTHRIL_ORE),
+            DEEPSLATE_MYTHRIL_ORE = registerBlock("deepslate_mythril_ore", ModBlocks.DEEPSLATE_MYTHRIL_ORE),
+            MYTHRIL_BLOCK = registerBlock("mythril_block", ModBlocks.MYTHRIL_BLOCK);
     /*
      * Armor
      */
@@ -106,7 +106,7 @@ public class ModItems {
      * @param block The block to be registered
      * @return The Block item, registered
      */
-    private static BlockItem registerBlock(Block block) {
-        return Registry.register(Registries.ITEM, Registries.BLOCK.getId(block), new BlockItem(block, new Item.Settings()));
+    private static BlockItem registerBlock(String name, Block block) {
+        return Registry.register(Registries.ITEM, new Identifier(MOD_ID, name), new BlockItem(block, new FabricItemSettings()));
     }
 }
