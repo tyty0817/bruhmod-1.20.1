@@ -34,9 +34,10 @@ public class ModItems {
     public static final Item STAFF_GEM = registerItem("staff_gem");
 
 
-    public static final Item LIGHTNING_STICK = registerItem("lightning_stick", new LightningStick(new FabricItemSettings()));
+    public static final Item LIGHTNING_STICK = registerItem("lightning_stick", new LightningStick(new FabricItemSettings().maxDamage(128)));
     public static final Item BOTTLE_OF_LIGHTNING = registerItem("bottle_of_lightning", new Item(new FabricItemSettings().fireproof().maxCount(1)));
 
+    public static final Item FIRE_STAFF = registerItem("fire_staff", new FireStaff(new FabricItemSettings().maxDamage(256)));
 
 
 

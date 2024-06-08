@@ -38,7 +38,6 @@ public class LightningFinder implements ServerEntityEvents.Load {
             for(int i = 0; i < 4; ++i) {
                 BlockPos blockPos2 = blockPos.add((int) (Math.random() * 3) - 1, (int) (Math.random() * 3) - 1, (int) (Math.random() * 3) - 1);
                 if(world.getBlockState(blockPos2).getBlock() == Blocks.SAND){
-                    System.out.println("check");
                     world.setBlockState(blockPos2, Blocks.GLASS.getDefaultState());
                 }
             }

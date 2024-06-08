@@ -30,6 +30,7 @@ public class LightningStick extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use (World world, PlayerEntity user, Hand hand) {
+        user.getItemCooldownManager().set(this, 50);
         if(!world.isClient) {
             MinecraftClient client = MinecraftClient.getInstance();
 
@@ -46,6 +47,7 @@ public class LightningStick extends Item {
             }
         }
 
+        user.getStackInHand(hand).damage(1, user, playerEntity -> playerEntity.sendToolBreakStatus(playerEntity.getActiveHand()));
         return TypedActionResult.pass(user.getStackInHand(hand));
     }
 }

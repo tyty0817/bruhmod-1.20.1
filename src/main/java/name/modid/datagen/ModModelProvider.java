@@ -45,6 +45,7 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerator.register(ModItems.LIGHTNING_STICK, Models.GENERATED);
         itemModelGenerator.register(ModItems.BOTTLE_OF_LIGHTNING, Models.GENERATED);
+        itemModelGenerator.register(ModItems.FIRE_STAFF, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.GERIATRIC_TAVERN_MUSIC_DISC, Models.GENERATED);
 
