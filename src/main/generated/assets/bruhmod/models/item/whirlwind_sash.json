@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "bruhmod:item/lightning_stick"
+    "layer0": "bruhmod:item/whirlwind_sash"
   }
 }

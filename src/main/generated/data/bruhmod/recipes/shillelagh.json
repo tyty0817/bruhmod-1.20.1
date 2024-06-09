@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "bruhmod:monks_cudgel"
+    },
+    {
+      "item": "bruhmod:whirlwind_sash"
+    }
+  ],
+  "result": {
+    "item": "bruhmod:shillelagh"
+  }
+}

@@ -38,12 +38,19 @@ public class ModItemGroups {
                         entries.add(ModItems.UNSTABLE_CLAW);
                         entries.add(ModItems.CHARGED_CLAW);
                         entries.add(ModItems.UNSTABLE_PILLAR);
-                        entries.add(ModItems.LIGHTNING_STICK);
+                        entries.add(ModItems.MAELSTROM);
+
+                        entries.add(ModItems.SPIRITED_BLUDGEON);
+                        entries.add(ModItems.PRONGED_CROWN);
+                        entries.add(ModItems.WIND_GEM);
+                        entries.add(ModItems.MONKS_CUDGEL);
+                        entries.add(ModItems.WHIRLWIND_SASH);
+                        entries.add(ModItems.SHILLELAGH);
+
 
                         entries.add(ModItems.BRITISH_MAN_SPAWN_EGG);
                         entries.add(ModItems.GERIATRIC_TAVERN_MUSIC_DISC);
                         entries.add(ModItems.DYING_LIGHT);
-                        entries.add(ModItems.WIND_STAFF);
                         entries.add(ModItems.BARRACKS_MAP);
                         /*
                         BLOCKS

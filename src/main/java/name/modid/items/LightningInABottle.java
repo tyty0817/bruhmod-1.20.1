@@ -2,7 +2,6 @@ package name.modid.items;
 
 import name.modid.entities.BottleOfLightningEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.thrown.PotionEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
@@ -14,9 +13,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class BottleOfLightning extends Item {
+public class LightningInABottle extends Item {
 
-    public BottleOfLightning(Settings settings) {
+    public LightningInABottle(Settings settings) {
         super(settings);
     }
 

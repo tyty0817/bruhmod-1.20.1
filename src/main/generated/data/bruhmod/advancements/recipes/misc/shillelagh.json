@@ -1,24 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_charged_claw": {
+    "has_monks_cudgel": {
       "conditions": {
         "items": [
           {
             "items": [
-              "bruhmod:charged_claw"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_lightning_in_a_bottle": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "bruhmod:lightning_in_a_bottle"
+              "bruhmod:monks_cudgel"
             ]
           }
         ]
@@ -27,16 +15,16 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:lightning_stick"
+        "recipe": "minecraft:shillelagh"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_unstable_pillar": {
+    "has_whirlwind_sash": {
       "conditions": {
         "items": [
           {
             "items": [
-              "bruhmod:unstable_pillar"
+              "bruhmod:whirlwind_sash"
             ]
           }
         ]
@@ -46,15 +34,14 @@
   },
   "requirements": [
     [
-      "has_unstable_pillar",
-      "has_charged_claw",
-      "has_lightning_in_a_bottle",
+      "has_monks_cudgel",
+      "has_whirlwind_sash",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:lightning_stick"
+      "minecraft:shillelagh"
     ]
   },
   "sends_telemetry_event": false
