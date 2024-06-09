@@ -10,7 +10,6 @@
   "item.bruhmod.mythril_upgrade_smithing_template": "Mythril Smithing Template",
 
   "item.bruhmod.dying_light": "Dying Light",
-  "item.bruhmod.wind_staff": "wind staff",
 
   "item.bruhmod.mysterious_club": "Mysterious Club",
   "item.bruhmod.corrupted_crown": "Corrupted Crown",
@@ -19,7 +18,7 @@
 
 
   "item.bruhmod.lightning_in_a_bottle": "Lightning in a Bottle",
-  "item.bruhmod.cloud_in_a_bottle": "cloud in a bottle",
+  "item.bruhmod.cloud_in_a_bottle": "Cloud in a Bottle",
   "item.bruhmod.unstable_claw": "Unstable Claw",
   "item.bruhmod.charged_claw": "Charged Claw",
   "item.bruhmod.unstable_pillar": "Unstable Pillar",
@@ -38,16 +37,6 @@
 
   "item.bruhmod.british_man_spawn_egg": "british man spawn egg",
 
-
-
-
-  "block.bruhmod.deepslate_mythril_ore": "Deepslate Mythril Ore",
-  "block.bruhmod.mythril_ore": "Mythril Ore",
-  "block.bruhmod.mythril_block": "Mythril Block",
-
-
-
-
   "item.bruhmod.mythril_studded_helmet": "Mythril Studded Helmet",
   "item.bruhmod.mythril_studded_chestplate": "Mythril Studded Chestplate",
   "item.bruhmod.mythril_studded_leggings": "Mythril Studded Leggings",
@@ -59,6 +48,6 @@
 
 
   "itemgroup.bruhmod.group": "Items de L'mod",
-  "effect.bruhmod.confuse": "Confuse",
+  "effect.bruhmod.confuse": "Confuse"
 }
 
