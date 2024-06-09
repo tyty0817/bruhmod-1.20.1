@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "bruhmod:mythril_fragment"
+    },
+    {
+      "item": "bruhmod:mythril_fragment"
+    },
+    {
+      "item": "bruhmod:mythril_fragment"
+    },
+    {
+      "item": "bruhmod:mythril_fragment"
+    },
+    {
+      "item": "minecraft:diamond"
+    },
+    {
+      "item": "minecraft:diamond"
+    },
+    {
+      "item": "minecraft:diamond"
+    },
+    {
+      "item": "minecraft:diamond"
+    }
+  ],
+  "result": {
+    "item": "bruhmod:mythril"
+  }
+}
