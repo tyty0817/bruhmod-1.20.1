@@ -24,9 +24,6 @@ repositories {
 		name = "Ladysnake Libs"
 		url = 'https://maven.ladysnake.org/releases'
 	}
-	//maven { url = 'https://maven.enginehub.org/repo' }
-	maven { url "https://maven.shedaniel.me" }
-	maven { url 'https://maven.blamejared.com' }
 	maven {
 		name = 'GeckoLib'
 		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
@@ -35,20 +32,34 @@ repositories {
 			includeGroup("com.eliotlash.mclib")
 		}
 	}
+	maven { url 'https://maven.blamejared.com' }
+	maven { url "https://maven.shedaniel.me" }
 }
 
 fabricApi {
 	configureDataGeneration()
 }
 
+loom {
+    splitEnvironmentSourceSets()
+
+	mods {
+		"${project.mod_id}" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+
+}
+
 dependencies {
 	// To change the versions see the gradle.properties file
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	minecraft "com.mojang:minecraft:${minecraft_version}"
+	mappings "net.fabricmc:yarn:${minecraft_version}+build.${yarn_mappings}:v2"
+	modImplementation "net.fabricmc:fabric-loader:${loader_version}"
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}+${minecraft_version}"
 
 	// Mod Menu
 	modImplementation("com.terraformersmc:modmenu:${modmenu_version}")
@@ -56,28 +67,33 @@ dependencies {
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${rei_version}"
 	modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}"
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${rei_version}"
+
+	// Fabric API. This is technically optional, but you probably want it anyway.
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}+${minecraft_version}"
+
 	// Patchouli
 	modImplementation "vazkii.patchouli:Patchouli:${minecraft_version}-${patchouli_version}-FABRIC"
 	// Trinkets
 	modImplementation "dev.emi:trinkets:${trinkets_version}"
-
-	//modRuntimeOnly "com.sk89q:worldedit:${worldedit_version}"
-
+	// GeckoLib
 	modImplementation("software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}")
 	implementation("com.eliotlash.mclib:mclib:20")
+
 
 }
 
 processResources {
+	inputs.property "mod_id", project.mod_id
+	inputs.property "mod_name", project.mod_name
 	inputs.property "version", project.version
 
 	filesMatching("fabric.mod.json") {
-		expand "version": project.version
+		expand(["mod_id": project.mod_id, "mod_name": project.mod_name, "version": project.version])
 	}
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 17
+	it.options.release = 21
 }
 
 java {
@@ -86,8 +102,8 @@ java {
 	// If you remove this line, sources will not be generated.
 	withSourcesJar()
 
-	sourceCompatibility = JavaVersion.VERSION_17
-	targetCompatibility = JavaVersion.VERSION_17
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
 }
 
 jar {

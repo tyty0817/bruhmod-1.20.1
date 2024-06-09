@@ -1,44 +1,40 @@
 {
 	"schemaVersion": 1,
-	"id": "bruhmod",
+	"id": "${mod_id}",
 	"version": "${version}",
-	"name": "bruhmod",
-	"description": "Boo Wizard 101",
+	"name": "${mod_name}",
+	"description": "wizard 101 mod",
 	"authors": [
-		"Tyler", "Justin", "Rhys"
+		"Rhys", "Justin", "Tyler"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/RhysHolloway/le-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/bruhmod/icon.png",
+	"icon": "assets/${mod_id}/textures/item/mythril.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"name.modid.Mod"
+			"name.${mod_id}.Mod"
 		],
 		"client": [
-			"name.modid.ModClient"
+			"name.${mod_id}.ModClient"
 		],
 		"fabric-datagen": [
-			"name.modid.ModDataGenerator"
+			"name.${mod_id}.datagen.ModDataGenerator"
 		],
 		"rei-client": [
-			"name.modid.compat.REIModPlugin"
+			"name.${mod_id}.compat.REIModPlugin"
 		]
 	},
-	"mixins": [
-		"bruhmod.mixins.json"
-	],
 	"depends": {
-		"fabricloader": ">=0.15.11",
-		"minecraft": "~1.20.1",
-		"java": ">=17",
+		"fabricloader": ">=0.15.10",
+		"minecraft": ">=1.20",
+		"java": ">=21",
 		"fabric-api": "*",
-		"geckolib": ">=4.4"
-	},
-	"suggests": {
-		"another-mod": "*"
+		"patchouli": "*",
+		"geckolib": ">=4.4",
+		"trinkets": "*"
 	}
 }
