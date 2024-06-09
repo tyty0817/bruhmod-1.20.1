@@ -18,7 +18,7 @@ public class Maelstrom extends Item {
     @Override
     public TypedActionResult<ItemStack> use (World world, PlayerEntity user, Hand hand) {
         user.getItemCooldownManager().set(this, 50);
-        HitResult hit = user.raycast(1000, 1, true);
+        HitResult hit = user.raycast(128, 1, true);
         if(hit.getType() != HitResult.Type.MISS) {
             LightningEntity lightningEntity = new LightningEntity(EntityType.LIGHTNING_BOLT, world);
             lightningEntity.setPosition(hit.getPos());
