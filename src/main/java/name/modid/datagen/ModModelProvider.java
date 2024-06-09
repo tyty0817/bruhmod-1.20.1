@@ -48,10 +48,16 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.UNSTABLE_CLAW, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHARGED_CLAW, Models.GENERATED);
         itemModelGenerator.register(ModItems.UNSTABLE_PILLAR, Models.GENERATED);
-        itemModelGenerator.register(ModItems.LIGHTNING_STICK, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MAELSTROM, Models.GENERATED);
+
+        itemModelGenerator.register(ModItems.SPIRITED_BLUDGEON, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PRONGED_CROWN, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WIND_GEM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WHIRLWIND_SASH, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MONKS_CUDGEL, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SHILLELAGH, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.DYING_LIGHT, Models.GENERATED);
-        itemModelGenerator.register(ModItems.WIND_STAFF, Models.GENERATED);
 
 
 

@@ -90,7 +90,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.LIGHTNING_ROD), conditionsFromItem(Items.LIGHTNING_ROD))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.CHARGED_CLAW)));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.LIGHTNING_STICK, 1)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MAELSTROM, 1)
                 .pattern("  R")
                 .pattern(" M ")
                 .pattern("C  ")
@@ -100,7 +100,29 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.UNSTABLE_PILLAR), conditionsFromItem(ModItems.UNSTABLE_PILLAR))
                 .criterion(hasItem(ModItems.CHARGED_CLAW), conditionsFromItem(ModItems.CHARGED_CLAW))
                 .criterion(hasItem(ModItems.LIGHTNING_IN_A_BOTTLE), conditionsFromItem(ModItems.LIGHTNING_IN_A_BOTTLE))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.LIGHTNING_STICK)));
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.MAELSTROM)));
+
+
+
+        //                                     MONK'S CUDGEL AND SHILLELAGH                                               //
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MONKS_CUDGEL, 1)
+                .pattern("  W")
+                .pattern(" P ")
+                .pattern("S  ")
+                .input('S', ModItems.SPIRITED_BLUDGEON)
+                .input('P', ModItems.PRONGED_CROWN)
+                .input('W', ModItems.WIND_GEM)
+                .criterion(hasItem(ModItems.SPIRITED_BLUDGEON), conditionsFromItem(ModItems.SPIRITED_BLUDGEON))
+                .criterion(hasItem(ModItems.PRONGED_CROWN), conditionsFromItem(ModItems.PRONGED_CROWN))
+                .criterion(hasItem(ModItems.WIND_GEM), conditionsFromItem(ModItems.WIND_GEM))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.MONKS_CUDGEL)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SHILLELAGH)
+                .input(ModItems.MONKS_CUDGEL, 1)
+                .input(ModItems.WHIRLWIND_SASH, 1)
+                .criterion(hasItem(ModItems.MONKS_CUDGEL), conditionsFromItem(ModItems.MONKS_CUDGEL))
+                .criterion(hasItem(ModItems.WHIRLWIND_SASH), conditionsFromItem(ModItems.WHIRLWIND_SASH))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.SHILLELAGH)));
 
         //                                               Staff Recipes                                                     //
         //-----------------------------------------------------------------------------------------------------------------//
