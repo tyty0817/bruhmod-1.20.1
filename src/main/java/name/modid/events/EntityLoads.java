@@ -1,14 +1,11 @@
 package name.modid.events;
 
-import name.modid.items.ModItems;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LightningEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
@@ -16,7 +13,7 @@ import net.minecraft.util.math.Vec3d;
 
 import java.util.List;
 
-public class LightningFinder implements ServerEntityEvents.Load {
+public class EntityLoads implements ServerEntityEvents.Load {
     private static int lightning = 0;
 
     @Override
@@ -41,6 +38,8 @@ public class LightningFinder implements ServerEntityEvents.Load {
                     world.setBlockState(blockPos2, Blocks.GLASS.getDefaultState());
                 }
             }
+        }else if(false){
+
         }
     }
     public static int getID(){
