@@ -3,7 +3,7 @@
 	"package": "name.modid.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"ExampleMixin"
+		"CloudBottleCollector"
 	],
 	"injectors": {
 		"defaultRequire": 1

@@ -17,7 +17,9 @@
   "item.bruhmod.jewel_of_corruption": "Jewel of Corruption",
   "item.bruhmod.branch_of_corruption": "Branch of Corruption",
 
+
   "item.bruhmod.lightning_in_a_bottle": "Lightning in a Bottle",
+  "item.bruhmod.cloud_in_a_bottle": "cloud in a bottle",
   "item.bruhmod.unstable_claw": "Unstable Claw",
   "item.bruhmod.charged_claw": "Charged Claw",
   "item.bruhmod.unstable_pillar": "Unstable Pillar",
@@ -50,6 +52,6 @@
 
 
   "itemgroup.bruhmod.group": "Items de L'mod",
-  "effect.bruhmod.confuse": "Confuse"
+  "effect.bruhmod.confuse": "Confuse",
 }
 

@@ -37,8 +37,8 @@ public class ModItems {
 
     public static final Item DYING_LIGHT = registerItem("dying_light", new FireStaff((new FabricItemSettings().maxDamage(256))));
     public static final Item LIGHTNING_IN_A_BOTTLE = registerItem("lightning_in_a_bottle", new BottleOfLightning(new FabricItemSettings().fireproof().maxCount(1)));
+    public static final Item CLOUD_IN_A_BOTTLE = registerItem("cloud_in_a_bottle", new Item(new FabricItemSettings().maxCount(1)));
     public static final Item WIND_STAFF = registerItem("wind_staff", new WindStaff(new FabricItemSettings().maxCount(1)));
-
 
 
 

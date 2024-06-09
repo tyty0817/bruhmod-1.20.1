@@ -34,6 +34,7 @@ public class ModItemGroups {
                         entries.add(ModItems.BRANCH_OF_CORRUPTION);
 
                         entries.add(ModItems.LIGHTNING_IN_A_BOTTLE);
+                        entries.add(ModItems.CLOUD_IN_A_BOTTLE);
                         entries.add(ModItems.UNSTABLE_CLAW);
                         entries.add(ModItems.CHARGED_CLAW);
                         entries.add(ModItems.UNSTABLE_PILLAR);
