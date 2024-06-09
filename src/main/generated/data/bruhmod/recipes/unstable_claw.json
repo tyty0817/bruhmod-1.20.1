@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:gold_block"
+    },
+    "I": {
+      "item": "minecraft:gold_ingot"
+    },
+    "N": {
+      "item": "minecraft:gold_nugget"
+    },
+    "R": {
+      "item": "minecraft:raw_gold"
+    }
+  },
+  "pattern": [
+    "IR ",
+    "N R",
+    "BNI"
+  ],
+  "result": {
+    "item": "bruhmod:unstable_claw"
+  },
+  "show_notification": true
+}

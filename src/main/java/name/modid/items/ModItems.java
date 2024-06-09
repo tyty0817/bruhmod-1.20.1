@@ -30,9 +30,13 @@ public class ModItems {
     public static final Item JEWEL_OF_CORRUPTION = registerItem("jewel_of_corruption");
     public static final Item BRANCH_OF_CORRUPTION = registerItem("branch_of_corruption");
 
-    public static final Item FIRE_STAFF = registerItem("fire_staff", new FireStaff((new FabricItemSettings().maxDamage(256))));
+    public static final Item UNSTABLE_CLAW = registerItem("unstable_claw");
+    public static final Item CHARGED_CLAW = registerItem("charged_claw");
+    public static final Item UNSTABLE_PILLAR = registerItem("unstable_pillar");
     public static final Item LIGHTNING_STICK = registerItem("lightning_stick", new LightningStick(new FabricItemSettings().maxDamage(128)));
-    public static final Item BOTTLE_OF_LIGHTNING = registerItem("bottle_of_lightning", new BottleOfLightning(new FabricItemSettings().fireproof().maxCount(1)));
+
+    public static final Item DYING_LIGHT = registerItem("dying_light", new FireStaff((new FabricItemSettings().maxDamage(256))));
+    public static final Item LIGHTNING_IN_A_BOTTLE = registerItem("lightning_in_a_bottle", new BottleOfLightning(new FabricItemSettings().fireproof().maxCount(1)));
     public static final Item WIND_STAFF = registerItem("wind_staff", new WindStaff(new FabricItemSettings().maxCount(1)));
 
 

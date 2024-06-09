@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "bruhmod:unstable_pillar"
+    },
+    "M": {
+      "item": "bruhmod:charged_claw"
+    },
+    "R": {
+      "item": "bruhmod:lightning_in_a_bottle"
+    }
+  },
+  "pattern": [
+    "  R",
+    " M ",
+    "C  "
+  ],
+  "result": {
+    "item": "bruhmod:lightning_stick"
+  },
+  "show_notification": true
+}

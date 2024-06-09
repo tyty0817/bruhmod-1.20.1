@@ -32,6 +32,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.MYTHRIL_FRAGMENT), conditionsFromItem(ModItems.MYTHRIL_FRAGMENT))
                 .offerTo(exporter, new Identifier("mythril2"));
 
+        //-----------------------------------------------------------------------------------------------------------------//
+        //                                               Staff Recipes                                                     //
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BRANCH_OF_CORRUPTION, 1)
                 .pattern("  G")
                 .pattern(" C ")
@@ -43,6 +46,64 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.CORRUPTED_CROWN), conditionsFromItem(ModItems.CORRUPTED_CROWN))
                 .criterion(hasItem(ModItems.MYSTERIOUS_CLUB), conditionsFromItem(ModItems.MYSTERIOUS_CLUB))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.BRANCH_OF_CORRUPTION)));
+
+
+
+        //                                                Lightning Stick                                                   //
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.UNSTABLE_CLAW, 1)
+                .pattern("IR ")
+                .pattern("N R")
+                .pattern("BNI")
+                .input('B', Items.GOLD_BLOCK)
+                .input('I', Items.GOLD_INGOT)
+                .input('N', Items.GOLD_NUGGET)
+                .input('R', Items.RAW_GOLD)
+                .criterion(hasItem(Items.GOLD_BLOCK), conditionsFromItem(Items.GOLD_BLOCK))
+                .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
+                .criterion(hasItem(Items.GOLD_NUGGET), conditionsFromItem(Items.GOLD_NUGGET))
+                .criterion(hasItem(Items.RAW_GOLD), conditionsFromItem(Items.RAW_GOLD))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.UNSTABLE_CLAW)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.UNSTABLE_PILLAR, 1)
+                .pattern(" ID")
+                .pattern("IRI")
+                .pattern("FI ")
+                .input('F', ModItems.MYTHRIL_FRAGMENT)
+                .input('I', Items.GOLD_INGOT)
+                .input('R', Items.BLAZE_ROD)
+                .input('D', ModItems.MYTHRIL_DUST)
+                .criterion(hasItem(ModItems.MYTHRIL_FRAGMENT), conditionsFromItem(ModItems.MYTHRIL_FRAGMENT))
+                .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
+                .criterion(hasItem(Items.BLAZE_ROD), conditionsFromItem(Items.BLAZE_ROD))
+                .criterion(hasItem(ModItems.MYTHRIL_DUST), conditionsFromItem(ModItems.MYTHRIL_DUST))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.UNSTABLE_PILLAR)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CHARGED_CLAW, 1)
+                .pattern("  R")
+                .pattern(" M ")
+                .pattern("C  ")
+                .input('C', ModItems.UNSTABLE_CLAW)
+                .input('M', ModItems.MYTHRIL)
+                .input('R', Items.LIGHTNING_ROD)
+                .criterion(hasItem(ModItems.UNSTABLE_CLAW), conditionsFromItem(ModItems.UNSTABLE_CLAW))
+                .criterion(hasItem(ModItems.MYTHRIL), conditionsFromItem(ModItems.MYTHRIL))
+                .criterion(hasItem(Items.LIGHTNING_ROD), conditionsFromItem(Items.LIGHTNING_ROD))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.CHARGED_CLAW)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.LIGHTNING_STICK, 1)
+                .pattern("  R")
+                .pattern(" M ")
+                .pattern("C  ")
+                .input('C', ModItems.UNSTABLE_PILLAR)
+                .input('M', ModItems.CHARGED_CLAW)
+                .input('R', ModItems.LIGHTNING_IN_A_BOTTLE)
+                .criterion(hasItem(ModItems.UNSTABLE_PILLAR), conditionsFromItem(ModItems.UNSTABLE_PILLAR))
+                .criterion(hasItem(ModItems.CHARGED_CLAW), conditionsFromItem(ModItems.CHARGED_CLAW))
+                .criterion(hasItem(ModItems.LIGHTNING_IN_A_BOTTLE), conditionsFromItem(ModItems.LIGHTNING_IN_A_BOTTLE))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.LIGHTNING_STICK)));
+
+        //                                               Staff Recipes                                                     //
+        //-----------------------------------------------------------------------------------------------------------------//
 
         offerSmelting(exporter, MYTHRIL_SMELTABLES, RecipeCategory.MISC, ModItems.MYTHRIL_FRAGMENT,
                 0.7f, 200, "MYTHRIL_FRAGMENT");

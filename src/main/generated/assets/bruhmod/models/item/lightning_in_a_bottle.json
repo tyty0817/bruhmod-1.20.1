@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bruhmod:item/lightning_in_a_bottle"
+  }
+}

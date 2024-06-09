@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "bruhmod:mythril_dust"
+    },
+    "F": {
+      "item": "bruhmod:mythril_fragment"
+    },
+    "I": {
+      "item": "minecraft:gold_ingot"
+    },
+    "R": {
+      "item": "minecraft:blaze_rod"
+    }
+  },
+  "pattern": [
+    " ID",
+    "IRI",
+    "FI "
+  ],
+  "result": {
+    "item": "bruhmod:unstable_pillar"
+  },
+  "show_notification": true
+}

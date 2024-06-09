@@ -33,12 +33,15 @@ public class ModItemGroups {
                         entries.add(ModItems.JEWEL_OF_CORRUPTION);
                         entries.add(ModItems.BRANCH_OF_CORRUPTION);
 
+                        entries.add(ModItems.LIGHTNING_IN_A_BOTTLE);
+                        entries.add(ModItems.UNSTABLE_CLAW);
+                        entries.add(ModItems.CHARGED_CLAW);
+                        entries.add(ModItems.UNSTABLE_PILLAR);
+                        entries.add(ModItems.LIGHTNING_STICK);
 
                         entries.add(ModItems.BRITISH_MAN_SPAWN_EGG);
                         entries.add(ModItems.GERIATRIC_TAVERN_MUSIC_DISC);
-                        entries.add(ModItems.LIGHTNING_STICK);
-                        entries.add(ModItems.BOTTLE_OF_LIGHTNING);
-                        entries.add(ModItems.FIRE_STAFF);
+                        entries.add(ModItems.DYING_LIGHT);
                         entries.add(ModItems.WIND_STAFF);
                         entries.add(ModItems.BARRACKS_MAP);
                         /*

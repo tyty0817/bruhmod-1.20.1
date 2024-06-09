@@ -8,16 +8,20 @@
   "item.bruhmod.mythril_fragment": "Mythril Fragment",
   "item.bruhmod.barracks_map": "Barracks Map",
   "item.bruhmod.mythril_upgrade_smithing_template": "Mythril Smithing Template",
-  "item.bruhmod.lightning_stick": "lightning stick",
-  "item.bruhmod.bottle_of_lightning": "bottle of lightning",
 
-  "item.bruhmod.fire_staff": "Dying Light",
+  "item.bruhmod.dying_light": "Dying Light",
   "item.bruhmod.wind_staff": "wind staff",
 
   "item.bruhmod.mysterious_club": "Mysterious Club",
   "item.bruhmod.corrupted_crown": "Corrupted Crown",
   "item.bruhmod.jewel_of_corruption": "Jewel of Corruption",
   "item.bruhmod.branch_of_corruption": "Branch of Corruption",
+
+  "item.bruhmod.lightning_in_a_bottle": "Lightning in a Bottle",
+  "item.bruhmod.unstable_claw": "Unstable Claw",
+  "item.bruhmod.charged_claw": "Charged Claw",
+  "item.bruhmod.unstable_pillar": "Unstable Pillar",
+  "item.bruhmod.lightning_stick": "Lightning Stick",
 
   "sounds.bruhmod.geriatric_tavern": "geriatric tavern",
   "item.bruhmod.geriatric_tavern_music_disc": "geriatric tavern Music Disc",

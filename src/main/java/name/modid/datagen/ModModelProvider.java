@@ -37,16 +37,23 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.MYTHRIL_UPGRADE, Models.GENERATED);
         itemModelGenerator.register(ModItems.BARRACKS_MAP, Models.GENERATED);
 
+
+
         itemModelGenerator.register(ModItems.MYSTERIOUS_CLUB, Models.GENERATED);
         itemModelGenerator.register(ModItems.CORRUPTED_CROWN, Models.GENERATED);
         itemModelGenerator.register(ModItems.JEWEL_OF_CORRUPTION, Models.GENERATED);
         itemModelGenerator.register(ModItems.BRANCH_OF_CORRUPTION, Models.GENERATED);
 
-
+        itemModelGenerator.register(ModItems.LIGHTNING_IN_A_BOTTLE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.UNSTABLE_CLAW, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CHARGED_CLAW, Models.GENERATED);
+        itemModelGenerator.register(ModItems.UNSTABLE_PILLAR, Models.GENERATED);
         itemModelGenerator.register(ModItems.LIGHTNING_STICK, Models.GENERATED);
-        itemModelGenerator.register(ModItems.BOTTLE_OF_LIGHTNING, Models.GENERATED);
-        itemModelGenerator.register(ModItems.FIRE_STAFF, Models.GENERATED);
+
+        itemModelGenerator.register(ModItems.DYING_LIGHT, Models.GENERATED);
         itemModelGenerator.register(ModItems.WIND_STAFF, Models.GENERATED);
+
+
 
 
         itemModelGenerator.register(ModItems.GERIATRIC_TAVERN_MUSIC_DISC, Models.GENERATED);

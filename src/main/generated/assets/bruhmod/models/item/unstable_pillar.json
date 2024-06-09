@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "bruhmod:item/bottle_of_lightning"
+    "layer0": "bruhmod:item/unstable_pillar"
   }
 }
