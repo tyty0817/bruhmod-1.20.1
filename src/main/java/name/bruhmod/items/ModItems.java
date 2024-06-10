@@ -2,8 +2,8 @@ package name.bruhmod.items;
 
 import name.bruhmod.Mod;
 import name.bruhmod.blocks.ModBlocks;
+import name.bruhmod.entities.ModEntities;
 import name.bruhmod.sound.ModSounds;
-import name.bruhmod.entities.BossEntity;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
@@ -30,7 +30,7 @@ public class ModItems {
     public static final Item JEWEL_OF_CORRUPTION = registerItem("jewel_of_corruption", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)));
     public static final Item BRANCH_OF_CORRUPTION = registerItem("branch_of_corruption", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
 
-    public static final Item LIGHTNING_IN_A_BOTTLE = registerItem("lightning_in_a_bottle", new LightningInABottle(new FabricItemSettings().fireproof().maxCount(1).rarity(Rarity.UNCOMMON)));
+    public static final Item LIGHTNING_IN_A_BOTTLE = registerItem("lightning_in_a_bottle", new LightningBottleItem(new FabricItemSettings().fireproof().maxCount(1).rarity(Rarity.UNCOMMON)));
     public static final Item UNSTABLE_CLAW = registerItem("unstable_claw", new Item(new FabricItemSettings().maxCount(1)));
     public static final Item CHARGED_CLAW = registerItem("charged_claw", new Item(new FabricItemSettings().maxCount(1)));
     public static final Item UNSTABLE_PILLAR = registerItem("unstable_pillar", new Item(new FabricItemSettings().maxCount(1)));
@@ -73,7 +73,7 @@ public class ModItems {
 
     public static final Item GERIATRIC_TAVERN_MUSIC_DISC = registerItem("geriatric_tavern_music_disc", new MusicDiscItem(7, ModSounds.GERIATRIC_TAVERN, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 24));
 
-    public static final Item BRITISH_MAN_SPAWN_EGG = registerItem("british_man_spawn_egg", new SpawnEggItem(BossEntity.TYPE, 0xd59890, 0xd7b4ae, new FabricItemSettings()));
+    public static final Item BRITISH_MAN_SPAWN_EGG = registerItem("british_man_spawn_egg", new SpawnEggItem(ModEntities.BOSS, 0xd59890, 0xd7b4ae, new FabricItemSettings()));
 
 
     public static void register() {

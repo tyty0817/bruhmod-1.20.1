@@ -28,10 +28,10 @@ public class Mod implements ModInitializer {
 		ModItemGroups.registerItemGroups();
 		ModBlocks.register();
 		ModItems.register();
-		ModCustomTrades.registerCustomTrades();
-		ModEntities.registerModEntities();
+		ModEntities.register();
 		ModEffects.registerEffects();
 		ModSounds.registerSounds();
+		ModCustomTrades.registerCustomTrades();
 
 		ServerEntityEvents.ENTITY_LOAD.register(new EntityLoads());
 		ServerEntityEvents.ENTITY_UNLOAD.register(new EntityUnloads());
