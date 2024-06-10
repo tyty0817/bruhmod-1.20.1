@@ -49,8 +49,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
 
 
-        //                                                Lightning Stick                                                   //
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.UNSTABLE_CLAW, 1)
+        //                                                Maelstrom                                                   //
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.VOLATILE_CLAW, 1)
                 .pattern("IR ")
                 .pattern("N R")
                 .pattern("BNI")
@@ -62,9 +62,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
                 .criterion(hasItem(Items.GOLD_NUGGET), conditionsFromItem(Items.GOLD_NUGGET))
                 .criterion(hasItem(Items.RAW_GOLD), conditionsFromItem(Items.RAW_GOLD))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.UNSTABLE_CLAW)));
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.VOLATILE_CLAW)));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.UNSTABLE_PILLAR, 1)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.VOLATILE_PILLAR, 1)
                 .pattern(" ID")
                 .pattern("IRI")
                 .pattern("FI ")
@@ -76,16 +76,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
                 .criterion(hasItem(Items.BLAZE_ROD), conditionsFromItem(Items.BLAZE_ROD))
                 .criterion(hasItem(ModItems.MYTHRIL_DUST), conditionsFromItem(ModItems.MYTHRIL_DUST))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.UNSTABLE_PILLAR)));
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.VOLATILE_PILLAR)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CHARGED_CLAW, 1)
                 .pattern("  R")
                 .pattern(" M ")
                 .pattern("C  ")
-                .input('C', ModItems.UNSTABLE_CLAW)
+                .input('C', ModItems.VOLATILE_CLAW)
                 .input('M', ModItems.MYTHRIL)
                 .input('R', Items.LIGHTNING_ROD)
-                .criterion(hasItem(ModItems.UNSTABLE_CLAW), conditionsFromItem(ModItems.UNSTABLE_CLAW))
+                .criterion(hasItem(ModItems.VOLATILE_CLAW), conditionsFromItem(ModItems.VOLATILE_CLAW))
                 .criterion(hasItem(ModItems.MYTHRIL), conditionsFromItem(ModItems.MYTHRIL))
                 .criterion(hasItem(Items.LIGHTNING_ROD), conditionsFromItem(Items.LIGHTNING_ROD))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.CHARGED_CLAW)));
@@ -94,10 +94,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .pattern("  R")
                 .pattern(" M ")
                 .pattern("C  ")
-                .input('C', ModItems.UNSTABLE_PILLAR)
+                .input('C', ModItems.VOLATILE_PILLAR)
                 .input('M', ModItems.CHARGED_CLAW)
                 .input('R', ModItems.LIGHTNING_IN_A_BOTTLE)
-                .criterion(hasItem(ModItems.UNSTABLE_PILLAR), conditionsFromItem(ModItems.UNSTABLE_PILLAR))
+                .criterion(hasItem(ModItems.VOLATILE_PILLAR), conditionsFromItem(ModItems.VOLATILE_PILLAR))
                 .criterion(hasItem(ModItems.CHARGED_CLAW), conditionsFromItem(ModItems.CHARGED_CLAW))
                 .criterion(hasItem(ModItems.LIGHTNING_IN_A_BOTTLE), conditionsFromItem(ModItems.LIGHTNING_IN_A_BOTTLE))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.MAELSTROM)));

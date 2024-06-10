@@ -34,11 +34,12 @@ public class ModItemGroups {
                         entries.add(ModItems.BRANCH_OF_CORRUPTION);
 
                         entries.add(ModItems.LIGHTNING_IN_A_BOTTLE);
-                        entries.add(ModItems.UNSTABLE_CLAW);
+                        entries.add(ModItems.VOLATILE_CLAW);
                         entries.add(ModItems.CHARGED_CLAW);
-                        entries.add(ModItems.UNSTABLE_PILLAR);
+                        entries.add(ModItems.VOLATILE_PILLAR);
                         entries.add(ModItems.MAELSTROM);
 
+                        entries.add(ModItems.CLOUD_IN_A_BOTTLE);
                         entries.add(ModItems.SPIRITED_BLUDGEON);
                         entries.add(ModItems.PRONGED_CROWN);
                         entries.add(ModItems.WIND_GEM);
@@ -46,8 +47,7 @@ public class ModItemGroups {
                         entries.add(ModItems.WHIRLWIND_SASH);
                         entries.add(ModItems.SHILLELAGH);
 
-                        entries.add(ModItems.CLOUD_IN_A_BOTTLE);
-                        entries.add(ModItems.ERUPTIVE_GEM);
+                        entries.add(ModItems.UNSTABLE_GEM);
                         entries.add(ModItems.DYING_LIGHT);
 
 

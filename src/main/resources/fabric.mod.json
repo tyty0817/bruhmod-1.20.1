@@ -5,11 +5,11 @@
 	"name": "${mod_name}",
 	"description": "wizard 101 mod",
 	"authors": [
-		"Rhys", "Justin", "Tyler"
+		"Justin", "Tyler", "Rhys"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/RhysHolloway/le-mod"
+		"sources": "https://github.com/tyty0817/le-mod"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/${mod_id}/textures/item/mythril.png",
@@ -31,7 +31,7 @@
 	"depends": {
 		"fabricloader": ">=0.15.10",
 		"minecraft": ">=1.20",
-		"java": ">=21",
+		"java": ">=17",
 		"fabric-api": "*",
 		"patchouli": "*",
 		"geckolib": ">=4.4",

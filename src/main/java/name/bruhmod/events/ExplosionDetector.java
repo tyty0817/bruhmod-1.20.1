@@ -5,6 +5,7 @@ import dev.architectury.event.events.common.ExplosionEvent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.item.Items;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -13,11 +14,10 @@ import net.minecraft.world.explosion.Explosion;
 import java.util.List;
 
 public class ExplosionDetector implements ExplosionEvent.Pre {
-    public static int boomCharms = 0;
+    public static int unstableGemExplosion = 0;
 
     @Override
     public EventResult explode(World world, Explosion explosion) {
-        System.out.println("check");
         assert explosion.entity != null;
         Vec3d pos = explosion.entity.getPos();
         double range = explosion.power / 2;
@@ -27,8 +27,8 @@ public class ExplosionDetector implements ExplosionEvent.Pre {
             Entity element = list.get(i);
             if (element.getType() == EntityType.ITEM) {
                 ItemEntity item = (ItemEntity) element;
-                if (item.getName().getString().equals("Glass Bottle")) {
-                    boomCharms = item.getStack().getCount();
+                if(item.getStack().getItem().equals(Items.AMETHYST_SHARD)) {
+                    unstableGemExplosion = item.getStack().getCount();
                 }
             }
         }

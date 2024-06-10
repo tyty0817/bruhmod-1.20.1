@@ -14,11 +14,10 @@ import java.util.List;
 public class ExplosionCrafter implements ExplosionEvent.Detonate {
     @Override
     public void explode(World world, Explosion explosion, List<Entity> affectedEntities) {
-        System.out.println("end");
-        while(ExplosionDetector.boomCharms > 0){
+        while(ExplosionDetector.unstableGemExplosion > 0){
             Vec3d pos = explosion.getEntity().getPos();
-            world.spawnEntity(new ItemEntity(world, pos.x, pos.y, pos.z, new ItemStack(ModItems.LIGHTNING_IN_A_BOTTLE)));
-            ExplosionDetector.boomCharms--;
+            world.spawnEntity(new ItemEntity(world, pos.x, pos.y, pos.z, new ItemStack(ModItems.UNSTABLE_GEM)));
+            ExplosionDetector.unstableGemExplosion--;
         }
     }
 }

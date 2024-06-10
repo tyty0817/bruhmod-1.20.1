@@ -45,9 +45,9 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.BRANCH_OF_CORRUPTION, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.LIGHTNING_IN_A_BOTTLE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.UNSTABLE_CLAW, Models.GENERATED);
+        itemModelGenerator.register(ModItems.VOLATILE_CLAW, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHARGED_CLAW, Models.GENERATED);
-        itemModelGenerator.register(ModItems.UNSTABLE_PILLAR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.VOLATILE_PILLAR, Models.GENERATED);
         itemModelGenerator.register(ModItems.MAELSTROM, Models.HANDHELD);
 
         itemModelGenerator.register(ModItems.SPIRITED_BLUDGEON, Models.GENERATED);
@@ -58,7 +58,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.SHILLELAGH, Models.HANDHELD);
 
         itemModelGenerator.register(ModItems.CLOUD_IN_A_BOTTLE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.ERUPTIVE_GEM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.UNSTABLE_GEM, Models.GENERATED);
         itemModelGenerator.register(ModItems.DYING_LIGHT, Models.GENERATED);
 
 
