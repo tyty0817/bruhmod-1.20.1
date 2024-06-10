@@ -4,9 +4,9 @@ import name.bruhmod.entities.BossEntity;
 import name.bruhmod.entities.BossEntityModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
+import net.minecraft.client.render.entity.EntityRendererFactory;
 
 import static name.bruhmod.Mod.MOD_ID;
 

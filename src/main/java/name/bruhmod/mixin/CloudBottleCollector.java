@@ -2,12 +2,15 @@ package name.bruhmod.mixin;
 
 import name.bruhmod.items.ModItems;
 import name.bruhmod.util.ICloud;
+import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import net.minecraft.item.GlassBottleItem;
@@ -15,10 +18,13 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.List;
+
 @Mixin(GlassBottleItem.class)
 public abstract class CloudBottleCollector implements ICloud {
     @Inject(method = "use", at = @At("HEAD"))
     protected void onUse(World world, PlayerEntity user, Hand hand, CallbackInfoReturnable info){
+        System.out.println("Check");
         if(user.getPos().y > 192 && user.getPos().y < 198){
             ItemStack itemStack = user.getStackInHand(hand);
             user.incrementStat(Stats.USED.getOrCreateStat(Items.GLASS_BOTTLE));

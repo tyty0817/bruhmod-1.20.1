@@ -42,9 +42,9 @@ public class EntityLoads implements ServerEntityEvents.Load {
                     }
                     if(item.getStack().getItem().equals(ModItems.CLOUD_IN_A_BOTTLE)){
                         cloudBottlePresent = true;
-                        }
                     }
                 }
+            }
             if(amethystPresent && cloudBottlePresent){
                 windGemLightning = entity.getId();
             }

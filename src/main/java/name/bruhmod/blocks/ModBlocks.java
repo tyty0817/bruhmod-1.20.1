@@ -39,8 +39,6 @@ public class ModBlocks {
 		
 		Mod.LOGGER.info("Registering blocks...");
 
-		BiomeModifications.addFeature(BiomeSelectors.tag(TagKey.of(RegistryKeys.BIOME, new Identifier("minecraft", "is_mountain"))), GenerationStep.Feature.UNDERGROUND_ORES, ORE_MYTHRIL_PLACED_KEY);
-
 	}
 
 	private static Block registerBlock(String name, ExperienceDroppingBlock block) {

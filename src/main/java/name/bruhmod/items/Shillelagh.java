@@ -46,6 +46,10 @@ public class Shillelagh extends Item {
         float f = -MathHelper.sin(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
         float g = -MathHelper.sin((pitch) * 0.017453292F);
         float h = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
+        Vec3d velocity = user.getVelocity();
+        velocity.add(0, -velocity.y, 0);
+        user.setVelocity(velocity);
+        System.out.println(user.getVelocity().y);
         user.addVelocity(f * sash_buff, (g + 0.5) * sash_buff, h * sash_buff);
         Vec3d pos = user.getPos();
         world.playSound(null, new BlockPos((int) pos.x, (int) pos.y, (int) pos.z), SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.BLOCKS);
