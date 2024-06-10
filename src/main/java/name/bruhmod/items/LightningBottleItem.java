@@ -17,9 +17,11 @@ public class LightningBottleItem extends Item {
         super(settings);
     }
 
+    /*
     public boolean hasGlint(ItemStack stack) {
         return true;
     }
+     */
 
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         user.getItemCooldownManager().set(this, 50);
