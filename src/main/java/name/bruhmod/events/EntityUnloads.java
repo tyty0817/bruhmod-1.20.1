@@ -1,6 +1,6 @@
 package name.bruhmod.events;
 
-import name.bruhmod.items.ModItems;
+import name.bruhmod.items.custom.ModItems;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;

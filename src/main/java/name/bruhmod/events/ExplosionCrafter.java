@@ -1,7 +1,7 @@
 package name.bruhmod.events;
 
 import dev.architectury.event.events.common.ExplosionEvent;
-import name.bruhmod.items.ModItems;
+import name.bruhmod.items.custom.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.ItemStack;

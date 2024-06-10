@@ -1,4 +1,4 @@
-package name.bruhmod.items;
+package name.bruhmod.items.custom;
 
 import name.bruhmod.Mod;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;

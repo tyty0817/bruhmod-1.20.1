@@ -1,6 +1,6 @@
 package name.bruhmod.entities;
 
-import name.bruhmod.items.ModItems;
+import name.bruhmod.items.custom.ModItems;
 import net.minecraft.entity.*;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;

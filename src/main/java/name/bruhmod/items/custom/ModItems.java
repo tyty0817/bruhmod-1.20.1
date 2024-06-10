@@ -1,8 +1,9 @@
-package name.bruhmod.items;
+package name.bruhmod.items.custom;
 
 import name.bruhmod.Mod;
 import name.bruhmod.blocks.ModBlocks;
 import name.bruhmod.entities.ModEntities;
+import name.bruhmod.items.*;
 import name.bruhmod.sound.ModSounds;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
