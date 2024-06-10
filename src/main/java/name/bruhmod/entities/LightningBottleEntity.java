@@ -29,7 +29,6 @@ public class LightningBottleEntity extends ThrownItemEntity {
         super.onCollision(hitResult);
         World world = this.getWorld();
         if (!world.isClient) {
-            world.syncWorldEvent(2002, this.getBlockPos(), PotionUtil.getColor(Potions.WATER));
             LightningEntity lightningEntity = new LightningEntity(EntityType.LIGHTNING_BOLT, world);
             lightningEntity.setPosition(hitResult.getPos());
             world.spawnEntity(lightningEntity);

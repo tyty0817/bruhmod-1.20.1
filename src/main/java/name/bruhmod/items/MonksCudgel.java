@@ -61,7 +61,7 @@ public class MonksCudgel extends Item {
 //        float f = -MathHelper.sin(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
 //        float g = -MathHelper.sin((pitch) * 0.017453292F);
 //        float h = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
-//        user.addVelocity(f, g + 0.5, h);
+//        user.setVelocity(f, g + 0.5, h);
 //        Vec3d pos = user.getPos();
 //        world.playSound(null, new BlockPos((int) pos.x, (int) pos.y, (int) pos.z), SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.BLOCKS);
 //        return TypedActionResult.pass(user.getStackInHand(hand));
