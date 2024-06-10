@@ -34,7 +34,6 @@ public class ModItemGroups {
                         entries.add(ModItems.BRANCH_OF_CORRUPTION);
 
                         entries.add(ModItems.LIGHTNING_IN_A_BOTTLE);
-                        entries.add(ModItems.CLOUD_IN_A_BOTTLE);
                         entries.add(ModItems.UNSTABLE_CLAW);
                         entries.add(ModItems.CHARGED_CLAW);
                         entries.add(ModItems.UNSTABLE_PILLAR);
@@ -47,10 +46,13 @@ public class ModItemGroups {
                         entries.add(ModItems.WHIRLWIND_SASH);
                         entries.add(ModItems.SHILLELAGH);
 
+                        entries.add(ModItems.CLOUD_IN_A_BOTTLE);
+                        entries.add(ModItems.ERUPTIVE_GEM);
+                        entries.add(ModItems.DYING_LIGHT);
+
 
                         entries.add(ModItems.BRITISH_MAN_SPAWN_EGG);
                         entries.add(ModItems.GERIATRIC_TAVERN_MUSIC_DISC);
-                        entries.add(ModItems.DYING_LIGHT);
                         entries.add(ModItems.BARRACKS_MAP);
                         /*
                         BLOCKS

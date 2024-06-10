@@ -57,6 +57,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.MONKS_CUDGEL, Models.GENERATED);
         itemModelGenerator.register(ModItems.SHILLELAGH, Models.GENERATED);
 
+        itemModelGenerator.register(ModItems.CLOUD_IN_A_BOTTLE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ERUPTIVE_GEM, Models.GENERATED);
         itemModelGenerator.register(ModItems.DYING_LIGHT, Models.GENERATED);
 
 

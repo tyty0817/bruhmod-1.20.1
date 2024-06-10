@@ -36,8 +36,10 @@ public class ModItems {
     public static final Item UNSTABLE_PILLAR = registerItem("unstable_pillar", new Item(new FabricItemSettings().maxCount(1)));
     public static final Item MAELSTROM = registerItem("maelstrom", new Maelstrom(new FabricItemSettings().maxDamage(128).rarity(Rarity.RARE)));
 
-    public static final Item DYING_LIGHT = registerItem("dying_light", new DyingLight((new FabricItemSettings().maxDamage(256))));
     public static final Item CLOUD_IN_A_BOTTLE = registerItem("cloud_in_a_bottle", new Item(new FabricItemSettings().maxCount(1)));
+    public static final Item ERUPTIVE_GEM = registerItem("eruptive_gem", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.UNCOMMON)));
+    public static final Item DYING_LIGHT = registerItem("dying_light", new DyingLight((new FabricItemSettings().maxDamage(256))));
+
     public static final Item SPIRITED_BLUDGEON = registerItem("spirited_bludgeon", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.UNCOMMON)));
     public static final Item PRONGED_CROWN = registerItem("pronged_crown", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.UNCOMMON)));
     public static final Item WIND_GEM = registerItem("wind_gem", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)));

@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "bruhmod:maelstrom"
+    },
+    "title": "Parry This You Filthy Casual",
+    "description": "Obtain Maelstrom",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "background": "bruhmod:textures/item/mythril.png"
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bruhmod:maelstrom"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
