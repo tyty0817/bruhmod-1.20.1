@@ -1,6 +1,6 @@
 package name.bruhmod.mixin;
 
-import name.bruhmod.items.custom.ModItems;
+import name.bruhmod.items.ModItems;
 import name.bruhmod.util.ICloud;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;

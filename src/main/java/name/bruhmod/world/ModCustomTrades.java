@@ -1,6 +1,6 @@
 package name.bruhmod.world;
 
-import name.bruhmod.items.custom.ModItems;
+import name.bruhmod.items.ModItems;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.village.TradeOffer;

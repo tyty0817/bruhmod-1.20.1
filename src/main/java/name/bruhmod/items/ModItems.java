@@ -1,10 +1,13 @@
-package name.bruhmod.items.custom;
+package name.bruhmod.items;
 
 import name.bruhmod.Mod;
 import name.bruhmod.blocks.ModBlocks;
 import name.bruhmod.entities.ModEntities;
-import name.bruhmod.items.*;
 import name.bruhmod.items.maps.*;
+import name.bruhmod.items.staffs.DyingLight;
+import name.bruhmod.items.staffs.Maelstrom;
+import name.bruhmod.items.staffs.MonksCudgel;
+import name.bruhmod.items.staffs.Shillelagh;
 import name.bruhmod.sound.ModSounds;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
