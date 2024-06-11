@@ -42,10 +42,10 @@ public class EntityUnloads implements ServerEntityEvents.Unload {
                     Entity element = list.get(i);
                     if (element.getType() == EntityType.ITEM) {
                         ItemEntity item = (ItemEntity) element;
-                        if(item.getStack().getItem().equals(Items.GLASS_BOTTLE)) {
+                        if(item.getStack().getItem().equals(ModItems.EMPTY_GEM)) {
                             pos = item.getPos();
                             item.discard();
-                            world.spawnEntity(new ItemEntity(world, pos.x, pos.y, pos.z, new ItemStack(ModItems.LIGHTNING_IN_A_BOTTLE)));
+                            world.spawnEntity(new ItemEntity(world, pos.x, pos.y, pos.z, new ItemStack(ModItems.JEWEL_OF_CORRUPTION)));
                         }
                     }
                 }
