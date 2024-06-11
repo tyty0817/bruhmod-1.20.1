@@ -3,6 +3,9 @@ package name.bruhmod.items;
 import name.bruhmod.Mod;
 import name.bruhmod.blocks.ModBlocks;
 import name.bruhmod.entities.ModEntities;
+import name.bruhmod.items.gems.JewelOfCorruption;
+import name.bruhmod.items.gems.UnstableGem;
+import name.bruhmod.items.gems.WindGem;
 import name.bruhmod.items.maps.*;
 import name.bruhmod.items.staffs.DyingLight;
 import name.bruhmod.items.staffs.Maelstrom;
@@ -30,6 +33,7 @@ public class ModItems {
     public static final Item MYTHRIL_FRAGMENT = registerItem("mythril_fragment");
     public static final Item MYTHRIL_UPGRADE = registerItem("mythril_upgrade_smithing_template");
     public static final Item EMPTY_GEM = registerItem("empty_gem", new Item(new FabricItemSettings().maxCount(16)));
+    public static final Item EXPLOSIVE_JELLY = registerItem("explosive_jelly", new Item(new FabricItemSettings()));
 
 
     public static final Item MYSTERIOUS_CLUB = registerItem("mysterious_club", new Item(new FabricItemSettings().rarity(Rarity.RARE).maxCount(1)));

@@ -14,8 +14,12 @@ import dev.architectury.event.events.common.ExplosionEvent;
 
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
+import net.minecraft.resource.ResourceManager;
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.InputStream;
 
 public class Mod implements ModInitializer {
 	public static final String MOD_ID = "bruhmod";
@@ -39,5 +43,4 @@ public class Mod implements ModInitializer {
 
 		ModWorldGeneration.generateModWorldGen();
 	}
-
 }

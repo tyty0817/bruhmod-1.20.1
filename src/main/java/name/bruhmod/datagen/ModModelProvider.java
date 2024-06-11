@@ -36,6 +36,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.MYTHRIL_FRAGMENT, Models.GENERATED);
         itemModelGenerator.register(ModItems.MYTHRIL_UPGRADE, Models.GENERATED);
         itemModelGenerator.register(ModItems.EMPTY_GEM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.EXPLOSIVE_JELLY, Models.GENERATED);
 
 
         itemModelGenerator.register(ModItems.BARRACKS_MAP, Models.GENERATED);

@@ -1,4 +1,4 @@
-package name.bruhmod.items;
+package name.bruhmod.items.gems;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

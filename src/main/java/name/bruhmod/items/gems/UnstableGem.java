@@ -1,11 +1,11 @@
-package name.bruhmod.items;
+package name.bruhmod.items.gems;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class WindGem extends Item{
+public class UnstableGem extends Item{
 
-    public WindGem(Item.Settings settings) {
+    public UnstableGem(Settings settings) {
         super(settings);
     }
 
