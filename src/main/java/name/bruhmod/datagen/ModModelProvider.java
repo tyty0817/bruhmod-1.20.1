@@ -47,7 +47,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.MESS_HALL_MAP, Models.GENERATED);
 
 
-
+        itemModelGenerator.register(ModItems.CORRUPTED_SLAG, Models.GENERATED);
         itemModelGenerator.register(ModItems.MYSTERIOUS_CLUB, Models.GENERATED);
         itemModelGenerator.register(ModItems.CORRUPTED_CROWN, Models.GENERATED);
         itemModelGenerator.register(ModItems.JEWEL_OF_CORRUPTION, Models.GENERATED);

@@ -41,12 +41,12 @@ public class Shillelagh extends Item {
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         if(entity instanceof PlayerEntity) {
             PlayerEntity Player = (PlayerEntity) entity;
-            if(Player.getStackInHand(Hand.MAIN_HAND).equals(ModItems.SHILLELAGH)){ //comparing an Item with and ItemStack but it works?
+            if(Player.getStackInHand(Hand.MAIN_HAND).getItem().equals(ModItems.SHILLELAGH)){ //comparing an Item with and ItemStack but it works?
                 if(Player.fallDistance > 3.0f){
                     Player.fallDistance = 0.0f;
                 }
             }
-            else if(Player.getStackInHand(Hand.OFF_HAND).equals(ModItems.SHILLELAGH)){ //comparing an Item with and ItemStack but it works?
+            else if(Player.getStackInHand(Hand.OFF_HAND).getItem().equals(ModItems.SHILLELAGH)){ //comparing an Item with and ItemStack but it works?
                 if(Player.fallDistance > 3.0f){
                     Player.fallDistance = 0.0f;
                 }

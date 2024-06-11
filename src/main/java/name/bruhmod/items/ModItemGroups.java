@@ -31,6 +31,7 @@ public class ModItemGroups {
                         entries.add(ModItems.EXPLOSIVE_JELLY);
 
 
+                        entries.add(ModItems.CORRUPTED_SLAG);
                         entries.add(ModItems.MYSTERIOUS_CLUB);
                         entries.add(ModItems.CORRUPTED_CROWN);
                         entries.add(ModItems.JEWEL_OF_CORRUPTION);

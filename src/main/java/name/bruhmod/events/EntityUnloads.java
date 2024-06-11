@@ -1,12 +1,14 @@
 package name.bruhmod.events;
 
 import name.bruhmod.items.ModItems;
+import name.bruhmod.potion.ModPotions;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.projectile.thrown.PotionEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
@@ -32,10 +34,13 @@ public class EntityUnloads implements ServerEntityEvents.Unload {
         }
 
         if(entity instanceof PotionEntity potion){
+            ItemStack emptyGemPresent = null;
+            ItemStack cryingObsidianPresent = null;
+
             ItemStack itemStack = potion.getStack();
             Potion type = PotionUtil.getPotion(itemStack);
             Vec3d pos = entity.getPos();
-            if(type.equals(Potions.POISON) || type.equals(Potions.LONG_POISON) || type.equals(Potions.STRONG_POISON)){
+            if(type.equals(ModPotions.POTION_OF_CORRUPTION)) {//|| type.equals(Potions.LONG_POISON) || type.equals(Potions.STRONG_POISON)){
                 List<Entity> list = world.getOtherEntities(null,
                         new Box(pos.getX() - 2.0, pos.getY() - 1, pos.getZ() - 2.0, pos.getX() + 2.0, pos.getY() + 1.0, pos.getZ() + 2.0));
                 for (int i = 0; i < list.size(); i++) {
@@ -43,11 +48,19 @@ public class EntityUnloads implements ServerEntityEvents.Unload {
                     if (element.getType() == EntityType.ITEM) {
                         ItemEntity item = (ItemEntity) element;
                         if(item.getStack().getItem().equals(ModItems.EMPTY_GEM)) {
-                            pos = item.getPos();
-                            item.discard();
-                            world.spawnEntity(new ItemEntity(world, pos.x, pos.y, pos.z, new ItemStack(ModItems.JEWEL_OF_CORRUPTION)));
+                            emptyGemPresent = item.getStack();
+                            item.getPos();
+                        }
+                        if(item.getStack().getItem().equals(Items.CRYING_OBSIDIAN)){
+                            cryingObsidianPresent = item.getStack();
+                            item.getPos();
                         }
                     }
+                }
+                if(cryingObsidianPresent != null && emptyGemPresent != null){
+                    cryingObsidianPresent.decrement(1);
+                    emptyGemPresent.decrement(1);
+                    world.spawnEntity(new ItemEntity(world, pos.x, pos.y, pos.z, new ItemStack(ModItems.JEWEL_OF_CORRUPTION)));
                 }
             }
         }

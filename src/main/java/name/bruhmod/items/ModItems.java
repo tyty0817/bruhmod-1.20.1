@@ -36,6 +36,7 @@ public class ModItems {
     public static final Item EXPLOSIVE_JELLY = registerItem("explosive_jelly", new Item(new FabricItemSettings()));
 
 
+    public static final Item CORRUPTED_SLAG = registerItem("corrupted_slag", new Item(new FabricItemSettings().maxCount(16)));
     public static final Item MYSTERIOUS_CLUB = registerItem("mysterious_club", new Item(new FabricItemSettings().rarity(Rarity.RARE).maxCount(1)));
     public static final Item CORRUPTED_CROWN = registerItem("corrupted_crown", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)));
     public static final Item JEWEL_OF_CORRUPTION = registerItem("jewel_of_corruption", new JewelOfCorruption(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)));

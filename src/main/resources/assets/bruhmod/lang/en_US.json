@@ -17,6 +17,7 @@
   "item.bruhmod.dying_light.tooltip": "",
 
 
+  "item.bruhmod.corrupted_slag": "Corrupted Slag",
   "item.bruhmod.mysterious_club": "Mysterious Club",
   "item.bruhmod.corrupted_crown": "Corrupted Crown",
   "item.bruhmod.jewel_of_corruption": "Jewel of Corruption",
@@ -65,6 +66,12 @@
   "item.bruhmod.mythril_infused_chestplate": "Mythril Infused Chestplate",
   "item.bruhmod.mythril_infused_leggings": "Mythril Infused Leggings",
   "item.bruhmod.mythril_infused_boots": "Mythril Infused Boots",
+
+
+  "item.minecraft.potion.effect.potion_of_corruption": "Potion of Corruption",
+  "item.minecraft.splash_potion.effect.potion_of_corruption": "Splash Potion of Corruption",
+  "item.minecraft.lingering_potion.effect.potion_of_corruption": "Lingering Potion of Corruption",
+  "item.minecraft.tipped_arrow.effect.potion_of_corruption": "Arrow of Corruption",
 
 
   "itemgroup.bruhmod.group": "Items de L'mod",
