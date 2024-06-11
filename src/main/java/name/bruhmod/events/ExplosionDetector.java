@@ -14,11 +14,17 @@ import net.minecraft.world.explosion.Explosion;
 
 import java.util.List;
 
+import static net.minecraft.world.explosion.Explosion.getExposure;
+
 public class ExplosionDetector implements ExplosionEvent.Pre {
     public static int unstableGemExplosion = 0;
 
     @Override
     public EventResult explode(World world, Explosion explosion) {
+        int empty_gem = 0, explosive_jelly = 0, gunpowder = 0;
+        if(explosion.entity.isTouchingWater()){
+            return EventResult.pass();
+        }
         assert explosion.entity != null;
         Vec3d pos = explosion.entity.getPos();
         double range = explosion.power / 2;
@@ -29,9 +35,19 @@ public class ExplosionDetector implements ExplosionEvent.Pre {
             if (element.getType() == EntityType.ITEM) {
                 ItemEntity item = (ItemEntity) element;
                 if(item.getStack().getItem().equals(ModItems.EMPTY_GEM)) {
-                    unstableGemExplosion = item.getStack().getCount();
+                    empty_gem = item.getStack().getCount();
+                }else if(item.getStack().getItem().equals(ModItems.EXPLOSIVE_JELLY)) {
+                    explosive_jelly = item.getStack().getCount();
+                }else if(item.getStack().getItem().equals(Items.GUNPOWDER)) {
+                    gunpowder = item.getStack().getCount();
                 }
             }
+        }
+        while(empty_gem > 0 && explosive_jelly > 0 && gunpowder > 1) {
+            unstableGemExplosion++;
+            empty_gem--;
+            explosive_jelly--;
+            gunpowder -= 2;
         }
         return EventResult.pass();
     }

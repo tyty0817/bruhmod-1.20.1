@@ -136,7 +136,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerBlasting(exporter, MYTHRIL_SMELTABLES, RecipeCategory.MISC, ModItems.MYTHRIL_FRAGMENT, 0.7f, 100, "MYTHRIL_FRAGMENT");
         offerBlasting(exporter, DIAMOND, RecipeCategory.MISC, ModItems.EMPTY_GEM, 0.7f, 500, "EMPTY_GEM");
 
-        offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.MYTHRIL, RecipeCategory.DECORATIONS, ModBlocks.MYTHRIL_BLOCK);
+        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.MYTHRIL, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MYTHRIL_BLOCK);
 
         offerSmithingTemplateCopyingRecipe(exporter, ModItems.MYTHRIL_UPGRADE, ModItems.MYTHRIL_FRAGMENT);
 
