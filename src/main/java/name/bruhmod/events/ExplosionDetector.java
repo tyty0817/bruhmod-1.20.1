@@ -2,6 +2,7 @@ package name.bruhmod.events;
 
 import dev.architectury.event.EventResult;
 import dev.architectury.event.events.common.ExplosionEvent;
+import name.bruhmod.items.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
@@ -27,7 +28,7 @@ public class ExplosionDetector implements ExplosionEvent.Pre {
             Entity element = list.get(i);
             if (element.getType() == EntityType.ITEM) {
                 ItemEntity item = (ItemEntity) element;
-                if(item.getStack().getItem().equals(Items.AMETHYST_SHARD)) {
+                if(item.getStack().getItem().equals(ModItems.EMPTY_GEM)) {
                     unstableGemExplosion = item.getStack().getCount();
                 }
             }

@@ -29,10 +29,12 @@ public class ModItems {
     public static final Item MYTHRIL_DUST = registerItem("mythril_dust");
     public static final Item MYTHRIL_FRAGMENT = registerItem("mythril_fragment");
     public static final Item MYTHRIL_UPGRADE = registerItem("mythril_upgrade_smithing_template");
+    public static final Item EMPTY_GEM = registerItem("empty_gem", new Item(new FabricItemSettings().maxCount(16)));
+
 
     public static final Item MYSTERIOUS_CLUB = registerItem("mysterious_club", new Item(new FabricItemSettings().rarity(Rarity.RARE).maxCount(1)));
     public static final Item CORRUPTED_CROWN = registerItem("corrupted_crown", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)));
-    public static final Item JEWEL_OF_CORRUPTION = registerItem("jewel_of_corruption", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)));
+    public static final Item JEWEL_OF_CORRUPTION = registerItem("jewel_of_corruption", new JewelOfCorruption(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)));
     public static final Item BRANCH_OF_CORRUPTION = registerItem("branch_of_corruption", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
 
     public static final Item LIGHTNING_IN_A_BOTTLE = registerItem("lightning_in_a_bottle", new LightningBottleItem(new FabricItemSettings().fireproof().maxCount(1).rarity(Rarity.UNCOMMON)));
@@ -41,13 +43,13 @@ public class ModItems {
     public static final Item VOLATILE_PILLAR = registerItem("volatile_pillar", new Item(new FabricItemSettings().maxCount(1)));
     public static final Item MAELSTROM = registerItem("maelstrom", new Maelstrom(new FabricItemSettings().maxDamage(128).rarity(Rarity.RARE)));
 
-    public static final Item UNSTABLE_GEM = registerItem("unstable_gem", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.UNCOMMON)));
+    public static final Item UNSTABLE_GEM = registerItem("unstable_gem", new UnstableGem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)));
     public static final Item DYING_LIGHT = registerItem("dying_light", new DyingLight((new FabricItemSettings().maxDamage(256))));
 
     public static final Item CLOUD_IN_A_BOTTLE = registerItem("cloud_in_a_bottle", new Item(new FabricItemSettings().maxCount(1)));
     public static final Item SPIRITED_BLUDGEON = registerItem("spirited_bludgeon", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.UNCOMMON)));
     public static final Item PRONGED_CROWN = registerItem("pronged_crown", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.UNCOMMON)));
-    public static final Item WIND_GEM = registerItem("wind_gem", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE).fireproof()));
+    public static final Item WIND_GEM = registerItem("wind_gem", new WindGem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE).fireproof()));
     public static final Item MONKS_CUDGEL = registerItem("monks_cudgel", new MonksCudgel(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)));
     public static final Item WHIRLWIND_SASH = registerItem("whirlwind_sash", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)));
     public static final Item SHILLELAGH = registerItem("shillelagh", new Shillelagh(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));

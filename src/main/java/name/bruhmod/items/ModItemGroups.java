@@ -27,6 +27,8 @@ public class ModItemGroups {
                         entries.add(ModItems.MYTHRIL_DUST);
                         entries.add(ModItems.MYTHRIL_FRAGMENT);
                         entries.add(ModItems.MYTHRIL_UPGRADE);
+                        entries.add(ModItems.EMPTY_GEM);
+
 
                         entries.add(ModItems.MYSTERIOUS_CLUB);
                         entries.add(ModItems.CORRUPTED_CROWN);

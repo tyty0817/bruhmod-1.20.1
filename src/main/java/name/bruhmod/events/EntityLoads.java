@@ -27,7 +27,7 @@ public class EntityLoads implements ServerEntityEvents.Load {
             List<Entity> list = world.getOtherEntities(null,
                     new Box(pos.getX() - 3.0, pos.getY() - 3.0, pos.getZ() - 3.0, pos.getX() + 3.0, pos.getY() + 6.0 + 3.0, pos.getZ() + 3.0));
 
-            boolean amethystPresent = false;
+            boolean emptyGemPresent = false;
             boolean cloudBottlePresent = false;
 
             for (int i = 0; i < list.size(); i++) {
@@ -37,15 +37,15 @@ public class EntityLoads implements ServerEntityEvents.Load {
                     if(item.getStack().getItem().equals(Items.GLASS_BOTTLE)) {
                         lightningInABottleLightning = entity.getId();
                     }
-                    if(item.getStack().getItem().equals(Items.AMETHYST_SHARD)) {
-                        amethystPresent = true;
+                    if(item.getStack().getItem().equals(ModItems.EMPTY_GEM)) {
+                        emptyGemPresent = true;
                     }
                     if(item.getStack().getItem().equals(ModItems.CLOUD_IN_A_BOTTLE)){
                         cloudBottlePresent = true;
                         }
                     }
                 }
-            if(amethystPresent && cloudBottlePresent){
+            if(emptyGemPresent && cloudBottlePresent){
                 windGemLightning = entity.getId();
             }
 

@@ -16,8 +16,13 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
+
     private static final List<ItemConvertible> MYTHRIL_SMELTABLES = List.of(ModBlocks.MYTHRIL_ORE,
             ModBlocks.DEEPSLATE_MYTHRIL_ORE, ModItems.MYTHRIL_DUST);
+
+    private static final List<ItemConvertible> DIAMOND = List.of(Items.DIAMOND);
+
+
 
     public ModRecipeProvider(FabricDataOutput output) {
         super(output);
@@ -127,10 +132,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         //                                               Staff Recipes                                                     //
         //-----------------------------------------------------------------------------------------------------------------//
 
-        offerSmelting(exporter, MYTHRIL_SMELTABLES, RecipeCategory.MISC, ModItems.MYTHRIL_FRAGMENT,
-                0.7f, 200, "MYTHRIL_FRAGMENT");
-        offerBlasting(exporter, MYTHRIL_SMELTABLES, RecipeCategory.MISC, ModItems.MYTHRIL_FRAGMENT,
-                0.7f, 100, "MYTHRIL_FRAGMENT");
+        offerSmelting(exporter, MYTHRIL_SMELTABLES, RecipeCategory.MISC, ModItems.MYTHRIL_FRAGMENT, 0.7f, 200, "MYTHRIL_FRAGMENT");
+        offerBlasting(exporter, MYTHRIL_SMELTABLES, RecipeCategory.MISC, ModItems.MYTHRIL_FRAGMENT, 0.7f, 100, "MYTHRIL_FRAGMENT");
+        offerBlasting(exporter, DIAMOND, RecipeCategory.MISC, ModItems.EMPTY_GEM, 0.7f, 500, "EMPTY_GEM");
 
         offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.MYTHRIL, RecipeCategory.DECORATIONS, ModBlocks.MYTHRIL_BLOCK);
 
