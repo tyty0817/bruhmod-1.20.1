@@ -1,5 +1,7 @@
 package name.bruhmod.items;
 
+import name.bruhmod.Mod;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -8,11 +10,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 
 public class MonksCudgel extends Item {
@@ -21,18 +27,25 @@ public class MonksCudgel extends Item {
         super(settings);
     }
 
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        tooltip.add(Text.translatable("item." + Mod.MOD_ID + ".monks_cudgel.tooltip"));
+
+        super.appendTooltip(stack, null, tooltip, context);
+    }
+
     // add slow on selection
 //
 //    @Override
 //    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
 //        if(entity instanceof PlayerEntity) {
 //            PlayerEntity Player = (PlayerEntity) entity;
-//            if(Player.getStackInHand(Hand.MAIN_HAND).getItem().toString().compareTo("monks_cudgel") == 0){
+//            if(Player.getStackInHand(Hand.MAIN_HAND).equals(ModItems.MONKS_CUDGEL)){
 //                if(Player.fallDistance > 3.0f){
 //                    Player.fallDistance = 0.0f;
 //                }
 //            }
-//            else if(Player.getStackInHand(Hand.OFF_HAND).getItem().toString().compareTo("monks_cudgel") == 0){
+//            else if(Player.getStackInHand(Hand.OFF_HAND).equals(ModItems.MONKS_CUDGEL)){
 //                if(Player.fallDistance > 3.0f){
 //                    Player.fallDistance = 0.0f;
 //                }
@@ -48,7 +61,7 @@ public class MonksCudgel extends Item {
 //        float f = -MathHelper.sin(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
 //        float g = -MathHelper.sin((pitch) * 0.017453292F);
 //        float h = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
-//        user.addVelocity(f, g + 0.5, h);
+//        user.setVelocity(f, g + 0.5, h);
 //        Vec3d pos = user.getPos();
 //        world.playSound(null, new BlockPos((int) pos.x, (int) pos.y, (int) pos.z), SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.BLOCKS);
 //        return TypedActionResult.pass(user.getStackInHand(hand));

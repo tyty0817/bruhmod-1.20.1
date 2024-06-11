@@ -1,4 +1,4 @@
-package name.bruhmod.items;
+package name.bruhmod.items.maps;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.FilledMapItem;
@@ -19,10 +19,10 @@ import net.minecraft.world.World;
 
 import static name.bruhmod.Mod.*;
 
-public class BarracksMapItem extends Item {
+public class PortalTowerMapItem extends Item{
 
-    public BarracksMapItem() {
-        super(new Settings());
+    public PortalTowerMapItem() {
+        super(new Item.Settings());
     }
 
     @Override
@@ -30,7 +30,7 @@ public class BarracksMapItem extends Item {
         if (!world.isClient()) {
             ServerWorld serverWorld = (ServerWorld) world;
 
-            var entry = serverWorld.getRegistryManager().get(RegistryKeys.STRUCTURE).getEntry(RegistryKey.of(RegistryKeys.STRUCTURE, new Identifier(MOD_ID, "barracks")));
+            var entry = serverWorld.getRegistryManager().get(RegistryKeys.STRUCTURE).getEntry(RegistryKey.of(RegistryKeys.STRUCTURE, new Identifier(MOD_ID, "portal_tower")));
 
             if (entry.isEmpty()) {
                 LOGGER.warn("Failed to get barracks structure!");
@@ -43,7 +43,7 @@ public class BarracksMapItem extends Item {
                 ItemStack itemStack = FilledMapItem.createMap(serverWorld, blockPos.getX(), blockPos.getZ(), (byte)4, true, true);
                 FilledMapItem.fillExplorationMap(serverWorld, itemStack);
                 MapState.addDecorationsNbt(itemStack, blockPos, "+", MapIcon.Type.BANNER_BLACK);
-                itemStack.setCustomName(Text.translatable("item."+MOD_ID+".barracks_map"));
+                itemStack.setCustomName(Text.translatable("item."+MOD_ID+".portal_tower_map"));
                 return TypedActionResult.pass(itemStack);
             } else {
                 return TypedActionResult.fail(user.getStackInHand(hand));

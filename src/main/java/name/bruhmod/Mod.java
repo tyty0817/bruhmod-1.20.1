@@ -1,5 +1,7 @@
 package name.bruhmod;
 
+import name.bruhmod.items.custom.ModItemGroups;
+import name.bruhmod.items.custom.ModItems;
 import name.bruhmod.events.*;
 import name.bruhmod.items.ModItemGroups;
 import name.bruhmod.items.ModItems;

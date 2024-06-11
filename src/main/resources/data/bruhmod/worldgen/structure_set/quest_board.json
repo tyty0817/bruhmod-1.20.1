@@ -1,14 +1,14 @@
 {
   "structures": [
     {
-      "structure": "bruhmod:tower_mcjustin",
+      "structure": "bruhmod:quest_board",
       "weight": 1
     }
   ],
   "placement": {
     "type": "minecraft:random_spread",
-    "spacing": 35,
+    "spacing": 30,
     "separation": 15,
-    "salt": 1646207470
+    "salt": 19234712
   }
 }

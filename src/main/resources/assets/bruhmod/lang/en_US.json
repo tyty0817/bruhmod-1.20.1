@@ -6,16 +6,21 @@
   "item.bruhmod.mythril": "Mythril",
   "item.bruhmod.mythril_dust": "Mythril Dust",
   "item.bruhmod.mythril_fragment": "Mythril Fragment",
-  "item.bruhmod.barracks_map": "Barracks Map",
   "item.bruhmod.mythril_upgrade_smithing_template": "Mythril Smithing Template",
 
+
+
   "item.bruhmod.unstable_gem": "Unstable Gem",
+  "item.bruhmod.unstable_gem.desc": "Unstable Gem",
   "item.bruhmod.dying_light": "Dying Light",
+  "item.bruhmod.dying_light.tooltip": "",
+
 
   "item.bruhmod.mysterious_club": "Mysterious Club",
   "item.bruhmod.corrupted_crown": "Corrupted Crown",
   "item.bruhmod.jewel_of_corruption": "Jewel of Corruption",
   "item.bruhmod.branch_of_corruption": "Branch of Corruption",
+  "item.bruhmod.branch_of_corruption.tooltip": "",
 
 
   "item.bruhmod.lightning_in_a_bottle": "Lightning in a Bottle",
@@ -23,14 +28,27 @@
   "item.bruhmod.charged_claw": "Charged Claw",
   "item.bruhmod.volatile_pillar": "Volatile Pillar",
   "item.bruhmod.maelstrom": "Maelstrom",
+  "item.bruhmod.maelstrom.tooltip": "",
+
 
   "item.bruhmod.spirited_bludgeon": "Spirited Bludgeon",
   "item.bruhmod.pronged_crown": "Pronged Crown",
   "item.bruhmod.cloud_in_a_bottle": "Cloud in a Bottle",
   "item.bruhmod.wind_gem": "Wind Gem",
   "item.bruhmod.monks_cudgel": "Monk's Cudgel",
+  "item.bruhmod.monks_cudgel.tooltip": "",
   "item.bruhmod.whirlwind_sash": "Whirlwind Sash",
   "item.bruhmod.shillelagh": "Shillelagh",
+  "item.bruhmod.shillelagh.tooltip": "",
+
+
+  "item.bruhmod.barracks_map": "Barracks Map",
+  "item.bruhmod.mess_hall_map": "Mess Hall Map",
+  "item.bruhmod.portal_tower_map": "Portal Tower Map",
+  "item.bruhmod.carpenter_map": "Carpenter Map",
+  "item.bruhmod.witch_hut_map": "Witch Hut Map",
+  "item.bruhmod.wizard_tower_map": "Wizard Tower Map",
+
 
   "sounds.bruhmod.geriatric_tavern": "geriatric tavern",
   "item.bruhmod.geriatric_tavern_music_disc": "geriatric tavern Music Disc",

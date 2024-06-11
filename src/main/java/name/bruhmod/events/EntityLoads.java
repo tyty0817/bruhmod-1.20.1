@@ -1,6 +1,6 @@
 package name.bruhmod.events;
 
-import name.bruhmod.items.ModItems;
+import name.bruhmod.items.custom.ModItems;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
@@ -42,9 +42,9 @@ public class EntityLoads implements ServerEntityEvents.Load {
                     }
                     if(item.getStack().getItem().equals(ModItems.CLOUD_IN_A_BOTTLE)){
                         cloudBottlePresent = true;
+                        }
                     }
                 }
-            }
             if(amethystPresent && cloudBottlePresent){
                 windGemLightning = entity.getId();
             }
