@@ -1,11 +1,9 @@
 package name.bruhmod.entities;
 
-import name.bruhmod.items.custom.ModItems;
+import name.bruhmod.items.ModItems;
 import net.minecraft.entity.*;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
-import net.minecraft.potion.PotionUtil;
-import net.minecraft.potion.Potions;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 

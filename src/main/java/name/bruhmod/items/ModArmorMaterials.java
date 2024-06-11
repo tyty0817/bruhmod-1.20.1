@@ -1,4 +1,4 @@
-package name.bruhmod.items.custom;
+package name.bruhmod.items;
 
 import name.bruhmod.Mod;
 import net.minecraft.item.ArmorItem;

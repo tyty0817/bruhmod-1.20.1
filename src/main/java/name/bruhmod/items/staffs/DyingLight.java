@@ -1,4 +1,4 @@
-package name.bruhmod.items;
+package name.bruhmod.items.staffs;
 
 import name.bruhmod.Mod;
 import net.minecraft.client.item.TooltipContext;

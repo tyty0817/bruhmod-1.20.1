@@ -1,6 +1,6 @@
 package name.bruhmod.datagen;
 
-import name.bruhmod.items.custom.ModItems;
+import name.bruhmod.items.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.*;
