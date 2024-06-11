@@ -20,9 +20,9 @@ public class ModItemGroups {
                     .displayName(Text.translatable("itemgroup.bruhmod.group"))
                     .icon(() -> new ItemStack(ModItems.MYTHRIL))
                     .entries((displayContext, entries) -> {
-                        /*
-                        ITEMS
-                         */
+
+                        //------------------------------------------ITEMS-----------------------------------------------//
+
                         entries.add(ModItems.MYTHRIL);
                         entries.add(ModItems.MYTHRIL_DUST);
                         entries.add(ModItems.MYTHRIL_FRAGMENT);
@@ -53,16 +53,22 @@ public class ModItemGroups {
 
                         entries.add(ModItems.BRITISH_MAN_SPAWN_EGG);
                         entries.add(ModItems.GERIATRIC_TAVERN_MUSIC_DISC);
+
                         entries.add(ModItems.BARRACKS_MAP);
-                        /*
-                        BLOCKS
-                         */
+                        entries.add(ModItems.CARPENTER_MAP);
+                        entries.add(ModItems.WITCH_HUT_MAP);
+                        entries.add(ModItems.WIZARD_TOWER_MAP);
+                        entries.add(ModItems.PORTAL_TOWER_MAP);
+                        entries.add(ModItems.MESS_HALL_MAP);
+
+                        //------------------------------------------BLOCKS----------------------------------------------//
+
                         entries.add(ModItems.MYTHRIL_ORE);
                         entries.add(ModItems.DEEPSLATE_MYTHRIL_ORE);
                         entries.add(ModItems.MYTHRIL_BLOCK);
-                        /*
-                        ARMOR
-                         */
+
+                        //------------------------------------------ARMOR-----------------------------------------------//
+
                         entries.add(ModItems.MYTHRIL_STUDDED_HELMET);
                         entries.add(ModItems.MYTHRIL_STUDDED_CHESTPLATE);
                         entries.add(ModItems.MYTHRIL_STUDDED_LEGGINGS);
@@ -72,6 +78,7 @@ public class ModItemGroups {
                         entries.add(ModItems.MYTHRIL_INFUSED_CHESTPLATE);
                         entries.add(ModItems.MYTHRIL_INFUSED_LEGGINGS);
                         entries.add(ModItems.MYTHRIL_INFUSED_BOOTS);
+
                     })
                     .build()
     );

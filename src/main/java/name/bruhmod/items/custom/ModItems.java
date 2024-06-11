@@ -4,6 +4,7 @@ import name.bruhmod.Mod;
 import name.bruhmod.blocks.ModBlocks;
 import name.bruhmod.entities.ModEntities;
 import name.bruhmod.items.*;
+import name.bruhmod.items.maps.*;
 import name.bruhmod.sound.ModSounds;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -50,7 +51,11 @@ public class ModItems {
 
 
 
-
+    public static final Item MESS_HALL_MAP = registerItem("mess_hall_map", new MessHallMapItem());
+    public static final Item PORTAL_TOWER_MAP = registerItem("portal_tower_map", new PortalTowerMapItem());
+    public static final Item WIZARD_TOWER_MAP = registerItem("wizard_tower_map", new WizardTowerMapItem());
+    public static final Item WITCH_HUT_MAP = registerItem("witch_hut_map", new WitchHutMapItem());
+    public static final Item CARPENTER_MAP = registerItem("carpenter_map", new CarpenterMapItem());
     public static final Item BARRACKS_MAP = registerItem("barracks_map", new BarracksMapItem());
     /*
      * Blocks

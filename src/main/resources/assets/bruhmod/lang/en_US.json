@@ -6,7 +6,6 @@
   "item.bruhmod.mythril": "Mythril",
   "item.bruhmod.mythril_dust": "Mythril Dust",
   "item.bruhmod.mythril_fragment": "Mythril Fragment",
-  "item.bruhmod.barracks_map": "Barracks Map",
   "item.bruhmod.mythril_upgrade_smithing_template": "Mythril Smithing Template",
 
 
@@ -42,6 +41,13 @@
   "item.bruhmod.shillelagh": "Shillelagh",
   "item.bruhmod.shillelagh.tooltip": "",
 
+
+  "item.bruhmod.barracks_map": "Barracks Map",
+  "item.bruhmod.mess_hall_map": "Mess Hall Map",
+  "item.bruhmod.portal_tower_map": "Portal Tower Map",
+  "item.bruhmod.carpenter_map": "Carpenter Map",
+  "item.bruhmod.witch_hut_map": "Witch Hut Map",
+  "item.bruhmod.wizard_tower_map": "Wizard Tower Map",
 
 
   "sounds.bruhmod.geriatric_tavern": "geriatric tavern",
