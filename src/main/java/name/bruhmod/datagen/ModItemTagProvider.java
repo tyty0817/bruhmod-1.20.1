@@ -15,14 +15,46 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     public void configure(RegistryWrapper.WrapperLookup arg){
+
+        //-------------------------------------------------------------------------Armor-------------------------------------------------------------------------//
+
         getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItems.MYTHRIL_STUDDED_HELMET, ModItems.MYTHRIL_STUDDED_CHESTPLATE, ModItems.MYTHRIL_STUDDED_LEGGINGS, ModItems.MYTHRIL_STUDDED_BOOTS,
                         ModItems.MYTHRIL_INFUSED_HELMET, ModItems.MYTHRIL_INFUSED_CHESTPLATE, ModItems.MYTHRIL_INFUSED_LEGGINGS, ModItems.MYTHRIL_INFUSED_BOOTS);
 
-        getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
-                .add(ModItems.GERIATRIC_TAVERN_MUSIC_DISC);
+        //----------------------------------------------------------------------Music Discs----------------------------------------------------------------------//
 
+        getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
+                .add(ModItems.FALLOUT_MUSIC_DISC);
         getOrCreateTagBuilder(ItemTags.CREEPER_DROP_MUSIC_DISCS)
-            .add(ModItems.GERIATRIC_TAVERN_MUSIC_DISC);
+            .add(ModItems.FALLOUT_MUSIC_DISC);
+
+
+
+        getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
+                .add(ModItems.BLACK_MOON_MUSIC_DISC);
+        getOrCreateTagBuilder(ItemTags.CREEPER_DROP_MUSIC_DISCS)
+                .add(ModItems.BLACK_MOON_MUSIC_DISC);
+
+        getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
+                .add(ModItems.DARK_WOODS_MUSIC_DISC);
+        getOrCreateTagBuilder(ItemTags.CREEPER_DROP_MUSIC_DISCS)
+                .add(ModItems.DARK_WOODS_MUSIC_DISC);
+
+        getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
+                .add(ModItems.NIGHT_OWL_MUSIC_DISC);
+        getOrCreateTagBuilder(ItemTags.CREEPER_DROP_MUSIC_DISCS)
+                .add(ModItems.NIGHT_OWL_MUSIC_DISC);
+
+        getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
+                .add(ModItems.OLD_KING_MUSIC_DISC);
+        getOrCreateTagBuilder(ItemTags.CREEPER_DROP_MUSIC_DISCS)
+                .add(ModItems.OLD_KING_MUSIC_DISC);
+
+        getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
+                .add(ModItems.THE_RANGER_MUSIC_DISC);
+        getOrCreateTagBuilder(ItemTags.CREEPER_DROP_MUSIC_DISCS)
+                .add(ModItems.THE_RANGER_MUSIC_DISC);
+
     }
 }
