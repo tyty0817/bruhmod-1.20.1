@@ -56,7 +56,14 @@ public class ModItemGroups {
 
 
                         entries.add(ModItems.BRITISH_MAN_SPAWN_EGG);
-                        entries.add(ModItems.GERIATRIC_TAVERN_MUSIC_DISC);
+
+                        entries.add(ModItems.FALLOUT_MUSIC_DISC);
+                        entries.add(ModItems.BLACK_MOON_MUSIC_DISC);
+                        entries.add(ModItems.DARK_WOODS_MUSIC_DISC);
+                        entries.add(ModItems.NIGHT_OWL_MUSIC_DISC);
+                        entries.add(ModItems.OLD_KING_MUSIC_DISC);
+                        entries.add(ModItems.THE_RANGER_MUSIC_DISC);
+
 
                         entries.add(ModItems.BARRACKS_MAP);
                         entries.add(ModItems.CARPENTER_MAP);

@@ -8,20 +8,10 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
 public class ModTags {
-    public static class Blocks {
 
-        private static TagKey<Block> createTag(String name) {
-            return TagKey.of(RegistryKeys.BLOCK, new Identifier(Mod.MOD_ID, name));
-        }
+    public class ModItemTags {
+
+        public static final TagKey<Item> CUSTOM_MAPS = TagKey.of(RegistryKeys.ITEM, new Identifier("bruhmod", "custom_maps"));
+
     }
-
-
-    public static class Items {
-        public static final TagKey<Item> CUSTOM_MAPS = createTag("custom_maps");
-
-        private static TagKey<Item> createTag(String name) {
-            return TagKey.of(RegistryKeys.ITEM, new Identifier(Mod.MOD_ID, name));
-        }
-    }
-
 }

@@ -27,7 +27,7 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 4.0,
+                "max": 5.0,
                 "min": 1.0
               },
               "function": "minecraft:set_count"
@@ -38,33 +38,17 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 3.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:nether_wart",
-          "weight": 10
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:fermented_spider_eye",
           "weight": 2
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:stick",
-          "weight": 10
+          "weight": 25
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:pufferfish"
+          "name": "minecraft:rabbit_foot"
         },
         {
           "type": "minecraft:item",
@@ -94,11 +78,12 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:rabbit_foot"
+          "name": "minecraft:pufferfish"
         }
       ],
       "rolls": 1.0
     }
+
   ],
   "random_sequence": "bruhmod:loot_tables/chests/witch_hut_potion"
 }

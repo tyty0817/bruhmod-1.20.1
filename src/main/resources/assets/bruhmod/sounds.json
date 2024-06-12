@@ -1,12 +1,50 @@
 {
-  "geriatric_tavern": {
+  "fallout": {
     "sounds": [
       {
-        "name": "bruhmod:geriatric_tavern",
+        "name": "bruhmod:fallout",
+        "stream": true
+      }
+    ]
+  },
+  "black_moon": {
+    "sounds": [
+      {
+        "name": "bruhmod:black_moon",
+        "stream": true
+      }
+    ]
+  },
+  "dark_woods": {
+    "sounds": [
+      {
+        "name": "bruhmod:dark_woods",
+        "stream": true
+      }
+    ]
+  },
+  "night_owl": {
+    "sounds": [
+      {
+        "name": "bruhmod:night_owl",
+        "stream": true
+      }
+    ]
+  },
+  "old_king": {
+    "sounds": [
+      {
+        "name": "bruhmod:old_king",
+        "stream": true
+      }
+    ]
+  },
+  "the_ranger": {
+    "sounds": [
+      {
+        "name": "bruhmod:the_ranger",
         "stream": true
       }
     ]
   }
 }
-
-

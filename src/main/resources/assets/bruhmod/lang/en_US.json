@@ -12,7 +12,7 @@
 
 
   "item.bruhmod.unstable_gem": "Unstable Gem",
-  "item.bruhmod.unstable_gem.desc": "Unstable Gem",
+  "item.bruhmod.explosive_jelly": "Explosive Jelly",
   "item.bruhmod.dying_light": "Dying Light",
   "item.bruhmod.dying_light.tooltip": "",
 
@@ -52,10 +52,6 @@
   "item.bruhmod.wizard_tower_map": "Wizard Tower Map",
 
 
-  "sounds.bruhmod.geriatric_tavern": "geriatric tavern",
-  "item.bruhmod.geriatric_tavern_music_disc": "geriatric tavern Music Disc",
-  "item.bruhmod.geriatric_tavern_music_disc.desc": "Ean Grimm - Old King Tavern",
-
   "item.bruhmod.british_man_spawn_egg": "british man spawn egg",
 
   "item.bruhmod.mythril_studded_helmet": "Mythril Studded Helmet",
@@ -72,6 +68,37 @@
   "item.minecraft.splash_potion.effect.potion_of_corruption": "Splash Potion of Corruption",
   "item.minecraft.lingering_potion.effect.potion_of_corruption": "Lingering Potion of Corruption",
   "item.minecraft.tipped_arrow.effect.potion_of_corruption": "Arrow of Corruption",
+
+
+
+
+
+  "sounds.bruhmod.fallout": "fallout",
+  "item.bruhmod.fallout_music_disc": "Fallout Music Disc",
+  "item.bruhmod.fallout_music_disc.desc": "Benny - Fallout: New Vegas",
+
+  "sounds.bruhmod.black_moon": "black_moon",
+  "item.bruhmod.black_moon_music_disc": "Black Moon Music Disc",
+  "item.bruhmod.black_moon_music_disc.desc": "Ean Grimm - Black Moon Tavern",
+
+  "sounds.bruhmod.dark_woods": "dark_woods",
+  "item.bruhmod.dark_woods_music_disc": "Dark Woods Music Disc",
+  "item.bruhmod.dark_woods_music_disc.desc": "Ean Grimm - Dark Woods Tavern",
+
+  "sounds.bruhmod.night_owl": "night_owl",
+  "item.bruhmod.night_owl_music_disc": "Night Owl Music Disc",
+  "item.bruhmod.night_owl_music_disc.desc": "Ean Grimm - Night Owl Tavern",
+
+  "sounds.bruhmod.old_king": "old_king",
+  "item.bruhmod.old_king_music_disc": "Old King Music Disc",
+  "item.bruhmod.old_king_music_disc.desc": "Ean Grimm - Old King Tavern",
+
+  "sounds.bruhmod.the_ranger": "the_ranger",
+  "item.bruhmod.the_ranger_music_disc": "The Ranger Music Disc",
+  "item.bruhmod.the_ranger_music_disc.desc": "Ean Grimm - The Ranger's Tavern",
+
+
+
 
 
   "itemgroup.bruhmod.group": "Items de L'mod",

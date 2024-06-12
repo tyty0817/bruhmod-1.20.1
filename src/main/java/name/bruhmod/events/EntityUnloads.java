@@ -40,7 +40,7 @@ public class EntityUnloads implements ServerEntityEvents.Unload {
             ItemStack itemStack = potion.getStack();
             Potion type = PotionUtil.getPotion(itemStack);
             Vec3d pos = entity.getPos();
-            if(type.equals(ModPotions.POTION_OF_CORRUPTION)) {//|| type.equals(Potions.LONG_POISON) || type.equals(Potions.STRONG_POISON)){
+            if(type.equals(ModPotions.POTION_OF_CORRUPTION)) {
                 List<Entity> list = world.getOtherEntities(null,
                         new Box(pos.getX() - 2.0, pos.getY() - 1, pos.getZ() - 2.0, pos.getX() + 2.0, pos.getY() + 1.0, pos.getZ() + 2.0));
                 for (int i = 0; i < list.size(); i++) {
