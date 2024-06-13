@@ -73,12 +73,12 @@ public class ModModelProvider extends FabricModelProvider {
 
 
 
-        itemModelGenerator.register(ModItems.FALLOUT_MUSIC_DISC, Models.GENERATED);
-        itemModelGenerator.register(ModItems.BLACK_MOON_MUSIC_DISC, Models.GENERATED);
-        itemModelGenerator.register(ModItems.DARK_WOODS_MUSIC_DISC, Models.GENERATED);
-        itemModelGenerator.register(ModItems.NIGHT_OWL_MUSIC_DISC, Models.GENERATED);
-        itemModelGenerator.register(ModItems.OLD_KING_MUSIC_DISC, Models.GENERATED);
-        itemModelGenerator.register(ModItems.THE_RANGER_MUSIC_DISC, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MUSIC_DISC_FALLOUT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MUSIC_DISC_BLACK_MOON, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MUSIC_DISC_DARK_WOODS, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MUSIC_DISC_NIGHT_OWL, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MUSIC_DISC_OLD_KING, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MUSIC_DISC_THE_RANGER, Models.GENERATED);
 
 
 

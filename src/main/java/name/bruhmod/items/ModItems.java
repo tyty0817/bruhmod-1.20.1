@@ -89,12 +89,12 @@ public class ModItems {
 
 
 
-    public static final Item FALLOUT_MUSIC_DISC = registerItem("fallout_music_disc", new MusicDiscItem(7, ModSounds.FALLOUT, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 24));
-    public static final Item BLACK_MOON_MUSIC_DISC = registerItem("black_moon_music_disc", new MusicDiscItem(7, ModSounds.BLACK_MOON, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 203));
-    public static final Item DARK_WOODS_MUSIC_DISC = registerItem("dark_woods_music_disc", new MusicDiscItem(7, ModSounds.DARK_WOODS, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 184));
-    public static final Item NIGHT_OWL_MUSIC_DISC = registerItem("night_owl_music_disc", new MusicDiscItem(7, ModSounds.NIGHT_OWL, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 187));
-    public static final Item OLD_KING_MUSIC_DISC = registerItem("old_king_music_disc", new MusicDiscItem(7, ModSounds.OLD_KING, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 209));
-    public static final Item THE_RANGER_MUSIC_DISC = registerItem("the_ranger_music_disc", new MusicDiscItem(7, ModSounds.THE_RANGER, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 192));
+    public static final Item MUSIC_DISC_FALLOUT = registerItem("music_disc_fallout", new MusicDiscItem(7, ModSounds.FALLOUT, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 24));
+    public static final Item MUSIC_DISC_BLACK_MOON = registerItem("music_disc_black_moon", new MusicDiscItem(7, ModSounds.BLACK_MOON, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 203));
+    public static final Item MUSIC_DISC_DARK_WOODS = registerItem("music_disc_dark_woods", new MusicDiscItem(7, ModSounds.DARK_WOODS, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 184));
+    public static final Item MUSIC_DISC_NIGHT_OWL = registerItem("music_disc_night_owl", new MusicDiscItem(7, ModSounds.NIGHT_OWL, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 187));
+    public static final Item MUSIC_DISC_OLD_KING = registerItem("music_disc_old_king", new MusicDiscItem(7, ModSounds.OLD_KING, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 209));
+    public static final Item MUSIC_DISC_THE_RANGER = registerItem("music_disc_the_ranger", new MusicDiscItem(7, ModSounds.THE_RANGER, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 192));
 
 
     public static final Item BRITISH_MAN_SPAWN_EGG = registerItem("british_man_spawn_egg", new SpawnEggItem(ModEntities.BOSS, 0xd59890, 0xd7b4ae, new FabricItemSettings()));
