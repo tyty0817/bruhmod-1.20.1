@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "bruhmod:grove",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 36,
+    "separation": 15,
+    "salt": 13654946
+  }
+}

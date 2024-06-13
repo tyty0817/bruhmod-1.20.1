@@ -17,24 +17,8 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:stick",
+          "name": "minecraft:leather",
           "weight": 40
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 4.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:flint",
-          "weight": 15
         },
         {
           "type": "minecraft:item",
@@ -50,7 +34,7 @@
             }
           ],
           "name": "minecraft:iron_nugget",
-          "weight": 40
+          "weight": 30
         },
         {
           "type": "minecraft:item",
@@ -74,13 +58,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 10.0,
-                "min": 1.0
+                "max": 24.0,
+                "min": 4.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:leather",
+          "name": "minecraft:stick",
           "weight": 15
         },
         {
@@ -100,7 +84,7 @@
             }
           ],
           "name": "minecraft:iron_sword",
-          "weight": 3
+          "weight": 5
         },
         {
           "type": "minecraft:item",
@@ -119,26 +103,7 @@
             }
           ],
           "name": "minecraft:iron_axe",
-          "weight": 3
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "damage": {
-                "type": "minecraft:uniform",
-                "max": 1.0,
-                "min": 0.8
-              },
-              "function": "minecraft:set_damage"
-            },
-            {
-              "function": "minecraft:enchant_randomly"
-            }
-          ],
-          "name": "minecraft:iron_hoe",
-          "weight": 3
+          "weight": 5
         },
         {
           "type": "minecraft:item",
@@ -157,7 +122,7 @@
             }
           ],
           "name": "minecraft:iron_shovel",
-          "weight": 3
+          "weight": 5
         },
         {
           "type": "minecraft:item",
@@ -176,6 +141,25 @@
             }
           ],
           "name": "minecraft:iron_pickaxe",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.8
+              },
+              "function": "minecraft:set_damage"
+            },
+            {
+              "function": "minecraft:enchant_randomly"
+            }
+          ],
+          "name": "minecraft:iron_boots",
           "weight": 3
         },
         {
@@ -194,8 +178,8 @@
               "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "minecraft:leather_boots",
-          "weight": 1
+          "name": "minecraft:iron_chestplate",
+          "weight": 3
         },
         {
           "type": "minecraft:item",
@@ -213,8 +197,8 @@
               "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "minecraft:leather_chestplate",
-          "weight": 1
+          "name": "minecraft:iron_helmet",
+          "weight": 3
         },
         {
           "type": "minecraft:item",
@@ -232,48 +216,18 @@
               "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "minecraft:leather_helmet",
-          "weight": 1
+          "name": "minecraft:iron_leggings",
+          "weight": 3
         },
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "damage": {
-                "type": "minecraft:uniform",
-                "max": 1.0,
-                "min": 0.8
-              },
-              "function": "minecraft:set_damage"
-            },
-            {
-              "function": "minecraft:enchant_randomly"
-            }
-          ],
-          "name": "minecraft:leather_leggings",
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 12.0,
-                "min": 4.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:melon_slice",
+          "name": "minecraft:golden_horse_armor",
           "weight": 5
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:saddle",
-          "weight": 5
+          "name": "bruhmod:mythril_upgrade_smithing_template",
+          "weight": 4
         },
         {
           "type": "minecraft:item",
@@ -305,11 +259,55 @@
             }
           ],
           "name": "minecraft:iron_ingot",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 8.0,
+                "min": 2.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:gold_ingot",
           "weight": 5
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:golden_apple"
+          "name": "minecraft:golden_apple",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:enchanted_golden_apple",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_horse_armor",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "bruhmod:mythril_dust",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": 30.0,
+              "treasure": true
+            }
+          ],
+          "name": "minecraft:book",
+          "weight": 10
         }
       ],
       "rolls": {
@@ -319,5 +317,5 @@
       }
     }
   ],
-  "random_sequence": "bruhmod:chests/carpenter_barrel"
+  "random_sequence": "bruhmod:chests/misc_chest"
 }
