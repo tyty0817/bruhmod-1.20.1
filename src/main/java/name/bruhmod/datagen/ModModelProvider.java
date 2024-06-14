@@ -47,7 +47,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.MESS_HALL_MAP, Models.GENERATED);
 
 
-
+        itemModelGenerator.register(ModItems.CORRUPTED_SLAG, Models.GENERATED);
         itemModelGenerator.register(ModItems.MYSTERIOUS_CLUB, Models.GENERATED);
         itemModelGenerator.register(ModItems.CORRUPTED_CROWN, Models.GENERATED);
         itemModelGenerator.register(ModItems.JEWEL_OF_CORRUPTION, Models.GENERATED);
@@ -73,7 +73,13 @@ public class ModModelProvider extends FabricModelProvider {
 
 
 
-        itemModelGenerator.register(ModItems.GERIATRIC_TAVERN_MUSIC_DISC, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MUSIC_DISC_FALLOUT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MUSIC_DISC_BLACK_MOON, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MUSIC_DISC_DARK_WOODS, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MUSIC_DISC_NIGHT_OWL, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MUSIC_DISC_OLD_KING, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MUSIC_DISC_THE_RANGER, Models.GENERATED);
+
 
 
         itemModelGenerator.register(ModItems.BRITISH_MAN_SPAWN_EGG,

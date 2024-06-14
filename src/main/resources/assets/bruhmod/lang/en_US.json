@@ -12,11 +12,12 @@
 
 
   "item.bruhmod.unstable_gem": "Unstable Gem",
-  "item.bruhmod.unstable_gem.desc": "Unstable Gem",
+  "item.bruhmod.explosive_jelly": "Explosive Jelly",
   "item.bruhmod.dying_light": "Dying Light",
   "item.bruhmod.dying_light.tooltip": "",
 
 
+  "item.bruhmod.corrupted_slag": "Corrupted Slag",
   "item.bruhmod.mysterious_club": "Mysterious Club",
   "item.bruhmod.corrupted_crown": "Corrupted Crown",
   "item.bruhmod.jewel_of_corruption": "Jewel of Corruption",
@@ -51,10 +52,6 @@
   "item.bruhmod.wizard_tower_map": "Wizard Tower Map",
 
 
-  "sounds.bruhmod.geriatric_tavern": "geriatric tavern",
-  "item.bruhmod.geriatric_tavern_music_disc": "geriatric tavern Music Disc",
-  "item.bruhmod.geriatric_tavern_music_disc.desc": "Ean Grimm - Old King Tavern",
-
   "item.bruhmod.british_man_spawn_egg": "british man spawn egg",
 
   "item.bruhmod.mythril_studded_helmet": "Mythril Studded Helmet",
@@ -65,6 +62,43 @@
   "item.bruhmod.mythril_infused_chestplate": "Mythril Infused Chestplate",
   "item.bruhmod.mythril_infused_leggings": "Mythril Infused Leggings",
   "item.bruhmod.mythril_infused_boots": "Mythril Infused Boots",
+
+
+  "item.minecraft.potion.effect.potion_of_corruption": "Potion of Corruption",
+  "item.minecraft.splash_potion.effect.potion_of_corruption": "Splash Potion of Corruption",
+  "item.minecraft.lingering_potion.effect.potion_of_corruption": "Lingering Potion of Corruption",
+  "item.minecraft.tipped_arrow.effect.potion_of_corruption": "Arrow of Corruption",
+
+
+
+
+
+  "sounds.bruhmod.fallout": "fallout",
+  "item.bruhmod.music_disc_fallout": "Fallout Music Disc",
+  "item.bruhmod.music_disc_fallout.desc": "Benny - Fallout: New Vegas",
+
+  "sounds.bruhmod.black_moon": "black_moon",
+  "item.bruhmod.music_disc_black_moon": "Black Moon Music Disc",
+  "item.bruhmod.music_disc_black_moon.desc": "Ean Grimm - Black Moon Tavern",
+
+  "sounds.bruhmod.dark_woods": "dark_woods",
+  "item.bruhmod.music_disc_dark_woods": "Dark Woods Music Disc",
+  "item.bruhmod.music_disc_dark_woods.desc": "Ean Grimm - Dark Woods Tavern",
+
+  "sounds.bruhmod.night_owl": "night_owl",
+  "item.bruhmod.music_disc_night_owl": "Night Owl Music Disc",
+  "item.bruhmod.music_disc_night_owl.desc": "Ean Grimm - Night Owl Tavern",
+
+  "sounds.bruhmod.old_king": "old_king",
+  "item.bruhmod.music_disc_old_king": "Old King Music Disc",
+  "item.bruhmod.music_disc_old_king.desc": "Ean Grimm - Old King Tavern",
+
+  "sounds.bruhmod.the_ranger": "the_ranger",
+  "item.bruhmod.music_disc_the_ranger": "The Ranger Music Disc",
+  "item.bruhmod.music_disc_the_ranger.desc": "Ean Grimm - The Ranger's Tavern",
+
+
+
 
 
   "itemgroup.bruhmod.group": "Items de L'mod",

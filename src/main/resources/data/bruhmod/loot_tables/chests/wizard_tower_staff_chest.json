@@ -6,7 +6,18 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "bruhmod:jewel_of_corruption"
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 3.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "bruhmod:corrupted_slag"
         }
       ],
       "rolls": 1.0
@@ -101,7 +112,7 @@
             }
           ],
           "name": "minecraft:diamond_sword",
-          "weight": 6
+          "weight": 4
         },
         {
           "type": "minecraft:item",
@@ -120,7 +131,7 @@
             }
           ],
           "name": "minecraft:diamond_chestplate",
-          "weight": 6
+          "weight": 4
         },
         {
           "type": "minecraft:item",
@@ -139,7 +150,7 @@
             }
           ],
           "name": "minecraft:diamond_helmet",
-          "weight": 6
+          "weight": 4
         },
         {
           "type": "minecraft:item",
@@ -158,7 +169,7 @@
             }
           ],
           "name": "minecraft:diamond_leggings",
-          "weight": 6
+          "weight": 4
         },
         {
           "type": "minecraft:item",
@@ -177,7 +188,7 @@
             }
           ],
           "name": "minecraft:diamond_boots",
-          "weight": 6
+          "weight": 4
         },
         {
           "type": "minecraft:item",

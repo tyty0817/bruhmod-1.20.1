@@ -31,6 +31,7 @@ public class ModItemGroups {
                         entries.add(ModItems.EXPLOSIVE_JELLY);
 
 
+                        entries.add(ModItems.CORRUPTED_SLAG);
                         entries.add(ModItems.MYSTERIOUS_CLUB);
                         entries.add(ModItems.CORRUPTED_CROWN);
                         entries.add(ModItems.JEWEL_OF_CORRUPTION);
@@ -55,7 +56,14 @@ public class ModItemGroups {
 
 
                         entries.add(ModItems.BRITISH_MAN_SPAWN_EGG);
-                        entries.add(ModItems.GERIATRIC_TAVERN_MUSIC_DISC);
+
+                        entries.add(ModItems.MUSIC_DISC_FALLOUT);
+                        entries.add(ModItems.MUSIC_DISC_BLACK_MOON);
+                        entries.add(ModItems.MUSIC_DISC_DARK_WOODS);
+                        entries.add(ModItems.MUSIC_DISC_NIGHT_OWL);
+                        entries.add(ModItems.MUSIC_DISC_OLD_KING);
+                        entries.add(ModItems.MUSIC_DISC_THE_RANGER);
+
 
                         entries.add(ModItems.BARRACKS_MAP);
                         entries.add(ModItems.CARPENTER_MAP);
