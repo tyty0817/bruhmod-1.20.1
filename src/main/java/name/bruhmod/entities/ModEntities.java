@@ -1,6 +1,7 @@
 package name.bruhmod.entities;
 
 import name.bruhmod.Mod;
+import name.bruhmod.entities.FireBolt;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.Entity;
@@ -19,6 +20,11 @@ public class ModEntities {
             "lightning_bottle",
             FabricEntityTypeBuilder.create(SpawnGroup.MISC, LightningBottleEntity::createEntity).dimensions(new EntityDimensions(0.25F, 0.25F, true)).trackRangeChunks(4).trackedUpdateRate(10)
     );
+
+    public static final EntityType<FireBolt> FIRE_BOLT = Registry.register(Registries.ENTITY_TYPE,
+            new Identifier(MOD_ID, "dice_projectile"),
+            FabricEntityTypeBuilder.<FireBolt>create(SpawnGroup.MISC, FireBolt::new)
+                    .dimensions(EntityDimensions.fixed(0.25f, 0.25f)).build());
 
     public static EntityType<BossEntity> BOSS = registerEntity(
             BossEntity.ID,

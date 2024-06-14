@@ -7,10 +7,7 @@ import name.bruhmod.items.gems.JewelOfCorruption;
 import name.bruhmod.items.gems.UnstableGem;
 import name.bruhmod.items.gems.WindGem;
 import name.bruhmod.items.maps.*;
-import name.bruhmod.items.staffs.DyingLight;
-import name.bruhmod.items.staffs.Maelstrom;
-import name.bruhmod.items.staffs.MonksCudgel;
-import name.bruhmod.items.staffs.Shillelagh;
+import name.bruhmod.items.staffs.*;
 import name.bruhmod.sound.ModSounds;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -39,7 +36,7 @@ public class ModItems {
     public static final Item MYSTERIOUS_CLUB = registerItem("mysterious_club", new Item(new FabricItemSettings().rarity(Rarity.RARE).maxCount(1)));
     public static final Item CORRUPTED_CROWN = registerItem("corrupted_crown", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)));
     public static final Item JEWEL_OF_CORRUPTION = registerItem("jewel_of_corruption", new JewelOfCorruption(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)));
-    public static final Item BRANCH_OF_CORRUPTION = registerItem("branch_of_corruption", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
+    public static final Item BRANCH_OF_CORRUPTION = registerItem("branch_of_corruption", new BoltCaster(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
 
     public static final Item LIGHTNING_IN_A_BOTTLE = registerItem("lightning_in_a_bottle", new LightningBottleItem(new FabricItemSettings().fireproof().maxCount(1).rarity(Rarity.UNCOMMON)));
     public static final Item VOLATILE_CLAW = registerItem("volatile_claw", new Item(new FabricItemSettings().maxCount(1)));
