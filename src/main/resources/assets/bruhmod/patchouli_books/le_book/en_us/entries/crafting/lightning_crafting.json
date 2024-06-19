@@ -1,0 +1,11 @@
+{
+  "name": "Lightning",
+  "icon": "bruhmod:lightning_in_a_bottle",
+  "category": "bruhmod:crafting",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "thor shit"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Shillelagh",
+  "icon": "bruhmod:shillelagh",
+  "category": "bruhmod:staffs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "whee"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bruhmod:shillelagh"
+    }
+  ]
+}

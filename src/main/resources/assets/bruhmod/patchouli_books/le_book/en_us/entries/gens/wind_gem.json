@@ -1,0 +1,11 @@
+{
+  "name": "Wind Gem",
+  "icon": "bruhmod:wind_gem",
+  "category": "bruhmod:gems",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "gotta bottle a cloud and then do something"
+    }
+  ]
+}

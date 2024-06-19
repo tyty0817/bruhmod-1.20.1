@@ -1,0 +1,11 @@
+{
+  "name": "explosions",
+  "icon": "minecraft:tnt",
+  "category": "bruhmod:crafting",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "boom"
+    }
+  ]
+}

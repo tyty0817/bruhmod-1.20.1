@@ -1,0 +1,15 @@
+{
+  "name": "Branch of Corruption",
+  "icon": "bruhmod:branch_of_corruption",
+  "category": "bruhmod:staffs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "portal shit probably"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bruhmod:branch_of_corruption"
+    }
+  ]
+}

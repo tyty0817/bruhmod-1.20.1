@@ -61,15 +61,11 @@ public class FireBolt extends ProjectileEntity {
 
     @Override
     protected void initDataTracker() {
-
     }
 
     public void tick() {
         Entity entity = this.getOwner();
         if (this.getWorld().isClient || (entity == null || !entity.isRemoved()) && this.getWorld().isChunkLoaded(this.getBlockPos())) {
-            super.tick();
-            this.setOnFireFor(0);
-
             HitResult hitResult = ProjectileUtil.getCollision(this, this::canHit);
             if (hitResult.getType() != HitResult.Type.MISS) {
                 this.onCollision(hitResult);

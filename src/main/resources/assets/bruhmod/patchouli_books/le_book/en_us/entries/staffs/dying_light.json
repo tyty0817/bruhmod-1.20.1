@@ -1,0 +1,11 @@
+{
+  "name": "Dying Light",
+  "icon": "bruhmod:dying_light",
+  "category": "bruhmod:staffs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "boom time"
+    }
+  ]
+}

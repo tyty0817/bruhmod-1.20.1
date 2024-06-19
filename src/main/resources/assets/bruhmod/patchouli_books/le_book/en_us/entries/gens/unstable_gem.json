@@ -1,0 +1,11 @@
+{
+  "name": "Unstable Gem",
+  "icon": "bruhmod:unstable_gem",
+  "category": "bruhmod:gems",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "poor balance"
+    }
+  ]
+}

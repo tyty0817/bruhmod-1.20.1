@@ -1,0 +1,24 @@
+{
+  "name": "Maelstrom",
+  "icon": "bruhmod:maelstrom",
+  "category": "bruhmod:staffs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "kachow"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bruhmod:maelstrom"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bruhmod:charged_claw",
+      "recipe2": "bruhmod:volatile_pillar"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bruhmod:volatile_claw"
+    }
+  ]
+}

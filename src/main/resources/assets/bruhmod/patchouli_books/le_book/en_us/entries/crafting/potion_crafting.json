@@ -1,0 +1,11 @@
+{
+  "name": "potions",
+  "icon": "minecraft:splash_potion",
+  "category": "bruhmod:crafting",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "splash"
+    }
+  ]
+}
