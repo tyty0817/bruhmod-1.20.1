@@ -1,0 +1,16 @@
+{
+  "type": "bruhmod:natural",
+  "damageType": "minecraft:lightning_bolt",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "tag": "minecraft:wool",
+      "count": 8
+    }
+  ],
+  "result": {
+    "item": "bruhmod:cloud_in_a_bottle"
+  }
+}

@@ -3,7 +3,8 @@
 	"package": "name.bruhmod.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"CloudBottleCollector"
+		"CloudBottleCollector",
+		"ItemEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
