@@ -2,86 +2,86 @@ package name.bruhmod.items;
 
 import name.bruhmod.Mod;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 
 public class ModItemGroups {
 
     /**
      * The item group containing all the items in the mod.
+     * TODO: re-add automatic item adder
      */
-    public static final ItemGroup BRUHMOD_GROUP = Registry.register(Registries.ITEM_GROUP,
-            Identifier.of(Mod.MOD_ID, "bruhmod"),
+    public static final CreativeModeTab BRUHMOD_GROUP = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB,
+            Mod.idOf(Mod.MOD_ID),
             FabricItemGroup.builder()
-                    .displayName(Text.translatable("itemgroup.bruhmod.group"))
+                    .title(Component.translatable("itemgroup.bruhmod.group"))
                     .icon(() -> new ItemStack(ModItems.MYTHRIL))
-                    .entries((displayContext, entries) -> {
+                    .displayItems((displayContext, entries) -> {
 
                         //------------------------------------------ITEMS-----------------------------------------------//
 
-                        entries.add(ModItems.MYTHRIL);
-                        entries.add(ModItems.MYTHRIL_DUST);
-                        entries.add(ModItems.MYTHRIL_FRAGMENT);
-                        entries.add(ModItems.MYTHRIL_UPGRADE);
-                        entries.add(ModItems.EMPTY_GEM);
-                        entries.add(ModItems.EXPLOSIVE_JELLY);
+                        entries.accept(ModItems.MYTHRIL);
+                        entries.accept(ModItems.MYTHRIL_DUST);
+                        entries.accept(ModItems.MYTHRIL_FRAGMENT);
+                        entries.accept(ModItems.MYTHRIL_UPGRADE);
+                        entries.accept(ModItems.EMPTY_GEM);
+                        entries.accept(ModItems.EXPLOSIVE_JELLY);
 
 
-                        entries.add(ModItems.CORRUPTED_SLAG);
-                        entries.add(ModItems.MYSTERIOUS_CLUB);
-                        entries.add(ModItems.CORRUPTED_CROWN);
-                        entries.add(ModItems.JEWEL_OF_CORRUPTION);
-                        entries.add(ModItems.BRANCH_OF_CORRUPTION);
+                        entries.accept(ModItems.CORRUPTED_SLAG);
+                        entries.accept(ModItems.MYSTERIOUS_CLUB);
+                        entries.accept(ModItems.CORRUPTED_CROWN);
+                        entries.accept(ModItems.JEWEL_OF_CORRUPTION);
+                        entries.accept(ModItems.BRANCH_OF_CORRUPTION);
 
-                        entries.add(ModItems.LIGHTNING_IN_A_BOTTLE);
-                        entries.add(ModItems.VOLATILE_CLAW);
-                        entries.add(ModItems.CHARGED_CLAW);
-                        entries.add(ModItems.VOLATILE_PILLAR);
-                        entries.add(ModItems.MAELSTROM);
+                        entries.accept(ModItems.LIGHTNING_IN_A_BOTTLE);
+                        entries.accept(ModItems.VOLATILE_CLAW);
+                        entries.accept(ModItems.CHARGED_CLAW);
+                        entries.accept(ModItems.VOLATILE_PILLAR);
+                        entries.accept(ModItems.MAELSTROM);
 
-                        entries.add(ModItems.CLOUD_IN_A_BOTTLE);
-                        entries.add(ModItems.SPIRITED_BLUDGEON);
-                        entries.add(ModItems.PRONGED_CROWN);
-                        entries.add(ModItems.WIND_GEM);
-                        entries.add(ModItems.MONKS_CUDGEL);
-                        entries.add(ModItems.WHIRLWIND_SASH);
-                        entries.add(ModItems.SHILLELAGH);
+                        entries.accept(ModItems.CLOUD_IN_A_BOTTLE);
+                        entries.accept(ModItems.SPIRITED_BLUDGEON);
+                        entries.accept(ModItems.PRONGED_CROWN);
+                        entries.accept(ModItems.WIND_GEM);
+                        entries.accept(ModItems.MONKS_CUDGEL);
+                        entries.accept(ModItems.WHIRLWIND_SASH);
+                        entries.accept(ModItems.SHILLELAGH);
 
-                        entries.add(ModItems.UNSTABLE_GEM);
-                        entries.add(ModItems.DYING_LIGHT);
-
-
-                        entries.add(ModItems.BRITISH_MAN_SPAWN_EGG);
-
-                        entries.add(ModItems.MUSIC_DISC_FALLOUT);
-                        entries.add(ModItems.MUSIC_DISC_BLACK_MOON);
-                        entries.add(ModItems.MUSIC_DISC_DARK_WOODS);
-                        entries.add(ModItems.MUSIC_DISC_NIGHT_OWL);
-                        entries.add(ModItems.MUSIC_DISC_OLD_KING);
-                        entries.add(ModItems.MUSIC_DISC_THE_RANGER);
+                        entries.accept(ModItems.UNSTABLE_GEM);
+                        entries.accept(ModItems.DYING_LIGHT);
 
 
-                        entries.add(ModItems.BARRACKS_MAP);
-                        entries.add(ModItems.CARPENTER_MAP);
-                        entries.add(ModItems.WITCH_HUT_MAP);
-                        entries.add(ModItems.WIZARD_TOWER_MAP);
-                        entries.add(ModItems.PORTAL_TOWER_MAP);
-                        entries.add(ModItems.MESS_HALL_MAP);
+                        entries.accept(ModItems.BRITISH_MAN_SPAWN_EGG);
+
+                        entries.accept(ModItems.MUSIC_DISC_FALLOUT);
+                        entries.accept(ModItems.MUSIC_DISC_BLACK_MOON);
+                        entries.accept(ModItems.MUSIC_DISC_DARK_WOODS);
+                        entries.accept(ModItems.MUSIC_DISC_NIGHT_OWL);
+                        entries.accept(ModItems.MUSIC_DISC_OLD_KING);
+                        entries.accept(ModItems.MUSIC_DISC_THE_RANGER);
+
+
+                        entries.accept(ModItems.BARRACKS_MAP);
+                        entries.accept(ModItems.CARPENTER_MAP);
+                        entries.accept(ModItems.WITCH_HUT_MAP);
+                        entries.accept(ModItems.WIZARD_TOWER_MAP);
+                        entries.accept(ModItems.PORTAL_TOWER_MAP);
+                        entries.accept(ModItems.MESS_HALL_MAP);
 
                         //------------------------------------------BLOCKS----------------------------------------------//
 
-                        entries.add(ModItems.MYTHRIL_ORE);
-                        entries.add(ModItems.DEEPSLATE_MYTHRIL_ORE);
-                        entries.add(ModItems.MYTHRIL_BLOCK);
+                        entries.accept(ModItems.MYTHRIL_ORE);
+                        entries.accept(ModItems.DEEPSLATE_MYTHRIL_ORE);
+                        entries.accept(ModItems.MYTHRIL_BLOCK);
 
                         //------------------------------------------ARMOR-----------------------------------------------//
 
-                        ModItems.MYTHRIL_STUDDED_ARMOR.values().forEach(entries::add);
-                        ModItems.MYTHRIL_INFUSED_ARMOR.values().forEach(entries::add);
+                        ModItems.MYTHRIL_STUDDED_ARMOR.values().forEach(entries::accept);
+                        ModItems.MYTHRIL_INFUSED_ARMOR.values().forEach(entries::accept);
 
                     })
                     .build()

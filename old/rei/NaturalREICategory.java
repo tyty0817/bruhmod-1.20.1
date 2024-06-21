@@ -1,6 +1,7 @@
 package name.bruhmod.compat.rei;
 
 import me.shedaniel.math.Point;
+import me.shedaniel.math.Rectangle;
 import me.shedaniel.rei.api.client.gui.Renderer;
 import me.shedaniel.rei.api.client.gui.widgets.Widget;
 import me.shedaniel.rei.api.client.registry.display.DisplayCategory;
@@ -9,12 +10,11 @@ import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import me.shedaniel.rei.api.client.gui.widgets.Widgets;
-import me.shedaniel.math.Rectangle;
 import name.bruhmod.items.ModItems;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.item.ItemStack;
-import net.minecraft.text.Text;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -31,8 +31,8 @@ public class NaturalREICategory implements DisplayCategory<NaturalREIDisplay> {
     }
 
     @Override
-    public Text getTitle() {
-        return Text.translatable(MOD_ID + ".recipe.natural");
+    public Component getTitle() {
+        return Component.translatable(Mod.MOD_ID + ".recipe.natural");
     }
 
     @Override

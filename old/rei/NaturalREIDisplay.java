@@ -5,7 +5,7 @@ import me.shedaniel.rei.api.common.display.Display;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import name.bruhmod.recipe.NaturalRecipe;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,7 +15,7 @@ import static name.bruhmod.Mod.MOD_ID;
 
 public class NaturalREIDisplay implements Display {
 
-    public static final CategoryIdentifier<NaturalREIDisplay> CATEGORY = CategoryIdentifier.of(MOD_ID, "plugins/natural");
+    public static final CategoryIdentifier<NaturalREIDisplay> CATEGORY = CategoryIdentifier.of(Mod.MOD_ID, "plugins/natural");
 
     protected final NaturalRecipe recipe;
     protected List<EntryIngredient> inputs;
@@ -25,7 +25,7 @@ public class NaturalREIDisplay implements Display {
         this.recipe = recipe;
 
         this.inputs = recipe.getInput().stream().map(stack -> {
-            ItemStack[] stacks = stack.ingredient().getMatchingStacks();
+            ItemStack[] stacks = stack.ingredient().getItems();
             EntryIngredient.Builder result = EntryIngredient.builder(stacks.length);
             Arrays.stream(stacks).forEach(i -> {
                 i.setCount(stack.count());

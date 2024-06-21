@@ -1,12 +1,14 @@
 package name.bruhmod.entities;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.attribute.DefaultAttributeContainer;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.instance.SingletonAnimatableInstanceCache;
@@ -15,36 +17,36 @@ import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.AnimationState;
 import software.bernie.geckolib.animation.PlayState;
 
-public class BossEntity extends HostileEntity implements GeoEntity {
+public class BossEntity extends Monster implements GeoEntity {
 
     public static final String ID = "boss";
 
     private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
 
-    protected BossEntity(EntityType<? extends HostileEntity> entityType, World world) {
+    protected BossEntity(EntityType<? extends Monster> entityType, Level world) {
         super(entityType, world);
     }
 
-    public static DefaultAttributeContainer.Builder createMobAttributes() {
-        return HostileEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 80.0D)
-                .add(EntityAttributes.GENERIC_ARMOR, 20.0f)
-                .add(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, 10.0f)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2f)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 15.0f)
-                .add(EntityAttributes.GENERIC_ATTACK_SPEED, 0.2f)
-                .add(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, 5.0f);
+    public static AttributeSupplier.@NotNull Builder createMobAttributes() {
+        return Monster.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 80.0D)
+                .add(Attributes.ARMOR, 20.0f)
+                .add(Attributes.ARMOR_TOUGHNESS, 10.0f)
+                .add(Attributes.MOVEMENT_SPEED, 0.2f)
+                .add(Attributes.ATTACK_DAMAGE, 15.0f)
+                .add(Attributes.ATTACK_SPEED, 0.2f)
+                .add(Attributes.ATTACK_KNOCKBACK, 5.0f);
     }
 
     @Override
-    public void initGoals() {
-        this.goalSelector.add(1, new SwimGoal(this));
-        this.goalSelector.add(2, new MeleeAttackGoal(this, 1.0, true));
-        this.goalSelector.add(3, new WanderAroundGoal(this, 0.6f));
-        this.goalSelector.add(4, new LookAroundGoal(this));
+    public void registerGoals() {
+        this.goalSelector.addGoal(1, new FloatGoal(this));
+        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0, true));
+        this.goalSelector.addGoal(3, new RandomStrollGoal(this, 0.6f));
+        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
 
-        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
-        this.targetSelector.add(3, new ActiveTargetGoal<>(this, HostileEntity.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Monster.class, true));
     }
 
     @Override

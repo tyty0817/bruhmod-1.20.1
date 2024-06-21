@@ -2,50 +2,49 @@ package name.bruhmod.items.staffs;
 
 import name.bruhmod.Mod;
 import name.bruhmod.items.ModItems;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.Text;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 
 public class Shillelagh extends Item {
 
-    public Shillelagh(Settings settings) {
+    public Shillelagh(Properties settings) {
         super(settings);
     }
 
 
     @Override
-    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        tooltip.add(Text.translatable("item." + Mod.MOD_ID + ".shillelagh.tooltip"));
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag type) {
+        tooltip.add(Component.translatable("item." + Mod.MOD_ID + ".shillelagh.tooltip"));
 
-        super.appendTooltip(stack, context, tooltip, type);
+        super.appendHoverText(stack, context, tooltip, type);
     }
 
 
-
     @Override
-    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if(entity instanceof PlayerEntity) {
-            PlayerEntity player = (PlayerEntity) entity;
-            if(player.getStackInHand(Hand.MAIN_HAND).isOf(ModItems.SHILLELAGH)){ //comparing an Item with and ItemStack but it works?
+    public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
+        if(entity instanceof Player) {
+            Player player = (Player) entity;
+            if(player.getItemInHand(InteractionHand.MAIN_HAND).is(ModItems.SHILLELAGH)){ //comparing an Item with and ItemStack but it works?
                 if(player.fallDistance > 3.0f){
                     player.fallDistance = 0.0f;
                 }
             }
-            else if(player.getStackInHand(Hand.OFF_HAND).isOf(ModItems.SHILLELAGH)){ //comparing an Item with and ItemStack but it works?
+            else if(player.getItemInHand(InteractionHand.OFF_HAND).is(ModItems.SHILLELAGH)){ //comparing an Item with and ItemStack but it works?
                 if(player.fallDistance > 3.0f){
                     player.fallDistance = 0.0f;
                 }
@@ -54,17 +53,17 @@ public class Shillelagh extends Item {
     }
 
     @Override
-    public TypedActionResult<ItemStack> use (World world, PlayerEntity user, Hand hand) {
-        user.getItemCooldownManager().set(this, 10);
+    public @NotNull InteractionResultHolder<ItemStack> use (Level world, Player user, InteractionHand hand) {
+        user.getCooldowns().addCooldown(this, 10);
         double sash_buff = 1.5;
-        float yaw = user.getYaw();
-        float pitch = user.getPitch();
-        float f = -MathHelper.sin(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
-        float g = -MathHelper.sin((pitch) * 0.017453292F);
-        float h = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
-        user.setVelocity(f * sash_buff, (g + 0.5) * sash_buff, h * sash_buff);
-        Vec3d pos = user.getPos();
-        world.playSound(null, new BlockPos((int) pos.x, (int) pos.y, (int) pos.z), SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.BLOCKS);
-        return TypedActionResult.pass(user.getStackInHand(hand));
+        float yaw = user.getXRot();
+        float pitch = user.getYRot();
+        double f = -Math.sin(yaw * 0.017453292F) * Math.cos(pitch * 0.017453292F);
+        double g = -Math.sin((pitch) * 0.017453292F);
+        double h = Math.cos(yaw * 0.017453292F) * Math.cos(pitch * 0.017453292F);
+        user.setDeltaMovement(f * sash_buff, (g + 0.5) * sash_buff, h * sash_buff);
+        Vec3 pos = user.position();
+        world.playSound(null, new BlockPos((int) pos.x, (int) pos.y, (int) pos.z), SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS);
+        return InteractionResultHolder.pass(user.getItemInHand(hand));
     }
 }

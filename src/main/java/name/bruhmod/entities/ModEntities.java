@@ -2,12 +2,11 @@ package name.bruhmod.entities;
 
 import name.bruhmod.Mod;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnGroup;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 
 import static name.bruhmod.Mod.MOD_ID;
 
@@ -15,17 +14,16 @@ public class ModEntities {
 
     public static EntityType<LightningBottleEntity> LIGHTNING_BOTTLE = registerEntity(
             "lightning_bottle",
-            EntityType.Builder.create(LightningBottleEntity::createEntity, SpawnGroup.MISC).dimensions(0.25F, 0.25F).maxTrackingRange(4).trackingTickInterval(10).build()
+            EntityType.Builder.of(LightningBottleEntity::createEntity, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build()
     );
 
-    public static final EntityType<FireBolt> FIRE_BOLT = Registry.register(Registries.ENTITY_TYPE,
-            Identifier.of(MOD_ID, "dice_projectile"),
-            EntityType.Builder.<FireBolt>create(FireBolt::new, SpawnGroup.MISC)
-                    .dimensions(0.25f, 0.25f).build());
+    public static final EntityType<FireBolt> FIRE_BOLT = registerEntity("dice_projectile",
+            EntityType.Builder.of(FireBolt::createEntity, MobCategory.MISC)
+                    .sized(0.25f, 0.25f).build());
 
     public static EntityType<BossEntity> BOSS = registerEntity(
             BossEntity.ID,
-            EntityType.Builder.create(BossEntity::new, SpawnGroup.CREATURE).dimensions(0.8f, 2.75f).build()
+            EntityType.Builder.of(BossEntity::new, MobCategory.CREATURE).sized(0.8f, 2.75f).build()
     );
 
     public static void register() {
@@ -35,8 +33,8 @@ public class ModEntities {
 
     private static <T extends Entity> EntityType<T> registerEntity(String id, EntityType<T> type) {
         return Registry.register(
-                Registries.ENTITY_TYPE,
-                Identifier.of(MOD_ID, id),
+                BuiltInRegistries.ENTITY_TYPE,
+                Mod.idOf(id),
                 type
         );
     }

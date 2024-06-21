@@ -2,41 +2,38 @@ package name.bruhmod.world;
 
 import name.bruhmod.Mod;
 import name.bruhmod.blocks.ModBlocks;
-import net.minecraft.block.Blocks;
-import net.minecraft.registry.Registerable;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.structure.rule.BlockMatchRuleTest;
-import net.minecraft.structure.rule.RuleTest;
-import net.minecraft.structure.rule.TagMatchRuleTest;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
 import java.util.List;
 
 public class ModConfiguredFeatures {
-    public static final RegistryKey<ConfiguredFeature<?, ?>> MYTHRIL_ORE_KEY = registerKey("mythril_ore");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MYTHRIL_ORE_KEY = registerKey("mythril_ore");
 
-    public static void boostrap(Registerable<ConfiguredFeature<?, ?>> context) {
-        RuleTest stoneReplacables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
-        RuleTest deepslateReplacables = new TagMatchRuleTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
-        RuleTest netherReplacables = new TagMatchRuleTest(BlockTags.BASE_STONE_NETHER);
-        RuleTest endReplacables = new BlockMatchRuleTest(Blocks.END_STONE);
+    public static void boostrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+        RuleTest stoneReplacables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
+        RuleTest deepslateReplacables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+        RuleTest netherReplacables = new TagMatchTest(BlockTags.BASE_STONE_NETHER);
+        RuleTest endReplacables = new BlockMatchTest(Blocks.END_STONE);
 
-        List<OreFeatureConfig.Target> overworldMythrilOres =
-                List.of(OreFeatureConfig.createTarget(stoneReplacables, ModBlocks.MYTHRIL_ORE.getDefaultState()),
-                        OreFeatureConfig.createTarget(deepslateReplacables, ModBlocks.DEEPSLATE_MYTHRIL_ORE.getDefaultState()));
+        List<OreConfiguration.TargetBlockState> overworldMythrilOres =
+                List.of(OreConfiguration.target(stoneReplacables, ModBlocks.MYTHRIL_ORE.defaultBlockState()),
+                        OreConfiguration.target(deepslateReplacables, ModBlocks.DEEPSLATE_MYTHRIL_ORE.defaultBlockState()));
 
-        register(context, MYTHRIL_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldMythrilOres, 12));
+        context.register(MYTHRIL_ORE_KEY, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(overworldMythrilOres, 12)));
     }
 
-    public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {
-        return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Identifier.of(Mod.MOD_ID, name));
+    public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, Mod.idOf(name));
     }
 
-    private static <FC extends FeatureConfig, F extends Feature<FC>> void register(Registerable<ConfiguredFeature<?, ?>> context,
-                                                                                   RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
-        context.register(key, new ConfiguredFeature<>(feature, configuration));
-    }
 }

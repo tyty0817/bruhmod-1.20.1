@@ -13,16 +13,19 @@ import name.bruhmod.entities.*;
 import name.bruhmod.world.ModCustomTrades;
 import name.bruhmod.world.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
-import dev.architectury.event.events.common.ExplosionEvent;
 
-import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
+import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Mod implements ModInitializer {
 	public static final String MOD_ID = "bruhmod";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+	public static ResourceLocation idOf(String path) {
+		return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+	}
 
 	@Override
 	public void onInitialize() {
@@ -41,9 +44,6 @@ public class Mod implements ModInitializer {
 
 		ServerEntityEvents.ENTITY_LOAD.register(new EntityLoads());
 		ServerEntityEvents.ENTITY_UNLOAD.register(new EntityUnloads());
-		ExplosionEvent.PRE.register(new ExplosionDetector());
-		ExplosionEvent.DETONATE.register(new ExplosionCrafter());
-		ServerLivingEntityEvents.AFTER_DEATH.register(new EntityDeathDetector());
 
 		ModWorldGeneration.generateModWorldGen();
 	}

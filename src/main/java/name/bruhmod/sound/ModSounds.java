@@ -1,23 +1,25 @@
 package name.bruhmod.sound;
 
 import name.bruhmod.Mod;
-import net.minecraft.registry.*;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.sounds.SoundEvent;
 
 import static name.bruhmod.Mod.MOD_ID;
 
 public class ModSounds {
 
-    public static RegistryKey<SoundEvent> register(String id) {
-        Identifier i = Identifier.of(MOD_ID, id);
-        Registry.register(Registries.SOUND_EVENT, i, SoundEvent.of(i));
-        return RegistryKey.of(RegistryKeys.SOUND_EVENT, i);
+    public static ResourceKey<SoundEvent> register(String id) {
+        var i = Mod.idOf(id);
+        Registry.register(BuiltInRegistries.SOUND_EVENT, i, SoundEvent.createVariableRangeEvent(i));
+        return ResourceKey.create(Registries.SOUND_EVENT, i);
     }
 
 
 
-    public static RegistryKey<SoundEvent>
+    public static ResourceKey<SoundEvent>
             FALLOUT = register("fallout"),
             BLACK_MOON = register("black_moon"),
             DARK_WOODS = register("dark_woods"),

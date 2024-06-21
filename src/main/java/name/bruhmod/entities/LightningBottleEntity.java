@@ -1,41 +1,44 @@
 package name.bruhmod.entities;
 
 import name.bruhmod.items.ModItems;
-import net.minecraft.entity.*;
-import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
-import net.minecraft.item.Item;
-import net.minecraft.util.hit.HitResult;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LightningBolt;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.HitResult;
+import org.jetbrains.annotations.NotNull;
 
-public class LightningBottleEntity extends ThrownItemEntity {
+public class LightningBottleEntity extends ThrowableItemProjectile {
 
     // this is here because constructor lambda is bugging??
-    protected static LightningBottleEntity createEntity(EntityType<LightningBottleEntity> type, World world) {
+    protected static LightningBottleEntity createEntity(EntityType<LightningBottleEntity> type, Level world) {
         return new LightningBottleEntity(type, world);
     }
 
-    public LightningBottleEntity(EntityType<? extends LightningBottleEntity> entityType, World world) {
+    public LightningBottleEntity(EntityType<? extends LightningBottleEntity> entityType, Level world) {
         super(entityType, world);
     }
 
-    public LightningBottleEntity(World world, LivingEntity owner) {
+    public LightningBottleEntity(Level world, LivingEntity owner) {
         super(ModEntities.LIGHTNING_BOTTLE, owner, world);
     }
 
     @Override
-    protected void onCollision(HitResult hitResult) {
-        super.onCollision(hitResult);
-        World world = this.getWorld();
-        if (!world.isClient) {
-            LightningEntity lightningEntity = new LightningEntity(EntityType.LIGHTNING_BOLT, world);
-            lightningEntity.setPosition(hitResult.getPos());
-            world.spawnEntity(lightningEntity);
+    protected void onHit(HitResult hitResult) {
+        super.onHit(hitResult);
+        Level world = this.level();
+        if (!world.isClientSide()) {
+            LightningBolt lightningEntity = new LightningBolt(EntityType.LIGHTNING_BOLT, world);
+            lightningEntity.setPos(hitResult.getLocation());
+            world.addFreshEntity(lightningEntity);
             this.discard();
         }
     }
 
     @Override
-    protected Item getDefaultItem() {
+    protected @NotNull Item getDefaultItem() {
         return ModItems.LIGHTNING_IN_A_BOTTLE;
     }
 }

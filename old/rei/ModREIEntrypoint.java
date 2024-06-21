@@ -1,18 +1,16 @@
-package name.bruhmod.compat;
+package name.bruhmod.compat.rei;
 
 import me.shedaniel.rei.api.client.plugins.REIClientPlugin;
 import me.shedaniel.rei.api.client.registry.category.CategoryRegistry;
 import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryStacks;
-import name.bruhmod.compat.rei.NaturalREICategory;
-import name.bruhmod.compat.rei.NaturalREIDisplay;
 import name.bruhmod.recipe.NaturalRecipe;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 @SuppressWarnings("unused")
-public class REIEntrypoint implements REIClientPlugin {
+public class ModREIEntrypoint implements REIClientPlugin {
 
     @Override
     public void registerCategories(CategoryRegistry helper) {

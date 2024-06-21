@@ -1,0 +1,25 @@
+{
+  "type": "bruhmod:natural",
+  "damageType": "minecraft:explosion",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "bruhmod:empty_gem"
+      }
+    },
+    {
+      "ingredient": {
+        "item": "bruhmod:explosive_jelly"
+      }
+    },
+    {
+      "ingredient": {
+        "item": "minecraft:gunpowder"
+      },
+      "count": 2
+    }
+  ],
+  "result": {
+    "id": "bruhmod:unstable_gem"
+  }
+}

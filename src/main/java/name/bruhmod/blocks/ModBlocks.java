@@ -1,25 +1,23 @@
 package name.bruhmod.blocks;
 
 import name.bruhmod.Mod;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ExperienceDroppingBlock;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public class ModBlocks {
 
 	public static final Block
 			MYTHRIL_ORE = registerBlock("mythril_ore",
-					new ExperienceDroppingBlock(UniformIntProvider.create(5, 10), AbstractBlock.Settings.copy(Blocks.STONE).strength(4.0f, 4.0f).luminance((hi) -> 2).requiresTool())),
+					new DropExperienceBlock(UniformInt.of(5, 10), BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).strength(4.0f, 4.0f).lightLevel((hi) -> 2).requiresCorrectToolForDrops())),
 			DEEPSLATE_MYTHRIL_ORE = registerBlock("deepslate_mythril_ore",
-					new ExperienceDroppingBlock(UniformIntProvider.create(5, 10), AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(4.0f, 4.0f).luminance((hi) -> 2).requiresTool())),
+					new DropExperienceBlock(UniformInt.of(5, 10), BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE).strength(4.0f, 4.0f).lightLevel((hi) -> 2).requiresCorrectToolForDrops())),
 			MYTHRIL_BLOCK = registerBlock("mythril_block",
-					new Block(FabricBlockSettings.copyOf(Blocks.AMETHYST_BLOCK).strength(4.0f, 4.0f).luminance((hi) -> 2).requiresTool()));
+					new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).strength(4.0f, 4.0f).lightLevel((hi) -> 2).requiresCorrectToolForDrops()));
 
 	public static void register() {
 		
@@ -27,12 +25,8 @@ public class ModBlocks {
 
 	}
 
-	private static Block registerBlock(String name, ExperienceDroppingBlock block) {
-		return Registry.register(Registries.BLOCK, Identifier.of(Mod.MOD_ID, name), block);
-	}
-
 	private static Block registerBlock(String name, Block block) {
-		return Registry.register(Registries.BLOCK, Identifier.of(Mod.MOD_ID, name), block);
+		return Registry.register(BuiltInRegistries.BLOCK, Mod.idOf(name), block);
 	}
 
 }

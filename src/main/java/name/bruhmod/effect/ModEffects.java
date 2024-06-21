@@ -1,21 +1,20 @@
 package name.bruhmod.effect;
 
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectCategory;
-import net.minecraft.util.Identifier;
-import static name.bruhmod.Mod.MOD_ID;
+import name.bruhmod.Mod;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
 
 public class ModEffects {
-    public static StatusEffect CONFUSE;
+    public static MobEffect CONFUSE;
 
-    public static StatusEffect registerStatusEffect(String name){
-        return Registry.register(Registries.STATUS_EFFECT, Identifier.of(MOD_ID, name),
-                new ConfuseEffect(StatusEffectCategory.HARMFUL, 3124687));
+    public static MobEffect registerMobEffect(String name){
+        return Registry.register(BuiltInRegistries.MOB_EFFECT, Mod.idOf(name),
+                new ConfuseEffect(MobEffectCategory.HARMFUL, 3124687));
     }
 
     public static void registerEffects() {
-        CONFUSE = registerStatusEffect("confuse");
+        CONFUSE = registerMobEffect("confuse");
     }
 }

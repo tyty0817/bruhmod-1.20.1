@@ -1,80 +1,85 @@
 package name.bruhmod.entities;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.data.DataTracker;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ProjectileEntity;
-import net.minecraft.entity.projectile.ProjectileUtil;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.util.hit.HitResult;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.projectile.ProjectileUtil;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
-public class FireBolt extends ProjectileEntity {
+public class FireBolt extends Projectile {
     double powerX, powerY, powerZ;
     int life;
-    StatusEffectInstance[] effectList = {new StatusEffectInstance(StatusEffects.WITHER, 200),
-    new StatusEffectInstance(StatusEffects.POISON, 200, 1),
-    new StatusEffectInstance(StatusEffects.SLOWNESS, 200, 1),
-    new StatusEffectInstance(StatusEffects.WEAKNESS, 200, 1),
-    new StatusEffectInstance(StatusEffects.BLINDNESS, 200)};
+    MobEffectInstance[] effectList = {new MobEffectInstance(MobEffects.WITHER, 200),
+    new MobEffectInstance(MobEffects.POISON, 200, 1),
+    new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 1),
+    new MobEffectInstance(MobEffects.WEAKNESS, 200, 1),
+    new MobEffectInstance(MobEffects.BLINDNESS, 200)};
 
-    public FireBolt(EntityType<FireBolt> fireBoltEntityType, World world) {
+    public FireBolt(EntityType<FireBolt> fireBoltEntityType, Level world) {
         super(fireBoltEntityType, world);
     }
 
-    public FireBolt(World world, PlayerEntity user, double x, double y, double z) {
+    public FireBolt(Level world, Player user, double x, double y, double z) {
         super(EntityType.FIREBALL, world);
         powerX = x;
         powerY = y;
         powerZ = z;
-        this.noClip = true;
+        this.noCulling = true;
         this.setOwner(user);
     }
 
-    protected void onCollision(HitResult hitResult) {
-        super.onCollision(hitResult);
+    protected static FireBolt createEntity(EntityType<FireBolt> type, Level world) {
+        return new FireBolt(type, world);
     }
 
+//    protected void onHit(HitResult hitResult) {
+//        super.onHit(hitResult);
+//    }
+
     @Override
-    protected void onEntityHit(EntityHitResult entityHitResult) {
-        if (!this.getWorld().isClient) {
+    protected void onHitEntity(EntityHitResult entityHitResult) {
+        if (!this.level().isClientSide()) {
             if (entityHitResult.getEntity() instanceof LivingEntity target) {
                 int effect = (int) (Math.random() * 5);
-                target.addStatusEffect(effectList[effect], this.getOwner());
+                target.addEffect(effectList[effect], this.getOwner());
             }
             this.discard();
         }
     }
 
     @Override
-    protected void initDataTracker(DataTracker.Builder builder) {
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
 
     }
 
     public void tick() {
         Entity entity = this.getOwner();
-        if (this.getWorld().isClient || (entity == null || !entity.isRemoved()) && this.getWorld().isChunkLoaded(this.getBlockPos())) {
-            HitResult hitResult = ProjectileUtil.getCollision(this, this::canHit);
+        Level world = this.level();
+        if (world.isClientSide() || (entity == null || !entity.isRemoved()) && world.isLoaded(this.blockPosition())) {
+            HitResult hitResult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
             if (hitResult.getType() != HitResult.Type.MISS) {
-                this.onCollision(hitResult);
+                this.onHit(hitResult);
             }
 
-            this.checkBlockCollision();
-            Vec3d vec3d = this.getVelocity();
+            this.checkInsideBlocks();
+            Vec3 vec3d = this.getDeltaMovement();
             double d = this.getX() + vec3d.x;
             double e = this.getY() + vec3d.y;
             double f = this.getZ() + vec3d.z;
-            ProjectileUtil.setRotationFromVelocity(this, 0.2F);
+            ProjectileUtil.rotateTowardsMovement(this, 0.2F);
 
-            this.setVelocity(vec3d.add(this.powerX, this.powerY, this.powerZ).multiply(0.95F));
-            this.getWorld().addParticle(ParticleTypes.FLAME, d, e + 0.5, f, 0.0, 0.0, 0.0);
-            this.setPosition(d, e, f);
+            this.setPos(vec3d.add(this.powerX, this.powerY, this.powerZ).scale(0.95F));
+            world.addParticle(ParticleTypes.FLAME, d, e + 0.5, f, 0.0, 0.0, 0.0);
+            this.setPos(d, e, f);
         } else {
             this.discard();
         }

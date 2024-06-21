@@ -24,8 +24,8 @@
 		"fabric-datagen": [
 			"name.bruhmod.datagen.ModDataGenerator"
 		],
-		"rei_client": [
-			"name.bruhmod.compat.REIEntrypoint"
+		"jei_mod_plugin": [
+			"name.bruhmod.compat.jei.JEIModPlugin"
 		]
 	},
 	"mixins": [

@@ -4,41 +4,41 @@ import name.bruhmod.items.ModItems;
 import name.bruhmod.blocks.ModBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
-import net.minecraft.block.Block;
-import net.minecraft.data.server.loottable.BlockLootTableGenerator;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.item.Item;
-import net.minecraft.loot.LootTable;
-import net.minecraft.loot.entry.ItemEntry;
-import net.minecraft.loot.function.ApplyBonusLootFunction;
-import net.minecraft.loot.function.SetCountLootFunction;
-import net.minecraft.loot.provider.number.UniformLootNumberProvider;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.concurrent.CompletableFuture;
 
 public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
-
-    public ModLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+    protected ModLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
         super(dataOutput, registryLookup);
     }
 
     @Override
     public void generate() {
-        addDrop(ModBlocks.MYTHRIL_BLOCK);
-        addDrop(ModBlocks.MYTHRIL_ORE, copperLikeOreDrops(ModBlocks.MYTHRIL_ORE, ModItems.MYTHRIL_DUST));
-        addDrop(ModBlocks.DEEPSLATE_MYTHRIL_ORE, copperLikeOreDrops(ModBlocks.DEEPSLATE_MYTHRIL_ORE, ModItems.MYTHRIL_DUST));
+        this.dropSelf(ModBlocks.MYTHRIL_BLOCK);
+        this.add(ModBlocks.MYTHRIL_ORE, this.createOreDrops(ModBlocks.MYTHRIL_ORE, ModItems.MYTHRIL_DUST));
+        this.add(ModBlocks.DEEPSLATE_MYTHRIL_ORE, this.createOreDrops(ModBlocks.DEEPSLATE_MYTHRIL_ORE, ModItems.MYTHRIL_DUST));
     }
 
-    public LootTable.Builder copperLikeOreDrops(Block drop, Item item) {
-        return dropsWithSilkTouch(drop, this.applyExplosionDecay(drop,
-                        ItemEntry.builder(item)
-                                .apply(SetCountLootFunction
-                                        .builder(UniformLootNumberProvider
-                                                .create(1.0f, 3.0f))))
-                .apply(ApplyBonusLootFunction.oreDrops(registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE))));
+    public LootTable.Builder createOreDrops(Block block, Item item) {
+        HolderLookup.RegistryLookup<Enchantment> registryLookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        return this.createSilkTouchDispatchTable(
+                block,
+                this.applyExplosionDecay(block, LootItem.lootTableItem(item)
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 5.0F)))
+                        .apply(ApplyBonusCount.addOreBonusCount(registryLookup.getOrThrow(Enchantments.FORTUNE)))
+                )
+        );
     }
 }

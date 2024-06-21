@@ -1,25 +1,25 @@
 package name.bruhmod.entities;
 
-import net.minecraft.util.Identifier;
+import name.bruhmod.Mod;
+import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.GeoModel;
 
-import static name.bruhmod.Mod.MOD_ID;
 
 public class BossEntityModel extends GeoModel<BossEntity> {
 
 
     @Override
-    public Identifier getModelResource(BossEntity animatable) {
-        return Identifier.of(MOD_ID, "geo/" + BossEntity.ID + ".geo.json");
+    public ResourceLocation getModelResource(BossEntity animatable) {
+        return Mod.idOf("geo/" + BossEntity.ID + ".geo.json");
     }
 
     @Override
-    public Identifier getTextureResource(BossEntity animatable) {
-        return Identifier.of(MOD_ID, "textures/" + BossEntity.ID + ".png");
+    public ResourceLocation getTextureResource(BossEntity animatable) {
+        return Mod.idOf("textures/" + BossEntity.ID + ".png");
     }
 
     @Override
-    public Identifier getAnimationResource(BossEntity animatable) {
-        return Identifier.of(MOD_ID, "animations/" + BossEntity.ID + ".animation.json");
+    public ResourceLocation getAnimationResource(BossEntity animatable) {
+        return Mod.idOf("animations/" + BossEntity.ID + ".animation.json");
     }
 }

@@ -1,28 +1,29 @@
 package name.bruhmod.effect;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectCategory;
 
-public class ConfuseEffect extends StatusEffect {
-    public ConfuseEffect(StatusEffectCategory statusEffectCategory, int color) {
-        super(statusEffectCategory, color);
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.LivingEntity;
+
+public class ConfuseEffect extends MobEffect {
+    public ConfuseEffect(MobEffectCategory MobEffectCategory, int color) {
+        super(MobEffectCategory, color);
     }
 
     @Override
-    public boolean applyUpdateEffect(LivingEntity pLivingEntity, int pAmplifier) {
+    public boolean applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
         double x = pLivingEntity.getX();
         double y = pLivingEntity.getY();
         double z = pLivingEntity.getZ();
 
         //pLivingEntity.teleport(x, y, z);
-        pLivingEntity.setVelocity(pLivingEntity.getVelocity().add(((Math.random() * pAmplifier) - (pAmplifier / 2.0)), 0, (Math.random() * pAmplifier) - (pAmplifier / 2.0)));
+        pLivingEntity.setDeltaMovement(pLivingEntity.getDeltaMovement().add(((Math.random() * pAmplifier) - (pAmplifier / 2.0)), 0, (Math.random() * pAmplifier) - (pAmplifier / 2.0)));
 
-        return super.applyUpdateEffect(pLivingEntity, pAmplifier);
+        return super.applyEffectTick(pLivingEntity, pAmplifier);
     }
 
     @Override
-    public boolean canApplyUpdateEffect(int pDuration, int pAmplifier) {
+    public boolean shouldApplyEffectTickThisTick(int pDuration, int pAmplifier) {
         return true;
     }
 }

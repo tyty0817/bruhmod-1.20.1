@@ -1,50 +1,50 @@
 package name.bruhmod.items.staffs;
 
 import name.bruhmod.Mod;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.Text;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 
 public class MonksCudgel extends Item {
 
-    public MonksCudgel(Settings settings) {
+    public MonksCudgel(Properties settings) {
         super(settings);
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        tooltip.add(Text.translatable("item." + Mod.MOD_ID + ".monks_cudgel.tooltip"));
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag type) {
+        tooltip.add(Component.translatable("item." + Mod.MOD_ID + ".monks_cudgel.tooltip"));
 
-        super.appendTooltip(stack, context, tooltip, type);
+        super.appendHoverText(stack, context, tooltip, type);
     }
 
     // add slow on selection
 //
 //    @Override
-//    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-//        if(entity instanceof PlayerEntity) {
-//            PlayerEntity Player = (PlayerEntity) entity;
-//            if(Player.getStackInHand(Hand.MAIN_HAND).equals(ModItems.MONKS_CUDGEL)){
+//    public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
+//        if(entity instanceof Player) {
+//            Player Player = (Player) entity;
+//            if(Player.getItemInHand(InteractionHand.MAIN_HAND).equals(ModItems.MONKS_CUDGEL)){
 //                if(Player.fallDistance > 3.0f){
 //                    Player.fallDistance = 0.0f;
 //                }
 //            }
-//            else if(Player.getStackInHand(Hand.OFF_HAND).equals(ModItems.MONKS_CUDGEL)){
+//            else if(Player.getItemInHand(InteractionHand.OFF_HAND).equals(ModItems.MONKS_CUDGEL)){
 //                if(Player.fallDistance > 3.0f){
 //                    Player.fallDistance = 0.0f;
 //                }
@@ -53,30 +53,29 @@ public class MonksCudgel extends Item {
 //    }
 
     @Override
-    public TypedActionResult<ItemStack> use (World world, PlayerEntity user, Hand hand) {
-//        user.getItemCooldownManager().set(this, 15);
-//        float yaw = user.getYaw();
-//        float pitch = user.getPitch();
-//        float f = -MathHelper.sin(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
-//        float g = -MathHelper.sin((pitch) * 0.017453292F);
-//        float h = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
+    public @NotNull InteractionResultHolder<ItemStack> use (Level world, Player user, InteractionHand hand) {
+//        user.getCooldowns().addCooldown(this, 15);
+//        float yaw = user.getXRot();
+//        float pitch = user.getYRot();
+//        float f = -Math.sin(yaw * 0.017453292F) * Math.cos(pitch * 0.017453292F);
+//        float g = -Math.sin((pitch) * 0.017453292F);
+//        float h = Math.cos(yaw * 0.017453292F) * Math.cos(pitch * 0.017453292F);
 //        user.setVelocity(f, g + 0.5, h);
-//        Vec3d pos = user.getPos();
+//        Vec3 pos = user.getPos();
 //        world.playSound(null, new BlockPos((int) pos.x, (int) pos.y, (int) pos.z), SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.BLOCKS);
-//        return TypedActionResult.pass(user.getStackInHand(hand));
-        user.getItemCooldownManager().set(this, 45);
+//        return InteractionResultHolder.pass(user.getItemInHand(hand));
+        user.getCooldowns().addCooldown(this, 45);
         final double maxDistance = 3.0;
-        Vec3d looking = user.getRotationVec(0.f).multiply(maxDistance);
-        Box box = Box.of(user.getPos().add(new Vec3d(looking.x, maxDistance / 2.0, looking.z)), maxDistance, maxDistance, maxDistance);
-        for (Entity e : world.getOtherEntities(user, box, entity -> entity instanceof MobEntity)) {
-            MobEntity entity = (MobEntity) e;
+        Vec3 looking = user.getViewVector(0.f).scale(maxDistance);
+        AABB box = AABB.ofSize(user.position().add(new Vec3(looking.x, maxDistance / 2.0, looking.z)), maxDistance, maxDistance, maxDistance);
+        for (Mob entity : world.getEntitiesOfClass(Mob.class, box)) {
             // fix this math, add damage
-            Vec3d offset = entity.getPos().subtract(user.getPos());
+            Vec3 offset = entity.position().subtract(user.position());
             double xsign = offset.x / Math.abs(offset.x), zsign = offset.z / Math.abs(offset.z);
             double x = maxDistance - Math.abs(offset.x), z = maxDistance - Math.abs(offset.z);
-            entity.addVelocity(new Vec3d(x * xsign / 2.0, Math.log(maxDistance - Math.abs(offset.y) + 1) / 2.0, z * zsign / 2.0));
+            entity.addDeltaMovement(new Vec3(x * xsign / 2.0, Math.log(maxDistance - Math.abs(offset.y) + 1) / 2.0, z * zsign / 2.0));
 
-            entity.setOnFireFor(5);
+            entity.igniteForSeconds(5);
 //            entity.damage()
         }
         for (int x = 0; x < maxDistance; x++) {
@@ -84,8 +83,8 @@ public class MonksCudgel extends Item {
                 world.addParticle(ParticleTypes.FLAME, x + box.minX, box.minY, box.minZ + z, 0.0, 0.2, 0.0);
             }
         }
-        world.playSound(null, user.getBlockPos(), SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.BLOCKS);
-        return TypedActionResult.pass(user.getStackInHand(hand));
+        world.playSound(null, user.blockPosition(), SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS);
+        return InteractionResultHolder.pass(user.getItemInHand(hand));
     }
 }
 

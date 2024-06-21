@@ -3,142 +3,142 @@ package name.bruhmod.datagen;
 import name.bruhmod.items.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.data.server.recipe.*;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.item.Items;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import name.bruhmod.blocks.ModBlocks;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
 
-    private static final List<ItemConvertible> MYTHRIL_SMELTABLES = List.of(ModBlocks.MYTHRIL_ORE,
-            ModBlocks.DEEPSLATE_MYTHRIL_ORE, ModItems.MYTHRIL_DUST);
+    private static final List<ItemLike> MYTHRIL_SMELTABLES = List.of(ModItems.MYTHRIL_ORE,
+            ModItems.DEEPSLATE_MYTHRIL_ORE, ModItems.MYTHRIL_DUST);
 
-    private static final List<ItemConvertible> DIAMOND = List.of(Items.DIAMOND);
+    private static final List<ItemLike> DIAMOND = List.of(Items.DIAMOND);
 
-    public ModRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+    public ModRecipeProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 
+
     @Override
-    public void generate(RecipeExporter exporter) {
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MYTHRIL)
-                .input(ModItems.MYTHRIL_FRAGMENT, 4)
-                .input(Items.DIAMOND, 4)
-                .criterion(hasItem(Items.DIAMOND), conditionsFromItem(Items.DIAMOND))
-                .criterion(hasItem(ModItems.MYTHRIL_FRAGMENT), conditionsFromItem(ModItems.MYTHRIL_FRAGMENT))
-                .offerTo(exporter, Identifier.of("mythril2"));
+    public void buildRecipes(RecipeOutput exporter) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MYTHRIL)
+                .requires(ModItems.MYTHRIL_FRAGMENT, 4)
+                .requires(Items.DIAMOND, 4)
+                .unlockedBy(getItemName(Items.DIAMOND), FabricRecipeProvider.has(Items.DIAMOND))
+                .unlockedBy(getItemName(ModItems.MYTHRIL_FRAGMENT), FabricRecipeProvider.has(ModItems.MYTHRIL_FRAGMENT))
+                .save(exporter, ResourceLocation.parse("mythril2"));
 
         //-----------------------------------------------------------------------------------------------------------------//
         //                                               Staff Recipes                                                     //
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BRANCH_OF_CORRUPTION, 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BRANCH_OF_CORRUPTION, 1)
                 .pattern("  G")
                 .pattern(" C ")
                 .pattern("B  ")
-                .input('G', ModItems.JEWEL_OF_CORRUPTION)
-                .input('C', ModItems.CORRUPTED_CROWN)
-                .input('B', ModItems.MYSTERIOUS_CLUB)
-                .criterion(hasItem(ModItems.JEWEL_OF_CORRUPTION), conditionsFromItem(ModItems.JEWEL_OF_CORRUPTION))
-                .criterion(hasItem(ModItems.CORRUPTED_CROWN), conditionsFromItem(ModItems.CORRUPTED_CROWN))
-                .criterion(hasItem(ModItems.MYSTERIOUS_CLUB), conditionsFromItem(ModItems.MYSTERIOUS_CLUB))
-                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.BRANCH_OF_CORRUPTION)));
+                .define('G', ModItems.JEWEL_OF_CORRUPTION)
+                .define('C', ModItems.CORRUPTED_CROWN)
+                .define('B', ModItems.MYSTERIOUS_CLUB)
+                .unlockedBy(getItemName(ModItems.JEWEL_OF_CORRUPTION), has(ModItems.JEWEL_OF_CORRUPTION))
+                .unlockedBy(getItemName(ModItems.CORRUPTED_CROWN), has(ModItems.CORRUPTED_CROWN))
+                .unlockedBy(getItemName(ModItems.MYSTERIOUS_CLUB), has(ModItems.MYSTERIOUS_CLUB))
+                .save(exporter, ResourceLocation.parse(getSimpleRecipeName(ModItems.BRANCH_OF_CORRUPTION)));
 
 
 
         //                                                Maelstrom                                                   //
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.VOLATILE_CLAW, 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VOLATILE_CLAW, 1)
                 .pattern("IR ")
                 .pattern("N R")
                 .pattern("BNI")
-                .input('B', Items.GOLD_BLOCK)
-                .input('I', Items.GOLD_INGOT)
-                .input('N', Items.GOLD_NUGGET)
-                .input('R', Items.RAW_GOLD)
-                .criterion(hasItem(Items.GOLD_BLOCK), conditionsFromItem(Items.GOLD_BLOCK))
-                .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
-                .criterion(hasItem(Items.GOLD_NUGGET), conditionsFromItem(Items.GOLD_NUGGET))
-                .criterion(hasItem(Items.RAW_GOLD), conditionsFromItem(Items.RAW_GOLD))
-                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.VOLATILE_CLAW)));
+                .define('B', Items.GOLD_BLOCK)
+                .define('I', Items.GOLD_INGOT)
+                .define('N', Items.GOLD_NUGGET)
+                .define('R', Items.RAW_GOLD)
+                .unlockedBy(getItemName(Items.GOLD_BLOCK), has(Items.GOLD_BLOCK))
+                .unlockedBy(getItemName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .unlockedBy(getItemName(Items.GOLD_NUGGET), has(Items.GOLD_NUGGET))
+                .unlockedBy(getItemName(Items.RAW_GOLD), has(Items.RAW_GOLD))
+                .save(exporter, ResourceLocation.parse(getSimpleRecipeName(ModItems.VOLATILE_CLAW)));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.VOLATILE_PILLAR, 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VOLATILE_PILLAR, 1)
                 .pattern(" ID")
                 .pattern("IRI")
                 .pattern("FI ")
-                .input('F', ModItems.MYTHRIL_FRAGMENT)
-                .input('I', Items.GOLD_INGOT)
-                .input('R', Items.BLAZE_ROD)
-                .input('D', ModItems.MYTHRIL_DUST)
-                .criterion(hasItem(ModItems.MYTHRIL_FRAGMENT), conditionsFromItem(ModItems.MYTHRIL_FRAGMENT))
-                .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
-                .criterion(hasItem(Items.BLAZE_ROD), conditionsFromItem(Items.BLAZE_ROD))
-                .criterion(hasItem(ModItems.MYTHRIL_DUST), conditionsFromItem(ModItems.MYTHRIL_DUST))
-                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.VOLATILE_PILLAR)));
+                .define('F', ModItems.MYTHRIL_FRAGMENT)
+                .define('I', Items.GOLD_INGOT)
+                .define('R', Items.BLAZE_ROD)
+                .define('D', ModItems.MYTHRIL_DUST)
+                .unlockedBy(getItemName(ModItems.MYTHRIL_FRAGMENT), has(ModItems.MYTHRIL_FRAGMENT))
+                .unlockedBy(getItemName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .unlockedBy(getItemName(Items.BLAZE_ROD), has(Items.BLAZE_ROD))
+                .unlockedBy(getItemName(ModItems.MYTHRIL_DUST), has(ModItems.MYTHRIL_DUST))
+                .save(exporter, ResourceLocation.parse(getSimpleRecipeName(ModItems.VOLATILE_PILLAR)));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CHARGED_CLAW, 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CHARGED_CLAW, 1)
                 .pattern("  R")
                 .pattern(" M ")
                 .pattern("C  ")
-                .input('C', ModItems.VOLATILE_CLAW)
-                .input('M', ModItems.MYTHRIL)
-                .input('R', Items.LIGHTNING_ROD)
-                .criterion(hasItem(ModItems.VOLATILE_CLAW), conditionsFromItem(ModItems.VOLATILE_CLAW))
-                .criterion(hasItem(ModItems.MYTHRIL), conditionsFromItem(ModItems.MYTHRIL))
-                .criterion(hasItem(Items.LIGHTNING_ROD), conditionsFromItem(Items.LIGHTNING_ROD))
-                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.CHARGED_CLAW)));
+                .define('C', ModItems.VOLATILE_CLAW)
+                .define('M', ModItems.MYTHRIL)
+                .define('R', Items.LIGHTNING_ROD)
+                .unlockedBy(getItemName(ModItems.VOLATILE_CLAW), has(ModItems.VOLATILE_CLAW))
+                .unlockedBy(getItemName(ModItems.MYTHRIL), has(ModItems.MYTHRIL))
+                .unlockedBy(getItemName(Items.LIGHTNING_ROD), has(Items.LIGHTNING_ROD))
+                .save(exporter, ResourceLocation.parse(getSimpleRecipeName(ModItems.CHARGED_CLAW)));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MAELSTROM, 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAELSTROM, 1)
                 .pattern("  R")
                 .pattern(" M ")
                 .pattern("C  ")
-                .input('C', ModItems.VOLATILE_PILLAR)
-                .input('M', ModItems.CHARGED_CLAW)
-                .input('R', ModItems.LIGHTNING_IN_A_BOTTLE)
-                .criterion(hasItem(ModItems.VOLATILE_PILLAR), conditionsFromItem(ModItems.VOLATILE_PILLAR))
-                .criterion(hasItem(ModItems.CHARGED_CLAW), conditionsFromItem(ModItems.CHARGED_CLAW))
-                .criterion(hasItem(ModItems.LIGHTNING_IN_A_BOTTLE), conditionsFromItem(ModItems.LIGHTNING_IN_A_BOTTLE))
-                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.MAELSTROM)));
+                .define('C', ModItems.VOLATILE_PILLAR)
+                .define('M', ModItems.CHARGED_CLAW)
+                .define('R', ModItems.LIGHTNING_IN_A_BOTTLE)
+                .unlockedBy(getItemName(ModItems.VOLATILE_PILLAR), has(ModItems.VOLATILE_PILLAR))
+                .unlockedBy(getItemName(ModItems.CHARGED_CLAW), has(ModItems.CHARGED_CLAW))
+                .unlockedBy(getItemName(ModItems.LIGHTNING_IN_A_BOTTLE), has(ModItems.LIGHTNING_IN_A_BOTTLE))
+                .save(exporter, ResourceLocation.parse(getSimpleRecipeName(ModItems.MAELSTROM)));
 
 
 
         //                                     MONK'S CUDGEL AND SHILLELAGH                                               //
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MONKS_CUDGEL, 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MONKS_CUDGEL, 1)
                 .pattern("  W")
                 .pattern(" P ")
                 .pattern("S  ")
-                .input('S', ModItems.SPIRITED_BLUDGEON)
-                .input('P', ModItems.PRONGED_CROWN)
-                .input('W', ModItems.WIND_GEM)
-                .criterion(hasItem(ModItems.SPIRITED_BLUDGEON), conditionsFromItem(ModItems.SPIRITED_BLUDGEON))
-                .criterion(hasItem(ModItems.PRONGED_CROWN), conditionsFromItem(ModItems.PRONGED_CROWN))
-                .criterion(hasItem(ModItems.WIND_GEM), conditionsFromItem(ModItems.WIND_GEM))
-                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.MONKS_CUDGEL)));
+                .define('S', ModItems.SPIRITED_BLUDGEON)
+                .define('P', ModItems.PRONGED_CROWN)
+                .define('W', ModItems.WIND_GEM)
+                .unlockedBy(getItemName(ModItems.SPIRITED_BLUDGEON), has(ModItems.SPIRITED_BLUDGEON))
+                .unlockedBy(getItemName(ModItems.PRONGED_CROWN), has(ModItems.PRONGED_CROWN))
+                .unlockedBy(getItemName(ModItems.WIND_GEM), has(ModItems.WIND_GEM))
+                .save(exporter, ResourceLocation.parse(getSimpleRecipeName(ModItems.MONKS_CUDGEL)));
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SHILLELAGH)
-                .input(ModItems.MONKS_CUDGEL, 1)
-                .input(ModItems.WHIRLWIND_SASH, 1)
-                .criterion(hasItem(ModItems.MONKS_CUDGEL), conditionsFromItem(ModItems.MONKS_CUDGEL))
-                .criterion(hasItem(ModItems.WHIRLWIND_SASH), conditionsFromItem(ModItems.WHIRLWIND_SASH))
-                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.SHILLELAGH)));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SHILLELAGH)
+                .requires(ModItems.MONKS_CUDGEL, 1)
+                .requires(ModItems.WHIRLWIND_SASH, 1)
+                .unlockedBy(getItemName(ModItems.MONKS_CUDGEL), has(ModItems.MONKS_CUDGEL))
+                .unlockedBy(getItemName(ModItems.WHIRLWIND_SASH), has(ModItems.WHIRLWIND_SASH))
+                .save(exporter, ResourceLocation.parse(getSimpleRecipeName(ModItems.SHILLELAGH)));
 
         //                                               Staff Recipes                                                     //
         //-----------------------------------------------------------------------------------------------------------------//
 
-        offerSmelting(exporter, MYTHRIL_SMELTABLES, RecipeCategory.MISC, ModItems.MYTHRIL_FRAGMENT, 0.7f, 200, "MYTHRIL_FRAGMENT");
-        offerBlasting(exporter, MYTHRIL_SMELTABLES, RecipeCategory.MISC, ModItems.MYTHRIL_FRAGMENT, 0.7f, 100, "MYTHRIL_FRAGMENT");
-        offerBlasting(exporter, DIAMOND, RecipeCategory.MISC, ModItems.EMPTY_GEM, 0.7f, 500, "EMPTY_GEM");
+        oreSmelting(exporter, MYTHRIL_SMELTABLES, RecipeCategory.MISC, ModItems.MYTHRIL_FRAGMENT, 0.7f, 200, "MYTHRIL_FRAGMENT");
+        oreBlasting(exporter, MYTHRIL_SMELTABLES, RecipeCategory.MISC, ModItems.MYTHRIL_FRAGMENT, 0.7f, 100, "MYTHRIL_FRAGMENT");
+        oreBlasting(exporter, DIAMOND, RecipeCategory.MISC, ModItems.EMPTY_GEM, 0.7f, 500, "EMPTY_GEM");
 
-        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.MYTHRIL, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MYTHRIL_BLOCK);
+        nineBlockStorageRecipes(exporter, RecipeCategory.MISC, ModItems.MYTHRIL, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MYTHRIL_BLOCK);
 
-        offerSmithingTemplateCopyingRecipe(exporter, ModItems.MYTHRIL_UPGRADE, ModItems.MYTHRIL_FRAGMENT);
+        copySmithingTemplate(exporter, ModItems.MYTHRIL_UPGRADE, ModItems.MYTHRIL_FRAGMENT);
 
         offerMythrilUpgradeRecipe(exporter, Items.NETHERITE_BOOTS, RecipeCategory.COMBAT, ModItems.MYTHRIL_INFUSED_ARMOR.get(ArmorItem.Type.BOOTS));
         offerMythrilUpgradeRecipe(exporter, Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT, ModItems.MYTHRIL_INFUSED_ARMOR.get(ArmorItem.Type.CHESTPLATE));
@@ -150,8 +150,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerMythrilUpgradeRecipe(exporter, Items.DIAMOND_LEGGINGS, RecipeCategory.COMBAT, ModItems.MYTHRIL_STUDDED_ARMOR.get(ArmorItem.Type.LEGGINGS));
         offerMythrilUpgradeRecipe(exporter, Items.DIAMOND_HELMET, RecipeCategory.COMBAT, ModItems.MYTHRIL_STUDDED_ARMOR.get(ArmorItem.Type.HELMET));
     }
-    public static void offerMythrilUpgradeRecipe(RecipeExporter exporter, Item input, RecipeCategory category, Item result) {
-        SmithingTransformRecipeJsonBuilder.create(Ingredient.ofItems(ModItems.MYTHRIL_UPGRADE), Ingredient.ofItems(input), Ingredient.ofItems(ModItems.MYTHRIL), category, result).criterion("has_netherite_ingot", RecipeProvider.conditionsFromItem(ModItems.MYTHRIL)).offerTo(exporter, RecipeProvider.getItemPath(result) + "_smithing");
+    public static void offerMythrilUpgradeRecipe(RecipeOutput exporter, Item requires, RecipeCategory category, Item result) {
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(ModItems.MYTHRIL_UPGRADE), Ingredient.of(requires), Ingredient.of(ModItems.MYTHRIL), category, result).unlocks("has_netherite_ingot", RecipeProvider.has(ModItems.MYTHRIL)).save(exporter, RecipeProvider.getItemName(result) + "_smithing");
     }
 
 }

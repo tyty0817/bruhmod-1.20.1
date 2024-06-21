@@ -1,23 +1,27 @@
 package name.bruhmod.potion;
 
 import name.bruhmod.Mod;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.potion.Potion;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
+import name.bruhmod.items.ModItems;
+import net.fabricmc.fabric.api.registry.FabricBrewingRecipeRegistryBuilder;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.crafting.Ingredient;
 
 public class ModPotions {
 
 //	public static final Potion POTION_OF_CORRUPTION =
-//			Registry.register(Registries.POTION, Identifier.of("test", "test_potion"),
-//					new Potion(new StatusEffectInstance(StatusEffects.WITHER, 200, 0)));
+//			Registry.register(Registries.POTION, ResourceLocation.of("test", "test_potion"),
+//					new Potion(new MobEffectInstance(MobEffects.WITHER, 200, 0)));
 
-	public static Potion POTION_OF_CORRUPTION;
-	public static Potion registerPotion(String name){
-		return Registry.register(Registries.POTION, Identifier.of(Mod.MOD_ID, name),
-				new Potion(new StatusEffectInstance(StatusEffects.WITHER, 400, 4), new StatusEffectInstance(StatusEffects.NAUSEA, 200, 0), new StatusEffectInstance(StatusEffects.BLINDNESS, 100, 0)));
+	public static Holder<Potion> POTION_OF_CORRUPTION;
+	public static Holder<Potion> registerPotion(String name){
+		return Registry.registerForHolder(BuiltInRegistries.POTION, Mod.idOf(name),
+				new Potion(new MobEffectInstance(MobEffects.WITHER, 400, 4), new MobEffectInstance(MobEffects.CONFUSION, 200, 0), new MobEffectInstance(MobEffects.BLINDNESS, 100, 0)));
 	}
 
 	public static void registerPotions(){
@@ -26,7 +30,8 @@ public class ModPotions {
 
 
 	public static void registerPotionsRecipes(){
-		Mod.LOGGER.info("TODO: Re-enable potion recipe!");
-//		BrewingRecipeRegistry.create().registerPotionRecipe(Potions.THICK, ModItems.CORRUPTED_SLAG, ModPotions.POTION_OF_CORRUPTION);
+		FabricBrewingRecipeRegistryBuilder.BUILD.register((callback) -> {
+			callback.registerPotionRecipe(Potions.THICK, Ingredient.of(ModItems.CORRUPTED_SLAG), ModPotions.POTION_OF_CORRUPTION);
+		});
 	}
 }

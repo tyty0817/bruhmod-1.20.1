@@ -1,25 +1,26 @@
 package name.bruhmod.entities.renderer;
 
+import name.bruhmod.Mod;
 import name.bruhmod.entities.BossEntity;
 import name.bruhmod.entities.BossEntityModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
-import static name.bruhmod.Mod.MOD_ID;
 
 @Environment(EnvType.CLIENT)
 public class BossEntityRenderer extends GeoEntityRenderer<BossEntity> {
 
-    public BossEntityRenderer(EntityRendererFactory.Context context) {
+    public BossEntityRenderer(EntityRendererProvider.Context context) {
         super(context, new BossEntityModel());
     }
 
     @Override
-    public Identifier getTexture(BossEntity entity) {
-        return Identifier.of(MOD_ID, "textures/entity/"+BossEntity.ID+".png");
+    public @NotNull ResourceLocation getTextureLocation(BossEntity entity) {
+        return Mod.idOf("textures/entity/"+BossEntity.ID+".png");
     }
 
 

@@ -1,17 +1,15 @@
 package name.bruhmod.util;
 
 import name.bruhmod.Mod;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 
 public class ModTags {
 
-    public class ModItemTags {
+    public static class ModItemTags {
 
-        public static final TagKey<Item> CUSTOM_MAPS = TagKey.of(RegistryKeys.ITEM, Identifier.of("bruhmod", "custom_maps"));
+        public static final TagKey<Item> CUSTOM_MAPS = TagKey.create(Registries.ITEM, Mod.idOf("custom_maps"));
 
     }
 }
