@@ -1,7 +1,5 @@
 package name.bruhmod.datagen;
 
-import name.bruhmod.world.ModConfiguredFeatures;
-import name.bruhmod.world.ModPlacedFeatures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.core.RegistrySetBuilder;
@@ -19,11 +17,13 @@ public class ModDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModRecipeProvider::new);
 		pack.addProvider(ModPoiTagProvider::new);
 		pack.addProvider(ModWorldGenerator::new);
+		pack.addProvider(ModMusicDiscProvider::new);
 	}
 
 	@Override
 	public void buildRegistry(RegistrySetBuilder registryBuilder) {
-		registryBuilder.add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::boostrap);
-		registryBuilder.add(Registries.PLACED_FEATURE, ModPlacedFeatures::boostrap);
+		registryBuilder.add(Registries.CONFIGURED_FEATURE, ModWorldGenerator::configuredFeatures);
+		registryBuilder.add(Registries.PLACED_FEATURE, ModWorldGenerator::placedFeatures);
+		registryBuilder.add(Registries.JUKEBOX_SONG, ModMusicDiscProvider::bootstrap);
 	}
 }

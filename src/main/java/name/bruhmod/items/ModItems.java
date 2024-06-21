@@ -1,5 +1,6 @@
 package name.bruhmod.items;
 
+import com.mojang.datafixers.util.Pair;
 import name.bruhmod.Mod;
 import name.bruhmod.blocks.ModBlocks;
 import name.bruhmod.entities.ModEntities;
@@ -9,9 +10,9 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
@@ -79,12 +80,12 @@ public class ModItems {
             MYTHRIL_INFUSED_ARMOR = registerArmor(ModArmorMaterials.MYTHRIL_NETHERITE, new Item.Properties());
 
 
-    public static final Item MUSIC_DISC_FALLOUT = registerMusicDisc("music_disc_fallout", ModSounds.FALLOUT, 24, 7);
-    public static final Item MUSIC_DISC_BLACK_MOON = registerMusicDisc("music_disc_black_moon", ModSounds.BLACK_MOON,203, 7);
-    public static final Item MUSIC_DISC_DARK_WOODS = registerMusicDisc("music_disc_dark_woods", ModSounds.DARK_WOODS, 184, 7);
-    public static final Item MUSIC_DISC_NIGHT_OWL = registerMusicDisc("music_disc_night_owl", ModSounds.NIGHT_OWL, 187, 7);
-    public static final Item MUSIC_DISC_OLD_KING = registerMusicDisc("music_disc_old_king", ModSounds.OLD_KING, 209, 7);
-    public static final Item MUSIC_DISC_THE_RANGER = registerMusicDisc("music_disc_the_ranger", ModSounds.THE_RANGER, 192, 7);
+    public static final Item MUSIC_DISC_FALLOUT = registerMusicDisc(ModSounds.FALLOUT);
+    public static final Item MUSIC_DISC_BLACK_MOON = registerMusicDisc(ModSounds.BLACK_MOON);
+    public static final Item MUSIC_DISC_DARK_WOODS = registerMusicDisc(ModSounds.DARK_WOODS);
+    public static final Item MUSIC_DISC_NIGHT_OWL = registerMusicDisc(ModSounds.NIGHT_OWL);
+    public static final Item MUSIC_DISC_OLD_KING = registerMusicDisc(ModSounds.OLD_KING);
+    public static final Item MUSIC_DISC_THE_RANGER = registerMusicDisc(ModSounds.THE_RANGER);
 
 
     public static final Item BRITISH_MAN_SPAWN_EGG = registerItem("british_man_spawn_egg", new SpawnEggItem(ModEntities.BOSS, 0xd59890, 0xd7b4ae, new Item.Properties()));
@@ -127,25 +128,19 @@ public class ModItems {
     private static EnumMap<ArmorItem.Type, ArmorItem> registerArmor(Holder<ArmorMaterial> material, Item.Properties settings) {
         EnumMap<ArmorItem.Type, ArmorItem> items = new EnumMap<>(ArmorItem.Type.class);
         ResourceLocation id = ResourceLocation.parse(material.getRegisteredName());
-        for (ArmorItem.Type type : ArmorItem.Type.values()) {
+        ArmorItem.Type[] types = ArmorItem.Type.values();
+        for (int i = 0; i < 4; i++) {
+            ArmorItem.Type type = types[i];
             items.put(type, (ArmorItem) registerItem(id.getPath() + "_" + type.getName(), new ArmorItem(material, type, settings)));
         }
         return items;
     }
 
-    private static Item registerMusicDisc(String name, ResourceKey<SoundEvent> track, int length, int comparatorOutput) {
-//        Holder<JukeboxSong> track = registerSong(Regi)
-        return registerItem(name, new Item((new Item.Properties()).stacksTo(1).rarity(Rarity.RARE)/*.jukeboxPlayable(track)*/));
+    private static Item registerMusicDisc(Pair<ResourceLocation, JukeboxSong> song) {
+        ResourceLocation id = song.getFirst();
+        ResourceLocation itemId = ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "music_disc_" + id.getPath());
+        return Registry.register(BuiltInRegistries.ITEM, itemId, new Item((new Item.Properties()).stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(ResourceKey.create(Registries.JUKEBOX_SONG, id))));
     }
-
-    /*
-
-    private static Holder<JukeboxSong> registerSong(Registerable<JukeboxSong> registry, String id, Holder<SoundEvent> soundEvent, int length, int comparatorOutput) {
-        ResourceLocation i = Mod.idOf(id);
-        return registry.register(ResourceKey.create(Registries.JUKEBOX_SONG, i), new JukeboxSong(soundEvent, Component.translatable(Util.createTranslationKey("jukebox_song", i)), (float) length, comparatorOutput));
-    }
-
-    */
 
     public static class ShinyItem extends Item{
 

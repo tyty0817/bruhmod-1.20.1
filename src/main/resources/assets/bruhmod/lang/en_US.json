@@ -75,27 +75,27 @@
 
   "sounds.bruhmod.fallout": "fallout",
   "item.bruhmod.music_disc_fallout": "Fallout Music Disc",
-  "item.bruhmod.music_disc_fallout.desc": "Benny - Fallout: New Vegas",
+  "jukebox_song.bruhmod.fallout": "Benny - Fallout: New Vegas",
 
   "sounds.bruhmod.black_moon": "black_moon",
   "item.bruhmod.music_disc_black_moon": "Black Moon Music Disc",
-  "item.bruhmod.music_disc_black_moon.desc": "Ean Grimm - Black Moon Tavern",
+  "jukebox_song.bruhmod.black_moon": "Ean Grimm - Black Moon Tavern",
 
   "sounds.bruhmod.dark_woods": "dark_woods",
   "item.bruhmod.music_disc_dark_woods": "Dark Woods Music Disc",
-  "item.bruhmod.music_disc_dark_woods.desc": "Ean Grimm - Dark Woods Tavern",
+  "jukebox_song.bruhmod.dark_woods": "Ean Grimm - Dark Woods Tavern",
 
   "sounds.bruhmod.night_owl": "night_owl",
   "item.bruhmod.music_disc_night_owl": "Night Owl Music Disc",
-  "item.bruhmod.music_disc_night_owl.desc": "Ean Grimm - Night Owl Tavern",
+  "jukebox_song.bruhmod.night_owl": "Ean Grimm - Night Owl Tavern",
 
   "sounds.bruhmod.old_king": "old_king",
   "item.bruhmod.music_disc_old_king": "Old King Music Disc",
-  "item.bruhmod.music_disc_old_king.desc": "Ean Grimm - Old King Tavern",
+  "jukebox_song.bruhmod.old_king": "Ean Grimm - Old King Tavern",
 
   "sounds.bruhmod.the_ranger": "the_ranger",
   "item.bruhmod.music_disc_the_ranger": "The Ranger Music Disc",
-  "item.bruhmod.music_disc_the_ranger.desc": "Ean Grimm - The Ranger's Tavern",
+  "jukebox_song.bruhmod.the_ranger": "Ean Grimm - The Ranger's Tavern",
 
 
 

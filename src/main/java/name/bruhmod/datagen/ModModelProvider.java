@@ -19,9 +19,9 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator) {
-        blockStateModelGenerator.createGenericCube(ModBlocks.MYTHRIL_ORE);
-        blockStateModelGenerator.createGenericCube(ModBlocks.DEEPSLATE_MYTHRIL_ORE);
-        blockStateModelGenerator.createGenericCube(ModBlocks.MYTHRIL_BLOCK);
+        blockStateModelGenerator.createTrivialCube(ModBlocks.MYTHRIL_ORE);
+        blockStateModelGenerator.createTrivialCube(ModBlocks.DEEPSLATE_MYTHRIL_ORE);
+        blockStateModelGenerator.createTrivialCube(ModBlocks.MYTHRIL_BLOCK);
     }
 
     @Override
@@ -71,13 +71,13 @@ public class ModModelProvider extends FabricModelProvider {
 
 
 
-
-        itemModelGenerator.generateFlatItem(ModItems.MUSIC_DISC_FALLOUT, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.MUSIC_DISC_BLACK_MOON, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.MUSIC_DISC_DARK_WOODS, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.MUSIC_DISC_NIGHT_OWL, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.MUSIC_DISC_OLD_KING, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.MUSIC_DISC_THE_RANGER, ModelTemplates.FLAT_ITEM);
+        LOGGER.warn("TODO: use proper music disc models in the future!");
+        itemModelGenerator.generateFlatItem(ModItems.MUSIC_DISC_FALLOUT, ModelTemplates.MUSIC_DISC);
+        itemModelGenerator.generateFlatItem(ModItems.MUSIC_DISC_BLACK_MOON, ModelTemplates.MUSIC_DISC);
+        itemModelGenerator.generateFlatItem(ModItems.MUSIC_DISC_DARK_WOODS, ModelTemplates.MUSIC_DISC);
+        itemModelGenerator.generateFlatItem(ModItems.MUSIC_DISC_NIGHT_OWL, ModelTemplates.MUSIC_DISC);
+        itemModelGenerator.generateFlatItem(ModItems.MUSIC_DISC_OLD_KING, ModelTemplates.MUSIC_DISC);
+        itemModelGenerator.generateFlatItem(ModItems.MUSIC_DISC_THE_RANGER, ModelTemplates.MUSIC_DISC);
 
 
 
