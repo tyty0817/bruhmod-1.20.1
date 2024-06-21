@@ -15,7 +15,7 @@ public class ModItemGroups {
      * The item group containing all the items in the mod.
      */
     public static final ItemGroup BRUHMOD_GROUP = Registry.register(Registries.ITEM_GROUP,
-            new Identifier(Mod.MOD_ID, "bruhmod"),
+            Identifier.of(Mod.MOD_ID, "bruhmod"),
             FabricItemGroup.builder()
                     .displayName(Text.translatable("itemgroup.bruhmod.group"))
                     .icon(() -> new ItemStack(ModItems.MYTHRIL))
@@ -31,6 +31,7 @@ public class ModItemGroups {
                         entries.add(ModItems.EXPLOSIVE_JELLY);
 
 
+                        entries.add(ModItems.CORRUPTED_SLAG);
                         entries.add(ModItems.MYSTERIOUS_CLUB);
                         entries.add(ModItems.CORRUPTED_CROWN);
                         entries.add(ModItems.JEWEL_OF_CORRUPTION);
@@ -55,7 +56,14 @@ public class ModItemGroups {
 
 
                         entries.add(ModItems.BRITISH_MAN_SPAWN_EGG);
-                        entries.add(ModItems.GERIATRIC_TAVERN_MUSIC_DISC);
+
+                        entries.add(ModItems.MUSIC_DISC_FALLOUT);
+                        entries.add(ModItems.MUSIC_DISC_BLACK_MOON);
+                        entries.add(ModItems.MUSIC_DISC_DARK_WOODS);
+                        entries.add(ModItems.MUSIC_DISC_NIGHT_OWL);
+                        entries.add(ModItems.MUSIC_DISC_OLD_KING);
+                        entries.add(ModItems.MUSIC_DISC_THE_RANGER);
+
 
                         entries.add(ModItems.BARRACKS_MAP);
                         entries.add(ModItems.CARPENTER_MAP);
@@ -72,15 +80,8 @@ public class ModItemGroups {
 
                         //------------------------------------------ARMOR-----------------------------------------------//
 
-                        entries.add(ModItems.MYTHRIL_STUDDED_HELMET);
-                        entries.add(ModItems.MYTHRIL_STUDDED_CHESTPLATE);
-                        entries.add(ModItems.MYTHRIL_STUDDED_LEGGINGS);
-                        entries.add(ModItems.MYTHRIL_STUDDED_BOOTS);
-
-                        entries.add(ModItems.MYTHRIL_INFUSED_HELMET);
-                        entries.add(ModItems.MYTHRIL_INFUSED_CHESTPLATE);
-                        entries.add(ModItems.MYTHRIL_INFUSED_LEGGINGS);
-                        entries.add(ModItems.MYTHRIL_INFUSED_BOOTS);
+                        ModItems.MYTHRIL_STUDDED_ARMOR.values().forEach(entries::add);
+                        ModItems.MYTHRIL_INFUSED_ARMOR.values().forEach(entries::add);
 
                     })
                     .build()

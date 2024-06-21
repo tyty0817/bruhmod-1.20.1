@@ -1,0 +1,15 @@
+{
+  "name": "Monk's Cudgel",
+  "icon": "bruhmod:monks_cudgel",
+  "category": "bruhmod:staffs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "no idea what this is supposed to be"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bruhmod:monks_cudgel"
+    }
+  ]
+}

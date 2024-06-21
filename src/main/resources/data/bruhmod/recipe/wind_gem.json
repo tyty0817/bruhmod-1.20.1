@@ -1,0 +1,19 @@
+{
+  "type": "bruhmod:natural",
+  "damageType": "minecraft:lightning_bolt",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "bruhmod:empty_gem"
+      }
+    },
+    {
+      "ingredient": {
+        "item": "bruhmod:cloud_in_a_bottle"
+      }
+    }
+  ],
+  "result": {
+    "id": "bruhmod:wind_gem"
+  }
+}

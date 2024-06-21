@@ -4,16 +4,18 @@ import name.bruhmod.items.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.*;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
 import name.bruhmod.blocks.ModBlocks;
 
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
 
@@ -22,20 +24,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
     private static final List<ItemConvertible> DIAMOND = List.of(Items.DIAMOND);
 
-
-
-    public ModRecipeProvider(FabricDataOutput output) {
-        super(output);
+    public ModRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+        super(output, registriesFuture);
     }
 
     @Override
-    public void generate(Consumer<RecipeJsonProvider> exporter) {
+    public void generate(RecipeExporter exporter) {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MYTHRIL)
                 .input(ModItems.MYTHRIL_FRAGMENT, 4)
                 .input(Items.DIAMOND, 4)
                 .criterion(hasItem(Items.DIAMOND), conditionsFromItem(Items.DIAMOND))
                 .criterion(hasItem(ModItems.MYTHRIL_FRAGMENT), conditionsFromItem(ModItems.MYTHRIL_FRAGMENT))
-                .offerTo(exporter, new Identifier("mythril2"));
+                .offerTo(exporter, Identifier.of("mythril2"));
 
         //-----------------------------------------------------------------------------------------------------------------//
         //                                               Staff Recipes                                                     //
@@ -50,7 +50,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.JEWEL_OF_CORRUPTION), conditionsFromItem(ModItems.JEWEL_OF_CORRUPTION))
                 .criterion(hasItem(ModItems.CORRUPTED_CROWN), conditionsFromItem(ModItems.CORRUPTED_CROWN))
                 .criterion(hasItem(ModItems.MYSTERIOUS_CLUB), conditionsFromItem(ModItems.MYSTERIOUS_CLUB))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.BRANCH_OF_CORRUPTION)));
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.BRANCH_OF_CORRUPTION)));
 
 
 
@@ -67,7 +67,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
                 .criterion(hasItem(Items.GOLD_NUGGET), conditionsFromItem(Items.GOLD_NUGGET))
                 .criterion(hasItem(Items.RAW_GOLD), conditionsFromItem(Items.RAW_GOLD))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.VOLATILE_CLAW)));
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.VOLATILE_CLAW)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.VOLATILE_PILLAR, 1)
                 .pattern(" ID")
@@ -81,7 +81,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
                 .criterion(hasItem(Items.BLAZE_ROD), conditionsFromItem(Items.BLAZE_ROD))
                 .criterion(hasItem(ModItems.MYTHRIL_DUST), conditionsFromItem(ModItems.MYTHRIL_DUST))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.VOLATILE_PILLAR)));
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.VOLATILE_PILLAR)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CHARGED_CLAW, 1)
                 .pattern("  R")
@@ -93,7 +93,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.VOLATILE_CLAW), conditionsFromItem(ModItems.VOLATILE_CLAW))
                 .criterion(hasItem(ModItems.MYTHRIL), conditionsFromItem(ModItems.MYTHRIL))
                 .criterion(hasItem(Items.LIGHTNING_ROD), conditionsFromItem(Items.LIGHTNING_ROD))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.CHARGED_CLAW)));
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.CHARGED_CLAW)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MAELSTROM, 1)
                 .pattern("  R")
@@ -105,7 +105,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.VOLATILE_PILLAR), conditionsFromItem(ModItems.VOLATILE_PILLAR))
                 .criterion(hasItem(ModItems.CHARGED_CLAW), conditionsFromItem(ModItems.CHARGED_CLAW))
                 .criterion(hasItem(ModItems.LIGHTNING_IN_A_BOTTLE), conditionsFromItem(ModItems.LIGHTNING_IN_A_BOTTLE))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.MAELSTROM)));
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.MAELSTROM)));
 
 
 
@@ -120,14 +120,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.SPIRITED_BLUDGEON), conditionsFromItem(ModItems.SPIRITED_BLUDGEON))
                 .criterion(hasItem(ModItems.PRONGED_CROWN), conditionsFromItem(ModItems.PRONGED_CROWN))
                 .criterion(hasItem(ModItems.WIND_GEM), conditionsFromItem(ModItems.WIND_GEM))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.MONKS_CUDGEL)));
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.MONKS_CUDGEL)));
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SHILLELAGH)
                 .input(ModItems.MONKS_CUDGEL, 1)
                 .input(ModItems.WHIRLWIND_SASH, 1)
                 .criterion(hasItem(ModItems.MONKS_CUDGEL), conditionsFromItem(ModItems.MONKS_CUDGEL))
                 .criterion(hasItem(ModItems.WHIRLWIND_SASH), conditionsFromItem(ModItems.WHIRLWIND_SASH))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.SHILLELAGH)));
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.SHILLELAGH)));
 
         //                                               Staff Recipes                                                     //
         //-----------------------------------------------------------------------------------------------------------------//
@@ -140,17 +140,17 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         offerSmithingTemplateCopyingRecipe(exporter, ModItems.MYTHRIL_UPGRADE, ModItems.MYTHRIL_FRAGMENT);
 
-        offerMythrilUpgradeRecipe(exporter, Items.NETHERITE_BOOTS, RecipeCategory.COMBAT, ModItems.MYTHRIL_INFUSED_BOOTS);
-        offerMythrilUpgradeRecipe(exporter, Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT, ModItems.MYTHRIL_INFUSED_CHESTPLATE);
-        offerMythrilUpgradeRecipe(exporter, Items.NETHERITE_LEGGINGS, RecipeCategory.COMBAT, ModItems.MYTHRIL_INFUSED_LEGGINGS);
-        offerMythrilUpgradeRecipe(exporter, Items.NETHERITE_HELMET, RecipeCategory.COMBAT, ModItems.MYTHRIL_INFUSED_HELMET);
+        offerMythrilUpgradeRecipe(exporter, Items.NETHERITE_BOOTS, RecipeCategory.COMBAT, ModItems.MYTHRIL_INFUSED_ARMOR.get(ArmorItem.Type.BOOTS));
+        offerMythrilUpgradeRecipe(exporter, Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT, ModItems.MYTHRIL_INFUSED_ARMOR.get(ArmorItem.Type.CHESTPLATE));
+        offerMythrilUpgradeRecipe(exporter, Items.NETHERITE_LEGGINGS, RecipeCategory.COMBAT, ModItems.MYTHRIL_INFUSED_ARMOR.get(ArmorItem.Type.LEGGINGS));
+        offerMythrilUpgradeRecipe(exporter, Items.NETHERITE_HELMET, RecipeCategory.COMBAT, ModItems.MYTHRIL_INFUSED_ARMOR.get(ArmorItem.Type.HELMET));
 
-        offerMythrilUpgradeRecipe(exporter, Items.DIAMOND_BOOTS, RecipeCategory.COMBAT, ModItems.MYTHRIL_STUDDED_BOOTS);
-        offerMythrilUpgradeRecipe(exporter, Items.DIAMOND_CHESTPLATE, RecipeCategory.COMBAT, ModItems.MYTHRIL_STUDDED_CHESTPLATE);
-        offerMythrilUpgradeRecipe(exporter, Items.DIAMOND_LEGGINGS, RecipeCategory.COMBAT, ModItems.MYTHRIL_STUDDED_LEGGINGS);
-        offerMythrilUpgradeRecipe(exporter, Items.DIAMOND_HELMET, RecipeCategory.COMBAT, ModItems.MYTHRIL_STUDDED_HELMET);
+        offerMythrilUpgradeRecipe(exporter, Items.DIAMOND_BOOTS, RecipeCategory.COMBAT, ModItems.MYTHRIL_STUDDED_ARMOR.get(ArmorItem.Type.BOOTS));
+        offerMythrilUpgradeRecipe(exporter, Items.DIAMOND_CHESTPLATE, RecipeCategory.COMBAT, ModItems.MYTHRIL_STUDDED_ARMOR.get(ArmorItem.Type.CHESTPLATE));
+        offerMythrilUpgradeRecipe(exporter, Items.DIAMOND_LEGGINGS, RecipeCategory.COMBAT, ModItems.MYTHRIL_STUDDED_ARMOR.get(ArmorItem.Type.LEGGINGS));
+        offerMythrilUpgradeRecipe(exporter, Items.DIAMOND_HELMET, RecipeCategory.COMBAT, ModItems.MYTHRIL_STUDDED_ARMOR.get(ArmorItem.Type.HELMET));
     }
-    public static void offerMythrilUpgradeRecipe(Consumer<RecipeJsonProvider> exporter, Item input, RecipeCategory category, Item result) {
+    public static void offerMythrilUpgradeRecipe(RecipeExporter exporter, Item input, RecipeCategory category, Item result) {
         SmithingTransformRecipeJsonBuilder.create(Ingredient.ofItems(ModItems.MYTHRIL_UPGRADE), Ingredient.ofItems(input), Ingredient.ofItems(ModItems.MYTHRIL), category, result).criterion("has_netherite_ingot", RecipeProvider.conditionsFromItem(ModItems.MYTHRIL)).offerTo(exporter, RecipeProvider.getItemPath(result) + "_smithing");
     }
 

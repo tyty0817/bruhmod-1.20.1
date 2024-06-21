@@ -2,9 +2,7 @@ package name.bruhmod.entities;
 
 import name.bruhmod.Mod;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registries;
@@ -17,12 +15,17 @@ public class ModEntities {
 
     public static EntityType<LightningBottleEntity> LIGHTNING_BOTTLE = registerEntity(
             "lightning_bottle",
-            FabricEntityTypeBuilder.create(SpawnGroup.MISC, LightningBottleEntity::createEntity).dimensions(new EntityDimensions(0.25F, 0.25F, true)).trackRangeChunks(4).trackedUpdateRate(10)
+            EntityType.Builder.create(LightningBottleEntity::createEntity, SpawnGroup.MISC).dimensions(0.25F, 0.25F).maxTrackingRange(4).trackingTickInterval(10).build()
     );
+
+    public static final EntityType<FireBolt> FIRE_BOLT = Registry.register(Registries.ENTITY_TYPE,
+            Identifier.of(MOD_ID, "dice_projectile"),
+            EntityType.Builder.<FireBolt>create(FireBolt::new, SpawnGroup.MISC)
+                    .dimensions(0.25f, 0.25f).build());
 
     public static EntityType<BossEntity> BOSS = registerEntity(
             BossEntity.ID,
-            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, BossEntity::new).dimensions(EntityDimensions.fixed(0.8f, 2.75f))
+            EntityType.Builder.create(BossEntity::new, SpawnGroup.CREATURE).dimensions(0.8f, 2.75f).build()
     );
 
     public static void register() {
@@ -30,11 +33,11 @@ public class ModEntities {
         FabricDefaultAttributeRegistry.register(BOSS, BossEntity.createMobAttributes());
     }
 
-    private static <T extends Entity> EntityType<T> registerEntity(String id, FabricEntityTypeBuilder<T> builder) {
+    private static <T extends Entity> EntityType<T> registerEntity(String id, EntityType<T> type) {
         return Registry.register(
                 Registries.ENTITY_TYPE,
-                new Identifier(MOD_ID, id),
-                builder.build()
+                Identifier.of(MOD_ID, id),
+                type
         );
     }
 

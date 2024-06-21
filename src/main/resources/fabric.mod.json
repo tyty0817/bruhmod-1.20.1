@@ -12,20 +12,20 @@
 		"sources": "https://github.com/tyty0817/le-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/${mod_id}/textures/item/mythril.png",
+	"icon": "assets/bruhmod/textures/item/mythril.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"name.${mod_id}.Mod"
+			"name.bruhmod.Mod"
 		],
 		"client": [
-			"name.${mod_id}.ModClient"
+			"name.bruhmod.ModClient"
 		],
 		"fabric-datagen": [
-			"name.${mod_id}.datagen.ModDataGenerator"
+			"name.bruhmod.datagen.ModDataGenerator"
 		],
-		"rei-client": [
-			"name.${mod_id}.compat.REIModPlugin"
+		"rei_client": [
+			"name.bruhmod.compat.REIEntrypoint"
 		]
 	},
 	"mixins": [
@@ -36,8 +36,6 @@
 		"minecraft": ">=1.20",
 		"java": ">=17",
 		"fabric-api": "*",
-		"patchouli": "*",
-		"geckolib": ">=4.4",
-		"trinkets": "*"
+		"geckolib": ">=4.4"
 	}
 }

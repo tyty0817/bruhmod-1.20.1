@@ -2,11 +2,11 @@ package name.bruhmod.items.staffs;
 
 import name.bruhmod.Mod;
 import name.bruhmod.items.ModItems;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
@@ -16,7 +16,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -29,10 +28,10 @@ public class Shillelagh extends Item {
 
 
     @Override
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         tooltip.add(Text.translatable("item." + Mod.MOD_ID + ".shillelagh.tooltip"));
 
-        super.appendTooltip(stack, null, tooltip, context);
+        super.appendTooltip(stack, context, tooltip, type);
     }
 
 
@@ -40,15 +39,15 @@ public class Shillelagh extends Item {
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         if(entity instanceof PlayerEntity) {
-            PlayerEntity Player = (PlayerEntity) entity;
-            if(Player.getStackInHand(Hand.MAIN_HAND).equals(ModItems.SHILLELAGH)){ //comparing an Item with and ItemStack but it works?
-                if(Player.fallDistance > 3.0f){
-                    Player.fallDistance = 0.0f;
+            PlayerEntity player = (PlayerEntity) entity;
+            if(player.getStackInHand(Hand.MAIN_HAND).isOf(ModItems.SHILLELAGH)){ //comparing an Item with and ItemStack but it works?
+                if(player.fallDistance > 3.0f){
+                    player.fallDistance = 0.0f;
                 }
             }
-            else if(Player.getStackInHand(Hand.OFF_HAND).equals(ModItems.SHILLELAGH)){ //comparing an Item with and ItemStack but it works?
-                if(Player.fallDistance > 3.0f){
-                    Player.fallDistance = 0.0f;
+            else if(player.getStackInHand(Hand.OFF_HAND).isOf(ModItems.SHILLELAGH)){ //comparing an Item with and ItemStack but it works?
+                if(player.fallDistance > 3.0f){
+                    player.fallDistance = 0.0f;
                 }
             }
         }

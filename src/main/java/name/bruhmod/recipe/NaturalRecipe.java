@@ -1,27 +1,28 @@
 package name.bruhmod.recipe;
 
-import com.google.gson.*;
-import name.bruhmod.Mod;
-import net.minecraft.entity.Entity;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageType;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketByteBuf;
+import net.minecraft.network.RegistryByteBuf;
+import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.recipe.*;
+import net.minecraft.recipe.input.RecipeInput;
 import net.minecraft.registry.*;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.JsonHelper;
 import net.minecraft.util.Pair;
 import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.dynamic.Codecs;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.*;
-import java.util.stream.StreamSupport;
 
 import static name.bruhmod.Mod.MOD_ID;
 
@@ -31,19 +32,14 @@ public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
 
     }
 
-    public static final RecipeSerializer<NaturalRecipe> SERIALIZER = Registry.register(Registries.RECIPE_SERIALIZER, new Identifier(MOD_ID, "natural"), new Serializer());
-
+    public static final RecipeSerializer<NaturalRecipe> SERIALIZER = Registry.register(Registries.RECIPE_SERIALIZER, Identifier.of(MOD_ID, "natural"), new Serializer());
     public static final RecipeType<NaturalRecipe> TYPE = registerRecipeType("natural");
 
-    private final Identifier id;
-    final RegistryKey<DamageType> damageType;
-    final String group;
-    final DefaultedList<Pair<Ingredient, Integer>> input;
-    final ItemStack output;
+    private final RegistryEntry<DamageType> damageType;
+    private final DefaultedList<IngredientStack> input;
+    private final ItemStack output;
 
-    public NaturalRecipe(Identifier id, String group, RegistryKey<DamageType> damageType, DefaultedList<Pair<Ingredient, Integer>> input, ItemStack output) {
-        this.id = id;
-        this.group = group;
+    public NaturalRecipe(RegistryEntry<DamageType> damageType, DefaultedList<IngredientStack> input, ItemStack output) {
         this.damageType = damageType;
         this.input = input;
         this.output = output;
@@ -54,15 +50,19 @@ public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
      * @param inventory The inventory the recipe should compare ingredients against.
      * @return The list of slots of which items should be removed from when crafting, or an empty list specifying that there was no match.
      */
-    public List<Pair<Integer, Integer>> matchWithRemovals(Inventory inventory) {
+    public List<Pair<Integer, Integer>> matchWithRemovals(NaturalInventory inventory) {
+        if (!inventory.source.getTypeRegistryEntry().matches(this.damageType)) {
+            return new ArrayList<>();
+        }
+
         ArrayList<Pair<Integer, Integer>> removals = new ArrayList<>();
 
-        for (Pair<Ingredient, Integer> ing : this.input) {
-            int remaining = ing.getRight();
-            for (int slot = 0; slot < inventory.size(); slot++) {
-                ItemStack invStack = inventory.getStack(slot);
-                if (ing.getLeft().test(invStack)) {
-                    int taken = Math.min(ing.getRight(), invStack.getCount());
+        for (IngredientStack stack : this.input) {
+            int remaining = stack.count();
+            for (int slot = 0; slot < inventory.getSize(); slot++) {
+                ItemStack invStack = inventory.getStackInSlot(slot);
+                if (stack.ingredient.test(invStack)) {
+                    int taken = Math.min(remaining, invStack.getCount());
                     removals.add(new Pair<>(slot, taken));
                     remaining -= taken;
                 }
@@ -85,16 +85,16 @@ public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
         // then, for each recipe, get the times it should be crafted, removing items used each time
         // then spawn the item after
 
-        world.getRecipeManager().getAllMatches(TYPE, inventory, world).stream().sorted(Comparator.comparingInt(recipe -> -recipe.input.stream().mapToInt(Pair::getRight).sum())).forEachOrdered(recipe -> {
+        world.getRecipeManager().getAllMatches(TYPE, inventory, world).stream().sorted(Comparator.comparingInt(recipe -> -recipe.value().input.stream().mapToInt(IngredientStack::count).sum())).forEachOrdered(recipe -> {
             List<Pair<Integer, Integer>> removals;
             int times = 0;
-            while (!(removals = recipe.matchWithRemovals(inventory)).isEmpty()) {
+            while (!(removals = recipe.value().matchWithRemovals(inventory)).isEmpty()) {
                 removals.forEach(pair -> inventory.removeStack(pair.getLeft(), pair.getRight()));
                 times++;
             }
-            ItemStack output = recipe.getOutput(world.getRegistryManager());
+            ItemStack output = recipe.value().getResult(world.getRegistryManager());
             output.setCount(output.getCount() * times);
-            ItemEntity entity = new ItemEntity(world, pos.x, pos.y, pos.z, output, 0.0, 0.2, 0.0);
+            ItemEntity entity = new ItemEntity(world, pos.x, pos.y, pos.z, output, 0.0, 0.3, 0.0);
             entity.setInvulnerable(true);
             world.spawnEntity(entity);
         });
@@ -106,12 +106,12 @@ public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
     }
 
     @Override
-    public ItemStack craft(NaturalInventory inventory, DynamicRegistryManager registryManager) {
-        return this.getOutput(registryManager).copy();
+    public ItemStack craft(NaturalInventory inventory, RegistryWrapper.WrapperLookup registryManager) {
+        return this.getResult(registryManager).copy();
     }
 
     public static <T extends Recipe<?>> RecipeType<T> registerRecipeType(final String path) {
-        Identifier id = new Identifier(MOD_ID, path);
+        Identifier id = Identifier.of(MOD_ID, path);
         return Registry.register(Registries.RECIPE_TYPE, id, new RecipeType<T>(){
 
             public String toString() {
@@ -120,7 +120,7 @@ public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
         });
     }
 
-    public static class NaturalInventory implements Inventory {
+    public static class NaturalInventory implements RecipeInput {
 
         public final DamageSource source;
         private final ArrayList<ItemEntity> items;
@@ -131,17 +131,7 @@ public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
         }
 
         @Override
-        public int size() {
-            return this.items.size();
-        }
-
-        @Override
-        public boolean isEmpty() {
-            return this.size() != 0;
-        }
-
-        @Override
-        public ItemStack getStack(int slot) {
+        public ItemStack getStackInSlot(int slot) {
             ItemEntity e = this.items.get(slot);
             ItemStack stack = e.getStack();
             if (!e.isAlive() || stack == null) {
@@ -150,6 +140,10 @@ public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
         }
 
         @Override
+        public int getSize() {
+            return this.items.size();
+        }
+
         public ItemStack removeStack(int slot, int amount) {
             ItemEntity e = this.items.get(slot);
             if (!e.isAlive()) {
@@ -161,96 +155,78 @@ public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
             }
             return newStack;
         }
+    }
 
-        @Override
-        public ItemStack removeStack(int slot) {
-            ItemEntity e = this.items.get(slot);
-            ItemStack stack = e.getStack();
-            e.discard();
-            return stack;
-        }
+    public record IngredientStack(Ingredient ingredient, int count) {
 
-        @Override
-        public void setStack(int slot, ItemStack stack) {
-            Mod.LOGGER.error("cannot add stack to natural inventory");
-        }
+        public static final IngredientStack EMPTY = new IngredientStack(Ingredient.EMPTY, 0);
 
-        @Override
-        public void markDirty() {
+        public static final Codec<IngredientStack> CODEC = RecordCodecBuilder.create(instance ->
+                instance.group(
+                        Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredient").forGetter(IngredientStack::ingredient),
+                        Codecs.rangedInt(1, 99).fieldOf("count").orElse(1).forGetter(IngredientStack::count)
+                ).apply(instance, IngredientStack::new)
+        );
 
-        }
+        public static final PacketCodec<RegistryByteBuf, IngredientStack> PACKET_CODEC = new PacketCodec<>() {
 
-        @Override
-        public boolean canPlayerUse(PlayerEntity player) {
-            return false;
-        }
+            public IngredientStack decode(RegistryByteBuf buf) {
+                int count = buf.readVarInt();
+                if (count <= 0)
+                    return EMPTY;
+                else return new IngredientStack(Ingredient.PACKET_CODEC.decode(buf), count);
+            }
 
-        @Override
-        public void clear() {
-            items.forEach(Entity::discard);
-        }
+            public void encode(RegistryByteBuf buf, IngredientStack stack) {
+                buf.writeVarInt(stack.count);
+                if (stack.count > 0) {
+                    Ingredient.PACKET_CODEC.encode(buf, stack.ingredient);
+                }
+            }
+        };
     }
 
     public static class Serializer
             implements RecipeSerializer<NaturalRecipe> {
 
-        private static DefaultedList<Pair<Ingredient, Integer>> getIngredients(JsonArray array) throws JsonParseException {
-            DefaultedList<Pair<Ingredient, Integer>> defaultedList = DefaultedList.of();
-            StreamSupport.stream(array.spliterator(), true).filter(JsonElement::isJsonObject).forEach(e -> {
-                JsonObject obj = e.getAsJsonObject();
-                Ingredient i = Ingredient.fromJson(obj, false);
-                JsonElement count = obj.get("count");
-                int c;
-                if (count == null) {
-                    c = 1;
-                } else if (!count.isJsonPrimitive() || !count.getAsJsonPrimitive().isNumber()) {
-                    throw new JsonSyntaxException("Expected item count number");
-                } else {
-                    c = count.getAsInt();
-                    if (c <= 0) {
-                        throw new JsonSyntaxException("Expected positive item count");
-                    }
-                }
-                defaultedList.add(new Pair<>(i, c));
-            });
-            return defaultedList;
-        }
+        public static final MapCodec<NaturalRecipe> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
+                DamageType.ENTRY_CODEC.fieldOf("damageType").forGetter((recipe) -> recipe.damageType),
+                IngredientStack.CODEC.listOf().fieldOf("ingredients").flatXmap(list -> {
+                    DefaultedList<IngredientStack> new_list = DefaultedList.of();
+                    new_list.addAll(list);
+                    return DataResult.success(new_list);
+                }, DataResult::success).forGetter((recipe) -> recipe.input),
+                ItemStack.VALIDATED_CODEC.fieldOf("result").forGetter((recipe) -> recipe.output)
+        ).apply(instance, NaturalRecipe::new));
 
-        @Override
-        public NaturalRecipe read(Identifier identifier, JsonObject jsonObject) {
-            String group = JsonHelper.getString(jsonObject, "group", "");
-            RegistryKey<DamageType> damageType = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier(JsonHelper.getString(jsonObject, "damageType")));
-//            CraftingRecipeCategory craftingRecipeCategory = CraftingRecipeCategory.CODEC.byId(JsonHelper.getString(jsonObject, "category", null), CraftingRecipeCategory.MISC);
-            DefaultedList<Pair<Ingredient, Integer>> defaultedList = getIngredients(JsonHelper.getArray(jsonObject, "ingredients"));
-            if (defaultedList.isEmpty()) {
-                throw new JsonParseException("No ingredients for lightning recipe");
+        public static final PacketCodec<RegistryByteBuf, NaturalRecipe> PACKET_CODEC = new PacketCodec<>() {
+
+            @Override
+            public void encode(RegistryByteBuf buf, NaturalRecipe value) {
+                DamageType.ENTRY_PACKET_CODEC.encode(buf, value.damageType);
+                buf.writeVarInt(value.input.size());
+                value.input.forEach(stack -> IngredientStack.PACKET_CODEC.encode(buf, stack));
+                ItemStack.PACKET_CODEC.encode(buf, value.output);
             }
-            ItemStack itemStack = ShapedRecipe.outputFromJson(JsonHelper.getObject(jsonObject, "result"));
-            return new NaturalRecipe(identifier, group, damageType, defaultedList, itemStack);
-        }
 
-        @Override
-        public NaturalRecipe read(Identifier identifier, PacketByteBuf packetByteBuf) {
-            String group = packetByteBuf.readString();
-            RegistryKey<DamageType> damageType = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier(packetByteBuf.readString()));
-            int i = packetByteBuf.readVarInt();
-            DefaultedList<Pair<Ingredient, Integer>> defaultedList = DefaultedList.ofSize(i, new Pair<>(Ingredient.EMPTY, 1));
-            defaultedList.replaceAll(ignored -> new Pair<>(Ingredient.fromPacket(packetByteBuf), packetByteBuf.readInt()));
-            ItemStack itemStack = packetByteBuf.readItemStack();
-            return new NaturalRecipe(identifier, group, damageType, defaultedList, itemStack);
-        }
-
-        @Override
-        public void write(PacketByteBuf packetByteBuf, NaturalRecipe recipe) {
-            packetByteBuf.writeString(recipe.group);
-            packetByteBuf.writeString(recipe.damageType.getValue().toString());
-//            packetByteBuf.writeEnumConstant(recipe.category);
-            packetByteBuf.writeVarInt(recipe.input.size());
-            for (Pair<Ingredient, Integer> ingredient : recipe.input) {
-                ingredient.getLeft().write(packetByteBuf);
-                packetByteBuf.writeLong(ingredient.getRight());
+            public NaturalRecipe decode(RegistryByteBuf buf) {
+                RegistryEntry<DamageType> damageType = DamageType.ENTRY_PACKET_CODEC.decode(buf);
+                int inputSize = buf.readVarInt();
+                DefaultedList<IngredientStack> input = DefaultedList.ofSize(inputSize, IngredientStack.EMPTY);
+                input.replaceAll((i) -> IngredientStack.PACKET_CODEC.decode(buf));
+                ItemStack output = ItemStack.PACKET_CODEC.decode(buf);
+                return new NaturalRecipe(damageType, input, output);
             }
-            packetByteBuf.writeItemStack(recipe.output);
+        };
+
+        @Override
+        public MapCodec<NaturalRecipe> codec() {
+            return CODEC;
+        }
+
+        @Override
+        public PacketCodec<RegistryByteBuf, NaturalRecipe> packetCodec() {
+            return PACKET_CODEC;
         }
     }
 
@@ -258,13 +234,8 @@ public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
     public boolean fits(int width, int height) { return true; }
 
     @Override
-    public ItemStack getOutput(DynamicRegistryManager registryManager) {
-        return this.output;
-    }
-
-    @Override
-    public Identifier getId() {
-        return this.id;
+    public ItemStack getResult(RegistryWrapper.WrapperLookup registryManager) {
+        return getOutput();
     }
 
     @Override
@@ -277,5 +248,20 @@ public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
         return TYPE;
     }
 
+    public DefaultedList<IngredientStack> getInput() {
+        DefaultedList<IngredientStack> ing = DefaultedList.of();
+        ing.addAll(input);
+        return ing;
+    }
 
+    public ItemStack getOutput() {
+        return output.copy();
+    }
+
+    @Override
+    public DefaultedList<Ingredient> getIngredients() {
+        DefaultedList<Ingredient> ing = DefaultedList.of();
+        this.input.stream().map(IngredientStack::ingredient).forEach(ing::add);
+        return ing;
+    }
 }

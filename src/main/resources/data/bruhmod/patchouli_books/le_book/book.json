@@ -1,7 +1,7 @@
 {
-  "name": "My First Book!",
-  "landing_text": "Welcome to Patchouli",
+  "name": "Compendium Arcanus!",
+  "landing_text": "A guide to the creation of magic imbued items",
   "version": 1,
-  "creative_tab": "minecraft:tools_and_utilities",
+  "creative_tab": "bruhmod:bruhmod",
   "use_resource_pack": true
 }

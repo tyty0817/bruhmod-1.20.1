@@ -1,9 +1,11 @@
 package name.bruhmod;
 
 import name.bruhmod.events.*;
+import name.bruhmod.items.ModArmorMaterials;
 import name.bruhmod.items.ModItemGroups;
 import name.bruhmod.items.ModItems;
 import name.bruhmod.recipe.NaturalRecipe;
+import name.bruhmod.potion.ModPotions;
 import name.bruhmod.sound.ModSounds;
 import name.bruhmod.blocks.ModBlocks;
 import name.bruhmod.effect.ModEffects;
@@ -28,10 +30,14 @@ public class Mod implements ModInitializer {
 		NaturalRecipe.register();
 		ModBlocks.register();
 		ModItems.register();
+		ModArmorMaterials.register();
 		ModEntities.register();
 		ModEffects.registerEffects();
 		ModSounds.registerSounds();
 		ModCustomTrades.registerCustomTrades();
+
+		ModPotions.registerPotions();
+		ModPotions.registerPotionsRecipes();
 
 		ServerEntityEvents.ENTITY_LOAD.register(new EntityLoads());
 		ServerEntityEvents.ENTITY_UNLOAD.register(new EntityUnloads());

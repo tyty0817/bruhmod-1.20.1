@@ -11,7 +11,7 @@ public class ModEffects {
     public static StatusEffect CONFUSE;
 
     public static StatusEffect registerStatusEffect(String name){
-        return Registry.register(Registries.STATUS_EFFECT, new Identifier(MOD_ID, name),
+        return Registry.register(Registries.STATUS_EFFECT, Identifier.of(MOD_ID, name),
                 new ConfuseEffect(StatusEffectCategory.HARMFUL, 3124687));
     }
 

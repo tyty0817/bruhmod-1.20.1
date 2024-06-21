@@ -1,11 +1,11 @@
 package name.bruhmod.items.staffs;
 
 import name.bruhmod.Mod;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FireballEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
@@ -24,13 +24,12 @@ public class DyingLight extends Item {
         super(settings);
     }
 
-
     @Override
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
 
         tooltip.add(Text.translatable("item." + Mod.MOD_ID + ".dying_light.tooltip"));
 
-        super.appendTooltip(stack, null, tooltip, context);
+        super.appendTooltip(stack, context, tooltip, type);
     }
 
 
@@ -43,13 +42,13 @@ public class DyingLight extends Item {
         float g = -MathHelper.sin((pitch) * 0.017453292F);
         float h = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
         if(!world.isClient) {
-            FireballEntity ball = new FireballEntity(world, user, (double)f * 2, (double)g * 2, (double)h * 2, 1);
+            FireballEntity ball = new FireballEntity(world, user, new Vec3d(f * 2, g * 2, h * 2), 1);
             ball.setPosition(user.getX(), user.getY() + 1, user.getZ());
             world.spawnEntity(ball);
         }
         Vec3d pos = user.getPos();
         world.playSound(null, new BlockPos((int) pos.x, (int) pos.y, (int) pos.z), SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.BLOCKS);
-        user.getStackInHand(hand).damage(1, user, playerEntity -> playerEntity.sendToolBreakStatus(playerEntity.getActiveHand()));
+//        user.getStackInHand(hand).damage(1, user, playerEntity -> playerEntity.sendToolBreakStatus(playerEntity.getActiveHand()));
         return TypedActionResult.pass(user.getStackInHand(hand));
     }
 }

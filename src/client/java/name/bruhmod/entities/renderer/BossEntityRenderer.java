@@ -19,7 +19,7 @@ public class BossEntityRenderer extends GeoEntityRenderer<BossEntity> {
 
     @Override
     public Identifier getTexture(BossEntity entity) {
-        return new Identifier(MOD_ID, "textures/entity/"+BossEntity.ID+".png");
+        return Identifier.of(MOD_ID, "textures/entity/"+BossEntity.ID+".png");
     }
 
 

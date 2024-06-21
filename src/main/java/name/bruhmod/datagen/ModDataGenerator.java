@@ -4,7 +4,6 @@ import name.bruhmod.world.ModConfiguredFeatures;
 import name.bruhmod.world.ModPlacedFeatures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import name.bruhmod.datagen.*;
 import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 

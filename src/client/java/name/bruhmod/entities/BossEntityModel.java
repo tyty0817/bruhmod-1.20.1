@@ -10,16 +10,16 @@ public class BossEntityModel extends GeoModel<BossEntity> {
 
     @Override
     public Identifier getModelResource(BossEntity animatable) {
-        return new Identifier(MOD_ID, "geo/" + BossEntity.ID + ".geo.json");
+        return Identifier.of(MOD_ID, "geo/" + BossEntity.ID + ".geo.json");
     }
 
     @Override
     public Identifier getTextureResource(BossEntity animatable) {
-        return new Identifier(MOD_ID, "textures/" + BossEntity.ID + ".png");
+        return Identifier.of(MOD_ID, "textures/" + BossEntity.ID + ".png");
     }
 
     @Override
     public Identifier getAnimationResource(BossEntity animatable) {
-        return new Identifier(MOD_ID, "animations/" + BossEntity.ID + ".animation.json");
+        return Identifier.of(MOD_ID, "animations/" + BossEntity.ID + ".animation.json");
     }
 }

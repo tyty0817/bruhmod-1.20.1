@@ -10,7 +10,7 @@ public class ConfuseEffect extends StatusEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity pLivingEntity, int pAmplifier) {
+    public boolean applyUpdateEffect(LivingEntity pLivingEntity, int pAmplifier) {
         double x = pLivingEntity.getX();
         double y = pLivingEntity.getY();
         double z = pLivingEntity.getZ();
@@ -18,7 +18,7 @@ public class ConfuseEffect extends StatusEffect {
         //pLivingEntity.teleport(x, y, z);
         pLivingEntity.setVelocity(pLivingEntity.getVelocity().add(((Math.random() * pAmplifier) - (pAmplifier / 2.0)), 0, (Math.random() * pAmplifier) - (pAmplifier / 2.0)));
 
-        super.applyUpdateEffect(pLivingEntity, pAmplifier);
+        return super.applyUpdateEffect(pLivingEntity, pAmplifier);
     }
 
     @Override
