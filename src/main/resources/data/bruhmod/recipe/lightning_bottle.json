@@ -1,6 +1,8 @@
 {
   "type": "bruhmod:natural",
-  "damageType": "minecraft:lightning_bolt",
+  "sources": {
+      "damage": ["minecraft:lightning_bolt"]
+  },
   "ingredients": [
     {
       "ingredient": {

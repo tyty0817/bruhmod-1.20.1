@@ -1,10 +1,9 @@
 package name.bruhmod;
 
-import name.bruhmod.events.*;
 import name.bruhmod.items.ModArmorMaterials;
 import name.bruhmod.items.ModItemGroups;
 import name.bruhmod.items.ModItems;
-import name.bruhmod.recipe.NaturalRecipe;
+import name.bruhmod.recipe.natural.NaturalRecipe;
 import name.bruhmod.potion.ModPotions;
 import name.bruhmod.sound.ModSounds;
 import name.bruhmod.blocks.ModBlocks;
@@ -14,7 +13,6 @@ import name.bruhmod.world.ModCustomTrades;
 import name.bruhmod.world.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,9 +39,6 @@ public class Mod implements ModInitializer {
 
 		ModPotions.registerPotions();
 		ModPotions.registerPotionsRecipes();
-
-		ServerEntityEvents.ENTITY_LOAD.register(new EntityLoads());
-		ServerEntityEvents.ENTITY_UNLOAD.register(new EntityUnloads());
 
 		ModWorldGeneration.generateModWorldGen();
 	}

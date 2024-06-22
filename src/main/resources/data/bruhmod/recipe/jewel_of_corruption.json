@@ -1,7 +1,7 @@
 {
   "type": "bruhmod:natural",
   "sources": {
-    "damage": ["minecraft:lightning_bolt"]
+    "effects": ["minecraft:wither"]
   },
   "ingredients": [
     {
@@ -11,11 +11,11 @@
     },
     {
       "ingredient": {
-        "item": "bruhmod:cloud_in_a_bottle"
+        "item": "minecraft:crying_obsidian"
       }
     }
   ],
   "result": {
-    "id": "bruhmod:wind_gem"
+    "id": "bruhmod:jewel_of_corruption"
   }
 }

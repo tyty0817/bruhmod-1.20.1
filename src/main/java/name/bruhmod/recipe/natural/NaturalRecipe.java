@@ -1,7 +1,6 @@
-package name.bruhmod.recipe;
+package name.bruhmod.recipe.natural;
 
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -11,8 +10,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
@@ -24,7 +21,12 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
+/**
+ * TODO: center crafted item using positions of ingredients
+ * TODO: add crafting via lingering potion tick in mixin
+ * TODO: add sets of damage/effect sources instead of checking for any (like how item ingredients are processed)
+ */
+public class NaturalRecipe implements Recipe<NaturalInventory> {
 
     public static void register() {
 
@@ -34,12 +36,12 @@ public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
     public static final RecipeSerializer<NaturalRecipe> SERIALIZER = Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, Mod.idOf(ID), new Serializer());
     public static final RecipeType<NaturalRecipe> TYPE = registerRecipeType(ID);
 
-    private final Holder<DamageType> damageType;
+    private final NaturalSources sources;
     private final NonNullList<IngredientStack> input;
     private final ItemStack output;
 
-    public NaturalRecipe(Holder<DamageType> damageType, NonNullList<IngredientStack> input, ItemStack output) {
-        this.damageType = damageType;
+    public NaturalRecipe(NaturalSources sources, NonNullList<IngredientStack> input, ItemStack output) {
+        this.sources = sources;
         this.input = input;
         this.output = output;
     }
@@ -49,8 +51,8 @@ public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
      * @param inventory The inventory the recipe should compare ingredients against.
      * @return The list of slots of which items should be removed from when crafting, or an empty list specifying that there was no match.
      */
-    public List<Pair<Integer, Integer>> matchWithRemovals(NaturalInventory inventory) {
-        if (!inventory.source.type().equals(this.damageType)) {
+    public List<Pair<Integer, Integer>> matchWithRemovals(NaturalInventory inventory, Level world) {
+        if (!sources.match(inventory.source, world)) {
             return new ArrayList<>();
         }
 
@@ -60,7 +62,7 @@ public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
             int remaining = stack.count();
             for (int slot = 0; slot < inventory.size(); slot++) {
                 ItemStack invStack = inventory.getItem(slot);
-                if (stack.ingredient.test(invStack)) {
+                if (stack.ingredient().test(invStack)) {
                     int taken = Math.min(remaining, invStack.getCount());
                     removals.add(new Pair<>(slot, taken));
                     remaining -= taken;
@@ -77,11 +79,8 @@ public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
         return Comparator.comparingInt(recipe -> -recipe.value().input.stream().mapToInt(IngredientStack::count).sum());
     }
 
-    public static void craftAtPosition(Level world, Vec3 pos, DamageSource source) {
-        NaturalInventory inventory = new NaturalInventory(
-                source,
-                world.getEntitiesOfClass(ItemEntity.class, new AABB(pos.subtract(3.0, 3.0, 3.0), pos.add(3.0, 3.0, 3.0)))
-        );
+    public static void craftAtPosition(Level world, AABB box, NaturalSources source) {
+        NaturalInventory inventory = new NaturalInventory(source, world.getEntitiesOfClass(ItemEntity.class, box));
 
         // get all matched recipes
         // then sort them by most ingredients first (in case of duplicate ingredients, the larger one should be used)
@@ -91,13 +90,14 @@ public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
         world.getRecipeManager().getRecipesFor(TYPE, inventory, world).stream().sorted(sort()).forEachOrdered(recipe -> {
             List<Pair<Integer, Integer>> removals;
             int times = 0;
-            while (!(removals = recipe.value().matchWithRemovals(inventory)).isEmpty()) {
+            while (!(removals = recipe.value().matchWithRemovals(inventory, world)).isEmpty()) {
                 removals.forEach(pair -> inventory.removeStack(pair.getFirst(), pair.getSecond()));
                 times++;
             }
             ItemStack output = recipe.value().getResultItem(world.registryAccess());
             output.setCount(output.getCount() * times);
-            ItemEntity entity = new ItemEntity(world, pos.x, pos.y, pos.z, output, 0.0, 0.3, 0.0);
+            Vec3 center = box.getCenter();
+            ItemEntity entity = new ItemEntity(world, center.x, center.y, center.z, output, 0.0, 0.3, 0.0);
             entity.setInvulnerable(true);
             world.addFreshEntity(entity);
         });
@@ -105,7 +105,7 @@ public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
 
     @Override
     public boolean matches(NaturalInventory inventory, Level world) {
-        return !matchWithRemovals(inventory).isEmpty();
+        return !matchWithRemovals(inventory, world).isEmpty();
     }
 
     @Override
@@ -121,116 +121,6 @@ public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
                 return id.toString();
             }
         });
-    }
-
-    public static class NaturalInventory implements RecipeInput {
-
-        public final DamageSource source;
-        private final ArrayList<ItemEntity> items;
-
-        public NaturalInventory(DamageSource source, List<ItemEntity> entities) {
-            this.source = source;
-            this.items = new ArrayList<>(entities);
-        }
-
-        @Override
-        public @NotNull ItemStack getItem(int slot) {
-            ItemEntity e = this.items.get(slot);
-            ItemStack stack = e.getItem();
-            if (!e.isAlive() || stack == null) {
-                return ItemStack.EMPTY;
-            } else return stack;
-        }
-
-        @Override
-        public int size() {
-            return this.items.size();
-        }
-
-        public ItemStack removeStack(int slot, int amount) {
-            ItemEntity e = this.items.get(slot);
-            if (!e.isAlive()) {
-                return ItemStack.EMPTY;
-            }
-            ItemStack newStack = e.getItem().split(amount);
-            if (e.getItem().isEmpty()) {
-                e.discard();
-            }
-            return newStack;
-        }
-    }
-
-    public record IngredientStack(Ingredient ingredient, int count) {
-
-        public static final IngredientStack EMPTY = new IngredientStack(Ingredient.EMPTY, 0);
-
-        public static final Codec<IngredientStack> CODEC = RecordCodecBuilder.create(instance ->
-                instance.group(
-                        Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(IngredientStack::ingredient),
-                        Codec.intRange(1, 99).fieldOf("count").orElse(1).forGetter(IngredientStack::count)
-                ).apply(instance, IngredientStack::new)
-        );
-
-        public static final StreamCodec<RegistryFriendlyByteBuf, IngredientStack> STREAM_CODEC = new StreamCodec<>() {
-
-            public @NotNull IngredientStack decode(RegistryFriendlyByteBuf buf) {
-                int count = buf.readVarInt();
-                if (count <= 0)
-                    return EMPTY;
-                else return new IngredientStack(Ingredient.CONTENTS_STREAM_CODEC.decode(buf), count);
-            }
-
-            public void encode(RegistryFriendlyByteBuf buf, IngredientStack stack) {
-                buf.writeVarInt(stack.count);
-                if (stack.count > 0) {
-                    Ingredient.CONTENTS_STREAM_CODEC.encode(buf, stack.ingredient);
-                }
-            }
-        };
-    }
-
-    public static class Serializer
-            implements RecipeSerializer<NaturalRecipe> {
-
-        public static final MapCodec<NaturalRecipe> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
-                DamageType.CODEC.fieldOf("damageType").forGetter((recipe) -> recipe.damageType),
-                IngredientStack.CODEC.listOf().fieldOf("ingredients").flatXmap(list -> {
-                    NonNullList<IngredientStack> new_list = NonNullList.create();
-                    new_list.addAll(list);
-                    return DataResult.success(new_list);
-                }, DataResult::success).forGetter((recipe) -> recipe.input),
-                ItemStack.STRICT_SINGLE_ITEM_CODEC.fieldOf("result").forGetter((recipe) -> recipe.output)
-        ).apply(instance, NaturalRecipe::new));
-
-        public static final StreamCodec<RegistryFriendlyByteBuf, NaturalRecipe> PACKET_CODEC = new StreamCodec<>() {
-
-            @Override
-            public void encode(RegistryFriendlyByteBuf buf, NaturalRecipe value) {
-                DamageType.STREAM_CODEC.encode(buf, value.damageType);
-                buf.writeVarInt(value.input.size());
-                value.input.forEach(stack -> IngredientStack.STREAM_CODEC.encode(buf, stack));
-                ItemStack.STREAM_CODEC.encode(buf, value.output);
-            }
-
-            public @NotNull NaturalRecipe decode(RegistryFriendlyByteBuf buf) {
-                Holder<DamageType> damageType = DamageType.STREAM_CODEC.decode(buf);
-                int inputSize = buf.readVarInt();
-                NonNullList<IngredientStack> input = NonNullList.withSize(inputSize, IngredientStack.EMPTY);
-                input.replaceAll((i) -> IngredientStack.STREAM_CODEC.decode(buf));
-                ItemStack output = ItemStack.STREAM_CODEC.decode(buf);
-                return new NaturalRecipe(damageType, input, output);
-            }
-        };
-
-        @Override
-        public @NotNull MapCodec<NaturalRecipe> codec() {
-            return CODEC;
-        }
-
-        @Override
-        public @NotNull StreamCodec<RegistryFriendlyByteBuf, NaturalRecipe> streamCodec() {
-            return PACKET_CODEC;
-        }
     }
 
     @Override
@@ -266,5 +156,45 @@ public class NaturalRecipe implements Recipe<NaturalRecipe.NaturalInventory> {
         NonNullList<Ingredient> ing = NonNullList.create();
         this.input.stream().map(IngredientStack::ingredient).forEach(ing::add);
         return ing;
+    }
+
+    public static class Serializer
+            implements RecipeSerializer<NaturalRecipe> {
+
+        public static final MapCodec<NaturalRecipe> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
+                NaturalSources.CODEC.fieldOf("sources").forGetter((recipe) -> recipe.sources),
+                IngredientStack.CODEC.listOf().fieldOf("ingredients").flatXmap(NaturalSources::toNonNullList, DataResult::success).forGetter((recipe) -> recipe.input),
+                ItemStack.STRICT_SINGLE_ITEM_CODEC.fieldOf("result").forGetter((recipe) -> recipe.output)
+        ).apply(instance, NaturalRecipe::new));
+
+        public static final StreamCodec<RegistryFriendlyByteBuf, NaturalRecipe> PACKET_CODEC = new StreamCodec<>() {
+
+            @Override
+            public void encode(RegistryFriendlyByteBuf buf, NaturalRecipe value) {
+                NaturalSources.STREAM_CODEC.encode(buf, value.sources);
+                buf.writeVarInt(value.input.size());
+                value.input.forEach(stack -> IngredientStack.STREAM_CODEC.encode(buf, stack));
+                ItemStack.STREAM_CODEC.encode(buf, value.output);
+            }
+
+            public @NotNull NaturalRecipe decode(RegistryFriendlyByteBuf buf) {
+                NaturalSources sources = NaturalSources.STREAM_CODEC.decode(buf);
+                int inputSize = buf.readVarInt();
+                NonNullList<IngredientStack> input = NonNullList.withSize(inputSize, IngredientStack.EMPTY);
+                input.replaceAll((i) -> IngredientStack.STREAM_CODEC.decode(buf));
+                ItemStack output = ItemStack.STREAM_CODEC.decode(buf);
+                return new NaturalRecipe(sources, input, output);
+            }
+        };
+
+        @Override
+        public @NotNull MapCodec<NaturalRecipe> codec() {
+            return CODEC;
+        }
+
+        @Override
+        public @NotNull StreamCodec<RegistryFriendlyByteBuf, NaturalRecipe> streamCodec() {
+            return PACKET_CODEC;
+        }
     }
 }

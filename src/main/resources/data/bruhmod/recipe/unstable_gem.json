@@ -1,6 +1,8 @@
 {
   "type": "bruhmod:natural",
-  "damageType": "minecraft:explosion",
+  "sources": {
+    "damage": ["minecraft:explosion", "minecraft:player_explosion"]
+  },
   "ingredients": [
     {
       "ingredient": {
