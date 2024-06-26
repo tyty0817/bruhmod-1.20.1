@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:monks_cudgel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "pronged_crown": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bruhmod:pronged_crown"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "spirited_bludgeon": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bruhmod:spirited_bludgeon"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "wind_gem": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bruhmod:wind_gem"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "spirited_bludgeon",
+      "pronged_crown",
+      "wind_gem"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:monks_cudgel"
+    ]
+  }
+}

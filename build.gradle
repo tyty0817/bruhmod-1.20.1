@@ -1,152 +1,50 @@
 plugins {
-	id 'fabric-loom' version '1.7.1'
-	id 'maven-publish'
+    
 }
 
-version = project.mod_version
-group = project.maven_group
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'pmd'
+	
+    apply plugin: 'maven-publish'
+    java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+    java.withSourcesJar()
+    archivesBaseName = "${mod_name}"
 
-base {
-	archivesName = project.archives_base_name
-}
+    repositories {
+        mavenCentral()
 
-loom {
-	accessWidenerPath = file("src/main/resources/${mod_id}.accesswidener")
-}
+        maven {
+            name = 'Sponge / Mixin'
+            url = 'https://repo.spongepowered.org/repository/maven-public/'
+        }
+    }
 
-repositories {
-	// Add repositories to retrieve artifacts from in here.
-	// You should only use this when depending on other mods because
-	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-	// for more information about repositories.
-	maven {
-		name = "Terraformers"
-		url = "https://maven.terraformersmc.com/"
-	}
-	maven {
-		name = "Ladysnake Libs"
-		url = 'https://maven.ladysnake.org/releases'
-	}
-	maven {
-		name = 'GeckoLib'
-		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-		content {
-			includeGroupByRegex("software\\.bernie.*")
-			includeGroup("com.eliotlash.mclib")
-		}
-	}
-	maven { url 'https://maven.blamejared.com' }
-	maven { url "https://maven.shedaniel.me" }
+    tasks.withType(JavaCompile).configureEach {
+        it.options.encoding = 'UTF-8'
+        it.options.release = 21
+    }
 
-	// Modrinth plugin for runtime only mods
-	exclusiveContent {
-		forRepository {
-			maven {
-				name = "Modrinth"
-				url = "https://api.modrinth.com/maven"
-			}
-		}
-		filter {
-			includeGroup "maven.modrinth"
-		}
-	}
-}
+    tasks.withType(GenerateModuleMetadata).configureEach {
+        it.enabled = false
+    }
 
-fabricApi {
-	configureDataGeneration()
-}
+    pmd {
+        toolVersion '6.35.0'
+        incrementalAnalysis.set(true)
+//        ruleSetFiles = rootProject.files("spotless/pmd-ruleset.xml")
+    }
 
-loom {
-    splitEnvironmentSourceSets()
+    jar {
+        from "LICENSE"
 
-	mods {
-		"${project.mod_id}" {
-			sourceSet sourceSets.main
-			sourceSet sourceSets.client
-		}
-	}
+        exclude "**/*.bat"
+        exclude "**/*.psd"
+        exclude "**/*.ase"
+        exclude "**/*.exe"
+        exclude "**/unused"
 
-}
+        exclude ".cache"
+    }
 
-dependencies {
-	// To change the versions see the gradle.properties file
-	minecraft "com.mojang:minecraft:${minecraft_version}"
-	mappings loom.officialMojangMappings()
-
-	modImplementation "net.fabricmc:fabric-loader:${loader_version}"
-
-	// Fabric API. This is technically optional, but you probably want it anyway.
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}+${minecraft_version}"
-
-	// JEI
-	modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-	modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-fabric-api:${jei_version}")
-	// at runtime, use the full JEI jar for Fabric
-	modRuntimeOnly("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
-
-	// Patchouli
-//	modImplementation "vazkii.patchouli:Patchouli:${minecraft_version}-${patchouli_version}-FABRIC"
-
-	// Trinkets
-//	modImplementation "dev.emi:trinkets:${trinkets_version}"
-
-	// GeckoLib
-	modImplementation("software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}")
-	implementation("com.eliotlash.mclib:mclib:20")
-
-	// RUNTIME ONLY
-	modClientRuntimeOnly("com.terraformersmc:modmenu:${modmenu_version}")
-	modRuntimeOnly("maven.modrinth:lithium:${lithium_version}")
-	modRuntimeOnly("maven.modrinth:sodium:${sodium_version}")
-
-
-}
-
-processResources {
-	inputs.property "mod_id", project.mod_id
-	inputs.property "mod_name", project.mod_name
-	inputs.property "version", project.version
-
-	filesMatching("fabric.mod.json") {
-		expand(["mod_id": project.mod_id, "mod_name": project.mod_name, "version": project.version])
-	}
-}
-
-tasks.withType(JavaCompile).configureEach {
-	it.options.release = 21
-}
-
-java {
-	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-	// if it is present.
-	// If you remove this line, sources will not be generated.
-	withSourcesJar()
-
-	sourceCompatibility = JavaVersion.VERSION_21
-	targetCompatibility = JavaVersion.VERSION_21
-}
-
-jar {
-	from("LICENSE") {
-		rename { "${it}_${project.base.archivesName.get()}"}
-	}
-}
-
-// configure the maven publication
-publishing {
-	publications {
-		create("mavenJava", MavenPublication) {
-			artifactId = project.archives_base_name
-			from components.java
-		}
-	}
-
-	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-	repositories {
-		// Add repositories to publish to here.
-		// Notice: This block does NOT have the same function as the block in the top level.
-		// The repositories here will be used for publishing your artifact, not for
-		// retrieving dependencies.
-	}
 }

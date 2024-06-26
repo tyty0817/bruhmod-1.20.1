@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "bruhmod:mysterious_club"
+    },
+    "C": {
+      "item": "bruhmod:corrupted_crown"
+    },
+    "G": {
+      "item": "bruhmod:jewel_of_corruption"
+    }
+  },
+  "pattern": [
+    "  G",
+    " C ",
+    "B  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "bruhmod:branch_of_corruption"
+  }
+}

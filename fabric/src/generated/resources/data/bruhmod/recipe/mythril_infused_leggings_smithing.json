@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "bruhmod:mythril"
+  },
+  "base": {
+    "item": "minecraft:netherite_leggings"
+  },
+  "result": {
+    "count": 1,
+    "id": "bruhmod:mythril_infused_leggings"
+  },
+  "template": {
+    "item": "bruhmod:mythril_upgrade_smithing_template"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:shillelagh"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "monks_cudgel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bruhmod:monks_cudgel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "whirlwind_sash": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bruhmod:whirlwind_sash"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "monks_cudgel",
+      "whirlwind_sash"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:shillelagh"
+    ]
+  }
+}

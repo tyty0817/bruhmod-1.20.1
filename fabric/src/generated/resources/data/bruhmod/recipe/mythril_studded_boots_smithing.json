@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "bruhmod:mythril"
+  },
+  "base": {
+    "item": "minecraft:diamond_boots"
+  },
+  "result": {
+    "count": 1,
+    "id": "bruhmod:mythril_studded_boots"
+  },
+  "template": {
+    "item": "bruhmod:mythril_upgrade_smithing_template"
+  }
+}
