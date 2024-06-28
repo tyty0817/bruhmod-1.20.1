@@ -1,97 +1,16 @@
 plugins {
-	id 'fabric-loom' version '1.7.1'
+    id 'multiloader-loader'
+    id 'fabric-loom'
 }
-
-version = "${minecraft_version}-${mod_version}-fabric"
-group = project.maven_group
-
-loom {
-	accessWidenerPath = file("src/main/resources/bruhmod_fabric.accesswidener")
-
-	mods {
-		"${project.mod_id}" {
-			sourceSet sourceSets.main
-		}
-	}
-
-	runs {
-
-		fabricDatagen {
-			client()
-			vmArg "-Dfabric-api.datagen"
-			vmArg "-Dfabric-api.datagen.modid=${mod_id}"
-			vmArg "-Dfabric-api.datagen.output-dir=${file("src/generated/resources")}"
-		}
-
-		configureEach {
-			runDir "../run"
-			ideConfigGenerated(true)
-		}
-	}
-
-}
-
-sourceSets.main.resources {
-	srcDir 'src/generated/resources'
-}
-
-
-repositories {
-	// Add repositories to retrieve artifacts from in here.
-	// You should only use this when depending on other mods because
-	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-	// for more information about repositories.
-	maven {
-		name = "Terraformers"
-		url = "https://maven.terraformersmc.com/"
-	}
-	maven {
-		name = "Ladysnake Libs"
-		url = 'https://maven.ladysnake.org/releases'
-	}
-	maven {
-		name = 'GeckoLib'
-		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-		content {
-			includeGroup("software.bernie.geckolib")
-		}
-	}
-	maven { url 'https://maven.blamejared.com' }
-	maven { url "https://maven.shedaniel.me" }
-
-	// Modrinth plugin for runtime only mods
-	exclusiveContent {
-		forRepository {
-			maven {
-				name = "Modrinth"
-				url = "https://api.modrinth.com/maven"
-			}
-		}
-		filter {
-			includeGroup "maven.modrinth"
-		}
-	}
-}
-
-//fabricApi {
-//	configureDataGeneration()
-//}
 
 dependencies {
-	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${minecraft_version}"
-	mappings loom.layered() {
+	mappings loom.layered {
 		officialMojangMappings()
+
 		parchment("org.parchmentmc.data:parchment-${minecraft_version}:${parchment_version}@zip")
 	}
-//	mappings "net.fabricmc:yarn:${minecraft_version}+build.${yarn_mappings}:v2"
-
-	compileOnly project(":common")
-
-	modImplementation "net.fabricmc:fabric-loader:${loader_version}"
-
-	// Fabric API. This is technically optional, but you probably want it anyway.
+	modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}+${minecraft_version}"
 
 	modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
@@ -110,50 +29,70 @@ dependencies {
 	modRuntimeOnly("maven.modrinth:sodium:${sodium_version}")
 	modRuntimeOnly("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
 
-
 }
 
-compileJava {
-	source(project(":common").sourceSets.main.allSource)
-//	options.compilerArgs << "-Xlint:all,-classfile,-processing,-deprecation,-serial" << "-Werror"
+loom {
 
-}
+	def aw = project(':common').file("src/main/resources/${mod_id}.accesswidener")
+	if (aw.exists()) {
+		accessWidenerPath.set(aw)
+	}
+	mixin {
+		defaultRefmapName.set("${mod_id}.refmap.json")
+	}
+	runs {
+		client {
+			client()
+			setConfigName('Fabric Client')
+			ideConfigGenerated(true)
+			runDir('runs/client')
+		}
+		server {
+			server()
+			setConfigName('Fabric Server')
+			ideConfigGenerated(true)
+			runDir('runs/server')
+		}
 
-sourcesJar {
-	from project(":common").sourceSets.main.allJava
-}
+		fabricDatagen {
+			client()
+			setConfigName('Fabric Datagen')
+			ideConfigGenerated(true)
+			runDir('runs/client')
+			vmArg "-Dfabric-api.datagen"
+			vmArg "-Dfabric-api.datagen.modid=${mod_id}"
+			vmArg "-Dfabric-api.datagen.output-dir=${file("../common/src/generated/resources")}"
+		}
 
-processResources {
-
-	from project(":common").sourceSets.main.resources
-
-	inputs.property "mod_id", project.mod_id
-	inputs.property "mod_name", project.mod_name
-	inputs.property "version", project.version
-
-	filesMatching("fabric.mod.json") {
-		expand(["mod_id": project.mod_id, "mod_name": project.mod_name, "version": project.version])
 	}
 
-	exclude ".cache"
 }
 
-// configure the maven publication
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			groupId project.group
-			artifactId project.archivesBaseName
-			version project.version
-			from components.java
+repositories {
+	maven {
+		name = "Terraformers"
+		url = "https://maven.terraformersmc.com/"
+	}
+	maven {
+		name = "Ladysnake Libs"
+		url = 'https://maven.ladysnake.org/releases'
+	}
+	maven { url "https://maven.shedaniel.me" }
+
+	// Modrinth plugin for runtime only mods
+	exclusiveContent {
+		forRepository {
+			maven {
+				name = "Modrinth"
+				url = "https://api.modrinth.com/maven"
+			}
+		}
+		filter {
+			includeGroup "maven.modrinth"
 		}
 	}
+}
 
-	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-	repositories {
-		// Add repositories to publish to here.
-		// Notice: This block does NOT have the same function as the block in the top level.
-		// The repositories here will be used for publishing your artifact, not for
-		// retrieving dependencies.
-	}
+sourceSets.main.resources {
+	srcDir 'src/generated/resources'
 }

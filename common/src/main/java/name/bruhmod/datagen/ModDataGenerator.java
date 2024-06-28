@@ -2,11 +2,17 @@ package name.bruhmod.datagen;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.DataProvider;
+
 import java.util.concurrent.CompletableFuture;
 
 public class ModDataGenerator {
 
-	public static void generate(DataGenerator.PackGenerator pack, CompletableFuture<HolderLookup.Provider> future) {
+	public interface AddProvider {
+		<T extends DataProvider> T addProvider(DataProvider.Factory<T> factory);
+	}
+
+	public static <T extends DataProvider> void generate(AddProvider pack, CompletableFuture<HolderLookup.Provider> future) {
 		var blockTagProvider = pack.addProvider((output) -> new ModBlockTagProvider(output, future));
 		pack.addProvider((output) -> new ModItemTagProvider(output, future, blockTagProvider.contentsGetter()));
 		pack.addProvider((output) -> new ModRecipeProvider(output, future));

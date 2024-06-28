@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.List;
 
-import static name.bruhmod.Mod.MOD_ID;
+import static name.bruhmod.LeMod.MOD_ID;
 
 public class NaturalRecipeJEICategory implements IRecipeCategory<NaturalRecipe> {
 

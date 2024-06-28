@@ -1,50 +1,21 @@
 plugins {
-    
+    // see https://fabricmc.net/develop/ for new versions
+    id 'fabric-loom' version '1.7.1' apply false
+    // see https://projects.neoforged.net/neoforged/moddevgradle for new versions
+    id 'net.neoforged.moddev' version '0.1.112' apply false
 }
 
 subprojects {
-    apply plugin: 'java'
-    apply plugin: 'pmd'
-	
-    apply plugin: 'maven-publish'
-    java.toolchain.languageVersion = JavaLanguageVersion.of(21)
-    java.withSourcesJar()
-    archivesBaseName = "${mod_name}"
 
     repositories {
-        mavenCentral()
-
+        maven { url 'https://maven.blamejared.com' }
         maven {
-            name = 'Sponge / Mixin'
-            url = 'https://repo.spongepowered.org/repository/maven-public/'
+            name = 'GeckoLib'
+            url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+            content {
+                includeGroup("software.bernie.geckolib")
+            }
         }
-    }
-
-    tasks.withType(JavaCompile).configureEach {
-        it.options.encoding = 'UTF-8'
-        it.options.release = 21
-    }
-
-    tasks.withType(GenerateModuleMetadata).configureEach {
-        it.enabled = false
-    }
-
-    pmd {
-        toolVersion '6.35.0'
-        incrementalAnalysis.set(true)
-//        ruleSetFiles = rootProject.files("spotless/pmd-ruleset.xml")
-    }
-
-    jar {
-        from "LICENSE"
-
-        exclude "**/*.bat"
-        exclude "**/*.psd"
-        exclude "**/*.ase"
-        exclude "**/*.exe"
-        exclude "**/unused"
-
-        exclude ".cache"
     }
 
 }

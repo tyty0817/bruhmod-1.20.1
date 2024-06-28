@@ -1,7 +1,7 @@
 package name.bruhmod.entities;
 
-import name.bruhmod.Mod;
-import net.minecraft.core.Registry;
+import name.bruhmod.LeMod;
+import name.bruhmod.util.RegistryHelper;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -9,19 +9,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 
-import static name.bruhmod.Mod.LOGGER;
-import static name.bruhmod.Mod.MOD_ID;
-
 public class ModEntities {
 
-    public interface EntityAttributeConsumer {
-        void register(EntityType<? extends LivingEntity> type, AttributeSupplier.Builder builder);
-    }
-
-    public static void register(EntityAttributeConsumer registry) {
-        LOGGER.info("Registering Entities for " + MOD_ID);
-        registry.register(BOSS, BossEntity.createMobAttributes());
-    }
+    public static final RegistryHelper<EntityType<?>> REGISTERER = new RegistryHelper<>(BuiltInRegistries.ENTITY_TYPE);
 
     public static EntityType<LightningBottleEntity> LIGHTNING_BOTTLE = registerEntity(
             "lightning_bottle",
@@ -37,13 +27,18 @@ public class ModEntities {
             EntityType.Builder.of(BossEntity::new, MobCategory.CREATURE).sized(0.8f, 2.75f)
     );
 
-    private static <T extends Entity> EntityType<T> registerEntity(String name, EntityType.Builder<T> type) {
-        var id = Mod.idOf(name);
-        return Registry.register(
-                BuiltInRegistries.ENTITY_TYPE,
-                id,
-                type.build(id.toString())
-        );
+    public interface EntityAttributeConsumer {
+        void register(EntityType<? extends LivingEntity> type, AttributeSupplier.Builder builder);
+    }
+
+    public static void registerAttributes(EntityAttributeConsumer registry) {
+        registry.register(BOSS, BossEntity.createMobAttributes());
+    }
+
+    private static <T extends Entity> EntityType<T> registerEntity(String name, EntityType.Builder<T> typeBuilder) {
+        var id = LeMod.idOf(name);
+        var type = typeBuilder.build(id.toString());
+        return REGISTERER.add(id, type);
     }
 
 }

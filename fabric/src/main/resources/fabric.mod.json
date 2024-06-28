@@ -3,7 +3,7 @@
 	"id": "${mod_id}",
 	"version": "${version}",
 	"name": "${mod_name}",
-	"description": "wizard 101 mod",
+	"description": "${description}",
 	"authors": [
 		"Justin", "Tyler", "Rhys"
 	],
@@ -11,8 +11,8 @@
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/tyty0817/le-mod"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/bruhmod/textures/item/mythril.png",
+	"license": "${license}",
+	"icon": "${icon_path}",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
@@ -29,13 +29,13 @@
 		]
 	},
 	"mixins": [
-		"bruhmod_common.mixins.json",
+		"${mod_id}.mixins.json",
 		"bruhmod_fabric.mixins.json"
 	],
-	"accessWidener" : "bruhmod_fabric.accesswidener",
+	"accessWidener" : "${mod_id}.accesswidener",
 	"depends": {
-		"fabricloader": ">=0.15.10",
-		"minecraft": ">=1.20",
+		"fabricloader": ">=${fabric_loader_version}",
+		"minecraft": "${minecraft_version}",
 		"java": ">=17",
 		"fabric-api": "*",
 		"geckolib": ">=4.4"

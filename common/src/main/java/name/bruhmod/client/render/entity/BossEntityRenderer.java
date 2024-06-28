@@ -1,6 +1,6 @@
 package name.bruhmod.client.render.entity;
 
-import name.bruhmod.Mod;
+import name.bruhmod.LeMod;
 import name.bruhmod.entities.BossEntity;
 import name.bruhmod.entities.BossEntityModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -15,8 +15,8 @@ public class BossEntityRenderer extends GeoEntityRenderer<BossEntity> {
     }
 
     @Override
-    public @NotNull ResourceLocation getTextureLocation(BossEntity entity) {
-        return Mod.idOf("textures/entity/"+BossEntity.ID+".png");
+    public @NotNull ResourceLocation getTextureLocation(@NotNull BossEntity entity) {
+        return LeMod.idOf("textures/entity/"+BossEntity.ID+".png");
     }
 
 

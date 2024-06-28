@@ -1,7 +1,7 @@
 package name.bruhmod.item;
 
 import com.mojang.datafixers.util.Pair;
-import name.bruhmod.Mod;
+import name.bruhmod.LeMod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
@@ -40,11 +40,11 @@ public class ModMapItem extends Item {
         if (!world.isClientSide()) {
             ServerLevel serverWorld = (ServerLevel) world;
 
-            ResourceKey<Structure> key = ResourceKey.create(Registries.STRUCTURE, Mod.idOf(structureId));
+            ResourceKey<Structure> key = ResourceKey.create(Registries.STRUCTURE, LeMod.idOf(structureId));
             Optional<Holder.Reference<Structure>> entry = serverWorld.registryAccess().registryOrThrow(Registries.STRUCTURE).getHolder(key);
 
             if (entry.isEmpty()) {
-                Mod.LOGGER.error("Failed to get structure with key: {}!", key);
+                LeMod.LOGGER.error("Failed to get structure with key: {}!", key);
                 return InteractionResultHolder.fail(user.getItemInHand(hand));
             }
 
@@ -61,7 +61,7 @@ public class ModMapItem extends Item {
                 ItemStack itemStack = MapItem.create(serverWorld, pos.getX(), pos.getZ(), (byte)4, true, true);
                 MapItem.renderBiomePreviewMap(serverWorld, itemStack);
                 MapItemSavedData.addTargetDecoration(itemStack, pos, "+", decorationType);
-                itemStack.set(DataComponents.ITEM_NAME, Component.translatable("item."+ Mod.MOD_ID+"."+ structureId +"_map"));
+                itemStack.set(DataComponents.ITEM_NAME, Component.translatable("item."+ LeMod.MOD_ID+"."+ structureId +"_map"));
                 return InteractionResultHolder.pass(itemStack);
             } else {
                 return InteractionResultHolder.fail(user.getItemInHand(hand));

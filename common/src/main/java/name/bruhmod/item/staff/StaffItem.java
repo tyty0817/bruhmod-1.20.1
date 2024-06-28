@@ -1,5 +1,6 @@
 package name.bruhmod.item.staff;
 
+import name.bruhmod.item.ModItems;
 import net.minecraft.Util;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -21,7 +22,7 @@ public abstract class StaffItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag type) {
-        tooltip.add(Component.translatable(Util.makeDescriptionId("item", BuiltInRegistries.ITEM.getKey(this)) + ".tooltip"));
+        tooltip.add(Component.translatable(Util.makeDescriptionId("item", ModItems.REGISTERER.getKey(this)) + ".tooltip"));
 
         super.appendHoverText(stack, context, tooltip, type);
     }

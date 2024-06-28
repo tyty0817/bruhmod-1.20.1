@@ -11,10 +11,12 @@ classes/
 
 # idea
 
-.idea/
-*.iml
+out
 *.ipr
 *.iws
+*.iml
+.idea/*
+!.idea/scopes
 
 # vscode
 
@@ -28,9 +30,10 @@ bin/
 
 *.DS_Store
 
-# fabric
+# modloaders
 
 run/
+runs/
 src/main/generated/
 
 # java

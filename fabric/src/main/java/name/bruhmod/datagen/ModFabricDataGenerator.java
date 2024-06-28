@@ -8,11 +8,8 @@ public class ModFabricDataGenerator implements DataGeneratorEntrypoint {
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
+		ModDataGenerator.generate(pack::addProvider, fabricDataGenerator.getRegistries());
 		pack.addProvider(ModFabricModelProvider::new);
-
-		ModDataGenerator.generate(pack, fabricDataGenerator.getRegistries());
-
-
 	}
 
 }

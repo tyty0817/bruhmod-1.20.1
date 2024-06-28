@@ -1,6 +1,6 @@
 package name.bruhmod.datagen;
 
-import name.bruhmod.Mod;
+import name.bruhmod.LeMod;
 import name.bruhmod.item.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -35,7 +35,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requires(Items.DIAMOND, 4)
                 .unlockedBy(RecipeProvider.getItemName(Items.DIAMOND), RecipeProvider.has(Items.DIAMOND))
                 .unlockedBy(RecipeProvider.getItemName(ModItems.MYTHRIL_FRAGMENT), RecipeProvider.has(ModItems.MYTHRIL_FRAGMENT))
-                .save(exporter, Mod.idOf("mythril2"));
+                .save(exporter, LeMod.idOf("mythril2"));
 
         //-----------------------------------------------------------------------------------------------------------------//
         //                                               Staff Recipes                                                     //
@@ -50,7 +50,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(RecipeProvider.getItemName(ModItems.JEWEL_OF_CORRUPTION), RecipeProvider.has(ModItems.JEWEL_OF_CORRUPTION))
                 .unlockedBy(RecipeProvider.getItemName(ModItems.CORRUPTED_CROWN), RecipeProvider.has(ModItems.CORRUPTED_CROWN))
                 .unlockedBy(RecipeProvider.getItemName(ModItems.MYSTERIOUS_CLUB), RecipeProvider.has(ModItems.MYSTERIOUS_CLUB))
-                .save(exporter, Mod.idOf(RecipeProvider.getSimpleRecipeName(ModItems.BRANCH_OF_CORRUPTION)));
+                .save(exporter, LeMod.idOf(RecipeProvider.getSimpleRecipeName(ModItems.BRANCH_OF_CORRUPTION)));
 
 
 
@@ -67,7 +67,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(RecipeProvider.getItemName(Items.GOLD_INGOT), RecipeProvider.has(Items.GOLD_INGOT))
                 .unlockedBy(RecipeProvider.getItemName(Items.GOLD_NUGGET), RecipeProvider.has(Items.GOLD_NUGGET))
                 .unlockedBy(RecipeProvider.getItemName(Items.RAW_GOLD), RecipeProvider.has(Items.RAW_GOLD))
-                .save(exporter, Mod.idOf(RecipeProvider.getSimpleRecipeName(ModItems.VOLATILE_CLAW)));
+                .save(exporter, LeMod.idOf(RecipeProvider.getSimpleRecipeName(ModItems.VOLATILE_CLAW)));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VOLATILE_PILLAR, 1)
                 .pattern(" ID")
@@ -81,7 +81,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(RecipeProvider.getItemName(Items.GOLD_INGOT), RecipeProvider.has(Items.GOLD_INGOT))
                 .unlockedBy(RecipeProvider.getItemName(Items.BLAZE_ROD), RecipeProvider.has(Items.BLAZE_ROD))
                 .unlockedBy(RecipeProvider.getItemName(ModItems.MYTHRIL_DUST), RecipeProvider.has(ModItems.MYTHRIL_DUST))
-                .save(exporter, Mod.idOf(RecipeProvider.getSimpleRecipeName(ModItems.VOLATILE_PILLAR)));
+                .save(exporter, LeMod.idOf(RecipeProvider.getSimpleRecipeName(ModItems.VOLATILE_PILLAR)));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CHARGED_CLAW, 1)
                 .pattern("  R")
@@ -93,7 +93,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(RecipeProvider.getItemName(ModItems.VOLATILE_CLAW), RecipeProvider.has(ModItems.VOLATILE_CLAW))
                 .unlockedBy(RecipeProvider.getItemName(ModItems.MYTHRIL), RecipeProvider.has(ModItems.MYTHRIL))
                 .unlockedBy(RecipeProvider.getItemName(Items.LIGHTNING_ROD), RecipeProvider.has(Items.LIGHTNING_ROD))
-                .save(exporter, Mod.idOf(RecipeProvider.getSimpleRecipeName(ModItems.CHARGED_CLAW)));
+                .save(exporter, LeMod.idOf(RecipeProvider.getSimpleRecipeName(ModItems.CHARGED_CLAW)));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAELSTROM, 1)
                 .pattern("  R")
@@ -105,7 +105,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(RecipeProvider.getItemName(ModItems.VOLATILE_PILLAR), RecipeProvider.has(ModItems.VOLATILE_PILLAR))
                 .unlockedBy(RecipeProvider.getItemName(ModItems.CHARGED_CLAW), RecipeProvider.has(ModItems.CHARGED_CLAW))
                 .unlockedBy(RecipeProvider.getItemName(ModItems.LIGHTNING_IN_A_BOTTLE), RecipeProvider.has(ModItems.LIGHTNING_IN_A_BOTTLE))
-                .save(exporter, Mod.idOf(RecipeProvider.getSimpleRecipeName(ModItems.MAELSTROM)));
+                .save(exporter, LeMod.idOf(RecipeProvider.getSimpleRecipeName(ModItems.MAELSTROM)));
 
 
 
@@ -120,14 +120,14 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(RecipeProvider.getItemName(ModItems.SPIRITED_BLUDGEON), RecipeProvider.has(ModItems.SPIRITED_BLUDGEON))
                 .unlockedBy(RecipeProvider.getItemName(ModItems.PRONGED_CROWN), RecipeProvider.has(ModItems.PRONGED_CROWN))
                 .unlockedBy(RecipeProvider.getItemName(ModItems.WIND_GEM), RecipeProvider.has(ModItems.WIND_GEM))
-                .save(exporter, Mod.idOf(RecipeProvider.getSimpleRecipeName(ModItems.MONKS_CUDGEL)));
+                .save(exporter, LeMod.idOf(RecipeProvider.getSimpleRecipeName(ModItems.MONKS_CUDGEL)));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SHILLELAGH)
                 .requires(ModItems.MONKS_CUDGEL, 1)
                 .requires(ModItems.WHIRLWIND_SASH, 1)
                 .unlockedBy(RecipeProvider.getItemName(ModItems.MONKS_CUDGEL), RecipeProvider.has(ModItems.MONKS_CUDGEL))
                 .unlockedBy(RecipeProvider.getItemName(ModItems.WHIRLWIND_SASH), RecipeProvider.has(ModItems.WHIRLWIND_SASH))
-                .save(exporter, Mod.idOf(RecipeProvider.getSimpleRecipeName(ModItems.SHILLELAGH)));
+                .save(exporter, LeMod.idOf(RecipeProvider.getSimpleRecipeName(ModItems.SHILLELAGH)));
 
         //                                               Staff Recipes                                                     //
         //-----------------------------------------------------------------------------------------------------------------//

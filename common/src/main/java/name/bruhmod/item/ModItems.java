@@ -1,17 +1,17 @@
 package name.bruhmod.item;
 
-import com.mojang.datafixers.util.Pair;
-import name.bruhmod.Mod;
+import name.bruhmod.LeMod;
 import name.bruhmod.blocks.ModBlocks;
 import name.bruhmod.entities.ModEntities;
 import name.bruhmod.item.staff.*;
 import name.bruhmod.sound.ModSounds;
+import name.bruhmod.util.RegistryHelper;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
@@ -19,6 +19,8 @@ import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
 import java.util.EnumMap;
 
 public class ModItems {
+
+    public static final RegistryHelper<Item> REGISTERER = new RegistryHelper<>(BuiltInRegistries.ITEM);
 
     /*
      * Items
@@ -88,11 +90,8 @@ public class ModItems {
     public static final Item BRITISH_MAN_SPAWN_EGG = registerItem("british_man_spawn_egg", new SpawnEggItem(ModEntities.BOSS, 0xd59890, 0xd7b4ae, new Item.Properties()));
 
 
-    public static void register() {
-        Mod.LOGGER.info("Registering Mod Items for " + Mod.MOD_ID);
-//        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(entries ->
-//            entries.addAfter(Items.NETHERITE_INGOT, MYTHRIL)
-//        );
+    private static <I extends Item> I registerItem(ResourceLocation id, I item) {
+        return REGISTERER.add(id, item);
     }
 
     /**
@@ -112,7 +111,7 @@ public class ModItems {
      * @return The item, registered
      */
     private static Item registerItem(String name, Item item) {
-        return Registry.register(BuiltInRegistries.ITEM, Mod.idOf(name), item);
+        return registerItem(LeMod.idOf(name), item);
     }
 
     /**
@@ -122,24 +121,24 @@ public class ModItems {
      * @return The Block item, registered
      */
     private static BlockItem registerBlock(Block block) {
-        return Registry.register(BuiltInRegistries.ITEM, BuiltInRegistries.BLOCK.getKey(block), new BlockItem(block, new Item.Properties()));
+        return registerItem(ModBlocks.REGISTERER.getKey(block), new BlockItem(block, new Item.Properties()));
     }
 
-    private static EnumMap<ArmorItem.Type, ArmorItem> registerArmor(Holder<ArmorMaterial> material, Item.Properties settings) {
+    private static EnumMap<ArmorItem.Type, ArmorItem> registerArmor(ArmorMaterial material, Item.Properties settings) {
         EnumMap<ArmorItem.Type, ArmorItem> items = new EnumMap<>(ArmorItem.Type.class);
-        ResourceLocation id = ResourceLocation.parse(material.getRegisteredName());
+        ResourceLocation id = ModArmorMaterials.REGISTERER.getKey(material);
         ArmorItem.Type[] types = ArmorItem.Type.values();
         for (int i = 0; i < 4; i++) {
             ArmorItem.Type type = types[i];
-            items.put(type, (ArmorItem) registerItem(id.getPath() + "_" + type.getName(), new ArmorItem(material, type, settings)));
+            items.put(type, (ArmorItem) registerItem(id.getPath() + "_" + type.getName(), new ArmorItem(Holder.direct(material), type, settings)));
         }
         return items;
     }
 
-    private static Item registerMusicDisc(Pair<ResourceLocation, JukeboxSong> song) {
-        ResourceLocation id = song.getFirst();
+    private static Item registerMusicDisc(Holder<SoundEvent> song) {
+        ResourceLocation id = ModSounds.REGISTERER.getKey(song.value());
         ResourceLocation itemId = ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "music_disc_" + id.getPath());
-        return Registry.register(BuiltInRegistries.ITEM, itemId, new Item((new Item.Properties()).stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(ResourceKey.create(Registries.JUKEBOX_SONG, id))));
+        return registerItem(itemId, new Item((new Item.Properties()).stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(ResourceKey.create(Registries.JUKEBOX_SONG, id))));
     }
 
     public static class ShinyItem extends Item {

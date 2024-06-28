@@ -3,7 +3,7 @@ package name.bruhmod.compat.jei;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.*;
-import name.bruhmod.Mod;
+import name.bruhmod.LeMod;
 import name.bruhmod.recipe.natural.NaturalRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
@@ -16,7 +16,7 @@ import java.util.List;
 @JeiPlugin
 public class JEIModPlugin implements IModPlugin {
 
-    private static final ResourceLocation ID = Mod.idOf("main");
+    private static final ResourceLocation ID = LeMod.idOf("main");
     @Override
     public @NotNull ResourceLocation getPluginUid() {
         return ID;
@@ -30,7 +30,7 @@ public class JEIModPlugin implements IModPlugin {
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
         List<NaturalRecipe> recipes = Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(NaturalRecipe.TYPE).stream().sorted(NaturalRecipe.sort()).map(RecipeHolder::value).toList();
-        Mod.LOGGER.info("Registering {} recipes in JEI...", recipes.size());
+        LeMod.LOGGER.info("Registering {} recipes in JEI...", recipes.size());
         registration.addRecipes(NaturalRecipeJEICategory.TYPE, recipes);
     }
 

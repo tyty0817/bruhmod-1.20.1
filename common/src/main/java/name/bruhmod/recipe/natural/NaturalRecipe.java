@@ -4,12 +4,12 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import name.bruhmod.Mod;
+import name.bruhmod.LeMod;
+import name.bruhmod.util.RegistryHelper;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
@@ -28,13 +28,21 @@ import java.util.*;
  */
 public class NaturalRecipe implements Recipe<NaturalInventory> {
 
-    public static void register() {
 
+
+    public static <T> void register(RegistryHelper.RegistryConsumer registerer) {
+        var id = LeMod.idOf(ID);
+        registerer.register(BuiltInRegistries.RECIPE_SERIALIZER, id, SERIALIZER);
+        registerer.register(BuiltInRegistries.RECIPE_TYPE, id, TYPE);
     }
 
     public static final String ID = "natural";
-    public static final RecipeSerializer<NaturalRecipe> SERIALIZER = Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, Mod.idOf(ID), new Serializer());
-    public static final RecipeType<NaturalRecipe> TYPE = registerRecipeType(ID);
+    public static RecipeSerializer<NaturalRecipe> SERIALIZER = new Serializer();
+    public static RecipeType<NaturalRecipe> TYPE = new RecipeType<>(){
+        public String toString() {
+            return LeMod.idOf(ID).toString();
+        }
+    };
 
     private final NaturalSources sources;
     private final NonNullList<IngredientStack> input;
@@ -111,16 +119,6 @@ public class NaturalRecipe implements Recipe<NaturalInventory> {
     @Override
     public @NotNull ItemStack assemble(NaturalInventory recipeInput, HolderLookup.Provider provider) {
         return this.getOutput();
-    }
-
-    public static <T extends Recipe<?>> RecipeType<T> registerRecipeType(final String path) {
-        ResourceLocation id = Mod.idOf(path);
-        return Registry.register(BuiltInRegistries.RECIPE_TYPE, id, new RecipeType<T>(){
-
-            public String toString() {
-                return id.toString();
-            }
-        });
     }
 
     @Override

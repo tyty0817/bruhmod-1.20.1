@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "name.bruhmod.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "CloudBottleCollector",
+    "ItemEntityMixin",
+    "ThrownPotionMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
