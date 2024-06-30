@@ -17,7 +17,9 @@ public class ModDataGenerator {
 		pack.addProvider((output) -> new ModItemTagProvider(output, future, blockTagProvider.contentsGetter()));
 		pack.addProvider((output) -> new ModRecipeProvider(output, future));
 		pack.addProvider((output) -> new ModPoiTagProvider(output, future));
-		pack.addProvider((output) -> new ModLootTableProvider(output, future));
+		pack.addProvider(ModBlockStateProvider::new);
+		pack.addProvider(ModItemModelProvider::new);
+		pack.addProvider((output) -> new ModBlockLootProvider(output, future));
 		pack.addProvider((output) -> ModAdvancementProvider.provider(output, future));
 	}
 

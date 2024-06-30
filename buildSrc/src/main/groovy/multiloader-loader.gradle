@@ -6,7 +6,7 @@ configurations {
     commonJava{
         canBeResolved = true
     }
-    commonResources{
+    commonResources {
         canBeResolved = true
     }
 }

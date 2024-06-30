@@ -4,12 +4,9 @@ import name.bruhmod.datagen.ModDataGenerator;
 import name.bruhmod.entities.ModEntities;
 import name.bruhmod.util.RegistryHelper;
 import net.minecraft.core.Registry;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
@@ -37,21 +34,15 @@ public class ModBusEvents {
 
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
+        LeMod.LOGGER.info("Running datagen for " + LeMod.MOD_ID + "!");
         var generator = event.getGenerator();
         var future = event.getLookupProvider();
         ModDataGenerator.generate(new ModDataGenerator.AddProvider() {
             @Override
             public <T extends DataProvider> T addProvider(DataProvider.Factory<T> factory) {
-                return generator.addProvider(event.includeServer(), factory);
+                return generator.addProvider(true, factory);
             }
         }, future);
-    }
-
-    private static class DG extends BlockStateProvider {
-
-        @Override
-        protected void registerStatesAndModels() {
-        }
     }
 
 }
