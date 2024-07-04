@@ -43,7 +43,11 @@ public class MonksCudgel extends StaffItem {
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use (Level world, Player user, InteractionHand hand) {
-//        user.getCooldowns().addCooldown(this, 15);
+        var stack = user.getItemInHand(hand);
+        if (!tryUse(user, stack)) {
+            return InteractionResultHolder.fail(stack);
+        }
+        super.use(world, user, hand);
 //        float yaw = user.getXRot();
 //        float pitch = user.getYRot();
 //        float f = -Math.sin(yaw * 0.017453292F) * Math.cos(pitch * 0.017453292F);
@@ -74,6 +78,11 @@ public class MonksCudgel extends StaffItem {
         }
         world.playSound(null, user.blockPosition(), SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS);
         return InteractionResultHolder.pass(user.getItemInHand(hand));
+    }
+
+    @Override
+    public int essencePerUse(ItemStack item) {
+        return 5;
     }
 }
 

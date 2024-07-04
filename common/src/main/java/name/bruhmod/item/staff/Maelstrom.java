@@ -19,6 +19,10 @@ public class Maelstrom extends StaffItem {
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use (Level world, Player user, InteractionHand hand) {
+        var stack = user.getItemInHand(hand);
+        if (!tryUse(user, stack)) {
+            return InteractionResultHolder.fail(stack);
+        }
         super.use(world, user, hand);
         HitResult hit = user.pick(128, 1, true);
         if(hit.getType() != HitResult.Type.MISS) {
@@ -28,5 +32,10 @@ public class Maelstrom extends StaffItem {
         }
 //        user.getItemInHand(hand).damage(1, user);
         return InteractionResultHolder.pass(user.getItemInHand(hand));
+    }
+
+    @Override
+    public int essencePerUse(ItemStack item) {
+        return 2;
     }
 }

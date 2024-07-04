@@ -12,7 +12,7 @@ public class ModItemGroups {
     /**
      * The item group containing all the items in the mod.
      */
-    public static void register(RegistryHelper.RegistryConsumer registerer) {
+    public static void register(RegistryHelper.Provider registerer) {
         registerer.register(BuiltInRegistries.CREATIVE_MODE_TAB, LeMod.idOf(LeMod.MOD_ID), new CreativeModeTab.Builder(null, -1)
                 .title(Component.translatable("itemgroup.bruhmod.group"))
                 .icon(() -> new ItemStack(ModItems.MYTHRIL))

@@ -40,7 +40,11 @@ public class Shillelagh extends StaffItem {
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
-        user.getCooldowns().addCooldown(this, 10);
+        var stack = user.getItemInHand(hand);
+        if (!tryUse(user, stack)) {
+            return InteractionResultHolder.fail(stack);
+        }
+        super.use(world, user, hand);
         double sash_buff = 1.5;
         float yaw = user.getXRot();
         float pitch = user.getYRot();
@@ -50,6 +54,11 @@ public class Shillelagh extends StaffItem {
         user.setDeltaMovement(f * sash_buff, (g + 0.5) * sash_buff, h * sash_buff);
         Vec3 pos = user.position();
         world.playSound(null, new BlockPos((int) pos.x, (int) pos.y, (int) pos.z), SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS);
-        return InteractionResultHolder.pass(user.getItemInHand(hand));
+        return InteractionResultHolder.pass(stack);
+    }
+
+    @Override
+    public int essencePerUse(ItemStack item) {
+        return 10;
     }
 }

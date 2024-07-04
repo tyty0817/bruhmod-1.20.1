@@ -1,35 +1,35 @@
 package name.bruhmod;
 
 import name.bruhmod.datagen.ModDataGenerator;
-import name.bruhmod.entities.ModEntities;
+import name.bruhmod.entities.ModAttributes;
 import name.bruhmod.util.RegistryHelper;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataProvider;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-
 //@EventBusSubscriber(Mod)
 public class ModBusEvents {
 
     @SubscribeEvent
     public static void registerSetup(final RegisterEvent event) {
-        LeMod.initializeRegistries(new RegistryHelper.RegistryConsumer() {
+        LeMod.initializeRegistries(new RegistryHelper.Provider() {
             @Override
-            public <T> void register(Registry<T> registry, Consumer<BiConsumer<ResourceLocation, T>> consumer) {
-                event.register(registry.key(), r -> consumer.accept(r::register));
+            public <T> Holder<T> register(Registry<T> registry, ResourceLocation id, T entry) {
+                event.register(registry.key(), r -> r.register(id, entry));
+                return registry.getHolderOrThrow(ResourceKey.create(registry.key(), id));
             }
         });
     }
 
     @SubscribeEvent
     private static void entityAttributeSetup(final EntityAttributeCreationEvent event) {
-        ModEntities.registerAttributes((type, builder) -> event.put(type, builder.build()));
+        ModAttributes.registerAttributes((type, builder) -> event.put(type, builder.build()));
     }
 
     @SubscribeEvent

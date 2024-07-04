@@ -20,7 +20,11 @@ public class DyingLight extends StaffItem {
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
-        user.getCooldowns().addCooldown(this, 50);
+        var stack = user.getItemInHand(hand);
+        if (!tryUse(user, stack)) {
+            return InteractionResultHolder.fail(stack);
+        }
+        super.use(world, user, hand);
         float yaw = user.getXRot();
         float pitch = user.getYRot();
         double f = -Math.sin(yaw * 0.017453292F) * Math.cos(pitch * 0.017453292F);
@@ -35,5 +39,10 @@ public class DyingLight extends StaffItem {
         world.playSound(null, new BlockPos((int) pos.x, (int) pos.y, (int) pos.z), SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS);
 //        user.getItemInHand(hand).damage(1, user, playerEntity -> playerEntity.sendToolBreakStatus(playerEntity.getActiveHand()));
         return InteractionResultHolder.pass(user.getItemInHand(hand));
+    }
+
+    @Override
+    public int essencePerUse(ItemStack item) {
+        return 2;
     }
 }

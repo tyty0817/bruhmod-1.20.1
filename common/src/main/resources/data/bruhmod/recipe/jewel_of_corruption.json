@@ -1,7 +1,7 @@
 {
   "type": "bruhmod:natural",
   "sources": {
-    "effects": ["minecraft:wither"]
+    "potion": "bruhmod:potion_of_corruption"
   },
   "ingredients": [
     {

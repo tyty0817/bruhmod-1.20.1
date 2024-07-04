@@ -30,7 +30,7 @@ public class NaturalRecipe implements Recipe<NaturalInventory> {
 
 
 
-    public static <T> void register(RegistryHelper.RegistryConsumer registerer) {
+    public static <T> void register(RegistryHelper.Provider registerer) {
         var id = LeMod.idOf(ID);
         registerer.register(BuiltInRegistries.RECIPE_SERIALIZER, id, SERIALIZER);
         registerer.register(BuiltInRegistries.RECIPE_TYPE, id, TYPE);

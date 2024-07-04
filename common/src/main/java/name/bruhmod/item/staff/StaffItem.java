@@ -1,8 +1,8 @@
 package name.bruhmod.item.staff;
 
+import name.bruhmod.item.EssenceItem;
 import name.bruhmod.item.ModItems;
 import net.minecraft.Util;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -14,7 +14,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public abstract class StaffItem extends Item {
+public abstract class StaffItem extends Item implements EssenceItem {
 
     public StaffItem(Properties properties) {
         super(properties.stacksTo(1));
@@ -29,7 +29,9 @@ public abstract class StaffItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
-        user.getCooldowns().addCooldown(this, 50);
+        if (!user.isCreative())
+            user.getCooldowns().addCooldown(this, 50);
         return super.use(world, user, hand);
     }
+
 }

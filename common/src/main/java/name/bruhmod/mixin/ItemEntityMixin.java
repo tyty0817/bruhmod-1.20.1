@@ -15,6 +15,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.Optional;
+
 @Mixin(ItemEntity.class)
 public abstract class ItemEntityMixin extends Entity {
 
@@ -24,7 +26,7 @@ public abstract class ItemEntityMixin extends Entity {
 
     @Inject(method = "hurt", at = @At("HEAD"))
     void hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        NaturalRecipe.craftAtPosition(level(), new AABB(position().subtract(3.0, 3.0, 3.0), position().add(3.0, 3.0, 3.0)), new NaturalSources(NonNullList.withSize(1, Holder.direct(source.type())), NonNullList.create()));
+        NaturalRecipe.craftAtPosition(level(), new AABB(position().subtract(3.0, 3.0, 3.0), position().add(3.0, 3.0, 3.0)), new NaturalSources(NonNullList.withSize(1, Holder.direct(source.type())), Optional.empty()));
     }
 
 }

@@ -26,7 +26,20 @@ public class ModAdvancementProvider implements AdvancementSubProvider {
 
     @Override
     public void generate(HolderLookup.@NotNull Provider provider, Consumer<AdvancementHolder> consumer) {
-        var maelstrom = Advancement.Builder.advancement().display(ModItems.MAELSTROM, Component.literal("Parry This You Filthy Casual"), Component.literal("Obtain Maelstrom"), ResourceLocation.withDefaultNamespace("textures/gui/advancements/backgrounds/adventure.png"), AdvancementType.TASK, true, true, false).addCriterion("obtain_maelstrom", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.MAELSTROM)).build(ModItems.REGISTERER.getKey(ModItems.MAELSTROM));
+        var maelstrom = Advancement.Builder
+                .advancement()
+                .display(
+                        ModItems.MAELSTROM,
+                        Component.literal("Parry This You Filthy Casual"),
+                        Component.literal("Obtain Maelstrom"),
+                        ResourceLocation.withDefaultNamespace("textures/gui/advancements/backgrounds/adventure.png"),
+                        AdvancementType.TASK, true, true, false
+                )
+                .addCriterion(
+                        "obtain_maelstrom",
+                        InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.MAELSTROM)
+                )
+                .build(ModItems.REGISTERER.getKey(ModItems.MAELSTROM));
         consumer.accept(maelstrom);
     }
 }

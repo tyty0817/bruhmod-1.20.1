@@ -1,6 +1,7 @@
 package name.bruhmod.datagen;
 
 import name.bruhmod.item.ModItems;
+import name.bruhmod.item.EssenceCollector;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -24,6 +25,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
         var builder = this.tag(ItemTags.TRIMMABLE_ARMOR);
         ModItems.MYTHRIL_STUDDED_ARMOR.values().forEach(builder::add);
         ModItems.MYTHRIL_INFUSED_ARMOR.values().forEach(builder::add);
+
+        var essence = this.tag(EssenceCollector.COLLECTOR_TAG).add(ModItems.ESSENCE_COLLECTOR);
 
         //----------------------------------------------------------------------Music Discs----------------------------------------------------------------------//
 

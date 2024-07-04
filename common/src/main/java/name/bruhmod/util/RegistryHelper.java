@@ -1,12 +1,16 @@
 package name.bruhmod.util;
 
+import com.mojang.datafixers.util.Pair;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class RegistryHelper<T> {
 
@@ -24,20 +28,16 @@ public class RegistryHelper<T> {
         return item;
     }
 
-    public void registerAll(RegistryConsumer registerer) {
-        registerer.register(registry, this.values::forEach);
+    public void registerAll(Provider registerer) {
+        this.values.forEach((k, v) -> registerer.register(registry, k, v));
     }
 
     public ResourceLocation getKey(T item) throws NoSuchElementException {
         return this.values.entrySet().stream().filter(e -> e.getValue().equals(item)).findFirst().orElseThrow(() -> new NoSuchElementException("No element for " + item)).getKey();
     }
 
-    public interface RegistryConsumer {
-        <T> void register(Registry<T> registry, Consumer<BiConsumer<ResourceLocation, T>> consumer);
-
-        default <T> void register(Registry<? super T> registry, ResourceLocation l, T t) {
-            this.register(registry, single -> single.accept(l, t));
-        }
+    public interface Provider {
+        <T> Holder<T> register(Registry<T> registry, ResourceLocation id, T entry);
     }
 
 }
