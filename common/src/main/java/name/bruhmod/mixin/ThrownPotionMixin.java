@@ -26,7 +26,11 @@ public abstract class ThrownPotionMixin extends ThrowableItemProjectile {
 
     @Inject(at = @At("HEAD"), method = "applySplash")
     private void applySplash(Iterable<MobEffectInstance> iterable, @Nullable Entity entity, CallbackInfo info) {
-        NaturalRecipe.craftAtPosition(this.level(), this.getBoundingBox().inflate(4.0, 2.0, 4.0), new NaturalSources(NonNullList.create(), this.getItem().getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY).potion()));
+        NaturalRecipe.craftAtPosition(
+                this.level(),
+                this.getBoundingBox().inflate(4.0, 2.0, 4.0),
+                NaturalSources.ofPotion(this.getItem().getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY).potion())
+        );
     }
 
 }

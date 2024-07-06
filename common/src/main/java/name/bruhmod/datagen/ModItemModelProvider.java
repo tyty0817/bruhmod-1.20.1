@@ -10,6 +10,7 @@ import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.model.ModelTemplate;
 import net.minecraft.data.models.model.ModelTemplates;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -88,6 +89,7 @@ public class ModItemModelProvider extends ItemModelGenerators implements DataPro
         this.generateFlatItem(ModItems.BRITISH_MAN_SPAWN_EGG,
                 new ModelTemplate(Optional.of(ResourceLocation.parse("item/template_spawn_egg")), Optional.empty()));
 
+        this.generateFlatItem(ModItems.ESSENCE_COLLECTOR, ModelTemplates.FLAT_ITEM);
 
         /*
         ARMOR
@@ -100,7 +102,7 @@ public class ModItemModelProvider extends ItemModelGenerators implements DataPro
     }
 
     @Override
-    public CompletableFuture<?> run(CachedOutput cache) {
+    public @NotNull CompletableFuture<?> run(@NotNull CachedOutput cache) {
         generate();
 
         PackOutput.PathProvider modelPathProvider = packOutput.createPathProvider(PackOutput.Target.RESOURCE_PACK, "models");
@@ -109,7 +111,7 @@ public class ModItemModelProvider extends ItemModelGenerators implements DataPro
     }
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return LeMod.MOD_ID + " Item Models";
     }
 }

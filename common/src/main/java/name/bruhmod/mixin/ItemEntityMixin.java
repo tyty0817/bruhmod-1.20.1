@@ -26,7 +26,11 @@ public abstract class ItemEntityMixin extends Entity {
 
     @Inject(method = "hurt", at = @At("HEAD"))
     void hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        NaturalRecipe.craftAtPosition(level(), new AABB(position().subtract(3.0, 3.0, 3.0), position().add(3.0, 3.0, 3.0)), new NaturalSources(NonNullList.withSize(1, Holder.direct(source.type())), Optional.empty()));
+        NaturalRecipe.craftAtPosition(
+                level(),
+                AABB.ofSize(position(), 5.0, 5.0, 5.0),
+                NaturalSources.ofDamage(source.typeHolder())
+        );
     }
 
 }

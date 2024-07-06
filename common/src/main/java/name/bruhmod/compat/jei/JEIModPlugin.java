@@ -29,7 +29,7 @@ public class JEIModPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-        List<NaturalRecipe> recipes = Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(NaturalRecipe.TYPE).stream().sorted(NaturalRecipe.sort()).map(RecipeHolder::value).toList();
+        List<NaturalRecipe> recipes = Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(NaturalRecipe.TYPE).stream().sorted(NaturalRecipe.sortRecipe()).map(RecipeHolder::value).toList();
         LeMod.LOGGER.info("Registering {} recipes in JEI...", recipes.size());
         registration.addRecipes(NaturalRecipeJEICategory.TYPE, recipes);
     }

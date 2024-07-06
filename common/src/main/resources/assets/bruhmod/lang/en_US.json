@@ -22,7 +22,7 @@
   "item.bruhmod.corrupted_crown": "Corrupted Crown",
   "item.bruhmod.jewel_of_corruption": "Jewel of Corruption",
   "item.bruhmod.branch_of_corruption": "Branch of Corruption",
-  "item.bruhmod.branch_of_corruption.tooltip": "",
+  "item.bruhmod.branch_of_corruption.tooltip": "She Of on my Branch til I Corruption",
 
 
   "item.bruhmod.lightning_in_a_bottle": "Lightning in a Bottle",
@@ -69,8 +69,9 @@
   "item.minecraft.lingering_potion.effect.potion_of_corruption": "Lingering Potion of Corruption",
   "item.minecraft.tipped_arrow.effect.potion_of_corruption": "Arrow of Corruption",
 
-
-
+  "tag.item.bruhmod.has_essence": "Holds Essence",
+  "item.bruhmod.essence.tooltip": "Essence Stored",
+  "item.bruhmod.essence_collector": "Jutin Collector",
 
 
   "sounds.bruhmod.fallout": "fallout",

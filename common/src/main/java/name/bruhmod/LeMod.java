@@ -2,9 +2,9 @@ package name.bruhmod;
 
 import name.bruhmod.blocks.ModBlocks;
 import name.bruhmod.effect.ModEffects;
-import name.bruhmod.entities.ModAttributes;
 import name.bruhmod.entities.ModEntities;
 import name.bruhmod.item.ModArmorMaterials;
+import name.bruhmod.item.ModDataComponents;
 import name.bruhmod.item.ModItemGroups;
 import name.bruhmod.item.ModItems;
 import name.bruhmod.potion.ModPotions;
@@ -27,10 +27,10 @@ public class LeMod {
         NaturalRecipe.register(registerer);
         ModBlocks.REGISTERER.registerAll(registerer);
         ModItems.REGISTERER.registerAll(registerer);
-        ModAttributes.register(registerer);
+        ModDataComponents.register(registerer);
         ModEntities.REGISTERER.registerAll(registerer);
         ModArmorMaterials.REGISTERER.registerAll(registerer);
-        ModPotions.REGISTERER.registerAll(registerer);
+        ModPotions.register(registerer);
         ModEffects.registerEffects(registerer);
         ModSounds.REGISTERER.registerAll(registerer);
         ModItemGroups.register(registerer);

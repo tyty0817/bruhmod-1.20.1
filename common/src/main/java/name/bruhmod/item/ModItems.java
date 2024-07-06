@@ -27,7 +27,7 @@ public class ModItems {
      */
     public static final Item
 
-            ESSENCE_COLLECTOR = registerItem("essence_collector_test", new EssenceCollector()),
+            ESSENCE_COLLECTOR = registerItem("essence_collector", new EssenceCollector()),
 
             MYTHRIL = registerItem("mythril", new Item(new Item.Properties().rarity(Rarity.UNCOMMON))),
             MYTHRIL_DUST = registerItem("mythril_dust"),

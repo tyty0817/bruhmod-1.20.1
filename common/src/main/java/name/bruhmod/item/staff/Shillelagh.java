@@ -41,7 +41,7 @@ public class Shillelagh extends StaffItem {
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
         var stack = user.getItemInHand(hand);
-        if (!tryUse(user, stack)) {
+        if (!tryUse(user, user.getInventory(), stack)) {
             return InteractionResultHolder.fail(stack);
         }
         super.use(world, user, hand);

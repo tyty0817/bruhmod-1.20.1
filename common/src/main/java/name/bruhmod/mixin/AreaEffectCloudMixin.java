@@ -26,7 +26,10 @@ public abstract class AreaEffectCloudMixin extends Entity {
     public void tick(CallbackInfo info) {
         var world = this.level();
         if (this.tickCount % 5 == 0 && !world.isClientSide) {
-            NaturalRecipe.craftAtPosition(world, this.getBoundingBox(), new NaturalSources(NonNullList.create(), this.potionContents.potion()));
+            NaturalRecipe.craftAtPosition(
+                    world,
+                    this.getBoundingBox(),
+                    NaturalSources.ofPotion(this.potionContents.potion()));
         }
     }
 }

@@ -14,12 +14,10 @@ import net.minecraft.world.item.alchemy.Potions;
 
 public class ModPotions {
 
-    public static final RegistryHelper<Potion> REGISTERER = new RegistryHelper<>(BuiltInRegistries.POTION);
+    public static final Potion POTION_OF_CORRUPTION = new Potion(new MobEffectInstance(MobEffects.WITHER, 400, 4), new MobEffectInstance(MobEffects.CONFUSION, 200, 0), new MobEffectInstance(MobEffects.BLINDNESS, 100, 0));
 
-    public static final Potion POTION_OF_CORRUPTION = registerPotion("potion_of_corruption", new Potion(new MobEffectInstance(MobEffects.WITHER, 400, 4), new MobEffectInstance(MobEffects.CONFUSION, 200, 0), new MobEffectInstance(MobEffects.BLINDNESS, 100, 0)));
-
-    public static Potion registerPotion(String name, Potion potion) {
-        return REGISTERER.add(LeMod.idOf(name), potion);
+    public static void register(RegistryHelper.Provider registerer) {
+        registerer.register(BuiltInRegistries.POTION, LeMod.idOf("potion_of_corruption"), POTION_OF_CORRUPTION);
     }
 
     public static void registerRecipes(PotionBrewing.Builder builder) {

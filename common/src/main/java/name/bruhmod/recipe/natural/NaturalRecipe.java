@@ -10,6 +10,8 @@ import net.minecraft.core.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
@@ -20,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
 
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * TODO: center crafted item using positions of ingredients
@@ -27,8 +30,6 @@ import java.util.*;
  * TODO: add sets of damage/effect sources instead of checking for any (like how item ingredients are processed)
  */
 public class NaturalRecipe implements Recipe<NaturalInventory> {
-
-
 
     public static <T> void register(RegistryHelper.Provider registerer) {
         var id = LeMod.idOf(ID);
@@ -54,13 +55,21 @@ public class NaturalRecipe implements Recipe<NaturalInventory> {
         this.output = output;
     }
 
+    public static Optional<ResourceLocation> isCraftingCauldron(Level world, BlockPos pos) {
+        var cauldron = world.getBlockState(pos);
+        var fire = world.getBlockState(pos.subtract(new Vec3i(0, 1, 0)));
+        if (cauldron.is(BlockTags.CAULDRONS) && fire.getLightEmission() > 7) {
+            return Optional.of(BuiltInRegistries.BLOCK.getKey(cauldron.getBlock()));
+        } else return Optional.empty();
+    }
+
     /**
      * Check if this recipe matches with the ingredients from the specified inventory.
      * @param inventory The inventory the recipe should compare ingredients against.
      * @return The list of slots of which items should be removed from when crafting, or an empty list specifying that there was no match.
      */
     public List<Pair<Integer, Integer>> matchWithRemovals(NaturalInventory inventory, Level world) {
-        if (!sources.match(inventory.source, world)) {
+        if (!sources.matchAnyIn(inventory.source, world)) {
             return new ArrayList<>();
         }
 
@@ -83,11 +92,11 @@ public class NaturalRecipe implements Recipe<NaturalInventory> {
         return removals;
     }
 
-    public static Comparator<? super RecipeHolder<NaturalRecipe>> sort() {
+    public static Comparator<? super RecipeHolder<NaturalRecipe>> sortRecipe() {
         return Comparator.comparingInt(recipe -> -recipe.value().input.stream().mapToInt(IngredientStack::count).sum());
     }
 
-    public static void craftAtPosition(Level world, AABB box, NaturalSources source) {
+    public static int craftAtPosition(Level world, AABB box, NaturalSources source) {
         NaturalInventory inventory = new NaturalInventory(source, world.getEntitiesOfClass(ItemEntity.class, box));
 
         // get all matched recipes
@@ -95,7 +104,10 @@ public class NaturalRecipe implements Recipe<NaturalInventory> {
         // then, for each recipe, get the times it should be crafted, removing items used each time
         // then spawn the item after
 
-        world.getRecipeManager().getRecipesFor(TYPE, inventory, world).stream().sorted(sort()).forEachOrdered(recipe -> {
+        var recipes = world.getRecipeManager().getRecipesFor(TYPE, inventory, world);
+        recipes.sort(sortRecipe());
+        AtomicInteger count = new AtomicInteger();
+        recipes.forEach(recipe -> {
             List<Pair<Integer, Integer>> removals;
             int times = 0;
             while (!(removals = recipe.value().matchWithRemovals(inventory, world)).isEmpty()) {
@@ -108,7 +120,9 @@ public class NaturalRecipe implements Recipe<NaturalInventory> {
             ItemEntity entity = new ItemEntity(world, center.x, center.y, center.z, output, 0.0, 0.3, 0.0);
             entity.setInvulnerable(true);
             world.addFreshEntity(entity);
+            count.addAndGet(times);
         });
+        return count.getPlain();
     }
 
     @Override
@@ -160,7 +174,7 @@ public class NaturalRecipe implements Recipe<NaturalInventory> {
             implements RecipeSerializer<NaturalRecipe> {
 
         public static final MapCodec<NaturalRecipe> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
-                NaturalSources.CODEC.fieldOf("sources").forGetter((recipe) -> recipe.sources),
+                NaturalSources.STRICT_CODEC.fieldOf("sources").forGetter((recipe) -> recipe.sources),
                 IngredientStack.CODEC.listOf().fieldOf("ingredients").flatXmap(NaturalSources::toNonNullList, DataResult::success).forGetter((recipe) -> recipe.input),
                 ItemStack.STRICT_SINGLE_ITEM_CODEC.fieldOf("result").forGetter((recipe) -> recipe.output)
         ).apply(instance, NaturalRecipe::new));

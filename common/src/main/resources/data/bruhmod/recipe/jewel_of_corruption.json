@@ -1,7 +1,7 @@
 {
   "type": "bruhmod:natural",
   "sources": {
-    "potion": "bruhmod:potion_of_corruption"
+    "cauldron": true
   },
   "ingredients": [
     {
