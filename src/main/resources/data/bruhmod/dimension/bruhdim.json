@@ -1,0 +1,17 @@
+{
+  "type": "bruhmod:bruhdim_type",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "bruhmod:test_biome",
+      "lakes": false,
+      "features": true,
+      "layers": [
+        {
+          "block": "bruhmod:mythril_ore",
+          "height": 64
+        }
+      ]
+    }
+  }
+}
