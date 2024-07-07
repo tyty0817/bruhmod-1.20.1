@@ -49,11 +49,10 @@ public class EntityUnloads implements ServerEntityEvents.Unload {
                         ItemEntity item = (ItemEntity) element;
                         if(item.getStack().getItem().equals(ModItems.EMPTY_GEM)) {
                             emptyGemPresent = item.getStack();
-                            item.getPos();
+                            pos = item.getPos();
                         }
                         if(item.getStack().getItem().equals(Items.CRYING_OBSIDIAN)){
                             cryingObsidianPresent = item.getStack();
-                            item.getPos();
                         }
                     }
                 }
