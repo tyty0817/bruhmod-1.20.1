@@ -6,18 +6,21 @@ import name.bruhmod.util.RegistryHelper;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
 
+import java.util.function.BiConsumer;
+
 public class ModPotions {
 
     public static final Potion POTION_OF_CORRUPTION = new Potion(new MobEffectInstance(MobEffects.WITHER, 400, 4), new MobEffectInstance(MobEffects.CONFUSION, 200, 0), new MobEffectInstance(MobEffects.BLINDNESS, 100, 0));
 
-    public static void register(RegistryHelper.Provider registerer) {
-        registerer.register(BuiltInRegistries.POTION, LeMod.idOf("potion_of_corruption"), POTION_OF_CORRUPTION);
+    public static void register(BiConsumer<ResourceLocation, Potion> registerer) {
+        registerer.accept(LeMod.idOf("potion_of_corruption"), POTION_OF_CORRUPTION);
     }
 
     public static void registerRecipes(PotionBrewing.Builder builder) {

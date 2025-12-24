@@ -32,6 +32,7 @@ public class ModBlockLootProvider extends BlockLootSubProvider implements DataPr
         this.dropSelf(ModBlocks.MYTHRIL_BLOCK);
         this.add(ModBlocks.MYTHRIL_ORE, this.createOreDrop(ModBlocks.MYTHRIL_ORE, ModItems.MYTHRIL_DUST));
         this.add(ModBlocks.DEEPSLATE_MYTHRIL_ORE, this.createOreDrop(ModBlocks.DEEPSLATE_MYTHRIL_ORE, ModItems.MYTHRIL_DUST));
+        this.dropSelf(ModBlocks.PORTAL_BLOCK);
     }
 
     @Override

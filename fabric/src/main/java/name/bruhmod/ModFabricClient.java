@@ -6,6 +6,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 
@@ -14,7 +15,8 @@ public class ModFabricClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-		ModEntityRenderers.register(EntityRendererRegistry::register);
+		ModEntityRenderers.registerRenderers(EntityRendererRegistry::register);
+		ModEntityRenderers.registerModels((location, definition) -> EntityModelLayerRegistry.registerModelLayer(location, definition::get));
 		HudRenderCallback.EVENT.register(ModGUI::drawEssenceOverlay);
 		ItemTooltipCallback.EVENT.register(ModGUI::onTooltipEvent);
 	}

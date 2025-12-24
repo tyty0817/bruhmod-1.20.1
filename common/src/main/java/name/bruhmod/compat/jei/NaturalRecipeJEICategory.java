@@ -8,8 +8,8 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import name.bruhmod.recipe.natural.IngredientStack;
 import name.bruhmod.recipe.natural.NaturalRecipe;
+import name.bruhmod.recipe.util.IngredientStack;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -23,7 +23,7 @@ import static name.bruhmod.LeMod.MOD_ID;
 
 public class NaturalRecipeJEICategory implements IRecipeCategory<NaturalRecipe> {
 
-    public static final RecipeType<NaturalRecipe> TYPE = RecipeType.create(MOD_ID, NaturalRecipe.ID, NaturalRecipe.class);
+    public static final RecipeType<NaturalRecipe> TYPE = RecipeType.create(MOD_ID, NaturalRecipe.ID.getPath(), NaturalRecipe.class);
     private final Component title = Component.translatable(MOD_ID + ".itemsearch." + NaturalRecipe.ID);
     private final IDrawable background, icon;
 

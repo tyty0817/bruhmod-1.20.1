@@ -73,6 +73,15 @@ public class ModItemModelProvider extends ItemModelGenerators implements DataPro
         this.generateFlatItem(ModItems.MONKS_CUDGEL, ModelTemplates.FLAT_ITEM);
         this.generateFlatItem(ModItems.SHILLELAGH, ModelTemplates.FLAT_HANDHELD_ITEM);
 
+        this.generateFlatItem(ModItems.SEED_BLUNDERBUSS, ModelTemplates.FLAT_HANDHELD_ITEM);
+
+        this.generateFlatItem(ModItems.WOODEN_BOOMERANG, ModelTemplates.FLAT_HANDHELD_ITEM);
+        this.generateFlatItem(ModItems.STONE_BOOMERANG, ModelTemplates.FLAT_HANDHELD_ITEM);
+        this.generateFlatItem(ModItems.GOLDEN_BOOMERANG, ModelTemplates.FLAT_HANDHELD_ITEM);
+        this.generateFlatItem(ModItems.IRON_BOOMERANG, ModelTemplates.FLAT_HANDHELD_ITEM);
+        this.generateFlatItem(ModItems.DIAMOND_BOOMERANG, ModelTemplates.FLAT_HANDHELD_ITEM);
+        this.generateFlatItem(ModItems.NETHERITE_BOOMERANG, ModelTemplates.FLAT_HANDHELD_ITEM);
+
         this.generateFlatItem(ModItems.CLOUD_IN_A_BOTTLE, ModelTemplates.FLAT_ITEM);
         this.generateFlatItem(ModItems.UNSTABLE_GEM, ModelTemplates.FLAT_ITEM);
         this.generateFlatItem(ModItems.DYING_LIGHT, ModelTemplates.FLAT_ITEM);

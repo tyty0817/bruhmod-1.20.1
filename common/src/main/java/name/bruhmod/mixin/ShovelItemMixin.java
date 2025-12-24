@@ -20,6 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import static net.minecraft.world.level.block.LayeredCauldronBlock.LEVEL;
 
+// TODO: change to CauldronInteraction.class
 @Mixin(ShovelItem.class)
 public abstract class ShovelItemMixin {
     @Inject(method = "useOn", at = @At(value = "HEAD"))
@@ -28,15 +29,7 @@ public abstract class ShovelItemMixin {
         BlockPos pos = context.getClickedPos();
         NaturalRecipe.isCraftingCauldron(world, pos).ifPresent(cauldronId -> {
             if(context.getClickedFace() == Direction.UP) {
-                int craftingCount = NaturalRecipe.craftAtPosition(world, new AABB(pos), NaturalSources.ofCauldron());
-                var block = world.getBlockState(pos);
-                int level = block.getValue(LEVEL);
-                int drop = Math.max(level - craftingCount, 0);
-                if (block.getBlock() instanceof LayeredCauldronBlock) {
-                    BlockState newState = drop == 0 ? Blocks.CAULDRON.defaultBlockState() : block.setValue(LEVEL, drop);
-                    world.setBlockAndUpdate(pos, newState);
-                    world.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(newState));
-                }
+                NaturalRecipe.craftAtPosition(world, new AABB(pos), NaturalSources.ofCauldron());
             }
         });
     }

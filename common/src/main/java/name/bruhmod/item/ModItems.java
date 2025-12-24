@@ -2,12 +2,11 @@ package name.bruhmod.item;
 
 import name.bruhmod.LeMod;
 import name.bruhmod.blocks.ModBlocks;
-import name.bruhmod.entities.ModEntities;
+import name.bruhmod.entity.ModEntities;
 import name.bruhmod.item.staff.*;
 import name.bruhmod.sound.ModSounds;
 import name.bruhmod.util.RegistryHelper;
 import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -20,27 +19,25 @@ import java.util.EnumMap;
 
 public class ModItems {
 
-    public static final RegistryHelper<Item> REGISTERER = new RegistryHelper<>(BuiltInRegistries.ITEM);
+    public static final RegistryHelper<Item> ITEMS = new RegistryHelper<>();
 
     /*
      * Items
      */
-    public static final Item
+    public static final Item ESSENCE_COLLECTOR = registerItem("essence_collector", new EssenceCollector());
 
-            ESSENCE_COLLECTOR = registerItem("essence_collector", new EssenceCollector()),
+    public static final Item MYTHRIL = registerItem("mythril", new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final Item MYTHRIL_DUST = registerItem("mythril_dust");
+    public static final Item MYTHRIL_FRAGMENT = registerItem("mythril_fragment");
+    public static final Item MYTHRIL_UPGRADE = registerItem("mythril_upgrade_smithing_template");
+    public static final Item EMPTY_GEM = registerItem("empty_gem", new Item(new Item.Properties()));
+    public static final Item EXPLOSIVE_JELLY = registerItem("explosive_jelly");
 
-            MYTHRIL = registerItem("mythril", new Item(new Item.Properties().rarity(Rarity.UNCOMMON))),
-            MYTHRIL_DUST = registerItem("mythril_dust"),
-            MYTHRIL_FRAGMENT = registerItem("mythril_fragment"),
-            MYTHRIL_UPGRADE = registerItem("mythril_upgrade_smithing_template"),
-            EMPTY_GEM = registerItem("empty_gem", new Item(new Item.Properties().stacksTo(16))),
-            EXPLOSIVE_JELLY = registerItem("explosive_jelly"),
-
-            CORRUPTED_SLAG = registerItem("corrupted_slag", new Item(new Item.Properties().rarity(Rarity.UNCOMMON))),
-            MYSTERIOUS_CLUB = registerItem("mysterious_club", new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1))),
-            CORRUPTED_CROWN = registerItem("corrupted_crown", new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE))),
-            JEWEL_OF_CORRUPTION = registerItem("jewel_of_corruption", new ShinyItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE))),
-            BRANCH_OF_CORRUPTION = registerItem("branch_of_corruption", new BoltCaster(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+    public static final Item CORRUPTED_SLAG = registerItem("corrupted_slag", new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final Item MYSTERIOUS_CLUB = registerItem("mysterious_club", new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1)));
+    public static final Item CORRUPTED_CROWN = registerItem("corrupted_crown", new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item JEWEL_OF_CORRUPTION = registerItem("jewel_of_corruption", new ShinyItem(new Item.Properties().rarity(Rarity.RARE)));
+    public static final Item BRANCH_OF_CORRUPTION = registerItem("branch_of_corruption", new BoltCaster(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
 
     public static final Item LIGHTNING_IN_A_BOTTLE = registerItem("lightning_in_a_bottle", new LightningBottleItem(new Item.Properties().fireResistant().stacksTo(1).rarity(Rarity.UNCOMMON)));
     public static final Item VOLATILE_CLAW = registerItem("volatile_claw", new Item(new Item.Properties().stacksTo(1)));
@@ -48,17 +45,26 @@ public class ModItems {
     public static final Item VOLATILE_PILLAR = registerItem("volatile_pillar", new Item(new Item.Properties().stacksTo(1)));
     public static final Item MAELSTROM = registerItem("maelstrom", new Maelstrom());
 
-    public static final Item UNSTABLE_GEM = registerItem("unstable_gem", new ShinyItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item UNSTABLE_GEM = registerItem("unstable_gem", new ShinyItem(new Item.Properties().rarity(Rarity.RARE)));
     public static final Item DYING_LIGHT = registerItem("dying_light", new DyingLight());
 
     public static final Item CLOUD_IN_A_BOTTLE = registerItem("cloud_in_a_bottle", new Item(new Item.Properties().stacksTo(1)));
     public static final Item SPIRITED_BLUDGEON = registerItem("spirited_bludgeon", new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
     public static final Item PRONGED_CROWN = registerItem("pronged_crown", new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
-    public static final Item WIND_GEM = registerItem("wind_gem", new ShinyItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).fireResistant()));
+    public static final Item WIND_GEM = registerItem("wind_gem", new ShinyItem(new Item.Properties().rarity(Rarity.RARE).fireResistant()));
     public static final Item MONKS_CUDGEL = registerItem("monks_cudgel", new MonksCudgel());
     public static final Item WHIRLWIND_SASH = registerItem("whirlwind_sash", new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
     public static final Item SHILLELAGH = registerItem("shillelagh", new Shillelagh());
 
+    public static final Item SEED_BLUNDERBUSS = registerItem("seed_blunderbuss", new SeedBlunderbuss());
+
+    public static final Item
+            WOODEN_BOOMERANG = registerItem("wooden_boomerang", new BoomerangItem(Tiers.WOOD, new Item.Properties().attributes(BoomerangItem.createAttributes(Tiers.WOOD, 1.5F, -3.0F)))),
+            STONE_BOOMERANG = registerItem("stone_boomerang", new BoomerangItem(Tiers.STONE, new Item.Properties().attributes(BoomerangItem.createAttributes(Tiers.STONE, 1.5F, -3.0F)))),
+            GOLDEN_BOOMERANG = registerItem("golden_boomerang", new BoomerangItem(Tiers.GOLD, new Item.Properties().attributes(BoomerangItem.createAttributes(Tiers.GOLD, 1.5F, -3.0F)))),
+            IRON_BOOMERANG = registerItem("iron_boomerang", new BoomerangItem(Tiers.IRON, new Item.Properties().attributes(BoomerangItem.createAttributes(Tiers.IRON, 1.5F, -3.0F)))),
+            DIAMOND_BOOMERANG = registerItem("diamond_boomerang", new BoomerangItem(Tiers.DIAMOND, new Item.Properties().attributes(BoomerangItem.createAttributes(Tiers.DIAMOND, 1.5F, -3.0F)))),
+            NETHERITE_BOOMERANG = registerItem("netherite_boomerang", new BoomerangItem(Tiers.NETHERITE, new Item.Properties().attributes(BoomerangItem.createAttributes(Tiers.NETHERITE, 1.5F, -3.0F))));
 
     public static final Item MESS_HALL_MAP = registerItem("mess_hall_map", new ModMapItem("mess_hall", MapDecorationTypes.BROWN_BANNER));
     public static final Item PORTAL_TOWER_MAP = registerItem("portal_tower_map", new ModMapItem("portal_tower", MapDecorationTypes.PURPLE_BANNER));
@@ -72,7 +78,8 @@ public class ModItems {
     public static final BlockItem
             MYTHRIL_ORE = registerBlock(ModBlocks.MYTHRIL_ORE),
             DEEPSLATE_MYTHRIL_ORE = registerBlock(ModBlocks.DEEPSLATE_MYTHRIL_ORE),
-            MYTHRIL_BLOCK = registerBlock(ModBlocks.MYTHRIL_BLOCK);
+            MYTHRIL_BLOCK = registerBlock(ModBlocks.MYTHRIL_BLOCK),
+            PORTAL_BLOCK = registerBlock(ModBlocks.PORTAL_BLOCK);
     /*
      * Armor
      */
@@ -93,7 +100,7 @@ public class ModItems {
 
 
     private static <I extends Item> I registerItem(ResourceLocation id, I item) {
-        return REGISTERER.add(id, item);
+        return ITEMS.add(id, item);
     }
 
     /**
@@ -123,7 +130,7 @@ public class ModItems {
      * @return The Block item, registered
      */
     private static BlockItem registerBlock(Block block) {
-        return registerItem(ModBlocks.REGISTERER.getKey(block), new BlockItem(block, new Item.Properties()));
+        return registerItem(ModBlocks.BLOCKS.getKey(block), new BlockItem(block, new Item.Properties()));
     }
 
     private static EnumMap<ArmorItem.Type, ArmorItem> registerArmor(ArmorMaterial material, Item.Properties settings) {
@@ -138,7 +145,7 @@ public class ModItems {
     }
 
     private static Item registerMusicDisc(Holder<SoundEvent> song) {
-        ResourceLocation id = ModSounds.REGISTERER.getKey(song.value());
+        ResourceLocation id = ModSounds.SOUNDS.getKey(song.value());
         ResourceLocation itemId = ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "music_disc_" + id.getPath());
         return registerItem(itemId, new Item((new Item.Properties()).stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(ResourceKey.create(Registries.JUKEBOX_SONG, id))));
     }

@@ -1,6 +1,6 @@
 package name.bruhmod.item.staff;
 
-import name.bruhmod.entities.FireBolt;
+import name.bruhmod.entity.FireBolt;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;

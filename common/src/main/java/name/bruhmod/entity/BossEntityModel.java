@@ -1,4 +1,4 @@
-package name.bruhmod.entities;
+package name.bruhmod.entity;
 
 import name.bruhmod.LeMod;
 import net.minecraft.resources.ResourceLocation;

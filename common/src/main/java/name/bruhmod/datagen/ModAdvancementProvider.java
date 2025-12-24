@@ -39,7 +39,7 @@ public class ModAdvancementProvider implements AdvancementSubProvider {
                         "obtain_maelstrom",
                         InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.MAELSTROM)
                 )
-                .build(ModItems.REGISTERER.getKey(ModItems.MAELSTROM));
+                .build(ModItems.ITEMS.getKey(ModItems.MAELSTROM));
         consumer.accept(maelstrom);
     }
 }

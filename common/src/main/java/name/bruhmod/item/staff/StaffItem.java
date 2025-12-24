@@ -22,7 +22,7 @@ public abstract class StaffItem extends Item implements EssenceItem {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag type) {
-        tooltip.add(Component.translatable(Util.makeDescriptionId("item", ModItems.REGISTERER.getKey(this)) + ".tooltip"));
+        tooltip.add(Component.translatable(Util.makeDescriptionId("item", ModItems.ITEMS.getKey(this)) + ".tooltip"));
 
         super.appendHoverText(stack, context, tooltip, type);
     }

@@ -18,7 +18,7 @@ import java.util.function.Supplier;
 
 public class ModArmorMaterials {
 
-    public static final RegistryHelper<ArmorMaterial> REGISTERER = new RegistryHelper<>(BuiltInRegistries.ARMOR_MATERIAL);
+    public static final RegistryHelper<ArmorMaterial> REGISTERER = new RegistryHelper<>();
 
     public static final ArmorMaterial MYTHRIL_DIAMOND = register(
             "mythril_studded", 40, new int[]{ 4, 9, 7, 4, 8 }, 20,

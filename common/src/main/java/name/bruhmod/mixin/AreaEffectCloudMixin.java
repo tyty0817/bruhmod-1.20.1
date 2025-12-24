@@ -2,7 +2,6 @@ package name.bruhmod.mixin;
 
 import name.bruhmod.recipe.natural.NaturalRecipe;
 import name.bruhmod.recipe.natural.NaturalSources;
-import net.minecraft.core.NonNullList;
 import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;

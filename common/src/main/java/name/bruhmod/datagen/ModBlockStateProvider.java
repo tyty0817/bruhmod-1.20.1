@@ -14,6 +14,8 @@ import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.blockstates.*;
 import net.minecraft.data.models.model.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 
@@ -44,14 +46,19 @@ public class ModBlockStateProvider extends BlockModelGenerators implements DataP
         this.createTrivialCube(ModBlocks.MYTHRIL_ORE);
         this.createTrivialCube(ModBlocks.DEEPSLATE_MYTHRIL_ORE);
         this.createTrivialCube(ModBlocks.MYTHRIL_BLOCK);
+        this.createTrivialCube(ModBlocks.PORTAL_BLOCK);
     }
 
     @Override
     public void createTrivialCube(@NotNull Block block) {
         super.createTrivialCube(block);
-        JsonObject model = new JsonObject();
-        model.add("parent", new JsonPrimitive(ModelLocationUtils.getModelLocation(block).toString()));
-        models.put(ModelLocationUtils.getModelLocation(block.asItem()), () -> model);
+        // create block item
+        Item item = block.asItem();
+        if (item != Items.AIR) {
+            JsonObject model = new JsonObject();
+            model.add("parent", new JsonPrimitive(ModelLocationUtils.getModelLocation(block).toString()));
+            models.put(ModelLocationUtils.getModelLocation(item), () -> model);
+        }
     }
 
     @Override

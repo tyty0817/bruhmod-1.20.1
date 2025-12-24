@@ -1,4 +1,4 @@
-package name.bruhmod.entities;
+package name.bruhmod.entity;
 
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -35,10 +35,6 @@ public class FireBolt extends Projectile {
         powerZ = z;
         this.noCulling = true;
         this.setOwner(user);
-    }
-
-    protected static FireBolt createEntity(EntityType<FireBolt> type, Level world) {
-        return new FireBolt(type, world);
     }
 
 //    protected void onHit(HitResult hitResult) {

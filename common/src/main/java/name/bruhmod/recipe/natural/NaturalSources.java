@@ -5,19 +5,25 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.core.Holder;
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.Registry;
+import name.bruhmod.recipe.util.WorldRecipeInput;
+import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LayeredCauldronBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Optional;
+
+import static net.minecraft.world.level.block.LayeredCauldronBlock.LEVEL;
 
 public record NaturalSources(
         NonNullList<Holder<DamageType>> damage,
@@ -39,6 +45,10 @@ public record NaturalSources(
 
     private static <S> MapCodec<NonNullList<S>> optList(Codec<S> codec, String name) {
         return codec.listOf().optionalFieldOf(name).flatXmap(r -> toNonNullList(r.orElse(NonNullList.create())), r -> DataResult.success(Optional.of(r)));
+    }
+
+    private static DataResult<NaturalSources> validate(NaturalSources sources) {
+        return sources.damage.isEmpty() && sources.potion.isEmpty() && !sources.cauldron ? DataResult.error(() -> "A natural recipe must contain a crafting method!") : DataResult.success(sources);
     }
 
     private static final Codec<NaturalSources> CODEC = RecordCodecBuilder.create(instance ->
@@ -64,8 +74,22 @@ public record NaturalSources(
                 ;
     }
 
-    private static DataResult<NaturalSources> validate(NaturalSources sources) {
-        return sources.damage.isEmpty() && sources.potion.isEmpty() && !sources.cauldron ? DataResult.error(() -> "A natural recipe must contain a crafting method!") : DataResult.success(sources);
+    public boolean tryCraft(Level world, WorldRecipeInput inventory, AABB box) {
+
+        if (this.cauldron()) {
+//            inventory.items.stream().map(Entity::blockPosition).distinct();
+            BlockPos pos = BlockPos.containing(box.getMinPosition());
+            var block = world.getBlockState(pos);
+            int level = block.getValue(LEVEL);
+            if (level == 0)
+                return false;
+            if (block.getBlock() instanceof LayeredCauldronBlock) {
+                BlockState newState = level == 1 ? Blocks.CAULDRON.defaultBlockState() : block.setValue(LEVEL, level - 1);
+                world.setBlockAndUpdate(pos, newState);
+                world.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(newState));
+            }
+        }
+        return true;
     }
 
     public static final StreamCodec<RegistryFriendlyByteBuf, NaturalSources> STREAM_CODEC = new StreamCodec<>() {

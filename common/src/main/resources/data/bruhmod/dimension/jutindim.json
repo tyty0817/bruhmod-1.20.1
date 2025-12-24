@@ -1,0 +1,13 @@
+{
+  "type": "bruhmod:jutindim",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "minecraft:dark_forest",
+      "features": false,
+      "lakes": false,
+      "layers": [],
+      "structure_overrides": ["minecraft:mineshafts", "minecraft:woodland_mansions"]
+    }
+  }
+}

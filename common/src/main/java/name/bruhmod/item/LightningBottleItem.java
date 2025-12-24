@@ -1,6 +1,6 @@
 package name.bruhmod.item;
 
-import name.bruhmod.entities.LightningBottleEntity;
+import name.bruhmod.entity.LightningBottleEntity;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;

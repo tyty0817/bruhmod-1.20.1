@@ -5,7 +5,7 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import name.bruhmod.LeMod;
-import name.bruhmod.util.RegistryHelper;
+import name.bruhmod.recipe.util.IngredientStack;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -16,6 +16,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
@@ -29,19 +30,13 @@ import java.util.concurrent.atomic.AtomicInteger;
  * TODO: add crafting via lingering potion tick in mixin
  * TODO: add sets of damage/effect sources instead of checking for any (like how item ingredients are processed)
  */
-public class NaturalRecipe implements Recipe<NaturalInventory> {
+public class NaturalRecipe implements Recipe<NaturalRecipeInput> {
 
-    public static <T> void register(RegistryHelper.Provider registerer) {
-        var id = LeMod.idOf(ID);
-        registerer.register(BuiltInRegistries.RECIPE_SERIALIZER, id, SERIALIZER);
-        registerer.register(BuiltInRegistries.RECIPE_TYPE, id, TYPE);
-    }
-
-    public static final String ID = "natural";
+    public static final ResourceLocation ID = LeMod.idOf("natural");
     public static RecipeSerializer<NaturalRecipe> SERIALIZER = new Serializer();
     public static RecipeType<NaturalRecipe> TYPE = new RecipeType<>(){
         public String toString() {
-            return LeMod.idOf(ID).toString();
+            return ID.toString();
         }
     };
 
@@ -56,8 +51,8 @@ public class NaturalRecipe implements Recipe<NaturalInventory> {
     }
 
     public static Optional<ResourceLocation> isCraftingCauldron(Level world, BlockPos pos) {
-        var cauldron = world.getBlockState(pos);
-        var fire = world.getBlockState(pos.subtract(new Vec3i(0, 1, 0)));
+        BlockState cauldron = world.getBlockState(pos);
+        BlockState fire = world.getBlockState(pos.subtract(new Vec3i(0, 1, 0)));
         if (cauldron.is(BlockTags.CAULDRONS) && fire.getLightEmission() > 7) {
             return Optional.of(BuiltInRegistries.BLOCK.getKey(cauldron.getBlock()));
         } else return Optional.empty();
@@ -68,7 +63,7 @@ public class NaturalRecipe implements Recipe<NaturalInventory> {
      * @param inventory The inventory the recipe should compare ingredients against.
      * @return The list of slots of which items should be removed from when crafting, or an empty list specifying that there was no match.
      */
-    public List<Pair<Integer, Integer>> matchWithRemovals(NaturalInventory inventory, Level world) {
+    public List<Pair<Integer, Integer>> matchWithRemovals(NaturalRecipeInput inventory, Level world) {
         if (!sources.matchAnyIn(inventory.source, world)) {
             return new ArrayList<>();
         }
@@ -97,7 +92,7 @@ public class NaturalRecipe implements Recipe<NaturalInventory> {
     }
 
     public static int craftAtPosition(Level world, AABB box, NaturalSources source) {
-        NaturalInventory inventory = new NaturalInventory(source, world.getEntitiesOfClass(ItemEntity.class, box));
+        NaturalRecipeInput inventory = new NaturalRecipeInput(source, world, box);
 
         // get all matched recipes
         // then sort them by most ingredients first (in case of duplicate ingredients, the larger one should be used)
@@ -126,12 +121,12 @@ public class NaturalRecipe implements Recipe<NaturalInventory> {
     }
 
     @Override
-    public boolean matches(NaturalInventory inventory, Level world) {
+    public boolean matches(NaturalRecipeInput inventory, Level world) {
         return !matchWithRemovals(inventory, world).isEmpty();
     }
 
     @Override
-    public @NotNull ItemStack assemble(NaturalInventory recipeInput, HolderLookup.Provider provider) {
+    public @NotNull ItemStack assemble(NaturalRecipeInput recipeInput, HolderLookup.Provider provider) {
         return this.getOutput();
     }
 

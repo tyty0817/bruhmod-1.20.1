@@ -1,16 +1,5 @@
 package name.bruhmod;
 
-import name.bruhmod.blocks.ModBlocks;
-import name.bruhmod.effect.ModEffects;
-import name.bruhmod.entities.ModEntities;
-import name.bruhmod.item.ModArmorMaterials;
-import name.bruhmod.item.ModDataComponents;
-import name.bruhmod.item.ModItemGroups;
-import name.bruhmod.item.ModItems;
-import name.bruhmod.potion.ModPotions;
-import name.bruhmod.recipe.natural.NaturalRecipe;
-import name.bruhmod.sound.ModSounds;
-import name.bruhmod.util.RegistryHelper;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,20 +9,7 @@ public class LeMod {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     public static ResourceLocation idOf(String path) {
-    return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
-}
-
-    public static <T> void initializeRegistries(RegistryHelper.Provider registerer) {
-        NaturalRecipe.register(registerer);
-        ModBlocks.REGISTERER.registerAll(registerer);
-        ModItems.REGISTERER.registerAll(registerer);
-        ModDataComponents.register(registerer);
-        ModEntities.REGISTERER.registerAll(registerer);
-        ModArmorMaterials.REGISTERER.registerAll(registerer);
-        ModPotions.register(registerer);
-        ModEffects.registerEffects(registerer);
-        ModSounds.REGISTERER.registerAll(registerer);
-        ModItemGroups.register(registerer);
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
 
 }

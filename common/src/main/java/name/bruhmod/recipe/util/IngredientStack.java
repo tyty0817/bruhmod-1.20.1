@@ -1,4 +1,4 @@
-package name.bruhmod.recipe.natural;
+package name.bruhmod.recipe.util;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

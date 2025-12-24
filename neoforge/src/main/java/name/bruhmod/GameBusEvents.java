@@ -1,7 +1,7 @@
 package name.bruhmod;
 
 import name.bruhmod.potion.ModPotions;
-import name.bruhmod.world.ModCustomTrades;
+import name.bruhmod.villager.ModCustomTrades;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;

@@ -8,7 +8,7 @@ import net.minecraft.sounds.SoundEvent;
 
 public class ModSounds {
 
-    public static final RegistryHelper<SoundEvent> REGISTERER = new RegistryHelper<>(BuiltInRegistries.SOUND_EVENT);
+    public static final RegistryHelper<SoundEvent> SOUNDS = new RegistryHelper<>();
 
     public static Holder<SoundEvent>
             FALLOUT = register("fallout"),
@@ -20,6 +20,6 @@ public class ModSounds {
 
     public static Holder<SoundEvent> register(String name) {
         var i = LeMod.idOf(name);
-        return Holder.direct(REGISTERER.add(i, SoundEvent.createVariableRangeEvent(i)));
+        return Holder.direct(SOUNDS.add(i, SoundEvent.createVariableRangeEvent(i)));
     }
 }

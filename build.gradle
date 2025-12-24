@@ -1,8 +1,8 @@
 plugins {
     // see https://fabricmc.net/develop/ for new versions
-    id 'fabric-loom' version '1.7.1' apply false
+    id 'fabric-loom' version '1.9.2' apply false
     // see https://projects.neoforged.net/neoforged/moddevgradle for new versions
-    id 'net.neoforged.moddev' version '0.1.112' apply false
+    id 'net.neoforged.moddev' version '2.0.73' apply false
 }
 
 subprojects {
@@ -16,6 +16,22 @@ subprojects {
                 includeGroup("software.bernie.geckolib")
             }
         }
+        maven { url 'https://maven.wispforest.io/releases' }
+        maven { url 'https://maven.su5ed.dev/releases' }
+
+        // Modrinth plugin for runtime only mods
+        exclusiveContent {
+            forRepository {
+                maven {
+                    name = "Modrinth"
+                    url = "https://api.modrinth.com/maven"
+                }
+            }
+            filter {
+                includeGroup "maven.modrinth"
+            }
+        }
+
     }
 
 }

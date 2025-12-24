@@ -1,4 +1,4 @@
-package name.bruhmod.entities;
+package name.bruhmod.entity;
 
 import name.bruhmod.item.ModItems;
 import net.minecraft.world.entity.EntityType;
@@ -11,11 +11,6 @@ import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
 public class LightningBottleEntity extends ThrowableItemProjectile {
-
-    // this is here because constructor lambda is bugging??
-    protected static LightningBottleEntity createEntity(EntityType<LightningBottleEntity> type, Level world) {
-        return new LightningBottleEntity(type, world);
-    }
 
     public LightningBottleEntity(EntityType<? extends LightningBottleEntity> entityType, Level world) {
         super(entityType, world);

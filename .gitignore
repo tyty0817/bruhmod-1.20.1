@@ -34,7 +34,6 @@ bin/
 
 run/
 runs/
-src/main/generated/
 
 # java
 
@@ -42,3 +41,8 @@ hs_err_*.log
 replay_*.log
 *.hprof
 *.jfr
+
+# generated
+
+/fabric/src/generated/
+/neoforge/src/generated/
